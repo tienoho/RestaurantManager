@@ -221,6 +221,7 @@
     <EmbeddedResource Include="Views\Manage\uctMenu.resx">
       <DependentUpon>uctMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Database\RestaurantManagerData.bak" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
