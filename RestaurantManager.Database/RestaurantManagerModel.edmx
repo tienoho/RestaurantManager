@@ -1,0 +1,1842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestaurantManagerDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CONGTHUC">
+          <Key>
+            <PropertyRef Name="idmon" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idmon" Type="int" Nullable="false" />
+          <Property Name="idhang" Type="int" Nullable="false" />
+          <Property Name="hamluong" Type="nvarchar" MaxLength="6" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="D_DONDATDA">
+          <Key>
+            <PropertyRef Name="iddondat" />
+            <PropertyRef Name="idmon" />
+          </Key>
+          <Property Name="iddondat" Type="int" Nullable="false" />
+          <Property Name="idmon" Type="int" Nullable="false" />
+          <Property Name="sldat" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="D_DONMH">
+          <Key>
+            <PropertyRef Name="iddonmh" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="iddonmh" Type="int" Nullable="false" />
+          <Property Name="idhang" Type="int" Nullable="false" />
+          <Property Name="slmh" Type="int" />
+          <Property Name="dongiamh" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="D_GIAOHANG">
+          <Key>
+            <PropertyRef Name="idpgiao" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idpgiao" Type="int" Nullable="false" />
+          <Property Name="idhang" Type="int" Nullable="false" />
+          <Property Name="slgiaohang" Type="int" />
+          <Property Name="slnhanhang" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="D_HOADONM">
+          <Key>
+            <PropertyRef Name="idhoadonm" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idhoadonm" Type="int" Nullable="false" />
+          <Property Name="idhang" Type="int" Nullable="false" />
+          <Property Name="slmua" Type="int" />
+          <Property Name="dongiamua" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="D_HOADONTT">
+          <Key>
+            <PropertyRef Name="idhoadontt" />
+            <PropertyRef Name="idmon" />
+          </Key>
+          <Property Name="idhoadontt" Type="int" Nullable="false" />
+          <Property Name="idmon" Type="int" Nullable="false" />
+          <Property Name="slban" Type="int" />
+          <Property Name="dongiaban" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="D_PNHAP">
+          <Key>
+            <PropertyRef Name="idpnhap" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idpnhap" Type="int" Nullable="false" />
+          <Property Name="idhang" Type="int" Nullable="false" />
+          <Property Name="slgiao" Type="int" />
+          <Property Name="slnhan" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="D_PYC">
+          <Key>
+            <PropertyRef Name="idyc" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idyc" Type="int" Nullable="false" />
+          <Property Name="idhang" Type="int" Nullable="false" />
+          <Property Name="sldukien" Type="int" />
+          <Property Name="slton" Type="int" />
+          <Property Name="nguong" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="DANHMUC">
+          <Key>
+            <PropertyRef Name="iddmuc" />
+          </Key>
+          <Property Name="iddmuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tendmuc" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="DONDATDA">
+          <Key>
+            <PropertyRef Name="iddondat" />
+          </Key>
+          <Property Name="iddondat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngaydat" Type="datetime" />
+          <Property Name="ban" Type="nvarchar" MaxLength="10" />
+          <Property Name="idkh" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="DONMH">
+          <Key>
+            <PropertyRef Name="iddonmh" />
+          </Key>
+          <Property Name="iddonmh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngaydonmh" Type="datetime" />
+          <Property Name="idncc" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="GIAOHANG">
+          <Key>
+            <PropertyRef Name="idpgiao" />
+          </Key>
+          <Property Name="idpgiao" Type="int" Nullable="false" />
+          <Property Name="ngaygiao" Type="datetime" />
+          <Property Name="nguoinhan" Type="nvarchar" MaxLength="50" />
+          <Property Name="nguoilapphieu" Type="nvarchar" MaxLength="50" />
+          <Property Name="nguoigiao" Type="nvarchar" MaxLength="50" />
+          <Property Name="cuahang" Type="nvarchar" MaxLength="50" />
+          <Property Name="diachi" Type="varchar" MaxLength="100" />
+          <Property Name="idncc" Type="int" />
+          <Property Name="iddonmh" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HOADONM">
+          <Key>
+            <PropertyRef Name="idhoadonm" />
+          </Key>
+          <Property Name="idhoadonm" Type="int" Nullable="false" />
+          <Property Name="ngaymua" Type="datetime" />
+          <Property Name="idpnhap" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HOADONTT">
+          <Key>
+            <PropertyRef Name="idhoadontt" />
+          </Key>
+          <Property Name="idhoadontt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngayhd" Type="datetime" Nullable="false" />
+          <Property Name="thoigian" Type="datetime" />
+          <Property Name="thungan" Type="nvarchar" MaxLength="50" />
+          <Property Name="idkh" Type="int" />
+          <Property Name="iddondat" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="idkh" />
+          </Key>
+          <Property Name="idkh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenkh" Type="nvarchar" MaxLength="50" />
+          <Property Name="sdt" Type="nvarchar" MaxLength="10" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MONAN">
+          <Key>
+            <PropertyRef Name="idmon" />
+          </Key>
+          <Property Name="idmon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="temon" Type="nvarchar" MaxLength="30" />
+          <Property Name="dongiamon" Type="float" />
+          <Property Name="dvt" Type="nvarchar" MaxLength="30" />
+          <Property Name="hinhanh" Type="nvarchar" MaxLength="30" />
+          <Property Name="iddmuc" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="NCC">
+          <Key>
+            <PropertyRef Name="idncc" />
+          </Key>
+          <Property Name="idncc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenncc" Type="varchar" MaxLength="100" />
+          <Property Name="diachi" Type="varchar" MaxLength="100" />
+          <Property Name="sdt" Type="nchar" MaxLength="10" />
+          <Property Name="stk" Type="nchar" MaxLength="15" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="NLIEU">
+          <Key>
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idhang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenhang" Type="nvarchar" MaxLength="50" />
+          <Property Name="slton" Type="int" />
+          <Property Name="nguong" Type="int" />
+          <Property Name="dongianl" Type="float" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="NLIEU_NCC">
+          <Key>
+            <PropertyRef Name="idncc" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idncc" Type="int" Nullable="false" />
+          <Property Name="idhang" Type="int" Nullable="false" />
+          <Property Name="dongiacc" Type="float" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PNHAP">
+          <Key>
+            <PropertyRef Name="idpnhap" />
+          </Key>
+          <Property Name="idpnhap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngaynhap" Type="datetime" />
+          <Property Name="nguoigiao" Type="nvarchar" MaxLength="50" />
+          <Property Name="nguoilapphieu" Type="nvarchar" MaxLength="50" />
+          <Property Name="thukho" Type="nvarchar" MaxLength="50" />
+          <Property Name="idpgiao" Type="int" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PYC">
+          <Key>
+            <PropertyRef Name="idyc" />
+          </Key>
+          <Property Name="idyc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngayyc" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="20" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoDT" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_CONGTHUC_MONAN">
+          <End Role="MONAN" Type="Self.MONAN" Multiplicity="1" />
+          <End Role="CONGTHUC" Type="Self.CONGTHUC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONAN">
+              <PropertyRef Name="idmon" />
+            </Principal>
+            <Dependent Role="CONGTHUC">
+              <PropertyRef Name="idmon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONGTHUC_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="CONGTHUC" Type="Self.CONGTHUC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="CONGTHUC">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_DONDATDA_DONDATDA">
+          <End Role="DONDATDA" Type="Self.DONDATDA" Multiplicity="1" />
+          <End Role="D_DONDATDA" Type="Self.D_DONDATDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONDATDA">
+              <PropertyRef Name="iddondat" />
+            </Principal>
+            <Dependent Role="D_DONDATDA">
+              <PropertyRef Name="iddondat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_DONDATDA_MONAN">
+          <End Role="MONAN" Type="Self.MONAN" Multiplicity="1" />
+          <End Role="D_DONDATDA" Type="Self.D_DONDATDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONAN">
+              <PropertyRef Name="idmon" />
+            </Principal>
+            <Dependent Role="D_DONDATDA">
+              <PropertyRef Name="idmon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_DONMH_DONMH">
+          <End Role="DONMH" Type="Self.DONMH" Multiplicity="1" />
+          <End Role="D_DONMH" Type="Self.D_DONMH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONMH">
+              <PropertyRef Name="iddonmh" />
+            </Principal>
+            <Dependent Role="D_DONMH">
+              <PropertyRef Name="iddonmh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_DONMH_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_DONMH" Type="Self.D_DONMH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_DONMH">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_GIAOHANG_GIAOHANG">
+          <End Role="GIAOHANG" Type="Self.GIAOHANG" Multiplicity="1" />
+          <End Role="D_GIAOHANG" Type="Self.D_GIAOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAOHANG">
+              <PropertyRef Name="idpgiao" />
+            </Principal>
+            <Dependent Role="D_GIAOHANG">
+              <PropertyRef Name="idpgiao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_GIAOHANG_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_GIAOHANG" Type="Self.D_GIAOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_GIAOHANG">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONM_HOADONM">
+          <End Role="HOADONM" Type="Self.HOADONM" Multiplicity="1" />
+          <End Role="D_HOADONM" Type="Self.D_HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONM">
+              <PropertyRef Name="idhoadonm" />
+            </Principal>
+            <Dependent Role="D_HOADONM">
+              <PropertyRef Name="idhoadonm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONM_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_HOADONM" Type="Self.D_HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_HOADONM">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONTT_HOADONTT">
+          <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="1" />
+          <End Role="D_HOADONTT" Type="Self.D_HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONTT">
+              <PropertyRef Name="idhoadontt" />
+            </Principal>
+            <Dependent Role="D_HOADONTT">
+              <PropertyRef Name="idhoadontt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONTT_MONAN">
+          <End Role="MONAN" Type="Self.MONAN" Multiplicity="1" />
+          <End Role="D_HOADONTT" Type="Self.D_HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONAN">
+              <PropertyRef Name="idmon" />
+            </Principal>
+            <Dependent Role="D_HOADONTT">
+              <PropertyRef Name="idmon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_PNHAP_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_PNHAP" Type="Self.D_PNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_PNHAP">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_PNHAP_PNHAP">
+          <End Role="PNHAP" Type="Self.PNHAP" Multiplicity="1" />
+          <End Role="D_PNHAP" Type="Self.D_PNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Principal>
+            <Dependent Role="D_PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_PYC_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_PYC" Type="Self.D_PYC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_PYC">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_PYC_PYC">
+          <End Role="PYC" Type="Self.PYC" Multiplicity="1" />
+          <End Role="D_PYC" Type="Self.D_PYC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PYC">
+              <PropertyRef Name="idyc" />
+            </Principal>
+            <Dependent Role="D_PYC">
+              <PropertyRef Name="idyc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DONMH_NCC">
+          <End Role="NCC" Type="Self.NCC" Multiplicity="0..1" />
+          <End Role="DONMH" Type="Self.DONMH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NCC">
+              <PropertyRef Name="idncc" />
+            </Principal>
+            <Dependent Role="DONMH">
+              <PropertyRef Name="idncc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAOHANG_DONMH">
+          <End Role="DONMH" Type="Self.DONMH" Multiplicity="0..1" />
+          <End Role="GIAOHANG" Type="Self.GIAOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONMH">
+              <PropertyRef Name="iddonmh" />
+            </Principal>
+            <Dependent Role="GIAOHANG">
+              <PropertyRef Name="iddonmh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAOHANG_NCC">
+          <End Role="NCC" Type="Self.NCC" Multiplicity="0..1" />
+          <End Role="GIAOHANG" Type="Self.GIAOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NCC">
+              <PropertyRef Name="idncc" />
+            </Principal>
+            <Dependent Role="GIAOHANG">
+              <PropertyRef Name="idncc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADONM_PNHAP">
+          <End Role="PNHAP" Type="Self.PNHAP" Multiplicity="0..1" />
+          <End Role="HOADONM" Type="Self.HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Principal>
+            <Dependent Role="HOADONM">
+              <PropertyRef Name="idpnhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADONTT_DONDATDA">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="idkh" />
+            </Principal>
+            <Dependent Role="HOADONTT">
+              <PropertyRef Name="idkh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADONTT_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="idkh" />
+            </Principal>
+            <Dependent Role="HOADONTT">
+              <PropertyRef Name="idkh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONAN_DANHMUC">
+          <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
+          <End Role="MONAN" Type="Self.MONAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DANHMUC">
+              <PropertyRef Name="iddmuc" />
+            </Principal>
+            <Dependent Role="MONAN">
+              <PropertyRef Name="iddmuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PNHAP_GIAOHANG">
+          <End Role="GIAOHANG" Type="Self.GIAOHANG" Multiplicity="1" />
+          <End Role="PNHAP" Type="Self.PNHAP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GIAOHANG">
+              <PropertyRef Name="idpgiao" />
+            </Principal>
+            <Dependent Role="PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantManagerDataModelStoreContainer">
+          <EntitySet Name="CONGTHUC" EntityType="Self.CONGTHUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="D_DONDATDA" EntityType="Self.D_DONDATDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="D_DONMH" EntityType="Self.D_DONMH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="D_GIAOHANG" EntityType="Self.D_GIAOHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="D_HOADONM" EntityType="Self.D_HOADONM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="D_HOADONTT" EntityType="Self.D_HOADONTT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="D_PNHAP" EntityType="Self.D_PNHAP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="D_PYC" EntityType="Self.D_PYC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DANHMUC" EntityType="Self.DANHMUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DONDATDA" EntityType="Self.DONDATDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DONMH" EntityType="Self.DONMH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIAOHANG" EntityType="Self.GIAOHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOADONM" EntityType="Self.HOADONM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOADONTT" EntityType="Self.HOADONTT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MONAN" EntityType="Self.MONAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NCC" EntityType="Self.NCC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NLIEU" EntityType="Self.NLIEU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NLIEU_NCC" EntityType="Self.NLIEU_NCC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PNHAP" EntityType="Self.PNHAP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PYC" EntityType="Self.PYC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CONGTHUC_MONAN" Association="Self.FK_CONGTHUC_MONAN">
+            <End Role="MONAN" EntitySet="MONAN" />
+            <End Role="CONGTHUC" EntitySet="CONGTHUC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONGTHUC_NLIEU" Association="Self.FK_CONGTHUC_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEU" />
+            <End Role="CONGTHUC" EntitySet="CONGTHUC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONDATDA_DONDATDA" Association="Self.FK_D_DONDATDA_DONDATDA">
+            <End Role="DONDATDA" EntitySet="DONDATDA" />
+            <End Role="D_DONDATDA" EntitySet="D_DONDATDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONDATDA_MONAN" Association="Self.FK_D_DONDATDA_MONAN">
+            <End Role="MONAN" EntitySet="MONAN" />
+            <End Role="D_DONDATDA" EntitySet="D_DONDATDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONMH_DONMH" Association="Self.FK_D_DONMH_DONMH">
+            <End Role="DONMH" EntitySet="DONMH" />
+            <End Role="D_DONMH" EntitySet="D_DONMH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONMH_NLIEU" Association="Self.FK_D_DONMH_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEU" />
+            <End Role="D_DONMH" EntitySet="D_DONMH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_GIAOHANG_GIAOHANG" Association="Self.FK_D_GIAOHANG_GIAOHANG">
+            <End Role="GIAOHANG" EntitySet="GIAOHANG" />
+            <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_GIAOHANG_NLIEU" Association="Self.FK_D_GIAOHANG_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEU" />
+            <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONM_HOADONM" Association="Self.FK_D_HOADONM_HOADONM">
+            <End Role="HOADONM" EntitySet="HOADONM" />
+            <End Role="D_HOADONM" EntitySet="D_HOADONM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONM_NLIEU" Association="Self.FK_D_HOADONM_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEU" />
+            <End Role="D_HOADONM" EntitySet="D_HOADONM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONTT_HOADONTT" Association="Self.FK_D_HOADONTT_HOADONTT">
+            <End Role="HOADONTT" EntitySet="HOADONTT" />
+            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONTT_MONAN" Association="Self.FK_D_HOADONTT_MONAN">
+            <End Role="MONAN" EntitySet="MONAN" />
+            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PNHAP_NLIEU" Association="Self.FK_D_PNHAP_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEU" />
+            <End Role="D_PNHAP" EntitySet="D_PNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PNHAP_PNHAP" Association="Self.FK_D_PNHAP_PNHAP">
+            <End Role="PNHAP" EntitySet="PNHAP" />
+            <End Role="D_PNHAP" EntitySet="D_PNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PYC_NLIEU" Association="Self.FK_D_PYC_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEU" />
+            <End Role="D_PYC" EntitySet="D_PYC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PYC_PYC" Association="Self.FK_D_PYC_PYC">
+            <End Role="PYC" EntitySet="PYC" />
+            <End Role="D_PYC" EntitySet="D_PYC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DONMH_NCC" Association="Self.FK_DONMH_NCC">
+            <End Role="NCC" EntitySet="NCC" />
+            <End Role="DONMH" EntitySet="DONMH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAOHANG_DONMH" Association="Self.FK_GIAOHANG_DONMH">
+            <End Role="DONMH" EntitySet="DONMH" />
+            <End Role="GIAOHANG" EntitySet="GIAOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAOHANG_NCC" Association="Self.FK_GIAOHANG_NCC">
+            <End Role="NCC" EntitySet="NCC" />
+            <End Role="GIAOHANG" EntitySet="GIAOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADONM_PNHAP" Association="Self.FK_HOADONM_PNHAP">
+            <End Role="PNHAP" EntitySet="PNHAP" />
+            <End Role="HOADONM" EntitySet="HOADONM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADONTT_DONDATDA" Association="Self.FK_HOADONTT_DONDATDA">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADONTT" EntitySet="HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADONTT_KHACHHANG" Association="Self.FK_HOADONTT_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADONTT" EntitySet="HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONAN_DANHMUC" Association="Self.FK_MONAN_DANHMUC">
+            <End Role="DANHMUC" EntitySet="DANHMUC" />
+            <End Role="MONAN" EntitySet="MONAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PNHAP_GIAOHANG" Association="Self.FK_PNHAP_GIAOHANG">
+            <End Role="GIAOHANG" EntitySet="GIAOHANG" />
+            <End Role="PNHAP" EntitySet="PNHAP" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantManagerDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CONGTHUC">
+          <Key>
+            <PropertyRef Name="idmon" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idmon" Type="Int32" Nullable="false" />
+          <Property Name="idhang" Type="Int32" Nullable="false" />
+          <Property Name="hamluong" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MONAN" Relationship="Self.FK_CONGTHUC_MONAN" FromRole="CONGTHUC" ToRole="MONAN" />
+          <NavigationProperty Name="NLIEU" Relationship="Self.FK_CONGTHUC_NLIEU" FromRole="CONGTHUC" ToRole="NLIEU" />
+        </EntityType>
+        <EntityType Name="D_DONDATDA">
+          <Key>
+            <PropertyRef Name="iddondat" />
+            <PropertyRef Name="idmon" />
+          </Key>
+          <Property Name="iddondat" Type="Int32" Nullable="false" />
+          <Property Name="idmon" Type="Int32" Nullable="false" />
+          <Property Name="sldat" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DONDATDA" Relationship="Self.FK_D_DONDATDA_DONDATDA" FromRole="D_DONDATDA" ToRole="DONDATDA" />
+          <NavigationProperty Name="MONAN" Relationship="Self.FK_D_DONDATDA_MONAN" FromRole="D_DONDATDA" ToRole="MONAN" />
+        </EntityType>
+        <EntityType Name="D_DONMH">
+          <Key>
+            <PropertyRef Name="iddonmh" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="iddonmh" Type="Int32" Nullable="false" />
+          <Property Name="idhang" Type="Int32" Nullable="false" />
+          <Property Name="slmh" Type="Int32" />
+          <Property Name="dongiamh" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DONMH" Relationship="Self.FK_D_DONMH_DONMH" FromRole="D_DONMH" ToRole="DONMH" />
+          <NavigationProperty Name="NLIEU" Relationship="Self.FK_D_DONMH_NLIEU" FromRole="D_DONMH" ToRole="NLIEU" />
+        </EntityType>
+        <EntityType Name="D_GIAOHANG">
+          <Key>
+            <PropertyRef Name="idpgiao" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idpgiao" Type="Int32" Nullable="false" />
+          <Property Name="idhang" Type="Int32" Nullable="false" />
+          <Property Name="slgiaohang" Type="Int32" />
+          <Property Name="slnhanhang" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GIAOHANG" Relationship="Self.FK_D_GIAOHANG_GIAOHANG" FromRole="D_GIAOHANG" ToRole="GIAOHANG" />
+          <NavigationProperty Name="NLIEU" Relationship="Self.FK_D_GIAOHANG_NLIEU" FromRole="D_GIAOHANG" ToRole="NLIEU" />
+        </EntityType>
+        <EntityType Name="D_HOADONM">
+          <Key>
+            <PropertyRef Name="idhoadonm" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idhoadonm" Type="Int32" Nullable="false" />
+          <Property Name="idhang" Type="Int32" Nullable="false" />
+          <Property Name="slmua" Type="Int32" />
+          <Property Name="dongiamua" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HOADONM" Relationship="Self.FK_D_HOADONM_HOADONM" FromRole="D_HOADONM" ToRole="HOADONM" />
+          <NavigationProperty Name="NLIEU" Relationship="Self.FK_D_HOADONM_NLIEU" FromRole="D_HOADONM" ToRole="NLIEU" />
+        </EntityType>
+        <EntityType Name="D_HOADONTT">
+          <Key>
+            <PropertyRef Name="idhoadontt" />
+            <PropertyRef Name="idmon" />
+          </Key>
+          <Property Name="idhoadontt" Type="Int32" Nullable="false" />
+          <Property Name="idmon" Type="Int32" Nullable="false" />
+          <Property Name="slban" Type="Int32" />
+          <Property Name="dongiaban" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HOADONTT" Relationship="Self.FK_D_HOADONTT_HOADONTT" FromRole="D_HOADONTT" ToRole="HOADONTT" />
+          <NavigationProperty Name="MONAN" Relationship="Self.FK_D_HOADONTT_MONAN" FromRole="D_HOADONTT" ToRole="MONAN" />
+        </EntityType>
+        <EntityType Name="D_PNHAP">
+          <Key>
+            <PropertyRef Name="idpnhap" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idpnhap" Type="Int32" Nullable="false" />
+          <Property Name="idhang" Type="Int32" Nullable="false" />
+          <Property Name="slgiao" Type="Int32" />
+          <Property Name="slnhan" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NLIEU" Relationship="Self.FK_D_PNHAP_NLIEU" FromRole="D_PNHAP" ToRole="NLIEU" />
+          <NavigationProperty Name="PNHAP" Relationship="Self.FK_D_PNHAP_PNHAP" FromRole="D_PNHAP" ToRole="PNHAP" />
+        </EntityType>
+        <EntityType Name="D_PYC">
+          <Key>
+            <PropertyRef Name="idyc" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idyc" Type="Int32" Nullable="false" />
+          <Property Name="idhang" Type="Int32" Nullable="false" />
+          <Property Name="sldukien" Type="Int32" />
+          <Property Name="slton" Type="Int32" />
+          <Property Name="nguong" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NLIEU" Relationship="Self.FK_D_PYC_NLIEU" FromRole="D_PYC" ToRole="NLIEU" />
+          <NavigationProperty Name="PYC" Relationship="Self.FK_D_PYC_PYC" FromRole="D_PYC" ToRole="PYC" />
+        </EntityType>
+        <EntityType Name="DANHMUC">
+          <Key>
+            <PropertyRef Name="iddmuc" />
+          </Key>
+          <Property Name="iddmuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tendmuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MONANs" Relationship="Self.FK_MONAN_DANHMUC" FromRole="DANHMUC" ToRole="MONAN" />
+        </EntityType>
+        <EntityType Name="DONDATDA">
+          <Key>
+            <PropertyRef Name="iddondat" />
+          </Key>
+          <Property Name="iddondat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaydat" Type="DateTime" Precision="3" />
+          <Property Name="ban" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="idkh" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_DONDATDA" Relationship="Self.FK_D_DONDATDA_DONDATDA" FromRole="DONDATDA" ToRole="D_DONDATDA" />
+        </EntityType>
+        <EntityType Name="DONMH">
+          <Key>
+            <PropertyRef Name="iddonmh" />
+          </Key>
+          <Property Name="iddonmh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaydonmh" Type="DateTime" Precision="3" />
+          <Property Name="idncc" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_DONMH" Relationship="Self.FK_D_DONMH_DONMH" FromRole="DONMH" ToRole="D_DONMH" />
+          <NavigationProperty Name="NCC" Relationship="Self.FK_DONMH_NCC" FromRole="DONMH" ToRole="NCC" />
+          <NavigationProperty Name="GIAOHANGs" Relationship="Self.FK_GIAOHANG_DONMH" FromRole="DONMH" ToRole="GIAOHANG" />
+        </EntityType>
+        <EntityType Name="GIAOHANG">
+          <Key>
+            <PropertyRef Name="idpgiao" />
+          </Key>
+          <Property Name="idpgiao" Type="Int32" Nullable="false" />
+          <Property Name="ngaygiao" Type="DateTime" Precision="3" />
+          <Property Name="nguoinhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nguoilapphieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nguoigiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cuahang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idncc" Type="Int32" />
+          <Property Name="iddonmh" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_GIAOHANG" Relationship="Self.FK_D_GIAOHANG_GIAOHANG" FromRole="GIAOHANG" ToRole="D_GIAOHANG" />
+          <NavigationProperty Name="DONMH" Relationship="Self.FK_GIAOHANG_DONMH" FromRole="GIAOHANG" ToRole="DONMH" />
+          <NavigationProperty Name="NCC" Relationship="Self.FK_GIAOHANG_NCC" FromRole="GIAOHANG" ToRole="NCC" />
+          <NavigationProperty Name="PNHAP" Relationship="Self.FK_PNHAP_GIAOHANG" FromRole="GIAOHANG" ToRole="PNHAP" />
+        </EntityType>
+        <EntityType Name="HOADONM">
+          <Key>
+            <PropertyRef Name="idhoadonm" />
+          </Key>
+          <Property Name="idhoadonm" Type="Int32" Nullable="false" />
+          <Property Name="ngaymua" Type="DateTime" Precision="3" />
+          <Property Name="idpnhap" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_HOADONM" Relationship="Self.FK_D_HOADONM_HOADONM" FromRole="HOADONM" ToRole="D_HOADONM" />
+          <NavigationProperty Name="PNHAP" Relationship="Self.FK_HOADONM_PNHAP" FromRole="HOADONM" ToRole="PNHAP" />
+        </EntityType>
+        <EntityType Name="HOADONTT">
+          <Key>
+            <PropertyRef Name="idhoadontt" />
+          </Key>
+          <Property Name="idhoadontt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngayhd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="thoigian" Type="DateTime" Precision="3" />
+          <Property Name="thungan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idkh" Type="Int32" />
+          <Property Name="iddondat" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_HOADONTT" Relationship="Self.FK_D_HOADONTT_HOADONTT" FromRole="HOADONTT" ToRole="D_HOADONTT" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_HOADONTT_DONDATDA" FromRole="HOADONTT" ToRole="KHACHHANG" />
+          <NavigationProperty Name="KHACHHANG1" Relationship="Self.FK_HOADONTT_KHACHHANG" FromRole="HOADONTT" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="idkh" />
+          </Key>
+          <Property Name="idkh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenkh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sdt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HOADONTTs" Relationship="Self.FK_HOADONTT_DONDATDA" FromRole="KHACHHANG" ToRole="HOADONTT" />
+          <NavigationProperty Name="HOADONTTs1" Relationship="Self.FK_HOADONTT_KHACHHANG" FromRole="KHACHHANG" ToRole="HOADONTT" />
+        </EntityType>
+        <EntityType Name="MONAN">
+          <Key>
+            <PropertyRef Name="idmon" />
+          </Key>
+          <Property Name="idmon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="temon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="dongiamon" Type="Double" />
+          <Property Name="dvt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="hinhanh" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="iddmuc" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CONGTHUCs" Relationship="Self.FK_CONGTHUC_MONAN" FromRole="MONAN" ToRole="CONGTHUC" />
+          <NavigationProperty Name="D_DONDATDA" Relationship="Self.FK_D_DONDATDA_MONAN" FromRole="MONAN" ToRole="D_DONDATDA" />
+          <NavigationProperty Name="D_HOADONTT" Relationship="Self.FK_D_HOADONTT_MONAN" FromRole="MONAN" ToRole="D_HOADONTT" />
+          <NavigationProperty Name="DANHMUC" Relationship="Self.FK_MONAN_DANHMUC" FromRole="MONAN" ToRole="DANHMUC" />
+        </EntityType>
+        <EntityType Name="NCC">
+          <Key>
+            <PropertyRef Name="idncc" />
+          </Key>
+          <Property Name="idncc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenncc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sdt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="stk" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DONMHs" Relationship="Self.FK_DONMH_NCC" FromRole="NCC" ToRole="DONMH" />
+          <NavigationProperty Name="GIAOHANGs" Relationship="Self.FK_GIAOHANG_NCC" FromRole="NCC" ToRole="GIAOHANG" />
+        </EntityType>
+        <EntityType Name="NLIEU">
+          <Key>
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idhang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenhang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="slton" Type="Int32" />
+          <Property Name="nguong" Type="Int32" />
+          <Property Name="dongianl" Type="Double" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CONGTHUCs" Relationship="Self.FK_CONGTHUC_NLIEU" FromRole="NLIEU" ToRole="CONGTHUC" />
+          <NavigationProperty Name="D_DONMH" Relationship="Self.FK_D_DONMH_NLIEU" FromRole="NLIEU" ToRole="D_DONMH" />
+          <NavigationProperty Name="D_GIAOHANG" Relationship="Self.FK_D_GIAOHANG_NLIEU" FromRole="NLIEU" ToRole="D_GIAOHANG" />
+          <NavigationProperty Name="D_HOADONM" Relationship="Self.FK_D_HOADONM_NLIEU" FromRole="NLIEU" ToRole="D_HOADONM" />
+          <NavigationProperty Name="D_PNHAP" Relationship="Self.FK_D_PNHAP_NLIEU" FromRole="NLIEU" ToRole="D_PNHAP" />
+          <NavigationProperty Name="D_PYC" Relationship="Self.FK_D_PYC_NLIEU" FromRole="NLIEU" ToRole="D_PYC" />
+        </EntityType>
+        <EntityType Name="NLIEU_NCC">
+          <Key>
+            <PropertyRef Name="idncc" />
+            <PropertyRef Name="idhang" />
+          </Key>
+          <Property Name="idncc" Type="Int32" Nullable="false" />
+          <Property Name="idhang" Type="Int32" Nullable="false" />
+          <Property Name="dongiacc" Type="Double" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PNHAP">
+          <Key>
+            <PropertyRef Name="idpnhap" />
+          </Key>
+          <Property Name="idpnhap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaynhap" Type="DateTime" Precision="3" />
+          <Property Name="nguoigiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nguoilapphieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="thukho" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idpgiao" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_PNHAP" Relationship="Self.FK_D_PNHAP_PNHAP" FromRole="PNHAP" ToRole="D_PNHAP" />
+          <NavigationProperty Name="GIAOHANG" Relationship="Self.FK_PNHAP_GIAOHANG" FromRole="PNHAP" ToRole="GIAOHANG" />
+          <NavigationProperty Name="HOADONMs" Relationship="Self.FK_HOADONM_PNHAP" FromRole="PNHAP" ToRole="HOADONM" />
+        </EntityType>
+        <EntityType Name="PYC">
+          <Key>
+            <PropertyRef Name="idyc" />
+          </Key>
+          <Property Name="idyc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngayyc" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_PYC" Relationship="Self.FK_D_PYC_PYC" FromRole="PYC" ToRole="D_PYC" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_CONGTHUC_MONAN">
+          <End Role="MONAN" Type="Self.MONAN" Multiplicity="1" />
+          <End Role="CONGTHUC" Type="Self.CONGTHUC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONAN">
+              <PropertyRef Name="idmon" />
+            </Principal>
+            <Dependent Role="CONGTHUC">
+              <PropertyRef Name="idmon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONGTHUC_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="CONGTHUC" Type="Self.CONGTHUC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="CONGTHUC">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_DONDATDA_DONDATDA">
+          <End Role="DONDATDA" Type="Self.DONDATDA" Multiplicity="1" />
+          <End Role="D_DONDATDA" Type="Self.D_DONDATDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONDATDA">
+              <PropertyRef Name="iddondat" />
+            </Principal>
+            <Dependent Role="D_DONDATDA">
+              <PropertyRef Name="iddondat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_DONDATDA_MONAN">
+          <End Role="MONAN" Type="Self.MONAN" Multiplicity="1" />
+          <End Role="D_DONDATDA" Type="Self.D_DONDATDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONAN">
+              <PropertyRef Name="idmon" />
+            </Principal>
+            <Dependent Role="D_DONDATDA">
+              <PropertyRef Name="idmon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_DONMH_DONMH">
+          <End Role="DONMH" Type="Self.DONMH" Multiplicity="1" />
+          <End Role="D_DONMH" Type="Self.D_DONMH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONMH">
+              <PropertyRef Name="iddonmh" />
+            </Principal>
+            <Dependent Role="D_DONMH">
+              <PropertyRef Name="iddonmh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_DONMH_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_DONMH" Type="Self.D_DONMH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_DONMH">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_GIAOHANG_GIAOHANG">
+          <End Role="GIAOHANG" Type="Self.GIAOHANG" Multiplicity="1" />
+          <End Role="D_GIAOHANG" Type="Self.D_GIAOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAOHANG">
+              <PropertyRef Name="idpgiao" />
+            </Principal>
+            <Dependent Role="D_GIAOHANG">
+              <PropertyRef Name="idpgiao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_GIAOHANG_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_GIAOHANG" Type="Self.D_GIAOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_GIAOHANG">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONM_HOADONM">
+          <End Role="HOADONM" Type="Self.HOADONM" Multiplicity="1" />
+          <End Role="D_HOADONM" Type="Self.D_HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONM">
+              <PropertyRef Name="idhoadonm" />
+            </Principal>
+            <Dependent Role="D_HOADONM">
+              <PropertyRef Name="idhoadonm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONM_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_HOADONM" Type="Self.D_HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_HOADONM">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONTT_HOADONTT">
+          <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="1" />
+          <End Role="D_HOADONTT" Type="Self.D_HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONTT">
+              <PropertyRef Name="idhoadontt" />
+            </Principal>
+            <Dependent Role="D_HOADONTT">
+              <PropertyRef Name="idhoadontt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONTT_MONAN">
+          <End Role="MONAN" Type="Self.MONAN" Multiplicity="1" />
+          <End Role="D_HOADONTT" Type="Self.D_HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONAN">
+              <PropertyRef Name="idmon" />
+            </Principal>
+            <Dependent Role="D_HOADONTT">
+              <PropertyRef Name="idmon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_PNHAP_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_PNHAP" Type="Self.D_PNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_PNHAP">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_PNHAP_PNHAP">
+          <End Role="PNHAP" Type="Self.PNHAP" Multiplicity="1" />
+          <End Role="D_PNHAP" Type="Self.D_PNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Principal>
+            <Dependent Role="D_PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_PYC_NLIEU">
+          <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
+          <End Role="D_PYC" Type="Self.D_PYC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NLIEU">
+              <PropertyRef Name="idhang" />
+            </Principal>
+            <Dependent Role="D_PYC">
+              <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_PYC_PYC">
+          <End Role="PYC" Type="Self.PYC" Multiplicity="1" />
+          <End Role="D_PYC" Type="Self.D_PYC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PYC">
+              <PropertyRef Name="idyc" />
+            </Principal>
+            <Dependent Role="D_PYC">
+              <PropertyRef Name="idyc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONAN_DANHMUC">
+          <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
+          <End Role="MONAN" Type="Self.MONAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DANHMUC">
+              <PropertyRef Name="iddmuc" />
+            </Principal>
+            <Dependent Role="MONAN">
+              <PropertyRef Name="iddmuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DONMH_NCC">
+          <End Role="NCC" Type="Self.NCC" Multiplicity="0..1" />
+          <End Role="DONMH" Type="Self.DONMH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NCC">
+              <PropertyRef Name="idncc" />
+            </Principal>
+            <Dependent Role="DONMH">
+              <PropertyRef Name="idncc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAOHANG_DONMH">
+          <End Role="DONMH" Type="Self.DONMH" Multiplicity="0..1" />
+          <End Role="GIAOHANG" Type="Self.GIAOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONMH">
+              <PropertyRef Name="iddonmh" />
+            </Principal>
+            <Dependent Role="GIAOHANG">
+              <PropertyRef Name="iddonmh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAOHANG_NCC">
+          <End Role="NCC" Type="Self.NCC" Multiplicity="0..1" />
+          <End Role="GIAOHANG" Type="Self.GIAOHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NCC">
+              <PropertyRef Name="idncc" />
+            </Principal>
+            <Dependent Role="GIAOHANG">
+              <PropertyRef Name="idncc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PNHAP_GIAOHANG">
+          <End Role="GIAOHANG" Type="Self.GIAOHANG" Multiplicity="1" />
+          <End Role="PNHAP" Type="Self.PNHAP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GIAOHANG">
+              <PropertyRef Name="idpgiao" />
+            </Principal>
+            <Dependent Role="PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADONM_PNHAP">
+          <End Role="PNHAP" Type="Self.PNHAP" Multiplicity="0..1" />
+          <End Role="HOADONM" Type="Self.HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Principal>
+            <Dependent Role="HOADONM">
+              <PropertyRef Name="idpnhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADONTT_DONDATDA">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="idkh" />
+            </Principal>
+            <Dependent Role="HOADONTT">
+              <PropertyRef Name="idkh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADONTT_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="idkh" />
+            </Principal>
+            <Dependent Role="HOADONTT">
+              <PropertyRef Name="idkh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantManagerDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CONGTHUCs" EntityType="Self.CONGTHUC" />
+          <EntitySet Name="D_DONDATDA" EntityType="Self.D_DONDATDA" />
+          <EntitySet Name="D_DONMH" EntityType="Self.D_DONMH" />
+          <EntitySet Name="D_GIAOHANG" EntityType="Self.D_GIAOHANG" />
+          <EntitySet Name="D_HOADONM" EntityType="Self.D_HOADONM" />
+          <EntitySet Name="D_HOADONTT" EntityType="Self.D_HOADONTT" />
+          <EntitySet Name="D_PNHAP" EntityType="Self.D_PNHAP" />
+          <EntitySet Name="D_PYC" EntityType="Self.D_PYC" />
+          <EntitySet Name="DANHMUCs" EntityType="Self.DANHMUC" />
+          <EntitySet Name="DONDATDAs" EntityType="Self.DONDATDA" />
+          <EntitySet Name="DONMHs" EntityType="Self.DONMH" />
+          <EntitySet Name="GIAOHANGs" EntityType="Self.GIAOHANG" />
+          <EntitySet Name="HOADONMs" EntityType="Self.HOADONM" />
+          <EntitySet Name="HOADONTTs" EntityType="Self.HOADONTT" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="MONANs" EntityType="Self.MONAN" />
+          <EntitySet Name="NCCs" EntityType="Self.NCC" />
+          <EntitySet Name="NLIEUx" EntityType="Self.NLIEU" />
+          <EntitySet Name="NLIEU_NCC" EntityType="Self.NLIEU_NCC" />
+          <EntitySet Name="PNHAPs" EntityType="Self.PNHAP" />
+          <EntitySet Name="PYCs" EntityType="Self.PYC" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_CONGTHUC_MONAN" Association="Self.FK_CONGTHUC_MONAN">
+            <End Role="MONAN" EntitySet="MONANs" />
+            <End Role="CONGTHUC" EntitySet="CONGTHUCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONGTHUC_NLIEU" Association="Self.FK_CONGTHUC_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="CONGTHUC" EntitySet="CONGTHUCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONDATDA_DONDATDA" Association="Self.FK_D_DONDATDA_DONDATDA">
+            <End Role="DONDATDA" EntitySet="DONDATDAs" />
+            <End Role="D_DONDATDA" EntitySet="D_DONDATDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONDATDA_MONAN" Association="Self.FK_D_DONDATDA_MONAN">
+            <End Role="MONAN" EntitySet="MONANs" />
+            <End Role="D_DONDATDA" EntitySet="D_DONDATDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONMH_DONMH" Association="Self.FK_D_DONMH_DONMH">
+            <End Role="DONMH" EntitySet="DONMHs" />
+            <End Role="D_DONMH" EntitySet="D_DONMH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONMH_NLIEU" Association="Self.FK_D_DONMH_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_DONMH" EntitySet="D_DONMH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_GIAOHANG_GIAOHANG" Association="Self.FK_D_GIAOHANG_GIAOHANG">
+            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
+            <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_GIAOHANG_NLIEU" Association="Self.FK_D_GIAOHANG_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONM_HOADONM" Association="Self.FK_D_HOADONM_HOADONM">
+            <End Role="HOADONM" EntitySet="HOADONMs" />
+            <End Role="D_HOADONM" EntitySet="D_HOADONM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONM_NLIEU" Association="Self.FK_D_HOADONM_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_HOADONM" EntitySet="D_HOADONM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONTT_HOADONTT" Association="Self.FK_D_HOADONTT_HOADONTT">
+            <End Role="HOADONTT" EntitySet="HOADONTTs" />
+            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONTT_MONAN" Association="Self.FK_D_HOADONTT_MONAN">
+            <End Role="MONAN" EntitySet="MONANs" />
+            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PNHAP_NLIEU" Association="Self.FK_D_PNHAP_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_PNHAP" EntitySet="D_PNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PNHAP_PNHAP" Association="Self.FK_D_PNHAP_PNHAP">
+            <End Role="PNHAP" EntitySet="PNHAPs" />
+            <End Role="D_PNHAP" EntitySet="D_PNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PYC_NLIEU" Association="Self.FK_D_PYC_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_PYC" EntitySet="D_PYC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PYC_PYC" Association="Self.FK_D_PYC_PYC">
+            <End Role="PYC" EntitySet="PYCs" />
+            <End Role="D_PYC" EntitySet="D_PYC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONAN_DANHMUC" Association="Self.FK_MONAN_DANHMUC">
+            <End Role="DANHMUC" EntitySet="DANHMUCs" />
+            <End Role="MONAN" EntitySet="MONANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DONMH_NCC" Association="Self.FK_DONMH_NCC">
+            <End Role="NCC" EntitySet="NCCs" />
+            <End Role="DONMH" EntitySet="DONMHs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAOHANG_DONMH" Association="Self.FK_GIAOHANG_DONMH">
+            <End Role="DONMH" EntitySet="DONMHs" />
+            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAOHANG_NCC" Association="Self.FK_GIAOHANG_NCC">
+            <End Role="NCC" EntitySet="NCCs" />
+            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PNHAP_GIAOHANG" Association="Self.FK_PNHAP_GIAOHANG">
+            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
+            <End Role="PNHAP" EntitySet="PNHAPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADONM_PNHAP" Association="Self.FK_HOADONM_PNHAP">
+            <End Role="PNHAP" EntitySet="PNHAPs" />
+            <End Role="HOADONM" EntitySet="HOADONMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADONTT_DONDATDA" Association="Self.FK_HOADONTT_DONDATDA">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="HOADONTT" EntitySet="HOADONTTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADONTT_KHACHHANG" Association="Self.FK_HOADONTT_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="HOADONTT" EntitySet="HOADONTTs" />
+          </AssociationSet>
+          <EntitySet Name="USERS" EntityType="RestaurantManagerDataModel.USER" />
+        </EntityContainer>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChucVu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantManagerDataModelStoreContainer" CdmEntityContainer="RestaurantManagerDataEntities">
+          <EntitySetMapping Name="CONGTHUCs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.CONGTHUC">
+              <MappingFragment StoreEntitySet="CONGTHUC">
+                <ScalarProperty Name="idmon" ColumnName="idmon" />
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="hamluong" ColumnName="hamluong" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_DONDATDA">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_DONDATDA">
+              <MappingFragment StoreEntitySet="D_DONDATDA">
+                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
+                <ScalarProperty Name="idmon" ColumnName="idmon" />
+                <ScalarProperty Name="sldat" ColumnName="sldat" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_DONMH">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_DONMH">
+              <MappingFragment StoreEntitySet="D_DONMH">
+                <ScalarProperty Name="iddonmh" ColumnName="iddonmh" />
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="slmh" ColumnName="slmh" />
+                <ScalarProperty Name="dongiamh" ColumnName="dongiamh" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_GIAOHANG">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_GIAOHANG">
+              <MappingFragment StoreEntitySet="D_GIAOHANG">
+                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="slgiaohang" ColumnName="slgiaohang" />
+                <ScalarProperty Name="slnhanhang" ColumnName="slnhanhang" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_HOADONM">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_HOADONM">
+              <MappingFragment StoreEntitySet="D_HOADONM">
+                <ScalarProperty Name="idhoadonm" ColumnName="idhoadonm" />
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="slmua" ColumnName="slmua" />
+                <ScalarProperty Name="dongiamua" ColumnName="dongiamua" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_HOADONTT">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_HOADONTT">
+              <MappingFragment StoreEntitySet="D_HOADONTT">
+                <ScalarProperty Name="idhoadontt" ColumnName="idhoadontt" />
+                <ScalarProperty Name="idmon" ColumnName="idmon" />
+                <ScalarProperty Name="slban" ColumnName="slban" />
+                <ScalarProperty Name="dongiaban" ColumnName="dongiaban" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_PNHAP">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_PNHAP">
+              <MappingFragment StoreEntitySet="D_PNHAP">
+                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="slgiao" ColumnName="slgiao" />
+                <ScalarProperty Name="slnhan" ColumnName="slnhan" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_PYC">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_PYC">
+              <MappingFragment StoreEntitySet="D_PYC">
+                <ScalarProperty Name="idyc" ColumnName="idyc" />
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="sldukien" ColumnName="sldukien" />
+                <ScalarProperty Name="slton" ColumnName="slton" />
+                <ScalarProperty Name="nguong" ColumnName="nguong" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DANHMUCs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.DANHMUC">
+              <MappingFragment StoreEntitySet="DANHMUC">
+                <ScalarProperty Name="iddmuc" ColumnName="iddmuc" />
+                <ScalarProperty Name="tendmuc" ColumnName="tendmuc" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DONDATDAs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.DONDATDA">
+              <MappingFragment StoreEntitySet="DONDATDA">
+                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
+                <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+                <ScalarProperty Name="ban" ColumnName="ban" />
+                <ScalarProperty Name="idkh" ColumnName="idkh" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DONMHs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.DONMH">
+              <MappingFragment StoreEntitySet="DONMH">
+                <ScalarProperty Name="iddonmh" ColumnName="iddonmh" />
+                <ScalarProperty Name="ngaydonmh" ColumnName="ngaydonmh" />
+                <ScalarProperty Name="idncc" ColumnName="idncc" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIAOHANGs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.GIAOHANG">
+              <MappingFragment StoreEntitySet="GIAOHANG">
+                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
+                <ScalarProperty Name="ngaygiao" ColumnName="ngaygiao" />
+                <ScalarProperty Name="nguoinhan" ColumnName="nguoinhan" />
+                <ScalarProperty Name="nguoilapphieu" ColumnName="nguoilapphieu" />
+                <ScalarProperty Name="nguoigiao" ColumnName="nguoigiao" />
+                <ScalarProperty Name="cuahang" ColumnName="cuahang" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="idncc" ColumnName="idncc" />
+                <ScalarProperty Name="iddonmh" ColumnName="iddonmh" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONMs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.HOADONM">
+              <MappingFragment StoreEntitySet="HOADONM">
+                <ScalarProperty Name="idhoadonm" ColumnName="idhoadonm" />
+                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
+                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONTTs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.HOADONTT">
+              <MappingFragment StoreEntitySet="HOADONTT">
+                <ScalarProperty Name="idhoadontt" ColumnName="idhoadontt" />
+                <ScalarProperty Name="ngayhd" ColumnName="ngayhd" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="thungan" ColumnName="thungan" />
+                <ScalarProperty Name="idkh" ColumnName="idkh" />
+                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="idkh" ColumnName="idkh" />
+                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONANs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.MONAN">
+              <MappingFragment StoreEntitySet="MONAN">
+                <ScalarProperty Name="idmon" ColumnName="idmon" />
+                <ScalarProperty Name="temon" ColumnName="temon" />
+                <ScalarProperty Name="dongiamon" ColumnName="dongiamon" />
+                <ScalarProperty Name="dvt" ColumnName="dvt" />
+                <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
+                <ScalarProperty Name="iddmuc" ColumnName="iddmuc" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NCCs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.NCC">
+              <MappingFragment StoreEntitySet="NCC">
+                <ScalarProperty Name="idncc" ColumnName="idncc" />
+                <ScalarProperty Name="tenncc" ColumnName="tenncc" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="stk" ColumnName="stk" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NLIEUx">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.NLIEU">
+              <MappingFragment StoreEntitySet="NLIEU">
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="tenhang" ColumnName="tenhang" />
+                <ScalarProperty Name="slton" ColumnName="slton" />
+                <ScalarProperty Name="nguong" ColumnName="nguong" />
+                <ScalarProperty Name="dongianl" ColumnName="dongianl" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NLIEU_NCC">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.NLIEU_NCC">
+              <MappingFragment StoreEntitySet="NLIEU_NCC">
+                <ScalarProperty Name="idncc" ColumnName="idncc" />
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="dongiacc" ColumnName="dongiacc" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PNHAPs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.PNHAP">
+              <MappingFragment StoreEntitySet="PNHAP">
+                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
+                <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
+                <ScalarProperty Name="nguoigiao" ColumnName="nguoigiao" />
+                <ScalarProperty Name="nguoilapphieu" ColumnName="nguoilapphieu" />
+                <ScalarProperty Name="thukho" ColumnName="thukho" />
+                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PYCs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.PYC">
+              <MappingFragment StoreEntitySet="PYC">
+                <ScalarProperty Name="idyc" ColumnName="idyc" />
+                <ScalarProperty Name="ngayyc" ColumnName="ngayyc" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
