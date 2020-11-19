@@ -33,68 +33,37 @@ namespace RestaurantManager
             LoadDataGrid();
         }
 
-        #region Danh mục
+        #region Danh mục NCC
         private void LoadDataGrid()
         {
             LoadGrid();
 
         }
-        private void btnUpdateAgency_Click(object sender, EventArgs e)
-        {
-            try
-            {
 
-                //DaiLi_DTO daili = new DaiLi_DTO();
-                //daili.MaDL = dtgvAgencyInfoList.CurrentRow.Cells["MaDL"].Value.ToString();
-                //daili.TenDL = txtNameAgency.Text;
-                //daili.DiaChi = txtAddressOfAgency.Text;
-                //daili.SoDT = txtNumberPhone.Text;
-                //daili.TongNo = Convert.ToDouble(txtTotalDebtOfAgency.Text);
-                //if (txtIDAgency.Text == "" || txtNameAgency.Text == "" || txtAddressOfAgency.Text == "" || txtNumberPhone.Text == "")
-                //{
-                //    XtraMessageBox.Show("Bạn phải chọn Đại lí cần sửa !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    ClearDisplay();
-                //    return;
-                //}
-                //if (DaiLi_BUS.SuaDaiLi(daili))
-                //{
-                //    XtraMessageBox.Show("Cập nhật Thông tin Đại lí thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    LoadListDaiLi();
-                //    ClearDisplay();
-                //    return;
-                //}
-            }
-            catch
-            {
-                XtraMessageBox.Show("Cập nhật Thông tin Đại lí thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
 
         #endregion
 
-
-
-        private void txtNumberPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtTotalDebtOfAgency_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
-
-
-
         #region Event
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtsdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtstk_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             DataRow row = gridView1.GetDataRow(gridView1.GetSelectedRows()[0]);
@@ -104,10 +73,16 @@ namespace RestaurantManager
         {
             //Determine row in event handler  
             int RowHandle = (sender as GridView).FocusedRowHandle;
-            object iddmuc = (sender as GridView).GetRowCellValue(RowHandle, "iddmuc");
-            object tendmuc = (sender as GridView).GetRowCellValue(RowHandle, "tendmuc");
-            txtiddmuc.Text = iddmuc.ToString();
-            txttendmuc.Text = tendmuc.ToString();
+            object idncc = (sender as GridView).GetRowCellValue(RowHandle, "idncc");
+            object tenncc = (sender as GridView).GetRowCellValue(RowHandle, "tenncc");
+            object diachi = (sender as GridView).GetRowCellValue(RowHandle, "diachi");
+            object sdt = (sender as GridView).GetRowCellValue(RowHandle, "sdt");
+            object stk = (sender as GridView).GetRowCellValue(RowHandle, "stk");
+            txtidncc.Text = idncc.ToString();
+            txttenncc.Text = tenncc.ToString();
+            txtdiachi.Text = diachi.ToString();
+            txtsdt.Text = sdt.ToString();
+            txtstk.Text = stk.ToString();
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -121,37 +96,40 @@ namespace RestaurantManager
         {
             try
             {
-                //if (txtiddmuc.Text == "" && txttendmuc.Text == "")
-                //{
-                //    XtraMessageBox.Show("Bạn phải nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    ClearDisplay();
-                //    return;
-                //}
-                //if (txtiddmuc.Text == "" && txttendmuc.Text == "")
-                //{
-                //    XtraMessageBox.Show("Bạn chưa nhập tên danh mục!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    ClearDisplay();
-                //    return;
-                //}
-                //int.TryParse(txtiddmuc.Text, out int txtiddmuca);
-                //var model = new DANHMUC_ViewModel
-                //{
-                //    iddmuc = txtiddmuca,
-                //    tendmuc = txttendmuc.Text,
-                //    CreateBy = Properties.Settings.Default.NameLog,
-                //    ModifyBy = Properties.Settings.Default.NameLog
-                //};
-                //var msg = new DANHMUCBll().AddDANHMUC(model);
-                //if (msg != null && msg != "")
-                //{
-                //    LoadGrid();
-                //    XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    ClearDisplay();
-                //    return;
-                //}
-                //XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //ClearDisplay();
-                //return;
+                if (txtidncc.Text == "" && txttenncc.Text == "")
+                {
+                    XtraMessageBox.Show("Bạn phải nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ClearDisplay();
+                    return;
+                }
+                if (txttenncc.Text == "")
+                {
+                    XtraMessageBox.Show("Bạn chưa nhập tên danh mục!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txttenncc.Focus();
+                    return;
+                }
+                int.TryParse(txtidncc.Text, out int idncc);
+                var model = new NCC_ViewModel
+                {
+                    idncc = idncc,
+                    tenncc = txttenncc.Text,
+                    diachi = txtdiachi.Text,
+                    sdt = txtsdt.Text,
+                    stk = txtstk.Text,
+                    CreateBy = Properties.Settings.Default.NameLog,
+                    ModifyBy = Properties.Settings.Default.NameLog
+                };
+                var msg = new NCCBll().AddNCC(model);
+                if (msg != null && msg != "")
+                {
+                    LoadGrid();
+                    XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearDisplay();
+                    return;
+                }
+                XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ClearDisplay();
+                return;
             }
             catch
             {
@@ -162,7 +140,17 @@ namespace RestaurantManager
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            txttendmuc.Enabled = true;
+            txtidncc.Text = "";
+            txttenncc.Text = "";
+            txtdiachi.Text = "";
+            txtsdt.Text = "";
+            txtstk.Text = "";
+
+            txttenncc.Enabled = true;
+            txtdiachi.Enabled = true;
+            txtsdt.Enabled = true;
+            txtstk.Enabled = true;
+
             btnAdd.Enabled = false;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
@@ -171,7 +159,11 @@ namespace RestaurantManager
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            txttendmuc.Enabled = true;
+            txttenncc.Enabled = true;
+            txtdiachi.Enabled = true;
+            txtsdt.Enabled = true;
+            txtstk.Enabled = true;
+
             btnAdd.Enabled = false;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
@@ -183,13 +175,13 @@ namespace RestaurantManager
             var  result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if (txtiddmuc.Text == "")
+                if (txtidncc.Text == "")
                 {
                     XtraMessageBox.Show("Bạn phải chọn danh mục cần xóa !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     ClearDisplay();
                     return;
                 }
-                int.TryParse(txtiddmuc.Text, out int txtiddmuca);
+                int.TryParse(txtidncc.Text, out int txtiddmuca);
                 var msg = new DANHMUCBll().DeleteDANHMUC(txtiddmuca);
                 LoadGrid();
                 XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -212,8 +204,12 @@ namespace RestaurantManager
         }
         private void ClearDisplay()
         {
-            txtiddmuc.Text = "";
-            txttendmuc.Text = "";
+            txtidncc.Text = "";
+            txttenncc.Text = "";
+            txtdiachi.Text = "";
+            txtsdt.Text = "";
+            txtstk.Text = "";
+
             btnAdd.Enabled = true;
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
@@ -221,9 +217,6 @@ namespace RestaurantManager
         }
         #endregion
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
     }
 }

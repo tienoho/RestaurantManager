@@ -130,6 +130,9 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
+            this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnPYC = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuToolStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCL1)).BeginInit();
@@ -464,12 +467,14 @@
             this.btnMenu,
             this.btnNguyenLieu,
             this.btnDanhMuc,
-            this.btnNhaCC});
+            this.btnNhaCC,
+            this.btnPYC});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 61;
+            this.menuToolStrip.MaxItemId = 62;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpManager,
+            this.rpProcedure,
             this.ribbonPage1,
             this.rpReport,
             this.rpHelp,
@@ -982,6 +987,29 @@
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // rpProcedure
+            // 
+            this.rpProcedure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup14});
+            this.rpProcedure.Name = "rpProcedure";
+            this.rpProcedure.Text = "Nghiệp vụ";
+            // 
+            // ribbonPageGroup14
+            // 
+            this.ribbonPageGroup14.ItemLinks.Add(this.btnPYC);
+            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
+            this.ribbonPageGroup14.Text = "ribbonPageGroup14";
+            // 
+            // btnPYC
+            // 
+            this.btnPYC.Caption = "Tạo yêu cầu";
+            this.btnPYC.Id = 61;
+            this.btnPYC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPYC.ImageOptions.Image")));
+            this.btnPYC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPYC.ImageOptions.LargeImage")));
+            this.btnPYC.Name = "btnPYC";
+            this.btnPYC.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnPYC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPYC_ItemClick);
+            // 
             // frmMain
             // 
             this.Appearance.BackColor = System.Drawing.Color.Yellow;
@@ -1118,5 +1146,8 @@
         private DevExpress.XtraBars.BarButtonItem btnNguyenLieu;
         private DevExpress.XtraBars.BarButtonItem btnDanhMuc;
         private DevExpress.XtraBars.BarButtonItem btnNhaCC;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rpProcedure;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
+        private DevExpress.XtraBars.BarButtonItem btnPYC;
     }
 }

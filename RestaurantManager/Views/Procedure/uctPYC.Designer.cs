@@ -2,7 +2,7 @@
 
 namespace RestaurantManager
 {
-    partial class uctNCC
+    partial class uctPYC
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,14 +34,14 @@ namespace RestaurantManager
             this.label9 = new System.Windows.Forms.Label();
             this.grbAgency = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtstk = new System.Windows.Forms.TextBox();
+            this.txtSLT = new DevExpress.XtraEditors.TextEdit();
+            this.txtNguong = new DevExpress.XtraEditors.TextEdit();
+            this.nudDonGia2 = new DevExpress.XtraEditors.TextEdit();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtsdt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtdiachi = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txttenncc = new System.Windows.Forms.TextBox();
-            this.txtidncc = new System.Windows.Forms.TextBox();
+            this.txttenhang = new System.Windows.Forms.TextBox();
+            this.txtid = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbIDAgency = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
@@ -51,16 +51,19 @@ namespace RestaurantManager
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gcidncc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gctenncc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcdiachi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcsdt = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcstk = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcidhang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gctenhang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcslton = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcnguong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcdongianl = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcCreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcCreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSave = new System.Windows.Forms.Button();
             this.grbAgency.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSLT.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNguong.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDonGia2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -73,9 +76,9 @@ namespace RestaurantManager
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(675, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(227, 19);
+            this.label2.Size = new System.Drawing.Size(215, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "DANH SÁCH NHÀ CUNG CẤP";
+            this.label2.Text = "DANH SÁCH NGUYÊN LIỆU";
             // 
             // label9
             // 
@@ -85,115 +88,137 @@ namespace RestaurantManager
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(211, 19);
             this.label9.TabIndex = 13;
-            this.label9.Text = "THÔNG TI NHÀ CUNG CẤP";
+            this.label9.Text = "THÔNG TIN NGUYÊN LIỆU";
             // 
             // grbAgency
             // 
             this.grbAgency.Controls.Add(this.panel2);
             this.grbAgency.Location = new System.Drawing.Point(3, 40);
             this.grbAgency.Name = "grbAgency";
-            this.grbAgency.Size = new System.Drawing.Size(442, 312);
+            this.grbAgency.Size = new System.Drawing.Size(439, 312);
             this.grbAgency.TabIndex = 14;
             this.grbAgency.TabStop = false;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.txtstk);
+            this.panel2.Controls.Add(this.txtSLT);
+            this.panel2.Controls.Add(this.txtNguong);
+            this.panel2.Controls.Add(this.nudDonGia2);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.txtsdt);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txtdiachi);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.txttenncc);
-            this.panel2.Controls.Add(this.txtidncc);
+            this.panel2.Controls.Add(this.txttenhang);
+            this.panel2.Controls.Add(this.txtid);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.lbIDAgency);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(3, 16);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(436, 293);
+            this.panel2.Size = new System.Drawing.Size(433, 293);
             this.panel2.TabIndex = 2;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // txtstk
+            // txtSLT
             // 
-            this.txtstk.Enabled = false;
-            this.txtstk.Location = new System.Drawing.Point(152, 181);
-            this.txtstk.MaxLength = 15;
-            this.txtstk.Name = "txtstk";
-            this.txtstk.Size = new System.Drawing.Size(144, 21);
-            this.txtstk.TabIndex = 8;
-            this.txtstk.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtstk_KeyPress);
+            this.txtSLT.Enabled = false;
+            this.txtSLT.Location = new System.Drawing.Point(150, 104);
+            this.txtSLT.Name = "txtSLT";
+            this.txtSLT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtSLT.Properties.Appearance.Options.UseFont = true;
+            this.txtSLT.Properties.DisplayFormat.FormatString = "#,###";
+            this.txtSLT.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtSLT.Properties.Mask.EditMask = "n0";
+            this.txtSLT.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtSLT.Properties.MaxLength = 9;
+            this.txtSLT.Properties.NullText = "0";
+            this.txtSLT.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtSLT.Size = new System.Drawing.Size(146, 20);
+            this.txtSLT.TabIndex = 29;
+            // 
+            // txtNguong
+            // 
+            this.txtNguong.Enabled = false;
+            this.txtNguong.Location = new System.Drawing.Point(150, 142);
+            this.txtNguong.Name = "txtNguong";
+            this.txtNguong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtNguong.Properties.Appearance.Options.UseFont = true;
+            this.txtNguong.Properties.DisplayFormat.FormatString = "#,###";
+            this.txtNguong.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtNguong.Properties.EditFormat.FormatString = "n0";
+            this.txtNguong.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtNguong.Properties.Mask.EditMask = "n0";
+            this.txtNguong.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtNguong.Properties.MaxLength = 9;
+            this.txtNguong.Properties.NullText = "0";
+            this.txtNguong.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtNguong.Size = new System.Drawing.Size(146, 20);
+            this.txtNguong.TabIndex = 28;
+            // 
+            // nudDonGia2
+            // 
+            this.nudDonGia2.Enabled = false;
+            this.nudDonGia2.Location = new System.Drawing.Point(150, 178);
+            this.nudDonGia2.Name = "nudDonGia2";
+            this.nudDonGia2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.nudDonGia2.Properties.Appearance.Options.UseFont = true;
+            this.nudDonGia2.Properties.DisplayFormat.FormatString = "#,###";
+            this.nudDonGia2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.nudDonGia2.Properties.Mask.EditMask = "n0";
+            this.nudDonGia2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.nudDonGia2.Properties.MaxLength = 12;
+            this.nudDonGia2.Properties.NullText = "0";
+            this.nudDonGia2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.nudDonGia2.Size = new System.Drawing.Size(146, 20);
+            this.nudDonGia2.TabIndex = 27;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(22, 143);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 16);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Ngưỡng";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(22, 184);
+            this.label5.Location = new System.Drawing.Point(22, 179);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 16);
+            this.label5.Size = new System.Drawing.Size(57, 16);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Số tài khoản";
-            // 
-            // txtsdt
-            // 
-            this.txtsdt.Enabled = false;
-            this.txtsdt.Location = new System.Drawing.Point(152, 143);
-            this.txtsdt.MaxLength = 10;
-            this.txtsdt.Name = "txtsdt";
-            this.txtsdt.Size = new System.Drawing.Size(144, 21);
-            this.txtsdt.TabIndex = 6;
-            this.txtsdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsdt_KeyPress);
+            this.label5.Text = "Đơn giá";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 146);
+            this.label4.Location = new System.Drawing.Point(22, 105);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 16);
+            this.label4.Size = new System.Drawing.Size(90, 16);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Số điện thoại";
+            this.label4.Text = "Số lượng tồn";
             // 
-            // txtdiachi
+            // txttenhang
             // 
-            this.txtdiachi.Enabled = false;
-            this.txtdiachi.Location = new System.Drawing.Point(152, 105);
-            this.txtdiachi.MaxLength = 100;
-            this.txtdiachi.Name = "txtdiachi";
-            this.txtdiachi.Size = new System.Drawing.Size(144, 21);
-            this.txtdiachi.TabIndex = 4;
+            this.txttenhang.Enabled = false;
+            this.txttenhang.Location = new System.Drawing.Point(152, 65);
+            this.txttenhang.Name = "txttenhang";
+            this.txttenhang.Size = new System.Drawing.Size(146, 21);
+            this.txttenhang.TabIndex = 2;
             // 
-            // label1
+            // txtid
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 108);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Địa chỉ";
-            // 
-            // txttenncc
-            // 
-            this.txttenncc.Enabled = false;
-            this.txttenncc.Location = new System.Drawing.Point(152, 65);
-            this.txttenncc.MaxLength = 100;
-            this.txttenncc.Name = "txttenncc";
-            this.txttenncc.Size = new System.Drawing.Size(144, 21);
-            this.txttenncc.TabIndex = 2;
-            // 
-            // txtidncc
-            // 
-            this.txtidncc.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.txtidncc.Enabled = false;
-            this.txtidncc.Location = new System.Drawing.Point(152, 26);
-            this.txtidncc.Name = "txtidncc";
-            this.txtidncc.ReadOnly = true;
-            this.txtidncc.Size = new System.Drawing.Size(144, 21);
-            this.txtidncc.TabIndex = 2;
+            this.txtid.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.txtid.Enabled = false;
+            this.txtid.Location = new System.Drawing.Point(152, 26);
+            this.txtid.Name = "txtid";
+            this.txtid.ReadOnly = true;
+            this.txtid.Size = new System.Drawing.Size(144, 21);
+            this.txtid.TabIndex = 2;
             // 
             // label3
             // 
@@ -201,9 +226,9 @@ namespace RestaurantManager
             this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(22, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 16);
+            this.label3.Size = new System.Drawing.Size(67, 16);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Tên  NCC";
+            this.label3.Text = "Tên hàng";
             // 
             // lbIDAgency
             // 
@@ -211,9 +236,9 @@ namespace RestaurantManager
             this.lbIDAgency.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbIDAgency.Location = new System.Drawing.Point(22, 26);
             this.lbIDAgency.Name = "lbIDAgency";
-            this.lbIDAgency.Size = new System.Drawing.Size(55, 16);
+            this.lbIDAgency.Size = new System.Drawing.Size(63, 16);
             this.lbIDAgency.TabIndex = 0;
-            this.lbIDAgency.Text = "Mã NCC";
+            this.lbIDAgency.Text = "Mã hàng";
             // 
             // btnClear
             // 
@@ -306,11 +331,11 @@ namespace RestaurantManager
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gcidncc,
-            this.gctenncc,
-            this.gcdiachi,
-            this.gcsdt,
-            this.gcstk,
+            this.gcidhang,
+            this.gctenhang,
+            this.gcslton,
+            this.gcnguong,
+            this.gcdongianl,
             this.gcCreateBy,
             this.gcCreateDate});
             this.gridView1.GridControl = this.gridControl1;
@@ -318,49 +343,50 @@ namespace RestaurantManager
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsFind.AlwaysVisible = true;
-            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
-            // gcidncc
+            // gcidhang
             // 
-            this.gcidncc.Caption = "Mã NCC";
-            this.gcidncc.FieldName = "idncc";
-            this.gcidncc.Name = "gcidncc";
-            this.gcidncc.Visible = true;
-            this.gcidncc.VisibleIndex = 0;
-            this.gcidncc.Width = 35;
+            this.gcidhang.Caption = "Mã hàng";
+            this.gcidhang.FieldName = "idhang";
+            this.gcidhang.Name = "gcidhang";
+            this.gcidhang.Visible = true;
+            this.gcidhang.VisibleIndex = 0;
+            this.gcidhang.Width = 35;
             // 
-            // gctenncc
+            // gctenhang
             // 
-            this.gctenncc.Caption = "Tên NCC";
-            this.gctenncc.FieldName = "tenncc";
-            this.gctenncc.Name = "gctenncc";
-            this.gctenncc.Visible = true;
-            this.gctenncc.VisibleIndex = 1;
+            this.gctenhang.Caption = "Tên hàng";
+            this.gctenhang.FieldName = "tenhang";
+            this.gctenhang.Name = "gctenhang";
+            this.gctenhang.Visible = true;
+            this.gctenhang.VisibleIndex = 1;
             // 
-            // gcdiachi
+            // gcslton
             // 
-            this.gcdiachi.Caption = "Địa chỉ";
-            this.gcdiachi.FieldName = "diachi";
-            this.gcdiachi.Name = "gcdiachi";
-            this.gcdiachi.Visible = true;
-            this.gcdiachi.VisibleIndex = 2;
+            this.gcslton.Caption = "Số lượng tồn";
+            this.gcslton.FieldName = "slton";
+            this.gcslton.Name = "gcslton";
+            this.gcslton.Visible = true;
+            this.gcslton.VisibleIndex = 2;
             // 
-            // gcsdt
+            // gcnguong
             // 
-            this.gcsdt.Caption = "SĐT";
-            this.gcsdt.FieldName = "sdt";
-            this.gcsdt.Name = "gcsdt";
-            this.gcsdt.Visible = true;
-            this.gcsdt.VisibleIndex = 3;
+            this.gcnguong.Caption = "Ngưỡng";
+            this.gcnguong.FieldName = "nguong";
+            this.gcnguong.Name = "gcnguong";
+            this.gcnguong.Visible = true;
+            this.gcnguong.VisibleIndex = 3;
             // 
-            // gcstk
+            // gcdongianl
             // 
-            this.gcstk.Caption = "STK";
-            this.gcstk.FieldName = "stk";
-            this.gcstk.Name = "gcstk";
-            this.gcstk.Visible = true;
-            this.gcstk.VisibleIndex = 4;
+            this.gcdongianl.Caption = "Đơn giá";
+            this.gcdongianl.DisplayFormat.FormatString = "#,###";
+            this.gcdongianl.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gcdongianl.FieldName = "dongianl";
+            this.gcdongianl.Name = "gcdongianl";
+            this.gcdongianl.Visible = true;
+            this.gcdongianl.VisibleIndex = 4;
             // 
             // gcCreateBy
             // 
@@ -395,7 +421,7 @@ namespace RestaurantManager
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // uctNCC
+            // uctPYC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -409,12 +435,15 @@ namespace RestaurantManager
             this.Controls.Add(this.grbAgency);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
-            this.Name = "uctNCC";
+            this.Name = "uctPYC";
             this.Size = new System.Drawing.Size(1284, 525);
-            this.Load += new System.EventHandler(this.uctNCC_Load);
+            this.Load += new System.EventHandler(this.uctPYC_Load);
             this.grbAgency.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSLT.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNguong.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDonGia2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -429,8 +458,8 @@ namespace RestaurantManager
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox grbAgency;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txttenncc;
-        private System.Windows.Forms.TextBox txtidncc;
+        private System.Windows.Forms.TextBox txttenhang;
+        private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbIDAgency;
         private System.Windows.Forms.Button btnDelete;
@@ -440,19 +469,19 @@ namespace RestaurantManager
         private PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gcidncc;
-        private DevExpress.XtraGrid.Columns.GridColumn gctenncc;
+        private DevExpress.XtraGrid.Columns.GridColumn gcidhang;
+        private DevExpress.XtraGrid.Columns.GridColumn gctenhang;
         private DevExpress.XtraGrid.Columns.GridColumn gcCreateBy;
         private DevExpress.XtraGrid.Columns.GridColumn gcCreateDate;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtstk;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtsdt;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtdiachi;
-        private System.Windows.Forms.Label label1;
-        private DevExpress.XtraGrid.Columns.GridColumn gcsdt;
-        private DevExpress.XtraGrid.Columns.GridColumn gcstk;
-        private DevExpress.XtraGrid.Columns.GridColumn gcdiachi;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraGrid.Columns.GridColumn gcslton;
+        private DevExpress.XtraGrid.Columns.GridColumn gcnguong;
+        private DevExpress.XtraGrid.Columns.GridColumn gcdongianl;
+        private TextEdit nudDonGia2;
+        private TextEdit txtSLT;
+        private TextEdit txtNguong;
     }
 }

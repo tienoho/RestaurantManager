@@ -47,10 +47,6 @@ namespace RestaurantManager
         }
 
         #region Event
-        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-            DataRow row = gridView1.GetDataRow(gridView1.GetSelectedRows()[0]);
-        }
         private void gridControl1_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
         {
             if (e.View.IsDetailView == false)
@@ -58,7 +54,35 @@ namespace RestaurantManager
 
             (e.View as GridView).DoubleClick += gridView1_DoubleClick_1;
         }
+        private void gridView1_DoubleClick_1(object sender, EventArgs e)
+        {
+            int RowHandle = (sender as GridView).FocusedRowHandle;
+            object idmon = (sender as GridView).GetRowCellValue(RowHandle, "idmon");
+            object temon = (sender as GridView).GetRowCellValue(RowHandle, "temon");
+            object dongiamon = (sender as GridView).GetRowCellValue(RowHandle, "dongiamon");
+            object dvt = (sender as GridView).GetRowCellValue(RowHandle, "dvt");
+            object hinhanh = (sender as GridView).GetRowCellValue(RowHandle, "hinhanh");
+            object iddmuc = (sender as GridView).GetRowCellValue(RowHandle, "iddmuc");
+            textEditidmon.Text = idmon.ToString();
+            textEditTenMon.Text = temon.ToString();
+            textEditDonGia.Text = dongiamon.ToString();
+            lueDanhMuc.EditValue = iddmuc;
+            cbUnit.Text = dvt.ToString();
 
+            try
+            {
+                if (hinhanh.ToString() == "" || hinhanh.ToString() == null)
+                    pictureBox.Image = Resources.noimage;
+                else
+                    pictureBox.Image = Image.FromFile(path + "\\images\\" + hinhanh.ToString());
+            }
+            catch
+            {
+                pictureBox.Image = Resources.noimage;
+            }
+            LoadGridCONGTHUC((int)idmon);
+            textEditIdMon_CongThuc.Text = idmon.ToString();
+        }
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
@@ -173,13 +197,17 @@ namespace RestaurantManager
                     return;
                 }
                 int.TryParse(txtIdMon, out int idmon);
-                int.TryParse(textEditDonGia.EditValue.ToString(), out int DonGia);
+                double.TryParse(textEditDonGia.EditValue.ToString(), out double DonGia);
                 var iddanhmuc = (int)lueDanhMuc.EditValue;
 
-                var pathImage = path + "\\images\\" + imageName;
-                if (!File.Exists(pathImage))
+                if (imageName != "")
                 {
-                    System.IO.File.Copy(imageLocation, path + "\\images\\" + imageName);
+                    var pathImage = path + "\\images\\" + imageName;
+
+                    if (!File.Exists(pathImage))
+                    {
+                        System.IO.File.Copy(imageLocation, path + "\\images\\" + imageName);
+                    }
                 }
                 var model = new MONAN_ViewModel
                 {
@@ -211,35 +239,7 @@ namespace RestaurantManager
             }
         }
 
-        private void gridView1_DoubleClick_1(object sender, EventArgs e)
-        {
-            int RowHandle = (sender as GridView).FocusedRowHandle;
-            object idmon = (sender as GridView).GetRowCellValue(RowHandle, "idmon");
-            object temon = (sender as GridView).GetRowCellValue(RowHandle, "temon");
-            object dongiamon = (sender as GridView).GetRowCellValue(RowHandle, "dongiamon");
-            object dvt = (sender as GridView).GetRowCellValue(RowHandle, "dvt");
-            object hinhanh = (sender as GridView).GetRowCellValue(RowHandle, "hinhanh");
-            object iddmuc = (sender as GridView).GetRowCellValue(RowHandle, "iddmuc");
-            textEditidmon.Text = idmon.ToString();
-            textEditTenMon.Text = temon.ToString();
-            textEditDonGia.Text = dongiamon.ToString();
-            lueDanhMuc.EditValue = iddmuc;
-            cbUnit.Text = dvt.ToString();
 
-            try
-            {
-                if (hinhanh.ToString() == "" || hinhanh.ToString() == null)
-                    pictureBox.Image = Resources.noimage;
-                else
-                    pictureBox.Image = Image.FromFile(path + "\\images\\" + hinhanh.ToString());
-            }
-            catch
-            {
-                pictureBox.Image = Resources.noimage;
-            }
-            LoadGridCONGTHUC((int)idmon);
-            textEditIdMon_CongThuc.Text = idmon.ToString();
-        }
         #endregion
 
         #region Function
@@ -349,7 +349,7 @@ namespace RestaurantManager
                 }
 
                 int.TryParse(txtIdMon, out int idmon);
-                int.TryParse(txtMaHang, out int idmahang);
+                int.TryParse(lookUpEditMaHang.EditValue.ToString(), out int idmahang);
 
                 var model = new CONGTHUC_ViewModel
                 {
@@ -423,5 +423,23 @@ namespace RestaurantManager
 
         }
         #endregion
+
+        private void gridView2_DoubleClick(object sender, EventArgs e)
+        {
+            int RowHandle = (sender as GridView).FocusedRowHandle;
+            object idhang = (sender as GridView).GetRowCellValue(RowHandle, "idhang");
+            object hamluong = (sender as GridView).GetRowCellValue(RowHandle, "hamluong");
+
+            lookUpEditMaHang.EditValue = idhang;
+            textEditHamLuong.EditValue = hamluong;
+        }
+
+        private void gridControlCONGTHUC_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
+        {
+            if (e.View.IsDetailView == false)
+                return;
+
+            (e.View as GridView).DoubleClick += gridView2_DoubleClick;
+        }
     }
 }

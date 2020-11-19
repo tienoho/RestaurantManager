@@ -34,10 +34,10 @@ namespace RestaurantManager
             this.label9 = new System.Windows.Forms.Label();
             this.grbAgency = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.nudNguong = new System.Windows.Forms.NumericUpDown();
+            this.txtSLT = new DevExpress.XtraEditors.TextEdit();
+            this.txtNguong = new DevExpress.XtraEditors.TextEdit();
+            this.nudDonGia2 = new DevExpress.XtraEditors.TextEdit();
             this.label6 = new System.Windows.Forms.Label();
-            this.nudDonGia = new System.Windows.Forms.NumericUpDown();
-            this.nudSLT = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txttenhang = new System.Windows.Forms.TextBox();
@@ -61,9 +61,9 @@ namespace RestaurantManager
             this.btnSave = new System.Windows.Forms.Button();
             this.grbAgency.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNguong)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDonGia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSLT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSLT.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNguong.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDonGia2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -102,10 +102,10 @@ namespace RestaurantManager
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.nudNguong);
+            this.panel2.Controls.Add(this.txtSLT);
+            this.panel2.Controls.Add(this.txtNguong);
+            this.panel2.Controls.Add(this.nudDonGia2);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.nudDonGia);
-            this.panel2.Controls.Add(this.nudSLT);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txttenhang);
@@ -119,12 +119,58 @@ namespace RestaurantManager
             this.panel2.Size = new System.Drawing.Size(433, 293);
             this.panel2.TabIndex = 2;
             // 
-            // nudNguong
+            // txtSLT
             // 
-            this.nudNguong.Location = new System.Drawing.Point(152, 143);
-            this.nudNguong.Name = "nudNguong";
-            this.nudNguong.Size = new System.Drawing.Size(144, 21);
-            this.nudNguong.TabIndex = 12;
+            this.txtSLT.Enabled = false;
+            this.txtSLT.Location = new System.Drawing.Point(150, 104);
+            this.txtSLT.Name = "txtSLT";
+            this.txtSLT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtSLT.Properties.Appearance.Options.UseFont = true;
+            this.txtSLT.Properties.DisplayFormat.FormatString = "#,###";
+            this.txtSLT.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtSLT.Properties.Mask.EditMask = "n0";
+            this.txtSLT.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtSLT.Properties.MaxLength = 9;
+            this.txtSLT.Properties.NullText = "0";
+            this.txtSLT.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtSLT.Size = new System.Drawing.Size(146, 20);
+            this.txtSLT.TabIndex = 29;
+            // 
+            // txtNguong
+            // 
+            this.txtNguong.Enabled = false;
+            this.txtNguong.Location = new System.Drawing.Point(150, 142);
+            this.txtNguong.Name = "txtNguong";
+            this.txtNguong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtNguong.Properties.Appearance.Options.UseFont = true;
+            this.txtNguong.Properties.DisplayFormat.FormatString = "#,###";
+            this.txtNguong.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtNguong.Properties.EditFormat.FormatString = "n0";
+            this.txtNguong.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtNguong.Properties.Mask.EditMask = "n0";
+            this.txtNguong.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtNguong.Properties.MaxLength = 9;
+            this.txtNguong.Properties.NullText = "0";
+            this.txtNguong.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtNguong.Size = new System.Drawing.Size(146, 20);
+            this.txtNguong.TabIndex = 28;
+            // 
+            // nudDonGia2
+            // 
+            this.nudDonGia2.Enabled = false;
+            this.nudDonGia2.Location = new System.Drawing.Point(150, 178);
+            this.nudDonGia2.Name = "nudDonGia2";
+            this.nudDonGia2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.nudDonGia2.Properties.Appearance.Options.UseFont = true;
+            this.nudDonGia2.Properties.DisplayFormat.FormatString = "#,###";
+            this.nudDonGia2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.nudDonGia2.Properties.Mask.EditMask = "n0";
+            this.nudDonGia2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.nudDonGia2.Properties.MaxLength = 12;
+            this.nudDonGia2.Properties.NullText = "0";
+            this.nudDonGia2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.nudDonGia2.Size = new System.Drawing.Size(146, 20);
+            this.nudDonGia2.TabIndex = 27;
             // 
             // label6
             // 
@@ -135,20 +181,6 @@ namespace RestaurantManager
             this.label6.Size = new System.Drawing.Size(57, 16);
             this.label6.TabIndex = 11;
             this.label6.Text = "Ngưỡng";
-            // 
-            // nudDonGia
-            // 
-            this.nudDonGia.Location = new System.Drawing.Point(152, 179);
-            this.nudDonGia.Name = "nudDonGia";
-            this.nudDonGia.Size = new System.Drawing.Size(144, 21);
-            this.nudDonGia.TabIndex = 10;
-            // 
-            // nudSLT
-            // 
-            this.nudSLT.Location = new System.Drawing.Point(152, 105);
-            this.nudSLT.Name = "nudSLT";
-            this.nudSLT.Size = new System.Drawing.Size(144, 21);
-            this.nudSLT.TabIndex = 9;
             // 
             // label5
             // 
@@ -311,7 +343,6 @@ namespace RestaurantManager
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsFind.AlwaysVisible = true;
-            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // gcidhang
@@ -350,6 +381,8 @@ namespace RestaurantManager
             // gcdongianl
             // 
             this.gcdongianl.Caption = "Đơn giá";
+            this.gcdongianl.DisplayFormat.FormatString = "#,###";
+            this.gcdongianl.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcdongianl.FieldName = "dongianl";
             this.gcdongianl.Name = "gcdongianl";
             this.gcdongianl.Visible = true;
@@ -408,9 +441,9 @@ namespace RestaurantManager
             this.grbAgency.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNguong)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDonGia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSLT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSLT.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNguong.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDonGia2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -443,12 +476,12 @@ namespace RestaurantManager
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown nudDonGia;
-        private System.Windows.Forms.NumericUpDown nudSLT;
-        private System.Windows.Forms.NumericUpDown nudNguong;
         private System.Windows.Forms.Label label6;
         private DevExpress.XtraGrid.Columns.GridColumn gcslton;
         private DevExpress.XtraGrid.Columns.GridColumn gcnguong;
         private DevExpress.XtraGrid.Columns.GridColumn gcdongianl;
+        private TextEdit nudDonGia2;
+        private TextEdit txtSLT;
+        private TextEdit txtNguong;
     }
 }

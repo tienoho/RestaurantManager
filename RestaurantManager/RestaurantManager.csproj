@@ -184,6 +184,12 @@
     <Compile Include="Views\Manage\uctMenu.Designer.cs">
       <DependentUpon>uctMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Procedure\uctPYC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Procedure\uctPYC.Designer.cs">
+      <DependentUpon>uctPYC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +199,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -220,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\uctMenu.resx">
       <DependentUpon>uctMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Procedure\uctPYC.resx">
+      <DependentUpon>uctPYC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\RestaurantManagerData.bak" />
     <None Include="packages.config" />
@@ -427,6 +437,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\browsing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\data.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -279,5 +279,10 @@ namespace RestaurantManager
         {
             addTabPages(uctNCC.uctDL, 10, "Danh sách nhà cung cấp");
         }
+
+        private void btnPYC_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctPYC.uctDL, 10, "Phiếu yêu cầu");
+        }
     }
 }

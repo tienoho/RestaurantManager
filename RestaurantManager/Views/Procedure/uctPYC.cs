@@ -18,15 +18,15 @@ using RestaurantManager.Model;
 
 namespace RestaurantManager
 {
-    public partial class uctNLIEU : UserControl
+    public partial class uctPYC : UserControl
     {
         List<NLIEU> lstNLIEU;
-        public uctNLIEU()
+        public uctPYC()
         {
             InitializeComponent();
         }
-        public static uctNLIEU uctDL = new uctNLIEU();
-        private void uctNLIEU_Load(object sender, EventArgs e)
+        public static uctPYC uctDL = new uctPYC();
+        private void uctPYC_Load(object sender, EventArgs e)
         {
             LoadDataGrid();
         }

@@ -71,6 +71,7 @@ namespace RestaurantManager
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcidmon_congthuc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcidhang_congthuc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gctenhang_congthuc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gchamluong_congthuc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.btnClear_CongThuc = new System.Windows.Forms.Button();
@@ -171,6 +172,8 @@ namespace RestaurantManager
             // gcdongiamon
             // 
             this.gcdongiamon.Caption = "Đơn giá";
+            this.gcdongiamon.DisplayFormat.FormatString = "#,###";
+            this.gcdongiamon.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcdongiamon.FieldName = "dongiamon";
             this.gcdongiamon.Name = "gcdongiamon";
             this.gcdongiamon.Visible = true;
@@ -534,15 +537,18 @@ namespace RestaurantManager
             this.gridControlCONGTHUC.TabIndex = 0;
             this.gridControlCONGTHUC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.gridControlCONGTHUC.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.gridControlCONGTHUC_ViewRegistered);
             // 
             // gridView2
             // 
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcidmon_congthuc,
             this.gcidhang_congthuc,
+            this.gctenhang_congthuc,
             this.gchamluong_congthuc});
             this.gridView2.GridControl = this.gridControlCONGTHUC;
             this.gridView2.Name = "gridView2";
+            this.gridView2.DoubleClick += new System.EventHandler(this.gridView2_DoubleClick);
             // 
             // gcidmon_congthuc
             // 
@@ -557,7 +563,16 @@ namespace RestaurantManager
             this.gcidhang_congthuc.Name = "gcidhang_congthuc";
             this.gcidhang_congthuc.Visible = true;
             this.gcidhang_congthuc.VisibleIndex = 0;
-            this.gcidhang_congthuc.Width = 35;
+            this.gcidhang_congthuc.Width = 81;
+            // 
+            // gctenhang_congthuc
+            // 
+            this.gctenhang_congthuc.Caption = "Tên hàng";
+            this.gctenhang_congthuc.FieldName = "tenhang";
+            this.gctenhang_congthuc.Name = "gctenhang_congthuc";
+            this.gctenhang_congthuc.Visible = true;
+            this.gctenhang_congthuc.VisibleIndex = 1;
+            this.gctenhang_congthuc.Width = 93;
             // 
             // gchamluong_congthuc
             // 
@@ -565,8 +580,8 @@ namespace RestaurantManager
             this.gchamluong_congthuc.FieldName = "hamluong";
             this.gchamluong_congthuc.Name = "gchamluong_congthuc";
             this.gchamluong_congthuc.Visible = true;
-            this.gchamluong_congthuc.VisibleIndex = 1;
-            this.gchamluong_congthuc.Width = 645;
+            this.gchamluong_congthuc.VisibleIndex = 2;
+            this.gchamluong_congthuc.Width = 412;
             // 
             // panelControl3
             // 
@@ -847,5 +862,6 @@ namespace RestaurantManager
         private System.Windows.Forms.Button btnDelete_CongThuc;
         private System.Windows.Forms.Button btnUpdate_CongThuc;
         private System.Windows.Forms.Button btnAdd_CongThuc;
+        private DevExpress.XtraGrid.Columns.GridColumn gctenhang_congthuc;
     }
 }

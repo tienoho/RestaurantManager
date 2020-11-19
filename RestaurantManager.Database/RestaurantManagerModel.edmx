@@ -217,7 +217,7 @@
           <Property Name="temon" Type="nvarchar" MaxLength="30" />
           <Property Name="dongiamon" Type="float" />
           <Property Name="dvt" Type="nvarchar" MaxLength="30" />
-          <Property Name="hinhanh" Type="nvarchar" MaxLength="30" />
+          <Property Name="hinhanh" Type="nvarchar" MaxLength="300" />
           <Property Name="iddmuc" Type="int" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
@@ -229,8 +229,8 @@
             <PropertyRef Name="idncc" />
           </Key>
           <Property Name="idncc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tenncc" Type="varchar" MaxLength="100" />
-          <Property Name="diachi" Type="varchar" MaxLength="100" />
+          <Property Name="tenncc" Type="nvarchar" MaxLength="100" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="100" />
           <Property Name="sdt" Type="nchar" MaxLength="10" />
           <Property Name="stk" Type="nchar" MaxLength="15" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
@@ -969,7 +969,7 @@
           <Property Name="temon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="dongiamon" Type="Double" />
           <Property Name="dvt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="hinhanh" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="hinhanh" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="iddmuc" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
@@ -985,8 +985,8 @@
             <PropertyRef Name="idncc" />
           </Key>
           <Property Name="idncc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tenncc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tenncc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="sdt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="stk" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
