@@ -59,6 +59,7 @@
     <Compile Include="NCCBll.cs" />
     <Compile Include="NLIEUBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PYCBll.cs" />
     <Compile Include="USERSBll.cs" />
   </ItemGroup>
   <ItemGroup>

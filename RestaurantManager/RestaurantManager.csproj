@@ -184,6 +184,12 @@
     <Compile Include="Views\Manage\uctMenu.Designer.cs">
       <DependentUpon>uctMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Procedure\uctCreate_PYC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Procedure\uctCreate_PYC.Designer.cs">
+      <DependentUpon>uctCreate_PYC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Procedure\uctPYC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\uctMenu.resx">
       <DependentUpon>uctMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Procedure\uctCreate_PYC.resx">
+      <DependentUpon>uctCreate_PYC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Procedure\uctPYC.resx">
       <DependentUpon>uctPYC.cs</DependentUpon>

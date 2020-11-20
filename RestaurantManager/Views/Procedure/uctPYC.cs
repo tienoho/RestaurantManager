@@ -20,7 +20,8 @@ namespace RestaurantManager
 {
     public partial class uctPYC : UserControl
     {
-        List<NLIEU> lstNLIEU;
+        List<PYC_ViewModel> lstPYC;
+        List<D_PYC_ViewModel> lstD_PYC;
         public uctPYC()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace RestaurantManager
             LoadDataGrid();
         }
 
-        #region Nguyên liêu
+        #region PYC
         private void LoadDataGrid()
         {
             LoadGrid();
@@ -60,16 +61,12 @@ namespace RestaurantManager
         {
             //Determine row in event handler  
             int RowHandle = (sender as GridView).FocusedRowHandle;
-            object idhang = (sender as GridView).GetRowCellValue(RowHandle, "idhang");
-            object tenhang = (sender as GridView).GetRowCellValue(RowHandle, "tenhang");
-            object slton = (sender as GridView).GetRowCellValue(RowHandle, "slton");
-            object nguong = (sender as GridView).GetRowCellValue(RowHandle, "nguong");
-            object dongianl = (sender as GridView).GetRowCellValue(RowHandle, "dongianl");
-            txtid.Text = idhang.ToString();
-            txttenhang.Text = tenhang.ToString();
-            txtSLT.EditValue = slton;
-            txtNguong.EditValue = nguong;
-            nudDonGia2.EditValue = dongianl;
+            object idyc = (sender as GridView).GetRowCellValue(RowHandle, "idyc");
+            LoadGridDetails((int)idyc);
+            //object tenhang = (sender as GridView).GetRowCellValue(RowHandle, "tenhang");
+            //object slton = (sender as GridView).GetRowCellValue(RowHandle, "slton");
+            //object nguong = (sender as GridView).GetRowCellValue(RowHandle, "nguong");
+            //object dongianl = (sender as GridView).GetRowCellValue(RowHandle, "dongianl");
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -79,147 +76,67 @@ namespace RestaurantManager
 
             (e.View as GridView).DoubleClick += gridView1_DoubleClick;
         }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtid.Text == "" && txttenhang.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn phải nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (txttenhang.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn chưa nhập tên nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txttenhang.Focus();
-                    return;
-                }
-                if (txtSLT.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn chưa nhập số lượng nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtSLT.Focus();
-                    return;
-                }
-                if (txtNguong.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn chưa nhập ngưỡng nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtNguong.Focus();
-                    return;
-                }
-                if (nudDonGia2.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn chưa nhập đơn giá nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    nudDonGia2.Focus();
-                    return;
-                }
-                int.TryParse(txtid.Text, out int id);
-                int.TryParse(txtSLT.EditValue.ToString(), out int SLT);
-                int.TryParse(txtNguong.EditValue.ToString(), out int Nguong);
-                double.TryParse(nudDonGia2.EditValue.ToString(), out double DonGia);
-                var model = new NLIEU_ViewModel
-                {
-                    idhang = id,
-                    tenhang = txttenhang.Text,
-                    slton = SLT,
-                    nguong = Nguong,
-                    dongianl = DonGia,
-                    CreateBy = Properties.Settings.Default.NameLog,
-                    ModifyBy = Properties.Settings.Default.NameLog
-                };
-                var msg = new NLIEUBll().AddNLIEU(model);
-                if (msg != null && msg != "")
-                {
-                    LoadGrid();
-                    XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearDisplay();
-                    return;
-                }
-                XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ClearDisplay();
-                return;
-            }
-            catch
-            {
-                XtraMessageBox.Show("", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            txttenhang.Enabled = true;
-            txtNguong.Enabled = true;
-            nudDonGia2.Enabled = true;
-            txtSLT.Enabled = true;
+            //txttenhang.Enabled = true;
+            //txtNguong.Enabled = true;
+            //nudDonGia2.Enabled = true;
+            //txtSLT.Enabled = true;
 
-            btnAdd.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-            btnSave.Enabled = true;
+            //btnAdd.Enabled = false;
+            //btnUpdate.Enabled = false;
+            //btnDelete.Enabled = false;
+            //btnSave.Enabled = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            txttenhang.Enabled = true;
-            txtNguong.Enabled = true;
-            nudDonGia2.Enabled = true;
-            txtSLT.Enabled = true;
+            //txttenhang.Enabled = true;
+            //txtNguong.Enabled = true;
+            //nudDonGia2.Enabled = true;
+            //txtSLT.Enabled = true;
 
-            btnAdd.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-            btnSave.Enabled = true;
+            //btnAdd.Enabled = false;
+            //btnUpdate.Enabled = false;
+            //btnDelete.Enabled = false;
+            //btnSave.Enabled = true;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                if (txtid.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn phải chọn nguyên liệu cần xóa !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ClearDisplay();
-                    return;
-                }
-                int.TryParse(txtid.Text, out int id);
-                var msg = new NLIEUBll().DeleteNLIEU(id);
-                LoadGrid();
-                XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearDisplay();
-                return;
-            }
-        }
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearDisplay();
-        }
+       
         #endregion
 
         #region Function
         async public void LoadGrid()
         {
-            lstNLIEU = await Task.Run(() => new NLIEUBll().GetListNLIEU());
-            gridControl1.DataSource = lstNLIEU;
-            //txtiddmuc.Text = lstDANHMUC.LastOrDefault().iddmuc+1.ToString();
+            lstPYC = await Task.Run(() => new PYCBll().GetListPYC());
+            gridControl1.DataSource = lstPYC;
         }
         private void ClearDisplay()
         {
-            txtid.Text = "";
-            txttenhang.Text = "";
-            txtNguong.EditValue = 0;
-            nudDonGia2.EditValue = 0;
-            txtSLT.EditValue = 0;
+            //txtid.Text = "";
+            //txttenhang.Text = "";
+            //txtNguong.EditValue = 0;
+            //nudDonGia2.EditValue = 0;
+            //txtSLT.EditValue = 0;
 
-            txttenhang.Enabled = false;
-            txtNguong.Enabled = false;
-            nudDonGia2.Enabled = false;
-            txtSLT.Enabled = false;
+            //txttenhang.Enabled = false;
+            //txtNguong.Enabled = false;
+            //nudDonGia2.Enabled = false;
+            //txtSLT.Enabled = false;
 
-            btnAdd.Enabled = true;
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
-            btnSave.Enabled = false;
+            //btnAdd.Enabled = true;
+            //btnUpdate.Enabled = true;
+            //btnDelete.Enabled = true;
+            //btnSave.Enabled = false;
+        }
+        #endregion
+
+        #region Chi tiết
+        async public void LoadGridDetails(int idyc)
+        {
+            lstD_PYC = await Task.Run(() => new PYCBll().GetListD_PYC(idyc));
+            gcD_PYC.DataSource = lstD_PYC;
         }
         #endregion
     }

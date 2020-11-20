@@ -282,6 +282,11 @@ namespace RestaurantManager
 
         private void btnPYC_ItemClick(object sender, ItemClickEventArgs e)
         {
+            addTabPages(uctCreate_PYC.uctDL, 10, "Tạo phiếu yêu cầu");
+        }
+
+        private void btnListPYC_ItemClick(object sender, ItemClickEventArgs e)
+        {
             addTabPages(uctPYC.uctDL, 10, "Phiếu yêu cầu");
         }
     }

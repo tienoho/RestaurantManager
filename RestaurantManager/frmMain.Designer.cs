@@ -103,13 +103,20 @@
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             this.btnNhaCC = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPYC = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnListPYC = new DevExpress.XtraBars.BarButtonItem();
+            this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpHelp = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -130,9 +137,6 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnPYC = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuToolStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCL1)).BeginInit();
@@ -468,9 +472,12 @@
             this.btnNguyenLieu,
             this.btnDanhMuc,
             this.btnNhaCC,
-            this.btnPYC});
+            this.btnPYC,
+            this.barButtonItem7,
+            this.barButtonItem20,
+            this.btnListPYC});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 62;
+            this.menuToolStrip.MaxItemId = 66;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpManager,
@@ -779,6 +786,69 @@
             this.btnNhaCC.Name = "btnNhaCC";
             this.btnNhaCC.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // btnPYC
+            // 
+            this.btnPYC.Caption = "Tạo phiếu yêu cầu";
+            this.btnPYC.Id = 61;
+            this.btnPYC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPYC.ImageOptions.Image")));
+            this.btnPYC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPYC.ImageOptions.LargeImage")));
+            this.btnPYC.Name = "btnPYC";
+            this.btnPYC.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnPYC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPYC_ItemClick);
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Mua hàng";
+            this.barButtonItem7.Id = 62;
+            this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
+            this.barButtonItem7.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem20
+            // 
+            this.barButtonItem20.Caption = "Nhập hàng";
+            this.barButtonItem20.Id = 63;
+            this.barButtonItem20.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.Image")));
+            this.barButtonItem20.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.LargeImage")));
+            this.barButtonItem20.Name = "barButtonItem20";
+            // 
+            // btnListPYC
+            // 
+            this.btnListPYC.Caption = "Phiêu yêu cầu";
+            this.btnListPYC.Id = 64;
+            this.btnListPYC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnListPYC.ImageOptions.Image")));
+            this.btnListPYC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnListPYC.ImageOptions.LargeImage")));
+            this.btnListPYC.Name = "btnListPYC";
+            this.btnListPYC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnListPYC_ItemClick);
+            // 
+            // rpProcedure
+            // 
+            this.rpProcedure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup14,
+            this.ribbonPageGroup15,
+            this.ribbonPageGroup16});
+            this.rpProcedure.Name = "rpProcedure";
+            this.rpProcedure.Text = "Nghiệp vụ";
+            // 
+            // ribbonPageGroup14
+            // 
+            this.ribbonPageGroup14.ItemLinks.Add(this.btnPYC);
+            this.ribbonPageGroup14.ItemLinks.Add(this.btnListPYC);
+            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
+            this.ribbonPageGroup14.Text = "Phiếu yêu cầu";
+            // 
+            // ribbonPageGroup15
+            // 
+            this.ribbonPageGroup15.ItemLinks.Add(this.barButtonItem7);
+            this.ribbonPageGroup15.Name = "ribbonPageGroup15";
+            this.ribbonPageGroup15.Text = "Mua hàng";
+            // 
+            // ribbonPageGroup16
+            // 
+            this.ribbonPageGroup16.ItemLinks.Add(this.barButtonItem20);
+            this.ribbonPageGroup16.Name = "ribbonPageGroup16";
+            this.ribbonPageGroup16.Text = "Nhập hàng";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -800,7 +870,6 @@
             this.ribbonPageGroup10,
             this.ribbonPageGroup5,
             this.ribbonPageGroup7,
-            this.ribbonPageGroup8,
             this.ribbonPageGroup12});
             this.rpReport.Name = "rpReport";
             this.rpReport.Text = "Báo cáo";
@@ -823,11 +892,6 @@
             this.ribbonPageGroup7.AllowTextClipping = false;
             this.ribbonPageGroup7.ItemLinks.Add(this.btnProductRender);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnDeptCustomer);
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
             // ribbonPageGroup12
             // 
@@ -987,29 +1051,6 @@
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // rpProcedure
-            // 
-            this.rpProcedure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup14});
-            this.rpProcedure.Name = "rpProcedure";
-            this.rpProcedure.Text = "Nghiệp vụ";
-            // 
-            // ribbonPageGroup14
-            // 
-            this.ribbonPageGroup14.ItemLinks.Add(this.btnPYC);
-            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
-            this.ribbonPageGroup14.Text = "ribbonPageGroup14";
-            // 
-            // btnPYC
-            // 
-            this.btnPYC.Caption = "Tạo yêu cầu";
-            this.btnPYC.Id = 61;
-            this.btnPYC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPYC.ImageOptions.Image")));
-            this.btnPYC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPYC.ImageOptions.LargeImage")));
-            this.btnPYC.Name = "btnPYC";
-            this.btnPYC.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnPYC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPYC_ItemClick);
-            // 
             // frmMain
             // 
             this.Appearance.BackColor = System.Drawing.Color.Yellow;
@@ -1129,7 +1170,6 @@
         private DevExpress.XtraBars.BarButtonItem btnStatistical;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btnDeptCustomer;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem btnStatistics;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
@@ -1149,5 +1189,10 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage rpProcedure;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
         private DevExpress.XtraBars.BarButtonItem btnPYC;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem20;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
+        private DevExpress.XtraBars.BarButtonItem btnListPYC;
     }
 }
