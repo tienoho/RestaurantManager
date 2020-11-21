@@ -22,6 +22,7 @@ namespace RestaurantManager
     {
         List<NLIEU> lstNLIEU;
         List<PYC_ViewModel> lstPYC;
+        List<D_PYC_ViewModel> lstD_PYC;
         public uctCreate_PYC()
         {
             InitializeComponent();
@@ -37,23 +38,33 @@ namespace RestaurantManager
         #region Nguyên liêu
 
         #endregion
-        private void txtNumberPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtTotalDebtOfAgency_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
         #region Event
+        private void gcPYC_ViewRegistered(object sender, ViewOperationEventArgs e)
+        {
+            if (e.View.IsDetailView == false)
+                return;
 
+            (e.View as GridView).DoubleClick += gvPYC_DoubleClick;
+        }
+        private void gvPYC_DoubleClick(object sender, EventArgs e)
+        {
+            //Determine row in event handler  
+            int RowHandle = (sender as GridView).FocusedRowHandle;
+            object idyc = (sender as GridView).GetRowCellValue(RowHandle, "idyc");
+            object ngayyc = (sender as GridView).GetRowCellValue(RowHandle, "ngayyc");
+            txtid.Text = idyc.ToString();
+            dtpnyc.Value = (DateTime)ngayyc;
+
+
+            LoadGridDetails((int)idyc);
+
+
+            btnAdd.Enabled = false;
+
+            btnAddDetails.Enabled = true;
+            lueNLieu.Enabled = true;
+            txtsldukien.Enabled = true;
+        }
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
             //Determine row in event handler  
@@ -64,6 +75,9 @@ namespace RestaurantManager
             object nguong = (sender as GridView).GetRowCellValue(RowHandle, "nguong");
             object dongianl = (sender as GridView).GetRowCellValue(RowHandle, "dongianl");
             txtid.Text = idhang.ToString();
+
+            
+
             //txttenhang.Text = tenhang.ToString();
             //txtSLT.EditValue = slton;
             //txtNguong.EditValue = nguong;
@@ -153,14 +167,16 @@ namespace RestaurantManager
                 {
                     ngayyc = ngayyc,
                     CreateBy = Properties.Settings.Default.NameLog,
-                    CreateDate = DateTime.Now
+                    ModifyBy = Properties.Settings.Default.NameLog,
+                    CreateDate = DateTime.Now,
+                    ModifyDate = DateTime.Now
                 };
-                var resultObj = new PYCBll().AddPYX(pyc);
+                var resultObj = new PYCBll().AddPYC(pyc);
                 if (resultObj != null)
                 {
                     XtraMessageBox.Show("Tạo phiếu yêu cầu thành công, vui lòng thêm hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtid.Text = resultObj.idyc.ToString();
-                    dtpnyc.Value = resultObj.ngayyc.Value;
+                    dtpnyc.Value = resultObj.ngayyc;
                     dtpnyc.Enabled = false;
                     return;
                 }
@@ -209,8 +225,10 @@ namespace RestaurantManager
             txtid.Text = "";
             dtpnyc.Value = DateTime.Now;
             dtpnyc.Enabled = true;
-
-            //ClearDisplay();
+            btnAdd.Enabled = true;
+            gcPYCDetails.DataSource = null;
+            LoadGrid();
+            ClearDisplay();
         }
         #endregion
 
@@ -219,39 +237,110 @@ namespace RestaurantManager
         {
             lstPYC = await Task.Run(() => new PYCBll().GetListPYC());
             gcPYC.DataSource = lstPYC;
-
-            //lstNLIEU = await Task.Run(() => new NLIEUBll().GetListNLIEU());
-            //gcPYCDetails.DataSource = lstNLIEU;
-            
         }
         private void loadNLIEU()
         {
             lueNLieu.Properties.DataSource = lstNLIEU
-                .Select(item => new {
-                    idhang = item.idhang,
-                    tenhang = item.tenhang,
-                    item.slton }).ToList();
+                .Select(item => new
+                {
+                    item.idhang,
+                    item.tenhang,
+                    item.slton,
+                    item.nguong
+                }).ToList();
             lueNLieu.Properties.ValueMember = "idhang";
             lueNLieu.Properties.DisplayMember = "tenhang";
         }
         private void ClearDisplay()
         {
             txtid.Text = "";
-            //txttenhang.Text = "";
-            //txtNguong.EditValue = 0;
-            //nudDonGia2.EditValue = 0;
-            //txtSLT.EditValue = 0;
 
-            //txttenhang.Enabled = false;
-            //txtNguong.Enabled = false;
-            //nudDonGia2.Enabled = false;
-            //txtSLT.Enabled = false;
-
-            //btnAdd.Enabled = true;
-            //btnUpdate.Enabled = true;
-            //btnDelete.Enabled = true;
-            //btnSave.Enabled = false;
+            // lueNLieu.Text = "";
+            // lueNLieu.Enabled = false;
         }
+
         #endregion
+
+        private void btnAddDetails_Click(object sender, EventArgs e)
+        {
+            var s_idyc = txtid.Text;
+            int.TryParse(s_idyc, out int idyc);
+            int.TryParse(lueNLieu.EditValue.ToString(), out int idhang);
+            int.TryParse(txtsldukien.EditValue.ToString(), out int sldukien);
+            int.TryParse(txtslton.EditValue.ToString(), out int slton);
+            int.TryParse(txtnguong.EditValue.ToString(), out int nguong);
+            if (lueNLieu.Text == null || idhang <= 0)
+            {
+                XtraMessageBox.Show("Bạn chưa chọn mã hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (sldukien <= 0)
+            {
+                XtraMessageBox.Show("Số lương dự kiến phải lớn hơn 0!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn thêm ?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                var ngayyc = dtpnyc.Value;
+                var d_pyc = new D_PYC
+                {
+                    idyc = idyc,
+                    idhang = idhang,
+                    sldukien = sldukien,
+                    slton = slton,
+                    nguong = nguong,
+                    CreateBy = Properties.Settings.Default.NameLog,
+                    ModifyBy = Properties.Settings.Default.NameLog,
+                    CreateDate = DateTime.Now,
+                    ModifyDate = DateTime.Now
+                };
+                var resultObj = new PYCBll().AddD_PYC(d_pyc);
+                if (resultObj == "success")
+                {
+                    XtraMessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadGridDetails(d_pyc.idyc);
+                    return;
+                }
+                else
+                {
+                    XtraMessageBox.Show("Thêm không thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+        }
+
+        private void btnUpdateDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lueNLieu_EditValueChanged(object sender, EventArgs e)
+        {
+            LookUpEdit editor = sender as LookUpEdit;
+            object idhang = editor.GetColumnValue("idhang");
+            object tenhang = editor.GetColumnValue("tenhang");
+            object slton = editor.GetColumnValue("slton");
+            object nguong = editor.GetColumnValue("nguong");
+            txtTenHang.Text = tenhang.ToString();
+            txtslton.EditValue = slton;
+            txtnguong.EditValue = nguong;
+        }
+
+        async public void LoadGridDetails(int idyc)
+        {
+            lstD_PYC = await Task.Run(() => new PYCBll().GetListD_PYC(idyc));
+            gcPYCDetails.DataSource = lstD_PYC;
+        }
     }
 }

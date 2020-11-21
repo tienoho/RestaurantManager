@@ -285,7 +285,7 @@
             <PropertyRef Name="idyc" />
           </Key>
           <Property Name="idyc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ngayyc" Type="datetime" />
+          <Property Name="ngayyc" Type="datetime" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ModifyDate" Type="datetime" />
@@ -1052,7 +1052,7 @@
             <PropertyRef Name="idyc" />
           </Key>
           <Property Name="idyc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ngayyc" Type="DateTime" Precision="3" />
+          <Property Name="ngayyc" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />

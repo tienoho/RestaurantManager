@@ -91,11 +91,11 @@ namespace RestaurantManager
                             Properties.Settings.Default.PasswordLog = txtPassword.Text;
                             this.Hide();
                             frmMain main = new frmMain();
-                            main.ShowDialog();
+                            main.Show();
 
                             txtUser.Text = "";
                             txtPassword.Text = "";
-                            this.Show();
+                           // this.Show();
 
                         }
                         else

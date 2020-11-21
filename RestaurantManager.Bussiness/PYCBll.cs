@@ -48,7 +48,7 @@ namespace RestaurantManager.Bussiness
                 return result;
             }
         }
-        public PYC AddPYX(PYC yC)
+        public PYC AddPYC(PYC yC)
         {
             try
             {
@@ -57,26 +57,75 @@ namespace RestaurantManager.Bussiness
                     var check = db.PYCs.FirstOrDefault(x => x.idyc == yC.idyc);
                     if (check == null)
                     {
-                        check.ngayyc = yC.ngayyc;
-                        check.CreateDate = DateTime.Now;
-                        check.CreateBy = yC.ModifyBy;
-                        db.PYCs.Add(check);
+                        var PYC = new PYC
+                        {
+                            ngayyc = yC.ngayyc,
+                            CreateDate = DateTime.Now,
+                            CreateBy = yC.ModifyBy
+
+                        };
+                        check = db.PYCs.Add(PYC);
+                        db.SaveChanges();
+                        return check;
                     }
                     else
                     {
                         check.ngayyc = yC.ngayyc;
                         check.ModifyDate = DateTime.Now;
                         check.ModifyBy = yC.ModifyBy;
+                        db.SaveChanges();
+                        return check;
                     }
-                    db.SaveChanges();
-                    return check;
+
+
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 return null;
             }
-            
+
+        }
+
+        public string AddD_PYC(D_PYC model)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var check = db.D_PYC.FirstOrDefault(x => x.idyc == model.idyc && x.idhang == model.idhang);
+                    if (check == null)
+                    {
+                        var D_PYC = new D_PYC
+                        {
+                            idyc = model.idyc,
+                            idhang = model.idhang,
+                            sldukien = model.sldukien,
+                            slton = model.slton,
+                            nguong = model.nguong,
+                            CreateDate = DateTime.Now,
+                            CreateBy = model.ModifyBy
+                        };
+                        check = db.D_PYC.Add(D_PYC);
+                        db.SaveChanges();
+                        return "success";
+                    }
+                    else
+                    {
+                        check.sldukien = model.sldukien;
+                        check.slton = model.slton;
+                        check.nguong = model.nguong;
+                        check.ModifyDate = DateTime.Now;
+                        check.ModifyBy = model.ModifyBy;
+                        db.SaveChanges();
+                        return "success";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
     }
 }

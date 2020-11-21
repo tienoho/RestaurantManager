@@ -21,7 +21,7 @@ namespace RestaurantManager.Database
         }
     
         public int idyc { get; set; }
-        public Nullable<System.DateTime> ngayyc { get; set; }
+        public System.DateTime ngayyc { get; set; }
         public System.DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }

@@ -43,7 +43,7 @@ namespace RestaurantManager
             this.label3 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gcPYCDetails = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvPYCDetails = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcidhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gctenhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslton = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,7 +69,7 @@ namespace RestaurantManager
             this.label8 = new System.Windows.Forms.Label();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.gcPYC = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvPYC = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcidyc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcngayyc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -78,7 +78,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPYCDetails)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPYCDetails)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsldukien.Properties)).BeginInit();
@@ -88,7 +88,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPYC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPYC)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -145,7 +145,7 @@ namespace RestaurantManager
             this.dtpnyc.Name = "dtpnyc";
             this.dtpnyc.Size = new System.Drawing.Size(252, 21);
             this.dtpnyc.TabIndex = 23;
-            this.dtpnyc.Value = new System.DateTime(2020, 11, 20, 0, 0, 0, 0);
+            this.dtpnyc.Value = new System.DateTime(2020, 11, 21, 19, 10, 58, 0);
             // 
             // label4
             // 
@@ -171,6 +171,7 @@ namespace RestaurantManager
             this.btnSave.TabIndex = 21;
             this.btnSave.Text = "Lưu lại";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // txtid
             // 
@@ -238,17 +239,17 @@ namespace RestaurantManager
             // 
             this.gcPYCDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcPYCDetails.Location = new System.Drawing.Point(2, 2);
-            this.gcPYCDetails.MainView = this.gridView1;
+            this.gcPYCDetails.MainView = this.gvPYCDetails;
             this.gcPYCDetails.Name = "gcPYCDetails";
             this.gcPYCDetails.Size = new System.Drawing.Size(826, 337);
             this.gcPYCDetails.TabIndex = 0;
             this.gcPYCDetails.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvPYCDetails});
             this.gcPYCDetails.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.gridControl1_ViewRegistered);
             // 
-            // gridView1
+            // gvPYCDetails
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvPYCDetails.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcidhang,
             this.gctenhang,
             this.gcslton,
@@ -256,12 +257,12 @@ namespace RestaurantManager
             this.gcdongianl,
             this.gcCreateBy,
             this.gcCreateDate});
-            this.gridView1.GridControl = this.gcPYCDetails;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsBehavior.ReadOnly = true;
-            this.gridView1.OptionsFind.AlwaysVisible = true;
-            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
+            this.gvPYCDetails.GridControl = this.gcPYCDetails;
+            this.gvPYCDetails.Name = "gvPYCDetails";
+            this.gvPYCDetails.OptionsBehavior.Editable = false;
+            this.gvPYCDetails.OptionsBehavior.ReadOnly = true;
+            this.gvPYCDetails.OptionsFind.AlwaysVisible = true;
+            this.gvPYCDetails.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // gcidhang
             // 
@@ -324,6 +325,8 @@ namespace RestaurantManager
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(451, 40);
             this.groupBox1.Name = "groupBox1";
@@ -390,14 +393,17 @@ namespace RestaurantManager
             this.lueNLieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueNLieu.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("iddmuc", "Mã danh mục"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("tendmuc", "Tên danh mục")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("idhang", "Mã hàng"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("tenhang", "Tên hàng"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("slton", "Số lượng tồn"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("nguong", "Ngưỡng")});
             this.lueNLieu.Properties.NullText = "";
             this.lueNLieu.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lueNLieu.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.lueNLieu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lueNLieu.Size = new System.Drawing.Size(228, 20);
             this.lueNLieu.TabIndex = 31;
+            this.lueNLieu.EditValueChanged += new System.EventHandler(this.lueNLieu_EditValueChanged);
             // 
             // txtslton
             // 
@@ -421,7 +427,7 @@ namespace RestaurantManager
             this.btnClearDetails.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDetails.Image = global::RestaurantManager.Properties.Resources.clear;
             this.btnClearDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearDetails.Location = new System.Drawing.Point(5, 68);
+            this.btnClearDetails.Location = new System.Drawing.Point(5, 66);
             this.btnClearDetails.Name = "btnClearDetails";
             this.btnClearDetails.Size = new System.Drawing.Size(87, 28);
             this.btnClearDetails.TabIndex = 19;
@@ -456,13 +462,14 @@ namespace RestaurantManager
             this.btnDeleteDetails.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteDetails.Image = global::RestaurantManager.Properties.Resources.delete_3;
             this.btnDeleteDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteDetails.Location = new System.Drawing.Point(258, 68);
+            this.btnDeleteDetails.Location = new System.Drawing.Point(261, 66);
             this.btnDeleteDetails.Name = "btnDeleteDetails";
-            this.btnDeleteDetails.Size = new System.Drawing.Size(74, 28);
+            this.btnDeleteDetails.Size = new System.Drawing.Size(63, 28);
             this.btnDeleteDetails.TabIndex = 16;
             this.btnDeleteDetails.Text = "Xóa";
             this.btnDeleteDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDeleteDetails.UseVisualStyleBackColor = false;
+            this.btnDeleteDetails.Click += new System.EventHandler(this.btnDeleteDetails_Click);
             // 
             // btnUpdateDetails
             // 
@@ -472,13 +479,14 @@ namespace RestaurantManager
             this.btnUpdateDetails.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateDetails.Image = global::RestaurantManager.Properties.Resources.update_5;
             this.btnUpdateDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateDetails.Location = new System.Drawing.Point(194, 68);
+            this.btnUpdateDetails.Location = new System.Drawing.Point(194, 66);
             this.btnUpdateDetails.Name = "btnUpdateDetails";
-            this.btnUpdateDetails.Size = new System.Drawing.Size(58, 28);
+            this.btnUpdateDetails.Size = new System.Drawing.Size(63, 28);
             this.btnUpdateDetails.TabIndex = 17;
             this.btnUpdateDetails.Text = "Sửa";
             this.btnUpdateDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdateDetails.UseVisualStyleBackColor = false;
+            this.btnUpdateDetails.Click += new System.EventHandler(this.btnUpdateDetails_Click);
             // 
             // btnAddDetails
             // 
@@ -489,13 +497,14 @@ namespace RestaurantManager
             this.btnAddDetails.ForeColor = System.Drawing.Color.Black;
             this.btnAddDetails.Image = global::RestaurantManager.Properties.Resources.add_2;
             this.btnAddDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddDetails.Location = new System.Drawing.Point(96, 68);
+            this.btnAddDetails.Location = new System.Drawing.Point(96, 66);
             this.btnAddDetails.Name = "btnAddDetails";
             this.btnAddDetails.Size = new System.Drawing.Size(92, 28);
             this.btnAddDetails.TabIndex = 18;
             this.btnAddDetails.Text = "Thêm mới";
             this.btnAddDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddDetails.UseVisualStyleBackColor = false;
+            this.btnAddDetails.Click += new System.EventHandler(this.btnAddDetails_Click);
             // 
             // label1
             // 
@@ -557,23 +566,25 @@ namespace RestaurantManager
             // 
             this.gcPYC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcPYC.Location = new System.Drawing.Point(2, 2);
-            this.gcPYC.MainView = this.gridView2;
+            this.gcPYC.MainView = this.gvPYC;
             this.gcPYC.Name = "gcPYC";
             this.gcPYC.Size = new System.Drawing.Size(435, 273);
             this.gcPYC.TabIndex = 0;
             this.gcPYC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gvPYC});
+            this.gcPYC.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.gcPYC_ViewRegistered);
             // 
-            // gridView2
+            // gvPYC
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvPYC.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcidyc,
             this.gcngayyc,
             this.gridColumn1});
-            this.gridView2.GridControl = this.gcPYC;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsBehavior.ReadOnly = true;
+            this.gvPYC.GridControl = this.gcPYC;
+            this.gvPYC.Name = "gvPYC";
+            this.gvPYC.OptionsBehavior.Editable = false;
+            this.gvPYC.OptionsBehavior.ReadOnly = true;
+            this.gvPYC.DoubleClick += new System.EventHandler(this.gvPYC_DoubleClick);
             // 
             // gcidyc
             // 
@@ -582,7 +593,7 @@ namespace RestaurantManager
             this.gcidyc.Name = "gcidyc";
             this.gcidyc.Visible = true;
             this.gcidyc.VisibleIndex = 0;
-            this.gcidyc.Width = 35;
+            this.gcidyc.Width = 65;
             // 
             // gcngayyc
             // 
@@ -593,7 +604,7 @@ namespace RestaurantManager
             this.gcngayyc.Name = "gcngayyc";
             this.gcngayyc.Visible = true;
             this.gcngayyc.VisibleIndex = 1;
-            this.gcngayyc.Width = 319;
+            this.gcngayyc.Width = 174;
             // 
             // gridColumn1
             // 
@@ -602,7 +613,7 @@ namespace RestaurantManager
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 322;
+            this.gridColumn1.Width = 178;
             // 
             // uctCreate_PYC
             // 
@@ -624,7 +635,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcPYCDetails)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPYCDetails)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -635,7 +646,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcPYC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvPYC)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -648,11 +659,10 @@ namespace RestaurantManager
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClear;
         private PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gcPYCDetails;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvPYCDetails;
         private DevExpress.XtraGrid.Columns.GridColumn gcidhang;
         private DevExpress.XtraGrid.Columns.GridColumn gctenhang;
         private DevExpress.XtraGrid.Columns.GridColumn gcCreateBy;
@@ -681,9 +691,10 @@ namespace RestaurantManager
         private System.Windows.Forms.DateTimePicker dtpnyc;
         private PanelControl panelControl2;
         private DevExpress.XtraGrid.GridControl gcPYC;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvPYC;
         private DevExpress.XtraGrid.Columns.GridColumn gcidyc;
         private DevExpress.XtraGrid.Columns.GridColumn gcngayyc;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
