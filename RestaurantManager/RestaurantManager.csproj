@@ -184,6 +184,24 @@
     <Compile Include="Views\Manage\uctMenu.Designer.cs">
       <DependentUpon>uctMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Order\frmDONMH_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Order\frmDONMH_Detail.Designer.cs">
+      <DependentUpon>frmDONMH_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\uctDONMH_Detail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Order\uctDONMH_Detail.Designer.cs">
+      <DependentUpon>uctDONMH_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\uctDONMH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Order\uctDONMH.Designer.cs">
+      <DependentUpon>uctDONMH.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Procedure\uctCreate_PYC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -233,6 +251,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\uctMenu.resx">
       <DependentUpon>uctMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Order\frmDONMH_Detail.resx">
+      <DependentUpon>frmDONMH_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Order\uctDONMH_Detail.resx">
+      <DependentUpon>uctDONMH_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Order\uctDONMH.resx">
+      <DependentUpon>uctDONMH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Procedure\uctCreate_PYC.resx">
       <DependentUpon>uctCreate_PYC.cs</DependentUpon>
@@ -286,7 +313,6 @@
     <Folder Include="images\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Common\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add.png" />

@@ -22,7 +22,6 @@ namespace RestaurantManager
 {
     public partial class uctMONAN2 : UserControl
     {
-        private int imageIndex = 0;
         private string imageLocation = "";
         private string imageName = "";
         private List<MONAN_ViewModel> lstMONAN;

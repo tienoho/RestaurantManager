@@ -289,5 +289,18 @@ namespace RestaurantManager
         {
             addTabPages(uctPYC.uctDL, 10, "Phiếu yêu cầu");
         }
+
+        #region mua hàng
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctDONMH.uctDL, 10, "Đơn mua hàng");
+        }
+
+        private void barButtonItem21_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctDONMH_Detail.uctDL, 10, "Tạo đơn mua hàng");
+        }
+        #endregion
     }
 }
