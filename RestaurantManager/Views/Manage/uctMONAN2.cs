@@ -124,7 +124,7 @@ namespace RestaurantManager
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            textEditidmon.Text = "";
+            //textEditidmon.Text = "";
             textEditTenMon.Enabled = true;
             textEditDonGia.Enabled = true;
             cbUnit.Enabled = true;

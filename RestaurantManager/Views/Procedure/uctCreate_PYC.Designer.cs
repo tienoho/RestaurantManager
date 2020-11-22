@@ -46,11 +46,9 @@ namespace RestaurantManager
             this.gvPYCDetails = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcidhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gctenhang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcsldukien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcnguong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcdongianl = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcCreateBy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcCreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtsldukien = new DevExpress.XtraEditors.TextEdit();
@@ -64,8 +62,6 @@ namespace RestaurantManager
             this.btnAddDetails = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTenHang = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.gcPYC = new DevExpress.XtraGrid.GridControl();
@@ -165,7 +161,7 @@ namespace RestaurantManager
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::RestaurantManager.Properties.Resources.icons8_save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(154, 124);
+            this.btnSave.Location = new System.Drawing.Point(154, 122);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(252, 28);
             this.btnSave.TabIndex = 21;
@@ -188,7 +184,7 @@ namespace RestaurantManager
             this.btnClear.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Image = global::RestaurantManager.Properties.Resources.clear;
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(154, 89);
+            this.btnClear.Location = new System.Drawing.Point(154, 87);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(87, 29);
             this.btnClear.TabIndex = 19;
@@ -206,7 +202,7 @@ namespace RestaurantManager
             this.btnAdd.ForeColor = System.Drawing.Color.Black;
             this.btnAdd.Image = global::RestaurantManager.Properties.Resources.add_2;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(245, 90);
+            this.btnAdd.Location = new System.Drawing.Point(245, 88);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(161, 28);
             this.btnAdd.TabIndex = 18;
@@ -252,11 +248,9 @@ namespace RestaurantManager
             this.gvPYCDetails.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcidhang,
             this.gctenhang,
+            this.gcsldukien,
             this.gcslton,
-            this.gcnguong,
-            this.gcdongianl,
-            this.gcCreateBy,
-            this.gcCreateDate});
+            this.gcnguong});
             this.gvPYCDetails.GridControl = this.gcPYCDetails;
             this.gvPYCDetails.Name = "gvPYCDetails";
             this.gvPYCDetails.OptionsBehavior.Editable = false;
@@ -281,13 +275,21 @@ namespace RestaurantManager
             this.gctenhang.Visible = true;
             this.gctenhang.VisibleIndex = 1;
             // 
+            // gcsldukien
+            // 
+            this.gcsldukien.Caption = "Số lượng dự kiến";
+            this.gcsldukien.FieldName = "sldukien";
+            this.gcsldukien.Name = "gcsldukien";
+            this.gcsldukien.Visible = true;
+            this.gcsldukien.VisibleIndex = 2;
+            // 
             // gcslton
             // 
             this.gcslton.Caption = "Số lượng tồn";
             this.gcslton.FieldName = "slton";
             this.gcslton.Name = "gcslton";
             this.gcslton.Visible = true;
-            this.gcslton.VisibleIndex = 2;
+            this.gcslton.VisibleIndex = 3;
             // 
             // gcnguong
             // 
@@ -295,33 +297,7 @@ namespace RestaurantManager
             this.gcnguong.FieldName = "nguong";
             this.gcnguong.Name = "gcnguong";
             this.gcnguong.Visible = true;
-            this.gcnguong.VisibleIndex = 3;
-            // 
-            // gcdongianl
-            // 
-            this.gcdongianl.Caption = "Đơn giá";
-            this.gcdongianl.DisplayFormat.FormatString = "#,###";
-            this.gcdongianl.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gcdongianl.FieldName = "dongianl";
-            this.gcdongianl.Name = "gcdongianl";
-            this.gcdongianl.Visible = true;
-            this.gcdongianl.VisibleIndex = 4;
-            // 
-            // gcCreateBy
-            // 
-            this.gcCreateBy.Caption = "Người tạo";
-            this.gcCreateBy.FieldName = "CreateBy";
-            this.gcCreateBy.Name = "gcCreateBy";
-            this.gcCreateBy.Visible = true;
-            this.gcCreateBy.VisibleIndex = 5;
-            // 
-            // gcCreateDate
-            // 
-            this.gcCreateDate.Caption = "Ngày tạo";
-            this.gcCreateDate.FieldName = "CreateDate";
-            this.gcCreateDate.Name = "gcCreateDate";
-            this.gcCreateDate.Visible = true;
-            this.gcCreateDate.VisibleIndex = 6;
+            this.gcnguong.VisibleIndex = 4;
             // 
             // groupBox1
             // 
@@ -348,8 +324,6 @@ namespace RestaurantManager
             this.panel1.Controls.Add(this.btnAddDetails);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtTenHang);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -361,7 +335,7 @@ namespace RestaurantManager
             // txtsldukien
             // 
             this.txtsldukien.Enabled = false;
-            this.txtsldukien.Location = new System.Drawing.Point(448, 6);
+            this.txtsldukien.Location = new System.Drawing.Point(145, 38);
             this.txtsldukien.Name = "txtsldukien";
             this.txtsldukien.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.txtsldukien.Properties.Appearance.Options.UseFont = true;
@@ -372,14 +346,14 @@ namespace RestaurantManager
             this.txtsldukien.Properties.MaxLength = 9;
             this.txtsldukien.Properties.NullText = "0";
             this.txtsldukien.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtsldukien.Size = new System.Drawing.Size(146, 20);
+            this.txtsldukien.Size = new System.Drawing.Size(179, 20);
             this.txtsldukien.TabIndex = 33;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(327, 7);
+            this.label6.Location = new System.Drawing.Point(13, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 16);
             this.label6.TabIndex = 32;
@@ -408,7 +382,7 @@ namespace RestaurantManager
             // txtslton
             // 
             this.txtslton.Enabled = false;
-            this.txtslton.Location = new System.Drawing.Point(448, 36);
+            this.txtslton.Location = new System.Drawing.Point(426, 8);
             this.txtslton.Name = "txtslton";
             this.txtslton.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.txtslton.Properties.Appearance.Options.UseFont = true;
@@ -427,18 +401,19 @@ namespace RestaurantManager
             this.btnClearDetails.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearDetails.Image = global::RestaurantManager.Properties.Resources.clear;
             this.btnClearDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearDetails.Location = new System.Drawing.Point(5, 66);
+            this.btnClearDetails.Location = new System.Drawing.Point(676, 33);
             this.btnClearDetails.Name = "btnClearDetails";
             this.btnClearDetails.Size = new System.Drawing.Size(87, 28);
             this.btnClearDetails.TabIndex = 19;
             this.btnClearDetails.Text = "Làm mới";
             this.btnClearDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClearDetails.UseVisualStyleBackColor = true;
+            this.btnClearDetails.Click += new System.EventHandler(this.btnClearDetails_Click);
             // 
             // txtnguong
             // 
             this.txtnguong.Enabled = false;
-            this.txtnguong.Location = new System.Drawing.Point(663, 6);
+            this.txtnguong.Location = new System.Drawing.Point(426, 40);
             this.txtnguong.Name = "txtnguong";
             this.txtnguong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.txtnguong.Properties.Appearance.Options.UseFont = true;
@@ -462,12 +437,11 @@ namespace RestaurantManager
             this.btnDeleteDetails.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteDetails.Image = global::RestaurantManager.Properties.Resources.delete_3;
             this.btnDeleteDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteDetails.Location = new System.Drawing.Point(261, 66);
+            this.btnDeleteDetails.Location = new System.Drawing.Point(676, 3);
             this.btnDeleteDetails.Name = "btnDeleteDetails";
-            this.btnDeleteDetails.Size = new System.Drawing.Size(63, 28);
+            this.btnDeleteDetails.Size = new System.Drawing.Size(87, 28);
             this.btnDeleteDetails.TabIndex = 16;
-            this.btnDeleteDetails.Text = "Xóa";
-            this.btnDeleteDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteDetails.Text = "Xóa bỏ";
             this.btnDeleteDetails.UseVisualStyleBackColor = false;
             this.btnDeleteDetails.Click += new System.EventHandler(this.btnDeleteDetails_Click);
             // 
@@ -479,11 +453,11 @@ namespace RestaurantManager
             this.btnUpdateDetails.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateDetails.Image = global::RestaurantManager.Properties.Resources.update_5;
             this.btnUpdateDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateDetails.Location = new System.Drawing.Point(194, 66);
+            this.btnUpdateDetails.Location = new System.Drawing.Point(578, 33);
             this.btnUpdateDetails.Name = "btnUpdateDetails";
-            this.btnUpdateDetails.Size = new System.Drawing.Size(63, 28);
+            this.btnUpdateDetails.Size = new System.Drawing.Size(92, 28);
             this.btnUpdateDetails.TabIndex = 17;
-            this.btnUpdateDetails.Text = "Sửa";
+            this.btnUpdateDetails.Text = "Cập nhật";
             this.btnUpdateDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdateDetails.UseVisualStyleBackColor = false;
             this.btnUpdateDetails.Click += new System.EventHandler(this.btnUpdateDetails_Click);
@@ -497,7 +471,7 @@ namespace RestaurantManager
             this.btnAddDetails.ForeColor = System.Drawing.Color.Black;
             this.btnAddDetails.Image = global::RestaurantManager.Properties.Resources.add_2;
             this.btnAddDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddDetails.Location = new System.Drawing.Point(96, 66);
+            this.btnAddDetails.Location = new System.Drawing.Point(578, 3);
             this.btnAddDetails.Name = "btnAddDetails";
             this.btnAddDetails.Size = new System.Drawing.Size(92, 28);
             this.btnAddDetails.TabIndex = 18;
@@ -510,7 +484,7 @@ namespace RestaurantManager
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(600, 9);
+            this.label1.Location = new System.Drawing.Point(330, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 16);
             this.label1.TabIndex = 11;
@@ -520,29 +494,11 @@ namespace RestaurantManager
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(330, 39);
+            this.label5.Location = new System.Drawing.Point(330, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Số lượng tồn";
-            // 
-            // txtTenHang
-            // 
-            this.txtTenHang.Enabled = false;
-            this.txtTenHang.Location = new System.Drawing.Point(96, 34);
-            this.txtTenHang.Name = "txtTenHang";
-            this.txtTenHang.Size = new System.Drawing.Size(228, 21);
-            this.txtTenHang.TabIndex = 2;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 35);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 16);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Tên hàng";
             // 
             // label8
             // 
@@ -665,11 +621,8 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Views.Grid.GridView gvPYCDetails;
         private DevExpress.XtraGrid.Columns.GridColumn gcidhang;
         private DevExpress.XtraGrid.Columns.GridColumn gctenhang;
-        private DevExpress.XtraGrid.Columns.GridColumn gcCreateBy;
-        private DevExpress.XtraGrid.Columns.GridColumn gcCreateDate;
         private DevExpress.XtraGrid.Columns.GridColumn gcslton;
         private DevExpress.XtraGrid.Columns.GridColumn gcnguong;
-        private DevExpress.XtraGrid.Columns.GridColumn gcdongianl;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
@@ -683,8 +636,6 @@ namespace RestaurantManager
         private System.Windows.Forms.Button btnAddDetails;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTenHang;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private TextEdit txtsldukien;
         private System.Windows.Forms.Label label6;
@@ -696,5 +647,6 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gcngayyc;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private System.Windows.Forms.Button btnAdd;
+        private DevExpress.XtraGrid.Columns.GridColumn gcsldukien;
     }
 }

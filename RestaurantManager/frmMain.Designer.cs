@@ -100,7 +100,7 @@
             this.btnDeptCustomer = new DevExpress.XtraBars.BarButtonItem();
             this.btnStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnOrderWait = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             this.btnNhaCC = new DevExpress.XtraBars.BarButtonItem();
             this.btnPYC = new DevExpress.XtraBars.BarButtonItem();
@@ -466,7 +466,7 @@
             this.btnDeptCustomer,
             this.btnStatistics,
             this.barButtonItem16,
-            this.barButtonItem18,
+            this.btnOrderWait,
             this.barButtonItem19,
             this.btnMenu,
             this.btnNguyenLieu,
@@ -760,14 +760,16 @@
             this.barButtonItem16.ImageOptions.Image = global::RestaurantManager.Properties.Resources.add1;
             this.barButtonItem16.Name = "barButtonItem16";
             this.barButtonItem16.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
             // 
-            // barButtonItem18
+            // btnOrderWait
             // 
-            this.barButtonItem18.Caption = "Chờ thanh toán (0)";
-            this.barButtonItem18.Id = 55;
-            this.barButtonItem18.ImageOptions.Image = global::RestaurantManager.Properties.Resources.update_1;
-            this.barButtonItem18.Name = "barButtonItem18";
-            this.barButtonItem18.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnOrderWait.Caption = "Chờ thanh toán (0)";
+            this.btnOrderWait.Id = 55;
+            this.btnOrderWait.ImageOptions.Image = global::RestaurantManager.Properties.Resources.update_1;
+            this.btnOrderWait.Name = "btnOrderWait";
+            this.btnOrderWait.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnOrderWait.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOrderWait_ItemClick);
             // 
             // barButtonItem19
             // 
@@ -859,7 +861,7 @@
             // ribbonPageGroup13
             // 
             this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem16);
-            this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem18);
+            this.ribbonPageGroup13.ItemLinks.Add(this.btnOrderWait);
             this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem19);
             this.ribbonPageGroup13.Name = "ribbonPageGroup13";
             this.ribbonPageGroup13.Text = "ribbonPageGroup13";
@@ -1173,7 +1175,7 @@
         private DevExpress.XtraBars.BarButtonItem btnStatistics;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem18;
+        private DevExpress.XtraBars.BarButtonItem btnOrderWait;
         private DevExpress.XtraBars.BarButtonItem barButtonItem19;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;

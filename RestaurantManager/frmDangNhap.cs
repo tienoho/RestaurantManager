@@ -91,22 +91,24 @@ namespace RestaurantManager
                             Properties.Settings.Default.PasswordLog = txtPassword.Text;
                             this.Hide();
                             frmMain main = new frmMain();
-                            main.Show();
+                            main.ShowDialog();
 
                             txtUser.Text = "";
                             txtPassword.Text = "";
-                           // this.Show();
+                            this.Show();
 
                         }
                         else
                         {
                             XtraMessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Show();
                             return;
                         }
                     }
                     catch
                     {
                         XtraMessageBox.Show("Đăng nhập thất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Show();
                         return;
                     }
                 }

@@ -42,7 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CONGTHUC_ViewModel.cs" />
+    <Compile Include="DONDATDA_ViewModel.cs" />
+    <Compile Include="D_DONDATDA_ViewModel.cs" />
+    <Compile Include="D_HOADONTT_ViewModel.cs" />
     <Compile Include="D_PYC_ViewModel.cs" />
+    <Compile Include="HOADONTT_ViewModel.cs" />
     <Compile Include="KHACHHANG_ViewModel.cs" />
     <Compile Include="MONAN_ViewModel.cs" />
     <Compile Include="NCC_ViewModel.cs" />

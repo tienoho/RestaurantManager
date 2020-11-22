@@ -73,15 +73,12 @@ namespace RestaurantManager
             object tenhang = (sender as GridView).GetRowCellValue(RowHandle, "tenhang");
             object slton = (sender as GridView).GetRowCellValue(RowHandle, "slton");
             object nguong = (sender as GridView).GetRowCellValue(RowHandle, "nguong");
-            object dongianl = (sender as GridView).GetRowCellValue(RowHandle, "dongianl");
-            txtid.Text = idhang.ToString();
+            object sldukien = (sender as GridView).GetRowCellValue(RowHandle, "sldukien");
 
-            
-
-            //txttenhang.Text = tenhang.ToString();
-            //txtSLT.EditValue = slton;
-            //txtNguong.EditValue = nguong;
-            //nudDonGia2.EditValue = dongianl;
+            lueNLieu.EditValue = idhang;
+            txtslton.EditValue = slton;
+            txtnguong.EditValue = nguong;
+            txtsldukien.EditValue = sldukien;
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -188,37 +185,9 @@ namespace RestaurantManager
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnDeletddde_Click(object sender, EventArgs e)
         {
-            //txttenhang.Enabled = true;
-            //txtNguong.Enabled = true;
-            //nudDonGia2.Enabled = true;
-            //txtSLT.Enabled = true;
-
-            //btnAdd.Enabled = false;
-            //btnUpdate.Enabled = false;
-            //btnDelete.Enabled = false;
-            //btnSave.Enabled = true;
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                if (txtid.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn phải chọn nguyên liệu cần xóa !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ClearDisplay();
-                    return;
-                }
-                int.TryParse(txtid.Text, out int id);
-                var msg = new NLIEUBll().DeleteNLIEU(id);
-                LoadGrid();
-                XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearDisplay();
-                return;
-            }
+            
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -300,6 +269,7 @@ namespace RestaurantManager
                 {
                     XtraMessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadGridDetails(d_pyc.idyc);
+                    ClearDetails();
                     return;
                 }
                 else
@@ -317,7 +287,30 @@ namespace RestaurantManager
 
         private void btnDeleteDetails_Click(object sender, EventArgs e)
         {
+            if (txtid.Text == "")
+            {
+                XtraMessageBox.Show("Bạn phải chọn phiếu yêu cầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ClearDisplay();
+                return;
+            }
+            if (lueNLieu.EditValue == null)
+            {
+                XtraMessageBox.Show("Bạn phải chọn nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ClearDisplay();
+                return;
+            }
 
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                int.TryParse(txtid.Text , out int id);
+                var idhang = lueNLieu.EditValue;
+                var msg = new PYCBll().DeleteD_PYC(id, (int)idhang);
+                LoadGrid();
+                XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearDisplay();
+                return;
+            }
         }
 
         private void btnSave_Click_1(object sender, EventArgs e)
@@ -332,7 +325,6 @@ namespace RestaurantManager
             object tenhang = editor.GetColumnValue("tenhang");
             object slton = editor.GetColumnValue("slton");
             object nguong = editor.GetColumnValue("nguong");
-            txtTenHang.Text = tenhang.ToString();
             txtslton.EditValue = slton;
             txtnguong.EditValue = nguong;
         }
@@ -341,6 +333,18 @@ namespace RestaurantManager
         {
             lstD_PYC = await Task.Run(() => new PYCBll().GetListD_PYC(idyc));
             gcPYCDetails.DataSource = lstD_PYC;
+        }
+
+        private void btnClearDetails_Click(object sender, EventArgs e)
+        {
+            ClearDetails();
+        }
+        public void ClearDetails()
+        {
+            lueNLieu.EditValue = null;
+            txtsldukien.EditValue = null;
+            txtnguong.EditValue = null;
+            txtsldukien.EditValue = null;
         }
     }
 }
