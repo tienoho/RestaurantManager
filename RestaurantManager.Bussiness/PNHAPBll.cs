@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Bussiness
 {
-    class PNHAPBll
+    public class PNHAPBll
     {
+        //public List<>
     }
 }

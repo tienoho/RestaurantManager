@@ -21,8 +21,8 @@ namespace RestaurantManager
 {
     public partial class uctGIAOHANG : UserControl
     {
-        List<DONMH_ViewModel> lstDONMH;
-        List<D_DONMH_ViewModel> lstD_DONMH;
+        List<GIAOHANG_ViewModel> lstGIAOHANG;
+        List<D_GIAOHANG_ViewModel> lstD_GIAOHANG;
         public uctGIAOHANG()
         {
             InitializeComponent();
@@ -98,8 +98,8 @@ namespace RestaurantManager
         #region Function
         public void LoadGrid()
         {
-            lstDONMH = new DONMHBll().GetListDONMH();
-            gridControl1.DataSource = lstDONMH;
+            lstGIAOHANG = new GIAOHANGBll().GetListGIAOHANG();
+            gcGIAOHANG.DataSource = lstGIAOHANG;
         }
         private void ClearDisplay()
         {
@@ -122,10 +122,10 @@ namespace RestaurantManager
         #endregion
 
         #region Chi tiết
-        async public void LoadGridDetails(int iddonmh)
+        async public void LoadGridDetails(int id)
         {
-            lstD_DONMH = await Task.Run(() => new DONMHBll().GetListD_DONMH(iddonmh));
-            gcD_DONMH.DataSource = lstD_DONMH;
+            lstD_GIAOHANG = await Task.Run(() => new GIAOHANGBll().GetListD_GIAOHANG(id));
+            gcD_GIAOHANG.DataSource = lstD_GIAOHANG;
         }
         #endregion
 
