@@ -304,5 +304,27 @@ namespace RestaurantManager
             addTabPages(uctHOADONTT.uctDL, 10, "Chờ thanh toán");
             uctHOADONTT.uctDL.fillCaption(btnOrderWait);
         }
+
+        private void btnCreateDONMH_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctDONMH_Detail.uctDL, 10, "Tạo đơn mua hàng");
+        }
+        #region mua hàng
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void barButtonItem21_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
+        #endregion
+
+        private void btnDONMH_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctDONMH.uctDL, 10, "Đơn mua hàng");
+        }
     }
 }

@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="CONGTHUCBll.cs" />
+    <Compile Include="DONMHBll.cs" />
     <Compile Include="HOADONTTBll.cs" />
     <Compile Include="DONDATDABll.cs" />
     <Compile Include="KHACHHANGBll.cs" />

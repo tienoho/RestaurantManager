@@ -104,9 +104,10 @@
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             this.btnNhaCC = new DevExpress.XtraBars.BarButtonItem();
             this.btnPYC = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDONMH = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.btnListPYC = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCreateDONMH = new DevExpress.XtraBars.BarButtonItem();
             this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -473,11 +474,12 @@
             this.btnDanhMuc,
             this.btnNhaCC,
             this.btnPYC,
-            this.barButtonItem7,
+            this.btnDONMH,
             this.barButtonItem20,
-            this.btnListPYC});
+            this.btnListPYC,
+            this.btnCreateDONMH});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 66;
+            this.menuToolStrip.MaxItemId = 67;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpManager,
@@ -798,13 +800,14 @@
             this.btnPYC.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnPYC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPYC_ItemClick);
             // 
-            // barButtonItem7
+            // btnDONMH
             // 
-            this.barButtonItem7.Caption = "Mua hàng";
-            this.barButtonItem7.Id = 62;
-            this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.barButtonItem7.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
-            this.barButtonItem7.Name = "barButtonItem7";
+            this.btnDONMH.Caption = "Mua hàng";
+            this.btnDONMH.Id = 62;
+            this.btnDONMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
+            this.btnDONMH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
+            this.btnDONMH.Name = "btnDONMH";
+            this.btnDONMH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDONMH_ItemClick);
             // 
             // barButtonItem20
             // 
@@ -822,6 +825,13 @@
             this.btnListPYC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnListPYC.ImageOptions.LargeImage")));
             this.btnListPYC.Name = "btnListPYC";
             this.btnListPYC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnListPYC_ItemClick);
+            // 
+            // btnCreateDONMH
+            // 
+            this.btnCreateDONMH.Caption = "Tao don mua hang";
+            this.btnCreateDONMH.Id = 66;
+            this.btnCreateDONMH.Name = "btnCreateDONMH";
+            this.btnCreateDONMH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCreateDONMH_ItemClick);
             // 
             // rpProcedure
             // 
@@ -841,7 +851,8 @@
             // 
             // ribbonPageGroup15
             // 
-            this.ribbonPageGroup15.ItemLinks.Add(this.barButtonItem7);
+            this.ribbonPageGroup15.ItemLinks.Add(this.btnDONMH);
+            this.ribbonPageGroup15.ItemLinks.Add(this.btnCreateDONMH);
             this.ribbonPageGroup15.Name = "ribbonPageGroup15";
             this.ribbonPageGroup15.Text = "Mua hàng";
             // 
@@ -1191,10 +1202,11 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage rpProcedure;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
         private DevExpress.XtraBars.BarButtonItem btnPYC;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem btnDONMH;
         private DevExpress.XtraBars.BarButtonItem barButtonItem20;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
         private DevExpress.XtraBars.BarButtonItem btnListPYC;
+        private DevExpress.XtraBars.BarButtonItem btnCreateDONMH;
     }
 }

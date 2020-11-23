@@ -185,11 +185,29 @@
     <Compile Include="Views\Manage\uctMenu.Designer.cs">
       <DependentUpon>uctMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Order\frmDONMH_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Order\frmDONMH_Detail.Designer.cs">
+      <DependentUpon>frmDONMH_Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Order\uctDONDATDA.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Order\uctDONDATDA.Designer.cs">
       <DependentUpon>uctDONDATDA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\uctDONMH_Detail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Order\uctDONMH_Detail.Designer.cs">
+      <DependentUpon>uctDONMH_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Order\uctDONMH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Order\uctDONMH.Designer.cs">
+      <DependentUpon>uctDONMH.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Order\uctHOADONTT.cs">
       <SubType>UserControl</SubType>
@@ -249,6 +267,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Order\uctDONDATDA.resx">
       <DependentUpon>uctDONDATDA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Order\uctDONMH_Detail.resx">
+      <DependentUpon>uctDONMH_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Order\uctDONMH.resx">
+      <DependentUpon>uctDONMH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Order\uctHOADONTT.resx">
       <DependentUpon>uctHOADONTT.cs</DependentUpon>
