@@ -25,7 +25,7 @@
           </Key>
           <Property Name="iddondat" Type="int" Nullable="false" />
           <Property Name="idmon" Type="int" Nullable="false" />
-          <Property Name="sldat" Type="int" />
+          <Property Name="sldat" Type="int" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ModifyDate" Type="datetime" />
@@ -39,7 +39,7 @@
           <Property Name="iddonmh" Type="int" Nullable="false" />
           <Property Name="idhang" Type="int" Nullable="false" />
           <Property Name="slmh" Type="int" />
-          <Property Name="dongiamh" Type="int" />
+          <Property Name="dongiamh" Type="float" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ModifyDate" Type="datetime" />
@@ -80,8 +80,8 @@
           </Key>
           <Property Name="idhoadontt" Type="int" Nullable="false" />
           <Property Name="idmon" Type="int" Nullable="false" />
-          <Property Name="slban" Type="int" />
-          <Property Name="dongiaban" Type="int" />
+          <Property Name="slban" Type="int" Nullable="false" />
+          <Property Name="dongiaban" Type="float" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="CreateBy" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ModifyDate" Type="datetime" />
@@ -553,14 +553,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HOADONTT_DONDATDA">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="DONDATDA" Type="Self.DONDATDA" Multiplicity="0..1" />
           <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="idkh" />
+            <Principal Role="DONDATDA">
+              <PropertyRef Name="iddondat" />
             </Principal>
             <Dependent Role="HOADONTT">
-              <PropertyRef Name="idkh" />
+              <PropertyRef Name="iddondat" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -705,7 +705,7 @@
             <End Role="HOADONM" EntitySet="HOADONM" />
           </AssociationSet>
           <AssociationSet Name="FK_HOADONTT_DONDATDA" Association="Self.FK_HOADONTT_DONDATDA">
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="DONDATDA" EntitySet="DONDATDA" />
             <End Role="HOADONTT" EntitySet="HOADONTT" />
           </AssociationSet>
           <AssociationSet Name="FK_HOADONTT_KHACHHANG" Association="Self.FK_HOADONTT_KHACHHANG">
@@ -747,7 +747,7 @@
           </Key>
           <Property Name="iddondat" Type="Int32" Nullable="false" />
           <Property Name="idmon" Type="Int32" Nullable="false" />
-          <Property Name="sldat" Type="Int32" />
+          <Property Name="sldat" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />
@@ -802,22 +802,6 @@
           <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HOADONM" Relationship="Self.FK_D_HOADONM_HOADONM" FromRole="D_HOADONM" ToRole="HOADONM" />
           <NavigationProperty Name="NLIEU" Relationship="Self.FK_D_HOADONM_NLIEU" FromRole="D_HOADONM" ToRole="NLIEU" />
-        </EntityType>
-        <EntityType Name="D_HOADONTT">
-          <Key>
-            <PropertyRef Name="idhoadontt" />
-            <PropertyRef Name="idmon" />
-          </Key>
-          <Property Name="idhoadontt" Type="Int32" Nullable="false" />
-          <Property Name="idmon" Type="Int32" Nullable="false" />
-          <Property Name="slban" Type="Int32" />
-          <Property Name="dongiaban" Type="Int32" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HOADONTT" Relationship="Self.FK_D_HOADONTT_HOADONTT" FromRole="D_HOADONTT" ToRole="HOADONTT" />
-          <NavigationProperty Name="MONAN" Relationship="Self.FK_D_HOADONTT_MONAN" FromRole="D_HOADONTT" ToRole="MONAN" />
         </EntityType>
         <EntityType Name="D_PNHAP">
           <Key>
@@ -877,6 +861,7 @@
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />
           <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="D_DONDATDA" Relationship="Self.FK_D_DONDATDA_DONDATDA" FromRole="DONDATDA" ToRole="D_DONDATDA" />
+          <NavigationProperty Name="HOADONTTs" Relationship="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA1" FromRole="DONDATDA" ToRole="HOADONTT" />
         </EntityType>
         <EntityType Name="DONMH">
           <Key>
@@ -943,9 +928,10 @@
           <Property Name="CreateBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />
           <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="D_HOADONTT" Relationship="Self.FK_D_HOADONTT_HOADONTT" FromRole="HOADONTT" ToRole="D_HOADONTT" />
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_HOADONTT_DONDATDA" FromRole="HOADONTT" ToRole="KHACHHANG" />
           <NavigationProperty Name="KHACHHANG1" Relationship="Self.FK_HOADONTT_KHACHHANG" FromRole="HOADONTT" ToRole="KHACHHANG" />
+          <NavigationProperty Name="DONDATDA" Relationship="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA1" FromRole="HOADONTT" ToRole="DONDATDA" />
+          <NavigationProperty Name="D_HOADONTT" Relationship="RestaurantManagerDataModel.FK_D_HOADONTT_HOADONTT" FromRole="HOADONTT" ToRole="D_HOADONTT" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -977,8 +963,8 @@
           <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CONGTHUCs" Relationship="Self.FK_CONGTHUC_MONAN" FromRole="MONAN" ToRole="CONGTHUC" />
           <NavigationProperty Name="D_DONDATDA" Relationship="Self.FK_D_DONDATDA_MONAN" FromRole="MONAN" ToRole="D_DONDATDA" />
-          <NavigationProperty Name="D_HOADONTT" Relationship="Self.FK_D_HOADONTT_MONAN" FromRole="MONAN" ToRole="D_HOADONTT" />
           <NavigationProperty Name="DANHMUC" Relationship="Self.FK_MONAN_DANHMUC" FromRole="MONAN" ToRole="DANHMUC" />
+          <NavigationProperty Name="D_HOADONTT" Relationship="RestaurantManagerDataModel.FK_D_HOADONTT_MONAN" FromRole="MONAN" ToRole="D_HOADONTT" />
         </EntityType>
         <EntityType Name="NCC">
           <Key>
@@ -1189,30 +1175,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_D_HOADONTT_HOADONTT">
-          <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="1" />
-          <End Role="D_HOADONTT" Type="Self.D_HOADONTT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADONTT">
-              <PropertyRef Name="idhoadontt" />
-            </Principal>
-            <Dependent Role="D_HOADONTT">
-              <PropertyRef Name="idhoadontt" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_D_HOADONTT_MONAN">
-          <End Role="MONAN" Type="Self.MONAN" Multiplicity="1" />
-          <End Role="D_HOADONTT" Type="Self.D_HOADONTT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MONAN">
-              <PropertyRef Name="idmon" />
-            </Principal>
-            <Dependent Role="D_HOADONTT">
-              <PropertyRef Name="idmon" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_D_PNHAP_NLIEU">
           <End Role="NLIEU" Type="Self.NLIEU" Multiplicity="1" />
           <End Role="D_PNHAP" Type="Self.D_PNHAP" Multiplicity="*" />
@@ -1363,7 +1325,6 @@
           <EntitySet Name="D_DONMH" EntityType="Self.D_DONMH" />
           <EntitySet Name="D_GIAOHANG" EntityType="Self.D_GIAOHANG" />
           <EntitySet Name="D_HOADONM" EntityType="Self.D_HOADONM" />
-          <EntitySet Name="D_HOADONTT" EntityType="Self.D_HOADONTT" />
           <EntitySet Name="D_PNHAP" EntityType="Self.D_PNHAP" />
           <EntitySet Name="D_PYC" EntityType="Self.D_PYC" />
           <EntitySet Name="DANHMUCs" EntityType="Self.DANHMUC" />
@@ -1420,14 +1381,6 @@
             <End Role="NLIEU" EntitySet="NLIEUx" />
             <End Role="D_HOADONM" EntitySet="D_HOADONM" />
           </AssociationSet>
-          <AssociationSet Name="FK_D_HOADONTT_HOADONTT" Association="Self.FK_D_HOADONTT_HOADONTT">
-            <End Role="HOADONTT" EntitySet="HOADONTTs" />
-            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_HOADONTT_MONAN" Association="Self.FK_D_HOADONTT_MONAN">
-            <End Role="MONAN" EntitySet="MONANs" />
-            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
-          </AssociationSet>
           <AssociationSet Name="FK_D_PNHAP_NLIEU" Association="Self.FK_D_PNHAP_NLIEU">
             <End Role="NLIEU" EntitySet="NLIEUx" />
             <End Role="D_PNHAP" EntitySet="D_PNHAP" />
@@ -1477,6 +1430,19 @@
             <End Role="HOADONTT" EntitySet="HOADONTTs" />
           </AssociationSet>
           <EntitySet Name="USERS" EntityType="RestaurantManagerDataModel.USER" />
+          <AssociationSet Name="FK_HOADONTT_DONDATDA1" Association="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA1">
+            <End Role="DONDATDA" EntitySet="DONDATDAs" />
+            <End Role="HOADONTT" EntitySet="HOADONTTs" />
+          </AssociationSet>
+          <EntitySet Name="D_HOADONTT" EntityType="RestaurantManagerDataModel.D_HOADONTT" />
+          <AssociationSet Name="FK_D_HOADONTT_HOADONTT" Association="RestaurantManagerDataModel.FK_D_HOADONTT_HOADONTT">
+            <End Role="HOADONTT" EntitySet="HOADONTTs" />
+            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONTT_MONAN" Association="RestaurantManagerDataModel.FK_D_HOADONTT_MONAN">
+            <End Role="MONAN" EntitySet="MONANs" />
+            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="USER">
           <Key>
@@ -1489,6 +1455,58 @@
           <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
+        <Association Name="FK_HOADONTT_DONDATDA1">
+          <End Type="RestaurantManagerDataModel.DONDATDA" Role="DONDATDA" Multiplicity="0..1" />
+          <End Type="RestaurantManagerDataModel.HOADONTT" Role="HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DONDATDA">
+              <PropertyRef Name="iddondat" />
+            </Principal>
+            <Dependent Role="HOADONTT">
+              <PropertyRef Name="iddondat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="D_HOADONTT">
+          <Key>
+            <PropertyRef Name="idhoadontt" />
+            <PropertyRef Name="idmon" />
+          </Key>
+          <Property Name="idhoadontt" Type="Int32" Nullable="false" />
+          <Property Name="idmon" Type="Int32" Nullable="false" />
+          <Property Name="slban" Type="Int32" Nullable="false" />
+          <Property Name="dongiaban" Type="Double" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HOADONTT" Relationship="RestaurantManagerDataModel.FK_D_HOADONTT_HOADONTT" FromRole="D_HOADONTT" ToRole="HOADONTT" />
+          <NavigationProperty Name="MONAN" Relationship="RestaurantManagerDataModel.FK_D_HOADONTT_MONAN" FromRole="D_HOADONTT" ToRole="MONAN" />
+        </EntityType>
+        <Association Name="FK_D_HOADONTT_HOADONTT">
+          <End Type="RestaurantManagerDataModel.HOADONTT" Role="HOADONTT" Multiplicity="1" />
+          <End Type="RestaurantManagerDataModel.D_HOADONTT" Role="D_HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONTT">
+              <PropertyRef Name="idhoadontt" />
+            </Principal>
+            <Dependent Role="D_HOADONTT">
+              <PropertyRef Name="idhoadontt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONTT_MONAN">
+          <End Type="RestaurantManagerDataModel.MONAN" Role="MONAN" Multiplicity="1" />
+          <End Type="RestaurantManagerDataModel.D_HOADONTT" Role="D_HOADONTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONAN">
+              <PropertyRef Name="idmon" />
+            </Principal>
+            <Dependent Role="D_HOADONTT">
+              <PropertyRef Name="idmon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1556,20 +1574,6 @@
                 <ScalarProperty Name="idhang" ColumnName="idhang" />
                 <ScalarProperty Name="slmua" ColumnName="slmua" />
                 <ScalarProperty Name="dongiamua" ColumnName="dongiamua" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
-                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="D_HOADONTT">
-            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_HOADONTT">
-              <MappingFragment StoreEntitySet="D_HOADONTT">
-                <ScalarProperty Name="idhoadontt" ColumnName="idhoadontt" />
-                <ScalarProperty Name="idmon" ColumnName="idmon" />
-                <ScalarProperty Name="slban" ColumnName="slban" />
-                <ScalarProperty Name="dongiaban" ColumnName="dongiaban" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
                 <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
@@ -1813,6 +1817,20 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="D_HOADONTT">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.D_HOADONTT">
+              <MappingFragment StoreEntitySet="D_HOADONTT">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="dongiaban" ColumnName="dongiaban" />
+                <ScalarProperty Name="slban" ColumnName="slban" />
+                <ScalarProperty Name="idmon" ColumnName="idmon" />
+                <ScalarProperty Name="idhoadontt" ColumnName="idhoadontt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

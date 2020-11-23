@@ -42,8 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CONGTHUC_ViewModel.cs" />
-    <Compile Include="D_DONMH_ViewModel.cs" />
+    <Compile Include="DONDATDA_ViewModel.cs" />
+    <Compile Include="D_DONDATDA_ViewModel.cs" />
+    <Compile Include="D_HOADONTT_ViewModel.cs" />
     <Compile Include="D_PYC_ViewModel.cs" />
+    <Compile Include="HOADONTT_ViewModel.cs" />
     <Compile Include="KHACHHANG_ViewModel.cs" />
     <Compile Include="MONAN_ViewModel.cs" />
     <Compile Include="NCC_ViewModel.cs" />
@@ -51,7 +54,6 @@
     <Compile Include="DANHMUC_ViewModel.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DONMH_ViewModel.cs" />
     <Compile Include="PYC_ViewModel.cs" />
     <Compile Include="User_ViewModel.cs" />
   </ItemGroup>

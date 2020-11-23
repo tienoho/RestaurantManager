@@ -24,6 +24,6 @@ namespace RestaurantManager
             Application.Run(new frmLogin());
 
         }
-
+       
     }
 }

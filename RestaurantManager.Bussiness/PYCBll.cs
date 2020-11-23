@@ -87,6 +87,7 @@ namespace RestaurantManager.Bussiness
 
         }
 
+        #region D_PYC
         public string AddD_PYC(D_PYC model)
         {
             try
@@ -127,5 +128,30 @@ namespace RestaurantManager.Bussiness
                 return ex.Message;
             }
         }
+        public string DeleteD_PYC(int idyc,int idhang)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var check = db.D_PYC.FirstOrDefault(x => x.idyc == idyc && x.idhang == idhang);
+                    if (check == null)
+                    {
+                        return "Xóa không thành công!";
+                    }
+                    else
+                    {
+                        db.D_PYC.Remove(check);
+                        db.SaveChanges();
+                        return "Xóa thành công!";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        #endregion
     }
 }

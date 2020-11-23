@@ -22,6 +22,7 @@ namespace RestaurantManager
 {
     public partial class uctMONAN2 : UserControl
     {
+        private int imageIndex = 0;
         private string imageLocation = "";
         private string imageName = "";
         private List<MONAN_ViewModel> lstMONAN;
@@ -123,7 +124,7 @@ namespace RestaurantManager
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            textEditidmon.Text = "";
+            //textEditidmon.Text = "";
             textEditTenMon.Enabled = true;
             textEditDonGia.Enabled = true;
             cbUnit.Enabled = true;

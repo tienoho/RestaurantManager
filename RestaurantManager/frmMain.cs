@@ -12,6 +12,7 @@ using DevExpress.XtraEditors;
 using DevExpress.Utils;
 using System.Threading;
 using DevExpress.XtraSplashScreen;
+using RestaurantManager.Bussiness;
 
 namespace RestaurantManager
 {
@@ -20,15 +21,17 @@ namespace RestaurantManager
         public frmMain()
         {
             InitializeComponent();
+            var list = new DONDATDABll().GetOuterOrder();
+            btnOrderWait.Caption = String.Format("Chờ thanh toán ({0})", list.Count());
         }
 
         internal static List<byte> typePages = new List<byte>();
-        public void addTabPages(UserControl uct,byte typeControl,string tenTab)
+        public void addTabPages(UserControl uct, byte typeControl, string tenTab)
         {
             // Kiểm tra tồn tại trang này chưa
-            for(int i=0;i<tabDisplay.TabPages.Count;i++)
+            for (int i = 0; i < tabDisplay.TabPages.Count; i++)
             {
-                if(tabDisplay.TabPages[i].Contains(uct)==true)
+                if (tabDisplay.TabPages[i].Contains(uct) == true)
                 {
                     tabDisplay.SelectedTab = tabDisplay.TabPages[i];
                     return;
@@ -78,12 +81,12 @@ namespace RestaurantManager
 
         private void btnInfoOfCustomer_ItemClick(object sender, ItemClickEventArgs e)
         {
-           addTabPages(uctKHACHHANG.uctDL,30, "Thông tin Khách hàng");
+            addTabPages(uctKHACHHANG.uctDL, 30, "Thông tin Khách hàng");
         }
 
         private void btnBill_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //addTabPages(uctPhieuHoaDon.uctPHD,25, "Hóa đơn");
+            addTabPages(uctHOADON.uctDL, 25, "Hóa đơn");
         }
 
 
@@ -120,10 +123,10 @@ namespace RestaurantManager
             Graphics g = e.Graphics;
 
             Font drawFont = new Font("Time New Roman", 10);
-            g.FillRectangle(new SolidBrush(Color.Blue),e.Bounds.Left,e.Bounds.Top,200,1);
+            g.FillRectangle(new SolidBrush(Color.Blue), e.Bounds.Left, e.Bounds.Top, 200, 1);
             //e.Graphics.DrawString("X", drawFont, Brushes.Red, e.Bounds.Right - 14, e.Bounds.Top);e.Bounds.Left+10, e.Bounds.Top + 6
-            e.Graphics.DrawString(this.tabDisplay.TabPages[e.Index].Text, e.Font, Brushes.Black, e.Bounds.Left, e.Bounds.Top+6);
-            e.Graphics.DrawImage(Properties.Resources.x2, e.Bounds.Right - 16, e.Bounds.Top+4);
+            e.Graphics.DrawString(this.tabDisplay.TabPages[e.Index].Text, e.Font, Brushes.Black, e.Bounds.Left, e.Bounds.Top + 6);
+            e.Graphics.DrawImage(Properties.Resources.x2, e.Bounds.Right - 16, e.Bounds.Top + 4);
             e.DrawFocusRectangle();
         }
 
@@ -162,7 +165,7 @@ namespace RestaurantManager
             //l.ShowDialog();
             this.Close();
         }
-       
+
 
         private void btnRevenue_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -173,7 +176,7 @@ namespace RestaurantManager
 
         private void btnProductOfStore1_ItemClick(object sender, ItemClickEventArgs e)
         {
-           // addTabPages(uctSanPhamCH.uctSPCH, 10, "Quản lí sản phẩm");
+            // addTabPages(uctSanPhamCH.uctSPCH, 10, "Quản lí sản phẩm");
         }
 
         private void btnAuthorInfo_ItemClick(object sender, ItemClickEventArgs e)
@@ -190,7 +193,7 @@ namespace RestaurantManager
                 //author.ShowDialog();
                 //this.Show();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Thong bao");
             }
@@ -290,17 +293,16 @@ namespace RestaurantManager
             addTabPages(uctPYC.uctDL, 10, "Phiếu yêu cầu");
         }
 
-        #region mua hàng
-
-        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctDONMH.uctDL, 10, "Đơn mua hàng");
+            addTabPages(uctDONDATDA.uctDL, 10, "Đặt đơn hàng");
+            uctDONDATDA.uctDL.fillCaption(btnOrderWait);
         }
 
-        private void barButtonItem21_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnOrderWait_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctDONMH_Detail.uctDL, 10, "Tạo đơn mua hàng");
+            addTabPages(uctHOADONTT.uctDL, 10, "Chờ thanh toán");
+            uctHOADONTT.uctDL.fillCaption(btnOrderWait);
         }
-        #endregion
     }
 }

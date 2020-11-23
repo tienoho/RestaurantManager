@@ -100,7 +100,7 @@
             this.btnDeptCustomer = new DevExpress.XtraBars.BarButtonItem();
             this.btnStatistics = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnOrderWait = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             this.btnNhaCC = new DevExpress.XtraBars.BarButtonItem();
             this.btnPYC = new DevExpress.XtraBars.BarButtonItem();
@@ -137,7 +137,6 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuToolStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCL1)).BeginInit();
@@ -467,7 +466,7 @@
             this.btnDeptCustomer,
             this.btnStatistics,
             this.barButtonItem16,
-            this.barButtonItem18,
+            this.btnOrderWait,
             this.barButtonItem19,
             this.btnMenu,
             this.btnNguyenLieu,
@@ -478,7 +477,7 @@
             this.barButtonItem20,
             this.btnListPYC});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 67;
+            this.menuToolStrip.MaxItemId = 66;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpManager,
@@ -761,14 +760,16 @@
             this.barButtonItem16.ImageOptions.Image = global::RestaurantManager.Properties.Resources.add1;
             this.barButtonItem16.Name = "barButtonItem16";
             this.barButtonItem16.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
             // 
-            // barButtonItem18
+            // btnOrderWait
             // 
-            this.barButtonItem18.Caption = "Chờ thanh toán (0)";
-            this.barButtonItem18.Id = 55;
-            this.barButtonItem18.ImageOptions.Image = global::RestaurantManager.Properties.Resources.update_1;
-            this.barButtonItem18.Name = "barButtonItem18";
-            this.barButtonItem18.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnOrderWait.Caption = "Chờ thanh toán (0)";
+            this.btnOrderWait.Id = 55;
+            this.btnOrderWait.ImageOptions.Image = global::RestaurantManager.Properties.Resources.update_1;
+            this.btnOrderWait.Name = "btnOrderWait";
+            this.btnOrderWait.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnOrderWait.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOrderWait_ItemClick);
             // 
             // barButtonItem19
             // 
@@ -804,7 +805,6 @@
             this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
             this.barButtonItem7.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
             this.barButtonItem7.Name = "barButtonItem7";
-            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // barButtonItem20
             // 
@@ -834,8 +834,8 @@
             // 
             // ribbonPageGroup14
             // 
-            this.ribbonPageGroup14.ItemLinks.Add(this.btnListPYC);
             this.ribbonPageGroup14.ItemLinks.Add(this.btnPYC);
+            this.ribbonPageGroup14.ItemLinks.Add(this.btnListPYC);
             this.ribbonPageGroup14.Name = "ribbonPageGroup14";
             this.ribbonPageGroup14.Text = "Phiếu yêu cầu";
             // 
@@ -861,7 +861,7 @@
             // ribbonPageGroup13
             // 
             this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem16);
-            this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem18);
+            this.ribbonPageGroup13.ItemLinks.Add(this.btnOrderWait);
             this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem19);
             this.ribbonPageGroup13.Name = "ribbonPageGroup13";
             this.ribbonPageGroup13.Text = "ribbonPageGroup13";
@@ -1053,15 +1053,6 @@
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // barButtonItem22
-            // 
-            this.barButtonItem22.Caption = "Tạo phiếu yêu cầu";
-            this.barButtonItem22.Id = 61;
-            this.barButtonItem22.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem22.ImageOptions.Image")));
-            this.barButtonItem22.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem22.ImageOptions.LargeImage")));
-            this.barButtonItem22.Name = "barButtonItem22";
-            this.barButtonItem22.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
             // frmMain
             // 
             this.Appearance.BackColor = System.Drawing.Color.Yellow;
@@ -1184,7 +1175,7 @@
         private DevExpress.XtraBars.BarButtonItem btnStatistics;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem18;
+        private DevExpress.XtraBars.BarButtonItem btnOrderWait;
         private DevExpress.XtraBars.BarButtonItem barButtonItem19;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
@@ -1205,6 +1196,5 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
         private DevExpress.XtraBars.BarButtonItem btnListPYC;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem22;
     }
 }
