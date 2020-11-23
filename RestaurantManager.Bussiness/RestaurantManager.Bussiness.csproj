@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="CommonBll.cs" />
     <Compile Include="CONGTHUCBll.cs" />
+    <Compile Include="HOADONTTBll.cs" />
+    <Compile Include="DONDATDABll.cs" />
     <Compile Include="KHACHHANGBll.cs" />
     <Compile Include="DANHMUCBll.cs" />
     <Compile Include="MONANBll.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="DONMHBll.cs" />
     <Compile Include="PYCBll.cs" />
     <Compile Include="USERSBll.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

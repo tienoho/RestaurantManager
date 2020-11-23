@@ -18,6 +18,7 @@ namespace RestaurantManager.Database
         public DONDATDA()
         {
             this.D_DONDATDA = new HashSet<D_DONDATDA>();
+            this.HOADONTTs = new HashSet<HOADONTT>();
         }
     
         public int iddondat { get; set; }
@@ -31,5 +32,7 @@ namespace RestaurantManager.Database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<D_DONDATDA> D_DONDATDA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOADONTT> HOADONTTs { get; set; }
     }
 }
