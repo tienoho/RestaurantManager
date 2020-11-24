@@ -107,7 +107,6 @@
             this.btnDONMH = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.btnListPYC = new DevExpress.XtraBars.BarButtonItem();
-            this.btnCreateDONMH = new DevExpress.XtraBars.BarButtonItem();
             this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -476,8 +475,7 @@
             this.btnPYC,
             this.btnDONMH,
             this.barButtonItem20,
-            this.btnListPYC,
-            this.btnCreateDONMH});
+            this.btnListPYC});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.menuToolStrip.MaxItemId = 67;
             this.menuToolStrip.Name = "menuToolStrip";
@@ -804,8 +802,8 @@
             // 
             this.btnDONMH.Caption = "Mua hàng";
             this.btnDONMH.Id = 62;
-            this.btnDONMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.btnDONMH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
+            this.btnDONMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDONMH.ImageOptions.Image")));
+            this.btnDONMH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDONMH.ImageOptions.LargeImage")));
             this.btnDONMH.Name = "btnDONMH";
             this.btnDONMH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDONMH_ItemClick);
             // 
@@ -826,13 +824,6 @@
             this.btnListPYC.Name = "btnListPYC";
             this.btnListPYC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnListPYC_ItemClick);
             // 
-            // btnCreateDONMH
-            // 
-            this.btnCreateDONMH.Caption = "Tao don mua hang";
-            this.btnCreateDONMH.Id = 66;
-            this.btnCreateDONMH.Name = "btnCreateDONMH";
-            this.btnCreateDONMH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCreateDONMH_ItemClick);
-            // 
             // rpProcedure
             // 
             this.rpProcedure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -852,7 +843,6 @@
             // ribbonPageGroup15
             // 
             this.ribbonPageGroup15.ItemLinks.Add(this.btnDONMH);
-            this.ribbonPageGroup15.ItemLinks.Add(this.btnCreateDONMH);
             this.ribbonPageGroup15.Name = "ribbonPageGroup15";
             this.ribbonPageGroup15.Text = "Mua hàng";
             // 
@@ -1207,6 +1197,5 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
         private DevExpress.XtraBars.BarButtonItem btnListPYC;
-        private DevExpress.XtraBars.BarButtonItem btnCreateDONMH;
     }
 }

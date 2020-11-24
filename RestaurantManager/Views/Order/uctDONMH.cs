@@ -129,5 +129,12 @@ namespace RestaurantManager
         }
         #endregion
 
+        /// <summary>
+        /// Xóa
+        /// </summary>
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
