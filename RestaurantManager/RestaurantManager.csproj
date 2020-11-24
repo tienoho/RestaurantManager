@@ -344,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="Database\StoredProcedure\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Common\" />
   </ItemGroup>
