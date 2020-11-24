@@ -12,6 +12,7 @@ namespace RestaurantManager.Model
         public int idhang { get; set; }
         public string tenhang { get; set; }
         public int slmh { get; set; }
+        public int slnhanhang { get; set; }
         public double dongiamh { get; set; }
         public double totalamount { get; set; }
         public System.DateTime CreateDate { get; set; }

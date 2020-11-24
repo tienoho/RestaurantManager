@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Bussiness;
 using RestaurantManager.Database;
 using RestaurantManager.Model;
@@ -20,18 +21,18 @@ namespace RestaurantManager.Views.Order
         List<NLIEU> lstnlieu;
         List<DONMH_ViewModel> lstDONMH_ViewModel;
         List<D_DONMH_ViewModel> lstD_DONMH_ViewModel = new List<D_DONMH_ViewModel>();
-        
+
         public frmGIAOHANG_Detail()
         {
             InitializeComponent();
-            luencc.Enabled = true;
-            luenlieu.Enabled = true;
-            nslmh.Enabled = true;
-            ndongiamh.Enabled = true;
+            luencc.Enabled = false;
+            luenlieu.Enabled = false;
+            nslgiaohang.Enabled = true;
+            nslnhanhang.Enabled = true;
             loadControls();
         }
         #region Function
-       
+
         public void loadControls()
         {
             //ncc
@@ -81,6 +82,19 @@ namespace RestaurantManager.Views.Order
             txtid.Text = Utils.getNewId("GIAOHANG").ToString();
         }
 
+        private void getDetailsDONMH(int id)
+        {
+            try
+            {
+                lstD_DONMH_ViewModel = new DONMHBll().GetListD_DONMH(id);
+                gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
+                gvD_DONMH.RefreshData();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         #endregion
 
         private void luenlieu_EditValueChanged(object sender, EventArgs e)
@@ -124,8 +138,8 @@ namespace RestaurantManager.Views.Order
 
         public void clearFrm()
         {
-            nslmh.Text = "0";
-            ndongiamh.Text = "0";
+            nslgiaohang.Text = "0";
+            nslnhanhang.Text = "0";
             txttenhang.Text = "";
             luenlieu.Text = "";
         }
@@ -140,9 +154,9 @@ namespace RestaurantManager.Views.Order
             {
                 //add
                 int.TryParse(luenlieu.EditValue.ToString(), out int idhanghoa);
-                int.TryParse(nslmh.EditValue.ToString(), out int slmh);
-                int.TryParse(ndongiamh.EditValue.ToString(), out int dongiamh);
-                var ngaydonmh = dtngaydonmh.Value;
+                int.TryParse(nslgiaohang.EditValue.ToString(), out int slmh);
+                int.TryParse(nslnhanhang.EditValue.ToString(), out int dongiamh);
+                var ngaydonmh = dtngaygiao.Value;
                 var tenhang = txttenhang.Text;
                 var iddonmh = int.Parse(txtid.Text);
 
@@ -180,8 +194,8 @@ namespace RestaurantManager.Views.Order
         public bool validateFrm()
         {
             int.TryParse(luenlieu.EditValue.ToString(), out int idhanghoa);
-            int.TryParse(nslmh.Text.ToString(), out int slmh);
-            double.TryParse(ndongiamh.Text.ToString(), out double dongiamh);
+            int.TryParse(nslgiaohang.Text.ToString(), out int slmh);
+            double.TryParse(nslnhanhang.Text.ToString(), out double dongiamh);
 
             if (luenlieu.Text == "" || luenlieu.Text == null || idhanghoa <= 0)
             {
@@ -211,7 +225,7 @@ namespace RestaurantManager.Views.Order
                 XtraMessageBox.Show("Bạn chưa chọn hàng hóa để xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-           var select = (D_DONMH_ViewModel)row;
+            var select = (D_DONMH_ViewModel)row;
             lstD_DONMH_ViewModel = lstD_DONMH_ViewModel.Where(p => p.iddonmh != select.iddonmh).ToList();
 
 
@@ -219,37 +233,131 @@ namespace RestaurantManager.Views.Order
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //validate
-            int iddonmh = int.Parse(txtid.Text);
-            var ngaydonmh = dtngaydonmh.Value;
-            int.TryParse(luencc.EditValue.ToString(), out int idncc);
-            if (ngaydonmh == null)
+            try
             {
-                XtraMessageBox.Show("Bạn chưa chọn ngày mua hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (lstD_DONMH_ViewModel.Count == 0)
-            {
-                XtraMessageBox.Show("Bạn chưa nhập hàng hóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            var obj = new DONMH_ViewModel()
-            {
-                iddonmh = iddonmh,
-                idncc = idncc,
-                ngaydonmh = ngaydonmh
-            };
+                int idpgiao = int.Parse(txtid.Text);
+                var ngaygiao = dtngaygiao.Value;
+                int.TryParse(luencc.EditValue.ToString(), out int idncc);
+                int.TryParse(lueDonMH.EditValue.ToString(), out int iddonmh);
+                if (ngaygiao == null)
+                {
+                    XtraMessageBox.Show("Bạn chưa chọn ngày mua hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (lstD_DONMH_ViewModel.Count == 0)
+                {
+                    XtraMessageBox.Show("Bạn chưa nhập hàng hóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                var model = new GIAOHANG_ViewModel()
+                {
+                    idpgiao = idpgiao,
+                    iddonmh = iddonmh,
+                    idncc = idncc,
+                    ngaygiao = dtngaygiao.Value,
+                    nguoigiao = txtNguoiGiao.Text,
+                    nguoilapphieu = Properties.Settings.Default.NameLog,
+                    nguoinhan = txtNguoiNhan.Text,
+                    cuahang = txtCuaHang.Text,
+                    diachi = txtCuaHang.Text,
+                };
+                var lstD_GIAOHANG = new List<D_GIAOHANG_ViewModel>();
+                foreach (var item in lstD_DONMH_ViewModel)
+                {
+                    var detail = new D_GIAOHANG_ViewModel
+                    {
+                        idhang = item.idhang,
+                        idpgiao = model.idpgiao,
+                        slgiaohang = item.slmh,
+                        slnhanhang = item.slnhanhang
+                    };
 
-            var res = new DONMHBll().saveDONMH(obj, lstD_DONMH_ViewModel, Properties.Settings.Default.NameLog);
-            if (res != "success")
+                    lstD_GIAOHANG.Add(detail);
+                }
+                var res = new GIAOHANGBll().AddGIAOHANG(model, lstD_GIAOHANG, Properties.Settings.Default.NameLog);
+                if (res != "success")
+                {
+                    XtraMessageBox.Show(res, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                XtraMessageBox.Show("Thêm phiếu giao hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+
+            }
+            catch(Exception ex)
             {
-                XtraMessageBox.Show(res, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void lueDonMH_EditValueChanged(object sender, EventArgs e)
+        {
+            LookUpEdit editor = sender as LookUpEdit;
+            object iddonmh = editor.GetColumnValue("iddonmh");
+            object idncc = editor.GetColumnValue("idncc");
+            luencc.EditValue = idncc;
+
+            int.TryParse(iddonmh.ToString(), out int id);
+            getDetailsDONMH(id);
+
+
+        }
+
+        private void gcD_DONMH_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
+        {
+            if (e.View.IsDetailView == false)
+                return;
+
+            (e.View as GridView).DoubleClick += gvD_DONMH_DoubleClick;
+        }
+
+        private void gvD_DONMH_DoubleClick(object sender, EventArgs e)
+        {
+            int RowHandle = (sender as GridView).FocusedRowHandle;
+            object idhang = (sender as GridView).GetRowCellValue(RowHandle, "idhang");
+            object slmh = (sender as GridView).GetRowCellValue(RowHandle, "slmh");
+            object slgiaohang = (sender as GridView).GetRowCellValue(RowHandle, "slgiaohang");
+
+            luenlieu.EditValue = idhang;
+            nslgiaohang.EditValue = slmh;
+            nslnhanhang.EditValue = slgiaohang;
+        }
+
+        private void btnUpdateDetails_Click(object sender, EventArgs e)
+        {
+            if (luenlieu.Text == "" || int.Parse(luenlieu.EditValue.ToString()) == 0)
+            {
+                XtraMessageBox.Show("Chưa chọn hàng hóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            this.Close();
-            uctDONMH uctDONMH = new uctDONMH();
-            uctDONMH.LoadGrid();
-            XtraMessageBox.Show("Thêm mới đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            int.TryParse(luenlieu.EditValue.ToString(), out int idhang);
+            int.TryParse(nslgiaohang.EditValue.ToString(), out int slmh);//số lượng giao hàng
+            int.TryParse(nslnhanhang.EditValue.ToString(), out int slnhanhang);
+            if (slmh <= 0)
+            {
+                XtraMessageBox.Show("Số lượng giao hàng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (slnhanhang <= 0)
+            {
+                XtraMessageBox.Show("Số lượng nhận hàng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (slnhanhang > slmh)
+            {
+                XtraMessageBox.Show("Số lượng nhận hàng phải lớn hơn hoặc bằng số lượng giao hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var item = lstD_DONMH_ViewModel.FirstOrDefault(x => x.idhang == idhang);
+            if (item != null)
+            {
+                item.slmh = slmh;
+                item.slnhanhang = slnhanhang;
+            }
+            gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
+            gvD_DONMH.RefreshData();
+
         }
     }
 }

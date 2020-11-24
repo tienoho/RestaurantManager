@@ -38,7 +38,7 @@ namespace RestaurantManager.Bussiness
                 return null;
             }
         }
-        public string AddGIAOHANG(GIAOHANG_ViewModel model)
+        public string AddGIAOHANG(GIAOHANG_ViewModel model, List<D_GIAOHANG_ViewModel> lstD_GIAOHANG, string userLogin)
         {
             try
             {
@@ -57,13 +57,13 @@ namespace RestaurantManager.Bussiness
                             nguoigiao = model.nguoigiao,
                             nguoilapphieu = model.nguoilapphieu,
                             nguoinhan = model.nguoinhan,
-                            CreateBy = model.CreateBy,
+                            CreateBy = userLogin,
                             CreateDate = DateTime.Now,
                         };
                         var result = db.GIAOHANGs.Add(GIAOHANG);
                         db.SaveChanges();
 
-                        foreach (D_GIAOHANG_ViewModel item in model.D_GIAOHANG)
+                        foreach (D_GIAOHANG_ViewModel item in lstD_GIAOHANG)
                         {
                             var D_GIAOHANG = new D_GIAOHANG
                             {
@@ -71,15 +71,15 @@ namespace RestaurantManager.Bussiness
                                 idhang = item.idhang,
                                 slgiaohang = item.slgiaohang,
                                 slnhanhang = item.slnhanhang,
-                                CreateBy = model.CreateBy,
+                                CreateBy = userLogin,
                                 CreateDate = DateTime.Now,
                             };
                             db.D_GIAOHANG.Add(D_GIAOHANG);
                         }
                         db.SaveChanges();
-                        return "Tao phieu giao thành công!";
+                        return "success";
                     }
-                    return "Tao phieu giao không thành công!";
+                    return "Tạo phiếu giao hàng không thành công!";
                 }
             }
             catch (Exception ex)

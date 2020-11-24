@@ -30,30 +30,8 @@ namespace RestaurantManager
         public static uctGIAOHANG uctDL = new uctGIAOHANG();
         private void uctGIAOHANG_Load(object sender, EventArgs e)
         {
-            LoadDataGrid();
-        }
-
-        #region Đơn mua hàng
-        private void LoadDataGrid()
-        {
             LoadGrid();
-        }
 
-        #endregion
-        private void txtNumberPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtTotalDebtOfAgency_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
         }
         #region Event
 
@@ -61,8 +39,8 @@ namespace RestaurantManager
         {
             //Determine row in event handler  
             int RowHandle = (sender as GridView).FocusedRowHandle;
-            object iddonmh = (sender as GridView).GetRowCellValue(RowHandle, "iddonmh");
-            LoadGridDetails((int)iddonmh);
+            object idpgiao = (sender as GridView).GetRowCellValue(RowHandle, "idpgiao");
+            LoadGridDetails((int)idpgiao);
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -76,7 +54,11 @@ namespace RestaurantManager
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmGIAOHANG_Detail frm = new frmGIAOHANG_Detail();
-            frm.ShowDialog();
+            var result = frm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadGrid();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -100,6 +82,7 @@ namespace RestaurantManager
         {
             lstGIAOHANG = new GIAOHANGBll().GetListGIAOHANG();
             gcGIAOHANG.DataSource = lstGIAOHANG;
+            gvGIAOHANG.RefreshData();
         }
         private void ClearDisplay()
         {
