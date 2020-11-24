@@ -141,9 +141,18 @@ namespace RestaurantManager.Bussiness
         /// <returns></returns>
         public string getNewIdDONMH()
         {
-            using (var db = new RestaurantManagerDataEntities())
+            try
             {
-                return (db.DONMHs.AsNoTracking().ToList().Count() + 1).ToString();
+                using (var db = new RestaurantManagerDataEntities())
+                {
+
+                    var result = db.Database.SqlQuery<DONMH_ViewModel>("EXEC dbo.[Proc_GetNewIdDONMH]").FirstOrDefault();
+                    return (result.iddonmh).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
 

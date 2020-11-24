@@ -185,6 +185,16 @@ namespace RestaurantManager.Views.Order
 
         private void btnDeleteDetails_Click(object sender, EventArgs e)
         {
+            var selects = gvD_DONMH.GetSelectedRows();
+            var row = gvD_DONMH.GetRow(selects[0]);
+            if (selects == null)
+            {
+                XtraMessageBox.Show("Bạn chưa chọn hàng hóa để xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+           var select = (D_DONMH_ViewModel)row;
+            lstD_DONMH_ViewModel = lstD_DONMH_ViewModel.Where(p => p.iddonmh != select.iddonmh).ToList();
+
 
         }
 
