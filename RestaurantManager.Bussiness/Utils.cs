@@ -38,9 +38,9 @@ namespace RestaurantManager.Bussiness
                     return result;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                return ex.Message;
+                return 1;
             }
         }
     }

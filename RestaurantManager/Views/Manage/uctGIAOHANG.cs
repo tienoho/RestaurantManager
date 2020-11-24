@@ -75,8 +75,8 @@ namespace RestaurantManager
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmDONMH_Detail frm = new frmDONMH_Detail();
-            frm.Show();
+            frmGIAOHANG_Detail frm = new frmGIAOHANG_Detail();
+            frm.ShowDialog();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

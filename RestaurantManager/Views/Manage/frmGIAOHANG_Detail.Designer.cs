@@ -1,4 +1,6 @@
-﻿namespace RestaurantManager.Views.Order
+﻿using DevExpress.XtraEditors;
+
+namespace RestaurantManager.Views.Order
 {
     partial class frmGIAOHANG_Detail
     {
