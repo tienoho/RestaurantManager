@@ -315,8 +315,12 @@ namespace RestaurantManager
             addTabPages(uctDONMH_Detail.uctDL, 10, "Tạo đơn mua hàng");
         }
 
+
         #endregion
 
-
+        private void btnGiaoHang_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctGIAOHANG.uctDL, 10, "Giao hàng");
+        }
     }
 }

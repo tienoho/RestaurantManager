@@ -1079,6 +1079,7 @@
             this.btnGiaoHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
             this.btnGiaoHang.Name = "btnGiaoHang";
             this.btnGiaoHang.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnGiaoHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGiaoHang_ItemClick);
             // 
             // barButtonItem18
             // 
