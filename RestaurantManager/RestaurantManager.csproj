@@ -283,6 +283,9 @@
     <EmbeddedResource Include="Views\Manage\uctMenu.resx">
       <DependentUpon>uctMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Order\frmDONMH_Detail.resx">
+      <DependentUpon>frmDONMH_Detail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Order\uctDONDATDA.resx">
       <DependentUpon>uctDONDATDA.cs</DependentUpon>
     </EmbeddedResource>

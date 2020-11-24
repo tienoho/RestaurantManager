@@ -143,7 +143,7 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.gcD_DONMH);
             this.panelControl1.Location = new System.Drawing.Point(10, 220);
@@ -180,6 +180,7 @@
             this.gvD_DONMH.OptionsCustomization.AllowGroup = false;
             this.gvD_DONMH.OptionsCustomization.AllowMergedGrouping = DevExpress.Utils.DefaultBoolean.True;
             this.gvD_DONMH.OptionsFind.AllowFindPanel = false;
+            this.gvD_DONMH.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvD_DONMH_RowClick_1);
             // 
             // gcidhang
             // 
@@ -405,6 +406,7 @@
             this.btnUpdateDetails.Text = "Sửa";
             this.btnUpdateDetails.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdateDetails.UseVisualStyleBackColor = false;
+            this.btnUpdateDetails.Click += new System.EventHandler(this.btnUpdateDetails_Click_1);
             // 
             // btnAddDetails
             // 
