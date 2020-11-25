@@ -21,8 +21,8 @@ namespace RestaurantManager
 {
     public partial class uctGIAOHANG : UserControl
     {
-        List<DONMH_ViewModel> lstDONMH;
-        List<D_DONMH_ViewModel> lstD_DONMH;
+        List<GIAOHANG_ViewModel> lstGIAOHANG;
+        List<D_GIAOHANG_ViewModel> lstD_GIAOHANG;
         public uctGIAOHANG()
         {
             InitializeComponent();
@@ -30,30 +30,8 @@ namespace RestaurantManager
         public static uctGIAOHANG uctDL = new uctGIAOHANG();
         private void uctGIAOHANG_Load(object sender, EventArgs e)
         {
-            LoadDataGrid();
-        }
-
-        #region Đơn mua hàng
-        private void LoadDataGrid()
-        {
             LoadGrid();
-        }
 
-        #endregion
-        private void txtNumberPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtTotalDebtOfAgency_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
         }
         #region Event
 
@@ -61,8 +39,8 @@ namespace RestaurantManager
         {
             //Determine row in event handler  
             int RowHandle = (sender as GridView).FocusedRowHandle;
-            object iddonmh = (sender as GridView).GetRowCellValue(RowHandle, "iddonmh");
-            LoadGridDetails((int)iddonmh);
+            object idpgiao = (sender as GridView).GetRowCellValue(RowHandle, "idpgiao");
+            LoadGridDetails((int)idpgiao);
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -75,8 +53,12 @@ namespace RestaurantManager
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmDONMH_Detail frm = new frmDONMH_Detail();
-            frm.Show();
+            frmGIAOHANG_Detail frm = new frmGIAOHANG_Detail();
+            var result = frm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadGrid();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -98,8 +80,9 @@ namespace RestaurantManager
         #region Function
         public void LoadGrid()
         {
-            lstDONMH = new DONMHBll().GetListDONMH();
-            gridControl1.DataSource = lstDONMH;
+            lstGIAOHANG = new GIAOHANGBll().GetListGIAOHANG();
+            gcGIAOHANG.DataSource = lstGIAOHANG;
+            gvGIAOHANG.RefreshData();
         }
         private void ClearDisplay()
         {
@@ -122,10 +105,10 @@ namespace RestaurantManager
         #endregion
 
         #region Chi tiết
-        async public void LoadGridDetails(int iddonmh)
+        async public void LoadGridDetails(int id)
         {
-            lstD_DONMH = await Task.Run(() => new DONMHBll().GetListD_DONMH(iddonmh));
-            gcD_DONMH.DataSource = lstD_DONMH;
+            lstD_GIAOHANG = await Task.Run(() => new GIAOHANGBll().GetListD_GIAOHANG(id));
+            gcD_GIAOHANG.DataSource = lstD_GIAOHANG;
         }
         #endregion
 
