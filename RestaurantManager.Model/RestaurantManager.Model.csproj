@@ -47,10 +47,12 @@
     <Compile Include="D_DONDATDA_ViewModel.cs" />
     <Compile Include="D_DONMH_ViewModel.cs" />
     <Compile Include="D_GIAOHANG_ViewModel.cs" />
+    <Compile Include="D_HOADONM_ViewModel.cs" />
     <Compile Include="D_HOADONTT_ViewModel.cs" />
     <Compile Include="D_PNHAP_ViewModel.cs" />
     <Compile Include="D_PYC_ViewModel.cs" />
     <Compile Include="GIAOHANG_ViewModel.cs" />
+    <Compile Include="HOADONM_ViewModel.cs" />
     <Compile Include="HOADONTT_ViewModel.cs" />
     <Compile Include="KHACHHANG_ViewModel.cs" />
     <Compile Include="MONAN_ViewModel.cs" />
