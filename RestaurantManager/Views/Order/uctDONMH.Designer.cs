@@ -32,7 +32,6 @@ namespace RestaurantManager
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -49,6 +48,7 @@ namespace RestaurantManager
             this.gcsldukien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcdongia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gctotalamount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -78,23 +78,6 @@ namespace RestaurantManager
             this.label9.Size = new System.Drawing.Size(172, 19);
             this.label9.TabIndex = 13;
             this.label9.Text = "THÔNG TIN CHI TIẾT";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Image = global::RestaurantManager.Properties.Resources.update_5;
-            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(130, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(70, 28);
-            this.btnUpdate.TabIndex = 17;
-            this.btnUpdate.Text = "Sửa";
-            this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -265,14 +248,31 @@ namespace RestaurantManager
             this.gctotalamount.VisibleIndex = 4;
             this.gctotalamount.Width = 262;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::RestaurantManager.Properties.Resources.x2;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(130, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 28);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Xóa";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // uctDONMH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
@@ -295,7 +295,6 @@ namespace RestaurantManager
         #endregion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
         private PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
@@ -312,5 +311,6 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gcdongia;
         private DevExpress.XtraGrid.Columns.GridColumn gcncc;
         private DevExpress.XtraGrid.Columns.GridColumn gctotalamount;
+        private System.Windows.Forms.Button button1;
     }
 }

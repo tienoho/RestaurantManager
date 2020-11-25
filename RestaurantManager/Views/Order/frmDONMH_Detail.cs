@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Bussiness;
 using RestaurantManager.Database;
 using RestaurantManager.Model;
@@ -192,10 +193,14 @@ namespace RestaurantManager.Views.Order
                 XtraMessageBox.Show("Bạn chưa chọn hàng hóa để xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-           var select = (D_DONMH_ViewModel)row;
-            lstD_DONMH_ViewModel = lstD_DONMH_ViewModel.Where(p => p.iddonmh != select.iddonmh).ToList();
-
-
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                var select = (D_DONMH_ViewModel)row;
+                lstD_DONMH_ViewModel = lstD_DONMH_ViewModel.Where(p => p.idhang != select.idhang).ToList();
+                gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
+                return;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -231,6 +236,44 @@ namespace RestaurantManager.Views.Order
             uctDONMH uctDONMH = new uctDONMH();
             uctDONMH.LoadGrid();
             XtraMessageBox.Show("Thêm mới đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void gvD_DONMH_RowClick_1(object sender, RowClickEventArgs e)
+        {
+            var idhanghoa = (sender as GridView).GetFocusedRowCellValue("idhang");
+            var tenhang = (sender as GridView).GetFocusedRowCellValue("tenhang");
+            var slmh = (sender as GridView).GetFocusedRowCellValue("slmh");
+            var dongiamh = (sender as GridView).GetFocusedRowCellValue("dongiamh");
+            luenlieu.Text = tenhang.ToString();
+            luenlieu.EditValue = idhanghoa;
+            txttenhang.Text = tenhang.ToString();
+            nslmh.Text = slmh.ToString();
+            ndongiamh.Text = dongiamh.ToString();
+        }
+
+        private void btnUpdateDetails_Click_1(object sender, EventArgs e)
+        {
+            int.TryParse(luenlieu.EditValue.ToString(), out int idhanghoa);
+            int.TryParse(nslmh.Text.ToString(), out int slmh);
+            double.TryParse(ndongiamh.Text.ToString(), out double dongiamh);
+
+            var sl = lstD_DONMH_ViewModel.FirstOrDefault(p => p.idhang == idhanghoa);
+            if (sl == null)
+            {
+                XtraMessageBox.Show("Hàng hóa chưa có trong chi tiết!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (validateFrm())
+            {
+                //remove đi add lại
+                lstD_DONMH_ViewModel.Remove(sl);
+                sl.slmh = slmh;
+                sl.dongiamh = dongiamh;
+                sl.totalamount = slmh * dongiamh;
+                lstD_DONMH_ViewModel.Add(sl);
+                gcD_DONMH.DataSource = null;
+                gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
+            }
         }
     }
 }
