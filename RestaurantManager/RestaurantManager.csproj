@@ -144,6 +144,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConect.cs" />
     <Compile Include="ViewsModels\EmployeeReportType.cs" />
+    <Compile Include="Views\Manage\frmPNHap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Manage\frmPNHap.Designer.cs">
+      <DependentUpon>frmPNHap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Manage\frmGIAOHANG_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Manage\frmPNHap.resx">
+      <DependentUpon>frmPNHap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\frmGIAOHANG_Detail.resx">
       <DependentUpon>frmGIAOHANG_Detail.cs</DependentUpon>
     </EmbeddedResource>
