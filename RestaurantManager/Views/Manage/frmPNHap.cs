@@ -15,14 +15,14 @@ using System.Windows.Forms;
 
 namespace RestaurantManager.Views.Order
 {
-    public partial class frmGIAOHANG_Detail : Form
+    public partial class frmPNhap : Form
     {
         List<NCC_ViewModel> lstncc;
         List<NLIEU> lstnlieu;
         List<DONMH_ViewModel> lstDONMH_ViewModel;
         List<D_DONMH_ViewModel> lstD_DONMH_ViewModel = new List<D_DONMH_ViewModel>();
 
-        public frmGIAOHANG_Detail()
+        public frmPNhap()
         {
             InitializeComponent();
             luencc.Enabled = false;

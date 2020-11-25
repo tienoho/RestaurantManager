@@ -2,7 +2,7 @@
 
 namespace RestaurantManager.Views.Order
 {
-    partial class frmGIAOHANG_Detail
+    partial class frmPNhap
     {
         /// <summary>
         /// Required designer variable.
@@ -279,7 +279,7 @@ namespace RestaurantManager.Views.Order
             // 
             // panelControl1
             // 
-            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.gcD_DONMH);
             this.panelControl1.Location = new System.Drawing.Point(10, 309);
