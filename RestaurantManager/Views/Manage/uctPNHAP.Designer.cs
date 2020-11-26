@@ -49,6 +49,8 @@ namespace RestaurantManager
             this.gcsldukien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcdongia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gctotalamount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.gcthukho = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -89,7 +91,7 @@ namespace RestaurantManager
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpdate.Location = new System.Drawing.Point(147, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(70, 28);
+            this.btnUpdate.Size = new System.Drawing.Size(61, 27);
             this.btnUpdate.TabIndex = 17;
             this.btnUpdate.Text = "Sửa";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -140,7 +142,8 @@ namespace RestaurantManager
             this.gciddonmh,
             this.gcngaydonmh,
             this.gcCreateBy,
-            this.gcncc});
+            this.gcncc,
+            this.gcthukho});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -151,8 +154,8 @@ namespace RestaurantManager
             // 
             // gciddonmh
             // 
-            this.gciddonmh.Caption = "Mã đơn mua";
-            this.gciddonmh.FieldName = "iddonmh";
+            this.gciddonmh.Caption = "Mã phiếu nhập";
+            this.gciddonmh.FieldName = "idpnhap";
             this.gciddonmh.Name = "gciddonmh";
             this.gciddonmh.Visible = true;
             this.gciddonmh.VisibleIndex = 0;
@@ -160,28 +163,28 @@ namespace RestaurantManager
             // 
             // gcngaydonmh
             // 
-            this.gcngaydonmh.Caption = "Ngày tạo";
+            this.gcngaydonmh.Caption = "Ngày nhập";
             this.gcngaydonmh.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.gcngaydonmh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gcngaydonmh.FieldName = "ngaydonmh";
+            this.gcngaydonmh.FieldName = "ngaynhap";
             this.gcngaydonmh.Name = "gcngaydonmh";
             this.gcngaydonmh.Visible = true;
-            this.gcngaydonmh.VisibleIndex = 2;
+            this.gcngaydonmh.VisibleIndex = 3;
             this.gcngaydonmh.Width = 108;
             // 
             // gcCreateBy
             // 
-            this.gcCreateBy.Caption = "Người tạo";
-            this.gcCreateBy.FieldName = "CreateBy";
+            this.gcCreateBy.Caption = "Người lập";
+            this.gcCreateBy.FieldName = "nguoilapphieu";
             this.gcCreateBy.Name = "gcCreateBy";
             this.gcCreateBy.Visible = true;
-            this.gcCreateBy.VisibleIndex = 3;
+            this.gcCreateBy.VisibleIndex = 4;
             this.gcCreateBy.Width = 108;
             // 
             // gcncc
             // 
-            this.gcncc.Caption = "Nhà cung cấp";
-            this.gcncc.FieldName = "tenncc";
+            this.gcncc.Caption = "Mã đơn giao";
+            this.gcncc.FieldName = "idpgiao";
             this.gcncc.Name = "gcncc";
             this.gcncc.Visible = true;
             this.gcncc.VisibleIndex = 1;
@@ -265,11 +268,37 @@ namespace RestaurantManager
             this.gctotalamount.VisibleIndex = 4;
             this.gctotalamount.Width = 262;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::RestaurantManager.Properties.Resources.x2;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(214, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 26);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Xóa";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // gcthukho
+            // 
+            this.gcthukho.Caption = "Thủ kho";
+            this.gcthukho.FieldName = "thukho";
+            this.gcthukho.Name = "gcthukho";
+            this.gcthukho.Visible = true;
+            this.gcthukho.VisibleIndex = 2;
+            // 
             // uctPNHAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.btnUpdate);
@@ -312,5 +341,7 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gcdongia;
         private DevExpress.XtraGrid.Columns.GridColumn gcncc;
         private DevExpress.XtraGrid.Columns.GridColumn gctotalamount;
+        private System.Windows.Forms.Button button1;
+        private DevExpress.XtraGrid.Columns.GridColumn gcthukho;
     }
 }

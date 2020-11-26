@@ -162,7 +162,6 @@ namespace RestaurantManager.Views.Order
                 int.TryParse(luenlieu.EditValue.ToString(), out int idhanghoa);
                 int.TryParse(nslgiaohang.EditValue.ToString(), out int slgiao);
                 int.TryParse(nslnhanhang.EditValue.ToString(), out int slnhap);
-                var ngaydonmh = dtngaygiao.Value;
                 var tenhang = txttenhang.Text;
                 var idpgiao = int.Parse(txtid.Text);
 
@@ -230,22 +229,21 @@ namespace RestaurantManager.Views.Order
                 XtraMessageBox.Show("Bạn chưa chọn hàng hóa để xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var select = (D_DONMH_ViewModel)row;
-            lstD_DONMH_ViewModel = lstD_DONMH_ViewModel.Where(p => p.iddonmh != select.iddonmh).ToList();
+            var select = (D_PNHAP)row;
 
-
+            var res = new PNHAPBll().DeletePNHAP(select.idpnhap);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                int idpgiao = int.Parse(txtid.Text);
-                var ngaygiao = dtngaygiao.Value;
+                int idpnhap = int.Parse(txtid.Text);
+                var ngaynhap = dtngaynhap.Value;
                 int.TryParse(lueDONGIAO.EditValue.ToString(), out int iddonmh);
-                if (ngaygiao == null)
+                if (ngaynhap == null)
                 {
-                    XtraMessageBox.Show("Bạn chưa chọn ngày giao!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    XtraMessageBox.Show("Bạn chưa chọn ngày nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if (lstD_DONMH_ViewModel.Count == 0)
@@ -255,9 +253,9 @@ namespace RestaurantManager.Views.Order
                 }
                 var model = new GIAOHANG_ViewModel()
                 {
-                    idpgiao = idpgiao,
+                    idpgiao = idpnhap,
                     iddonmh = iddonmh,
-                    ngaygiao = dtngaygiao.Value,
+                    ngaygiao = dtngaynhap.Value,
                     nguoigiao = txtNguoiGiao.Text,
                     nguoilapphieu = Properties.Settings.Default.NameLog,
                     nguoinhan = txtNguoiNhan.Text,
