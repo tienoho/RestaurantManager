@@ -75,7 +75,7 @@ namespace RestaurantManager
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmDONMH_Detail frm = new frmDONMH_Detail();
+            frmPNhap frm = new frmPNhap();
             frm.Show();
         }
 

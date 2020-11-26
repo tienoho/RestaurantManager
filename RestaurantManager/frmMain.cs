@@ -322,5 +322,10 @@ namespace RestaurantManager
         {
             addTabPages(uctGIAOHANG.uctDL, 10, "Giao hàng");
         }
+
+        private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctPNHAP.uctDL, 10, "Nhập hàng");
+        }
     }
 }

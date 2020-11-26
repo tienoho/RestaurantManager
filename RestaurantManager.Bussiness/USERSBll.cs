@@ -29,5 +29,25 @@ namespace RestaurantManager.Bussiness
                 return null;
             }
         }
+
+
+        public List<USER> GetUsersByPosition(string position, string loginCode,ref string outmess)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var lst = db.USERS.AsNoTracking().Where(e => e.ChucVu == position).ToList();
+                    outmess = "success";
+                    return lst;
+                }
+            }
+            catch (Exception ex)
+            {
+                outmess = ex.Message;
+                return null;
+            }
+        }
+
     }
 }

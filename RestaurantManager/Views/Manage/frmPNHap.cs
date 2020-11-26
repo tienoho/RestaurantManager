@@ -19,14 +19,15 @@ namespace RestaurantManager.Views.Order
     {
         List<NCC_ViewModel> lstncc;
         List<NLIEU> lstnlieu;
-        List<DONMH_ViewModel> lstDONMH_ViewModel;
+        List<GIAOHANG_ViewModel> lstGIAOHANG_ViewModel;
+        List<USER> lstUser_ViewModel;
         List<D_DONMH_ViewModel> lstD_DONMH_ViewModel = new List<D_DONMH_ViewModel>();
+        List<D_GIAOHANG_ViewModel> lstD_GIAOHANG_ViewModel = new List<D_GIAOHANG_ViewModel>();
 
         public frmPNhap()
         {
             InitializeComponent();
-            luencc.Enabled = false;
-            luenlieu.Enabled = false;
+            luenlieu.Enabled = true;
             nslgiaohang.Enabled = true;
             nslnhanhang.Enabled = true;
             loadControls();
@@ -35,21 +36,6 @@ namespace RestaurantManager.Views.Order
 
         public void loadControls()
         {
-            //ncc
-            lstncc = new NCCBll().GetListNCC();
-
-            luencc.Properties.DataSource = lstncc
-                .Select(item => new
-                {
-                    item.idncc,
-                    item.tenncc,
-                    item.sdt,
-                    item.stk,
-                    item.diachi
-                }).ToList();
-            luencc.Properties.ValueMember = "idncc";
-            luencc.Properties.DisplayMember = "tenncc";
-
             //hàng hóa
             lstnlieu = new NLIEUBll().GetListNLIEU();
 
@@ -64,30 +50,50 @@ namespace RestaurantManager.Views.Order
             luenlieu.Properties.ValueMember = "idhang";
             luenlieu.Properties.DisplayMember = "tenhang";
 
-
-            //Load DonMH
-            lstDONMH_ViewModel = new DONMHBll().GetListDONMH();
-            lueDonMH.Properties.DataSource = lstDONMH_ViewModel
+            //Load giaohang
+            lstGIAOHANG_ViewModel = new GIAOHANGBll().GetListGIAOHANG();
+            lueDONGIAO.Properties.DataSource = lstGIAOHANG_ViewModel
                  .Select(item => new
                  {
-                     item.iddonmh,
-                     item.idncc,
-                     item.tenncc,
-                     item.ngaydonmh
+                     item.idpgiao,
+                     item.ngaygiao,
+                     item.nguoigiao,
+                     item.nguoinhan,
+                     item.diachi,
                  }).ToList();
-            lueDonMH.Properties.ValueMember = "iddonmh";
-            lueDonMH.Properties.DisplayMember = "iddonmh";
+            lueDONGIAO.Properties.ValueMember = "idpgiao";
+            lueDONGIAO.Properties.DisplayMember = "idpgiao";
+            string outmess = string.Empty;
+            //thu kho
+            lstUser_ViewModel = new USERSBll().GetUsersByPosition("THUKHO", Properties.Settings.Default.NameLog,ref outmess);
+            if (outmess !="success")
+            {
+                XtraMessageBox.Show("Đã có lỗi xảy ra!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            lueStorekeeper.Properties.DataSource = lstUser_ViewModel
+                 .Select(item => new
+                 {
+                     item.id,
+                     item.UserName,
+                     item.ChucVu,
+                     item.DiaChi,
+                     item.SoDT
+                 }).ToList();
+            lueStorekeeper.Properties.ValueMember = "id";
+            lueStorekeeper.Properties.DisplayMember = "UserName";
 
             //txtid
             txtid.Text = Utils.getNewId("GIAOHANG").ToString();
         }
 
-        private void getDetailsDONMH(int id)
+        private void getDetailsGIAOHANG(int id)
         {
             try
             {
-                lstD_DONMH_ViewModel = new DONMHBll().GetListD_DONMH(id);
-                gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
+                string outmess = string.Empty;
+                lstD_GIAOHANG_ViewModel = new PNHAPBll().GetLstDonGiao(id,ref outmess);
+                gcD_DONMH.DataSource = lstD_GIAOHANG_ViewModel;
                 gvD_DONMH.RefreshData();
             }
             catch (Exception ex)
@@ -154,20 +160,19 @@ namespace RestaurantManager.Views.Order
             {
                 //add
                 int.TryParse(luenlieu.EditValue.ToString(), out int idhanghoa);
-                int.TryParse(nslgiaohang.EditValue.ToString(), out int slmh);
-                int.TryParse(nslnhanhang.EditValue.ToString(), out int dongiamh);
+                int.TryParse(nslgiaohang.EditValue.ToString(), out int slgiao);
+                int.TryParse(nslnhanhang.EditValue.ToString(), out int slnhap);
                 var ngaydonmh = dtngaygiao.Value;
                 var tenhang = txttenhang.Text;
-                var iddonmh = int.Parse(txtid.Text);
+                var idpgiao = int.Parse(txtid.Text);
 
-                var d_donmh = new D_DONMH_ViewModel
+                var d_giaohang = new D_GIAOHANG_ViewModel
                 {
-                    iddonmh = iddonmh,
+                    idpgiao = idpgiao,
                     idhang = idhanghoa,
-                    tenhang = tenhang,
-                    slmh = slmh,
-                    dongiamh = dongiamh,
-                    totalamount = slmh * dongiamh,
+                    tenhang = tenhang,                    
+                    slnhanhang = slnhap,
+                    slgiaohang = slgiao,
                     CreateBy = Properties.Settings.Default.NameLog,
                     ModifyBy = Properties.Settings.Default.NameLog,
                     CreateDate = DateTime.Now,
@@ -175,16 +180,16 @@ namespace RestaurantManager.Views.Order
                 };
 
                 //check trùng
-                var check = lstD_DONMH_ViewModel.FirstOrDefault(p => p.idhang == d_donmh.idhang);
+                var check = lstD_GIAOHANG_ViewModel.FirstOrDefault(p => p.idhang == d_giaohang.idhang);
                 if (check != null)
                 {
                     XtraMessageBox.Show("Hàng hóa đã được chọn. Vui lòng sửa lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    lstD_DONMH_ViewModel.Add(d_donmh);
+                    lstD_GIAOHANG_ViewModel.Add(d_giaohang);
                     gcD_DONMH.DataSource = null;
-                    gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
+                    gcD_DONMH.DataSource = lstD_GIAOHANG_ViewModel;
                     clearFrm();
                 }
             }
@@ -194,22 +199,22 @@ namespace RestaurantManager.Views.Order
         public bool validateFrm()
         {
             int.TryParse(luenlieu.EditValue.ToString(), out int idhanghoa);
-            int.TryParse(nslgiaohang.Text.ToString(), out int slmh);
-            double.TryParse(nslnhanhang.Text.ToString(), out double dongiamh);
+            int.TryParse(nslgiaohang.Text.ToString(), out int slgiao);
+            double.TryParse(nslnhanhang.Text.ToString(), out double slnhap);
 
             if (luenlieu.Text == "" || luenlieu.Text == null || idhanghoa <= 0)
             {
                 XtraMessageBox.Show("Bạn chưa chọn mã hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (slmh <= 0)
+            if (slgiao <= 0)
             {
-                XtraMessageBox.Show("Số lượng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Số lượng giao không được nhỏ hơn 1!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (dongiamh <= 0)
+            if (slnhap <= 0)
             {
-                XtraMessageBox.Show("Đơn giá phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Đơn giá phải lớn hơn 0", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -237,11 +242,10 @@ namespace RestaurantManager.Views.Order
             {
                 int idpgiao = int.Parse(txtid.Text);
                 var ngaygiao = dtngaygiao.Value;
-                int.TryParse(luencc.EditValue.ToString(), out int idncc);
-                int.TryParse(lueDonMH.EditValue.ToString(), out int iddonmh);
+                int.TryParse(lueDONGIAO.EditValue.ToString(), out int iddonmh);
                 if (ngaygiao == null)
                 {
-                    XtraMessageBox.Show("Bạn chưa chọn ngày mua hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    XtraMessageBox.Show("Bạn chưa chọn ngày giao!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if (lstD_DONMH_ViewModel.Count == 0)
@@ -253,13 +257,10 @@ namespace RestaurantManager.Views.Order
                 {
                     idpgiao = idpgiao,
                     iddonmh = iddonmh,
-                    idncc = idncc,
                     ngaygiao = dtngaygiao.Value,
                     nguoigiao = txtNguoiGiao.Text,
                     nguoilapphieu = Properties.Settings.Default.NameLog,
                     nguoinhan = txtNguoiNhan.Text,
-                    cuahang = txtCuaHang.Text,
-                    diachi = txtCuaHang.Text,
                 };
                 var lstD_GIAOHANG = new List<D_GIAOHANG_ViewModel>();
                 foreach (var item in lstD_DONMH_ViewModel)
@@ -292,15 +293,7 @@ namespace RestaurantManager.Views.Order
 
         private void lueDonMH_EditValueChanged(object sender, EventArgs e)
         {
-            LookUpEdit editor = sender as LookUpEdit;
-            object iddonmh = editor.GetColumnValue("iddonmh");
-            object idncc = editor.GetColumnValue("idncc");
-            luencc.EditValue = idncc;
-
-            int.TryParse(iddonmh.ToString(), out int id);
-            getDetailsDONMH(id);
-
-
+           
         }
 
         private void gcD_DONMH_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
@@ -358,6 +351,32 @@ namespace RestaurantManager.Views.Order
             gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
             gvD_DONMH.RefreshData();
 
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lueStorekeeper_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lueDONGIAO_EditValueChanged(object sender, EventArgs e)
+        {
+            LookUpEdit editor = sender as LookUpEdit;
+            object idpgiao = editor.GetColumnValue("idpgiao");
+            string nguoigiao = editor.GetColumnValue("nguoigiao").ToString();
+            txtNguoiGiao.Text = nguoigiao;
+
+            int.TryParse(idpgiao.ToString(), out int id);
+            getDetailsGIAOHANG(id);
         }
     }
 }
