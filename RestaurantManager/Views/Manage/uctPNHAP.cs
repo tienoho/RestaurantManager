@@ -21,8 +21,8 @@ namespace RestaurantManager
 {
     public partial class uctPNHAP : UserControl
     {
-        List<DONMH_ViewModel> lstDONMH;
-        List<D_DONMH_ViewModel> lstD_DONMH;
+        List<PNHAP> lstPNHAP;
+        List<D_PNHAP> lstDPNHAP;
         public uctPNHAP()
         {
             InitializeComponent();
@@ -61,8 +61,8 @@ namespace RestaurantManager
         {
             //Determine row in event handler  
             int RowHandle = (sender as GridView).FocusedRowHandle;
-            object iddonmh = (sender as GridView).GetRowCellValue(RowHandle, "iddonmh");
-            LoadGridDetails((int)iddonmh);
+            object idpnhap = (sender as GridView).GetRowCellValue(RowHandle, "idpnhap");
+            LoadGridDetails((int)idpnhap);
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -98,8 +98,8 @@ namespace RestaurantManager
         #region Function
         public void LoadGrid()
         {
-            lstDONMH = new DONMHBll().GetListDONMH();
-            gridControl1.DataSource = lstDONMH;
+            lstPNHAP = new PNHAPBll().GetListPNHAP();
+            gridControl1.DataSource = lstPNHAP;
         }
         private void ClearDisplay()
         {
@@ -122,11 +122,28 @@ namespace RestaurantManager
         #endregion
 
         #region Chi tiết
-        async public void LoadGridDetails(int iddonmh)
+         public void LoadGridDetails(int idpnhap)
         {
-            lstD_DONMH = await Task.Run(() => new DONMHBll().GetListD_DONMH(iddonmh));
-            gcD_DONMH.DataSource = lstD_DONMH;
+            lstDPNHAP = new PNHAPBll().GetListDNHAP(idpnhap);
+            gcD_DONMH.DataSource = lstDPNHAP;
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var selects = gridView1.GetSelectedRows();
+            var row = gridView1.GetRow(selects[0]);
+            if (selects == null)
+            {
+                XtraMessageBox.Show("Bạn chưa chọn phiếu nhập để xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var select = (PNHAP)row;
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                var res = new PNHAPBll().DeletePNHAP(select.idpnhap);
+            }
+        }
     }
 }

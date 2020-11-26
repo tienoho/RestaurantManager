@@ -47,6 +47,7 @@ namespace RestaurantManager.Views.Order
             this.gctenhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslmh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslnhanhang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lueStorekeeper = new DevExpress.XtraEditors.LookUpEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -64,11 +65,10 @@ namespace RestaurantManager.Views.Order
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dtngaygiao = new System.Windows.Forms.DateTimePicker();
+            this.dtngaynhap = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lueDONGIAO.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -110,7 +110,7 @@ namespace RestaurantManager.Views.Order
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.groupControl1);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.dtngaygiao);
+            this.panel2.Controls.Add(this.dtngaynhap);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtid);
             this.panel2.Controls.Add(this.label3);
@@ -303,6 +303,15 @@ namespace RestaurantManager.Views.Order
             this.gcslnhanhang.Name = "gcslnhanhang";
             this.gcslnhanhang.Width = 191;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Số lượng nhập";
+            this.gridColumn1.FieldName = "slnhap";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.Width = 170;
+            // 
             // lueStorekeeper
             // 
             this.lueStorekeeper.Location = new System.Drawing.Point(121, 89);
@@ -325,7 +334,7 @@ namespace RestaurantManager.Views.Order
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 91);
+            this.label1.Location = new System.Drawing.Point(14, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 16);
             this.label1.TabIndex = 27;
@@ -545,15 +554,15 @@ namespace RestaurantManager.Views.Order
             this.label2.TabIndex = 24;
             this.label2.Text = "PHIẾU NHẬP KHO";
             // 
-            // dtngaygiao
+            // dtngaynhap
             // 
-            this.dtngaygiao.CustomFormat = "hh:mm dd/MM/yyyy";
-            this.dtngaygiao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtngaygiao.Location = new System.Drawing.Point(372, 44);
-            this.dtngaygiao.Name = "dtngaygiao";
-            this.dtngaygiao.Size = new System.Drawing.Size(165, 22);
-            this.dtngaygiao.TabIndex = 23;
-            this.dtngaygiao.Value = new System.DateTime(2020, 11, 21, 19, 10, 58, 0);
+            this.dtngaynhap.CustomFormat = "hh:mm dd/MM/yyyy";
+            this.dtngaynhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtngaynhap.Location = new System.Drawing.Point(372, 44);
+            this.dtngaynhap.Name = "dtngaynhap";
+            this.dtngaynhap.Size = new System.Drawing.Size(165, 22);
+            this.dtngaynhap.TabIndex = 23;
+            this.dtngaynhap.Value = new System.DateTime(2020, 11, 21, 19, 10, 58, 0);
             // 
             // label4
             // 
@@ -561,9 +570,9 @@ namespace RestaurantManager.Views.Order
             this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(278, 44);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 16);
+            this.label4.Size = new System.Drawing.Size(81, 16);
             this.label4.TabIndex = 22;
-            this.label4.Text = "Ngày giao:";
+            this.label4.Text = "Ngày nhập:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtid
@@ -584,15 +593,6 @@ namespace RestaurantManager.Views.Order
             this.label3.Size = new System.Drawing.Size(71, 16);
             this.label3.TabIndex = 1;
             this.label3.Text = "Mã phiếu:";
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Số lượng nhập";
-            this.gridColumn1.FieldName = "slnhap";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
-            this.gridColumn1.Width = 170;
             // 
             // frmPNhap
             // 
@@ -628,7 +628,7 @@ namespace RestaurantManager.Views.Order
 
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DateTimePicker dtngaygiao;
+        private System.Windows.Forms.DateTimePicker dtngaynhap;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.Label label3;
