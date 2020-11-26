@@ -65,9 +65,9 @@ namespace RestaurantManager
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(143, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 19);
+            this.label2.Size = new System.Drawing.Size(203, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "DANH SÁCH ĐƠN MUA HÀNG";
+            this.label2.Text = "DANH SÁCH PHIẾU NHẬP";
             // 
             // label9
             // 
@@ -87,7 +87,7 @@ namespace RestaurantManager
             this.btnUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Image = global::RestaurantManager.Properties.Resources.update_5;
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(130, 3);
+            this.btnUpdate.Location = new System.Drawing.Point(147, 4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(70, 28);
             this.btnUpdate.TabIndex = 17;
@@ -107,9 +107,9 @@ namespace RestaurantManager
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.Location = new System.Drawing.Point(5, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(119, 28);
+            this.btnAdd.Size = new System.Drawing.Size(136, 28);
             this.btnAdd.TabIndex = 18;
-            this.btnAdd.Text = "Tạo đơn mua";
+            this.btnAdd.Text = "Tạo phiếu nhập";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);

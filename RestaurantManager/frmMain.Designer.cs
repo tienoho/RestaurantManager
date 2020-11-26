@@ -47,28 +47,23 @@
             this.btnNhaCungCap = new DevExpress.XtraBars.BarButtonItem();
             this.pageGroupOfBills = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.btnBill = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnProductOfStore1 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnProductOfStore = new DevExpress.XtraBars.BarButtonItem();
-            this.btnBillOfExportProduct = new DevExpress.XtraBars.BarButtonItem();
-            this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.menuToolStrip = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.imageCL1 = new DevExpress.Utils.ImageCollection(this.components);
             this.btnInfoAccount = new DevExpress.XtraBars.BarButtonItem();
             this.btnChangePassWord = new DevExpress.XtraBars.BarButtonItem();
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
-            this.btnManagerAccount = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
-            this.btnDecentralization1 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnBackup = new DevExpress.XtraBars.BarButtonItem();
-            this.btnRestore = new DevExpress.XtraBars.BarButtonItem();
-            this.menuToolStrip = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.imageCL1 = new DevExpress.Utils.ImageCollection(this.components);
             this.btnDecentralization = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBackup = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRestore = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDecentralization1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBillOfExportProduct = new DevExpress.XtraBars.BarButtonItem();
             this.btnSorftwareInfo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.btnProductOfStore = new DevExpress.XtraBars.BarButtonItem();
             this.btnAuthorInfo = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
@@ -90,11 +85,13 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonGroup1 = new DevExpress.XtraBars.BarButtonGroup();
+            this.btnManagerAccount = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.btnStatistical1 = new DevExpress.XtraBars.BarDockingMenuItem();
             this.btnRevenue = new DevExpress.XtraBars.BarButtonItem();
             this.btnDebtAgency = new DevExpress.XtraBars.BarButtonItem();
             this.btnProductRender = new DevExpress.XtraBars.BarButtonItem();
+            this.btnProductOfStore1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnStatistical = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.btnDeptCustomer = new DevExpress.XtraBars.BarButtonItem();
@@ -107,9 +104,12 @@
             this.btnDONMH = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.btnListPYC = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGiaoHang = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -121,7 +121,11 @@
             this.rpHelp = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbsStatus = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ctxtMenuTapDispaly = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -137,11 +141,8 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnGiaoHang = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuToolStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCL1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -152,7 +153,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             this.ctxtMenuTapDispaly.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemRichTextEdit1
@@ -289,136 +289,10 @@
             this.btnBill.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnBill.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBill_ItemClick);
             // 
-            // ribbonPageGroup6
+            // popupMenu1
             // 
-            this.ribbonPageGroup6.AllowTextClipping = false;
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnProductOfStore1);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            // 
-            // btnProductOfStore1
-            // 
-            this.btnProductOfStore1.Caption = "Công thức";
-            this.btnProductOfStore1.Id = 48;
-            this.btnProductOfStore1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProductOfStore1.ImageOptions.Image")));
-            this.btnProductOfStore1.Name = "btnProductOfStore1";
-            this.btnProductOfStore1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnProductOfStore1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductOfStore1_ItemClick);
-            // 
-            // btnProductOfStore
-            // 
-            this.btnProductOfStore.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.CheckDropDown;
-            this.btnProductOfStore.Caption = "Quản lí Sản phẩm";
-            this.btnProductOfStore.Hint = "Sản phẩm Cửa hàng";
-            this.btnProductOfStore.Id = 24;
-            this.btnProductOfStore.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProductOfStore.ImageOptions.Image")));
-            this.btnProductOfStore.Name = "btnProductOfStore";
-            this.btnProductOfStore.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnProductOfStore.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductOfStore_ItemClick);
-            // 
-            // btnBillOfExportProduct
-            // 
-            this.btnBillOfExportProduct.Caption = "Phiếu hóa đơn bán hàng";
-            this.btnBillOfExportProduct.Id = 17;
-            this.btnBillOfExportProduct.Name = "btnBillOfExportProduct";
-            // 
-            // rpSystem
-            // 
-            this.rpSystem.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup4});
-            this.rpSystem.Name = "rpSystem";
-            this.rpSystem.Text = "Hệ thống";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.AllowTextClipping = false;
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnInfoAccount);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnChangePassWord);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnLogout);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnManagerAccount);
-            this.ribbonPageGroup1.ItemsLayout = DevExpress.XtraBars.Ribbon.RibbonPageGroupItemsLayout.OneRow;
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            // 
-            // btnInfoAccount
-            // 
-            this.btnInfoAccount.Caption = "Thông tin tài khoản";
-            this.btnInfoAccount.Hint = "Đăng nhập";
-            this.btnInfoAccount.Id = 1;
-            this.btnInfoAccount.ImageOptions.DisabledImageIndex = 0;
-            this.btnInfoAccount.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInfoAccount.ImageOptions.Image")));
-            this.btnInfoAccount.ImageOptions.ImageIndex = 22;
-            this.btnInfoAccount.Name = "btnInfoAccount";
-            this.btnInfoAccount.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.btnInfoAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInfoAccount_ItemClick);
-            // 
-            // btnChangePassWord
-            // 
-            this.btnChangePassWord.Caption = "Đổi mật khẩu";
-            this.btnChangePassWord.Hint = "Đổi mật khẩu";
-            this.btnChangePassWord.Id = 2;
-            this.btnChangePassWord.ImageOptions.Image = global::RestaurantManager.Properties.Resources.change_password;
-            this.btnChangePassWord.ImageOptions.ImageIndex = 12;
-            this.btnChangePassWord.Name = "btnChangePassWord";
-            this.btnChangePassWord.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
-            this.btnChangePassWord.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChangePassWord_ItemClick);
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Caption = "Đăng xuất";
-            this.btnLogout.Hint = "Đăng xuất";
-            this.btnLogout.Id = 3;
-            this.btnLogout.ImageOptions.Image = global::RestaurantManager.Properties.Resources.Logout;
-            this.btnLogout.ImageOptions.ImageIndex = 11;
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
-            this.btnLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLogout_ItemClick);
-            // 
-            // btnManagerAccount
-            // 
-            this.btnManagerAccount.Caption = "Quản lí tài khoản";
-            this.btnManagerAccount.Id = 42;
-            this.btnManagerAccount.ImageOptions.Image = global::RestaurantManager.Properties.Resources.manager_account;
-            this.btnManagerAccount.Name = "btnManagerAccount";
-            this.btnManagerAccount.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnManagerAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnManagerAccount_ItemClick);
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Giao diện";
-            // 
-            // skinRibbonGalleryBarItem1
-            // 
-            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
-            this.skinRibbonGalleryBarItem1.Id = 22;
-            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
-            // 
-            // btnDecentralization1
-            // 
-            this.btnDecentralization1.Caption = "Quản lí tài khoản";
-            this.btnDecentralization1.Id = 8;
-            this.btnDecentralization1.ImageOptions.Image = global::RestaurantManager.Properties.Resources.manager_account;
-            this.btnDecentralization1.ImageOptions.ImageIndex = 21;
-            this.btnDecentralization1.Name = "btnDecentralization1";
-            this.btnDecentralization1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
-            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            // 
-            // btnBackup
-            // 
-            this.btnBackup.Caption = "Sao lưu dữ liệu";
-            this.btnBackup.Id = 6;
-            this.btnBackup.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBackup.ImageOptions.Image")));
-            this.btnBackup.ImageOptions.ImageIndex = 5;
-            this.btnBackup.Name = "btnBackup";
-            // 
-            // btnRestore
-            // 
-            this.btnRestore.Caption = "Phục hồi dữ liệu";
-            this.btnRestore.Id = 7;
-            this.btnRestore.ImageOptions.ImageIndex = 14;
-            this.btnRestore.Name = "btnRestore";
+            this.popupMenu1.Name = "popupMenu1";
+            this.popupMenu1.Ribbon = this.menuToolStrip;
             // 
             // menuToolStrip
             // 
@@ -487,7 +361,7 @@
             this.btnGiaoHang,
             this.barButtonItem18});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 69;
+            this.menuToolStrip.MaxItemId = 70;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpManager,
@@ -512,6 +386,41 @@
             this.imageCL1.InsertGalleryImage("bouser_32x32.png", "images/business%20objects/bouser_32x32.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/business%20objects/bouser_32x32.png"), 0);
             this.imageCL1.Images.SetKeyName(0, "bouser_32x32.png");
             // 
+            // btnInfoAccount
+            // 
+            this.btnInfoAccount.Caption = "Thông tin tài khoản";
+            this.btnInfoAccount.Hint = "Đăng nhập";
+            this.btnInfoAccount.Id = 1;
+            this.btnInfoAccount.ImageOptions.DisabledImageIndex = 0;
+            this.btnInfoAccount.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInfoAccount.ImageOptions.Image")));
+            this.btnInfoAccount.ImageOptions.ImageIndex = 22;
+            this.btnInfoAccount.Name = "btnInfoAccount";
+            this.btnInfoAccount.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.btnInfoAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInfoAccount_ItemClick);
+            // 
+            // btnChangePassWord
+            // 
+            this.btnChangePassWord.Caption = "Đổi mật khẩu";
+            this.btnChangePassWord.Hint = "Đổi mật khẩu";
+            this.btnChangePassWord.Id = 2;
+            this.btnChangePassWord.ImageOptions.Image = global::RestaurantManager.Properties.Resources.change_password;
+            this.btnChangePassWord.ImageOptions.ImageIndex = 12;
+            this.btnChangePassWord.Name = "btnChangePassWord";
+            this.btnChangePassWord.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.btnChangePassWord.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChangePassWord_ItemClick);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Caption = "Đăng xuất";
+            this.btnLogout.Hint = "Đăng xuất";
+            this.btnLogout.Id = 3;
+            this.btnLogout.ImageOptions.Image = global::RestaurantManager.Properties.Resources.Logout;
+            this.btnLogout.ImageOptions.ImageIndex = 11;
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.btnLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLogout_ItemClick);
+            // 
             // btnDecentralization
             // 
             this.btnDecentralization.Caption = "Phân quyền người dùng";
@@ -524,11 +433,42 @@
             this.barButtonItem5.Id = 5;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
+            // btnBackup
+            // 
+            this.btnBackup.Caption = "Sao lưu dữ liệu";
+            this.btnBackup.Id = 6;
+            this.btnBackup.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBackup.ImageOptions.Image")));
+            this.btnBackup.ImageOptions.ImageIndex = 5;
+            this.btnBackup.Name = "btnBackup";
+            // 
+            // btnRestore
+            // 
+            this.btnRestore.Caption = "Phục hồi dữ liệu";
+            this.btnRestore.Id = 7;
+            this.btnRestore.ImageOptions.ImageIndex = 14;
+            this.btnRestore.Name = "btnRestore";
+            // 
+            // btnDecentralization1
+            // 
+            this.btnDecentralization1.Caption = "Quản lí tài khoản";
+            this.btnDecentralization1.Id = 8;
+            this.btnDecentralization1.ImageOptions.Image = global::RestaurantManager.Properties.Resources.manager_account;
+            this.btnDecentralization1.ImageOptions.ImageIndex = 21;
+            this.btnDecentralization1.Name = "btnDecentralization1";
+            this.btnDecentralization1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
             // barButtonItem4
             // 
             this.barButtonItem4.Caption = "barButtonItem4";
             this.barButtonItem4.Id = 14;
             this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // btnBillOfExportProduct
+            // 
+            this.btnBillOfExportProduct.Caption = "Phiếu hóa đơn bán hàng";
+            this.btnBillOfExportProduct.Id = 17;
+            this.btnBillOfExportProduct.Name = "btnBillOfExportProduct";
             // 
             // btnSorftwareInfo
             // 
@@ -544,6 +484,23 @@
             this.barButtonItem12.Caption = "Thôn tin tác giả";
             this.barButtonItem12.Id = 21;
             this.barButtonItem12.Name = "barButtonItem12";
+            // 
+            // skinRibbonGalleryBarItem1
+            // 
+            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
+            this.skinRibbonGalleryBarItem1.Id = 22;
+            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
+            // 
+            // btnProductOfStore
+            // 
+            this.btnProductOfStore.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.CheckDropDown;
+            this.btnProductOfStore.Caption = "Quản lí Sản phẩm";
+            this.btnProductOfStore.Hint = "Sản phẩm Cửa hàng";
+            this.btnProductOfStore.Id = 24;
+            this.btnProductOfStore.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProductOfStore.ImageOptions.Image")));
+            this.btnProductOfStore.Name = "btnProductOfStore";
+            this.btnProductOfStore.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnProductOfStore.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductOfStore_ItemClick);
             // 
             // btnAuthorInfo
             // 
@@ -690,6 +647,15 @@
             this.barButtonGroup1.ImageOptions.Image = global::RestaurantManager.Properties.Resources.manager_account;
             this.barButtonGroup1.Name = "barButtonGroup1";
             // 
+            // btnManagerAccount
+            // 
+            this.btnManagerAccount.Caption = "Quản lí tài khoản";
+            this.btnManagerAccount.Id = 42;
+            this.btnManagerAccount.ImageOptions.Image = global::RestaurantManager.Properties.Resources.manager_account;
+            this.btnManagerAccount.Name = "btnManagerAccount";
+            this.btnManagerAccount.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnManagerAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnManagerAccount_ItemClick);
+            // 
             // barButtonItem8
             // 
             this.barButtonItem8.Caption = "Thống kê";
@@ -733,6 +699,15 @@
             this.btnProductRender.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnProductRender.ImageOptions.LargeImage")));
             this.btnProductRender.Name = "btnProductRender";
             this.btnProductRender.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductRender_ItemClick);
+            // 
+            // btnProductOfStore1
+            // 
+            this.btnProductOfStore1.Caption = "Công thức";
+            this.btnProductOfStore1.Id = 48;
+            this.btnProductOfStore1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProductOfStore1.ImageOptions.Image")));
+            this.btnProductOfStore1.Name = "btnProductOfStore1";
+            this.btnProductOfStore1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnProductOfStore1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductOfStore1_ItemClick);
             // 
             // btnStatistical
             // 
@@ -824,6 +799,7 @@
             this.barButtonItem20.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.Image")));
             this.barButtonItem20.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.LargeImage")));
             this.barButtonItem20.Name = "barButtonItem20";
+            this.barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem20_ItemClick);
             // 
             // btnListPYC
             // 
@@ -833,6 +809,22 @@
             this.btnListPYC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnListPYC.ImageOptions.LargeImage")));
             this.btnListPYC.Name = "btnListPYC";
             this.btnListPYC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnListPYC_ItemClick);
+            // 
+            // btnGiaoHang
+            // 
+            this.btnGiaoHang.Caption = "Phiêu giao hàng";
+            this.btnGiaoHang.Id = 67;
+            this.btnGiaoHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGiaoHang.ImageOptions.Image")));
+            this.btnGiaoHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGiaoHang.ImageOptions.LargeImage")));
+            this.btnGiaoHang.Name = "btnGiaoHang";
+            this.btnGiaoHang.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnGiaoHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGiaoHang_ItemClick);
+            // 
+            // barButtonItem18
+            // 
+            this.barButtonItem18.Id = 68;
+            this.barButtonItem18.Name = "barButtonItem18";
+            this.barButtonItem18.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // rpProcedure
             // 
@@ -856,6 +848,12 @@
             this.ribbonPageGroup15.ItemLinks.Add(this.btnDONMH);
             this.ribbonPageGroup15.Name = "ribbonPageGroup15";
             this.ribbonPageGroup15.Text = "Mua hàng";
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnGiaoHang);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.Text = "ribbonPageGroup8";
             // 
             // ribbonPageGroup16
             // 
@@ -931,6 +929,30 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnAuthorInfo);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
+            // rpSystem
+            // 
+            this.rpSystem.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup4});
+            this.rpSystem.Name = "rpSystem";
+            this.rpSystem.Text = "Hệ thống";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.AllowTextClipping = false;
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnInfoAccount);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnChangePassWord);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnLogout);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnManagerAccount);
+            this.ribbonPageGroup1.ItemsLayout = DevExpress.XtraBars.Ribbon.RibbonPageGroupItemsLayout.OneRow;
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "Giao diện";
+            // 
             // rbsStatus
             // 
             this.rbsStatus.ItemLinks.Add(this.barEditItem2);
@@ -941,6 +963,12 @@
             this.rbsStatus.Name = "rbsStatus";
             this.rbsStatus.Ribbon = this.menuToolStrip;
             this.rbsStatus.Size = new System.Drawing.Size(1247, 31);
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.AllowTextClipping = false;
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnProductOfStore1);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             // 
             // ribbonPage7
             // 
@@ -1065,33 +1093,6 @@
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnGiaoHang);
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
-            this.ribbonPageGroup8.Text = "ribbonPageGroup8";
-            // 
-            // btnGiaoHang
-            // 
-            this.btnGiaoHang.Caption = "Phiêu giao hàng";
-            this.btnGiaoHang.Id = 67;
-            this.btnGiaoHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.btnGiaoHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
-            this.btnGiaoHang.Name = "btnGiaoHang";
-            this.btnGiaoHang.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnGiaoHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGiaoHang_ItemClick);
-            // 
-            // barButtonItem18
-            // 
-            this.barButtonItem18.Id = 68;
-            this.barButtonItem18.Name = "barButtonItem18";
-            this.barButtonItem18.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // popupMenu1
-            // 
-            this.popupMenu1.Name = "popupMenu1";
-            this.popupMenu1.Ribbon = this.menuToolStrip;
-            // 
             // frmMain
             // 
             this.Appearance.BackColor = System.Drawing.Color.Yellow;
@@ -1111,6 +1112,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuToolStrip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCL1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
@@ -1121,7 +1123,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             this.ctxtMenuTapDispaly.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
