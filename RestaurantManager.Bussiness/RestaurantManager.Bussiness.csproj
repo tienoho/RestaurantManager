@@ -55,6 +55,7 @@
     <Compile Include="CONGTHUCBll.cs" />
     <Compile Include="DONMHBll.cs" />
     <Compile Include="GIAOHANGBll.cs" />
+    <Compile Include="HOADONMBll.cs" />
     <Compile Include="HOADONTTBll.cs" />
     <Compile Include="DONDATDABll.cs" />
     <Compile Include="KHACHHANGBll.cs" />

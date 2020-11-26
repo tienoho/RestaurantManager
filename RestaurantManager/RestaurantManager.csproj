@@ -149,12 +149,23 @@
     </Compile>
     <Compile Include="Views\Manage\frmPNHap.Designer.cs">
       <DependentUpon>frmPNHap.cs</DependentUpon>
+    <Compile Include="Views\Manage\frmHOADONM_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Manage\frmHOADONM_Detail.Designer.cs">
+      <DependentUpon>frmHOADONM_Detail.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Manage\frmGIAOHANG_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Manage\frmGIAOHANG_Detail.Designer.cs">
       <DependentUpon>frmGIAOHANG_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manage\uctHOADONM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Manage\uctHOADONM.Designer.cs">
+      <DependentUpon>uctHOADONM.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Manage\uctPNHAP.cs">
       <SubType>UserControl</SubType>
@@ -271,9 +282,14 @@
     </Compile>
     <EmbeddedResource Include="Views\Manage\frmPNHap.resx">
       <DependentUpon>frmPNHap.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Manage\frmHOADONM_Detail.resx">
+      <DependentUpon>frmHOADONM_Detail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\frmGIAOHANG_Detail.resx">
       <DependentUpon>frmGIAOHANG_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\uctHOADONM.resx">
+      <DependentUpon>uctHOADONM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\uctPNHAP.resx">
       <DependentUpon>uctPNHAP.cs</DependentUpon>
