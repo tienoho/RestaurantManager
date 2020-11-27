@@ -27,7 +27,7 @@ namespace RestaurantManager.Views.Order
             InitializeComponent();
             luencc.Enabled = false;
             luenlieu.Enabled = false;
-            nslgiaohang.Enabled = true;
+            nslgiaohang.Enabled = false;
             nslnhanhang.Enabled = true;
             loadControls();
         }

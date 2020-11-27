@@ -51,6 +51,7 @@ namespace RestaurantManager.Views.Order
             this.gcidhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gctenhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslmh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcslnhanhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.luencc = new DevExpress.XtraEditors.LookUpEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -72,7 +73,6 @@ namespace RestaurantManager.Views.Order
             this.label4 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.gcslnhanhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueDonMH.Properties)).BeginInit();
@@ -348,6 +348,15 @@ namespace RestaurantManager.Views.Order
             this.gcslmh.Visible = true;
             this.gcslmh.VisibleIndex = 2;
             this.gcslmh.Width = 258;
+            // 
+            // gcslnhanhang
+            // 
+            this.gcslnhanhang.Caption = "Số lượng nhận hàng";
+            this.gcslnhanhang.FieldName = "slnhanhang";
+            this.gcslnhanhang.Name = "gcslnhanhang";
+            this.gcslnhanhang.Visible = true;
+            this.gcslnhanhang.VisibleIndex = 3;
+            this.gcslnhanhang.Width = 191;
             // 
             // luencc
             // 
@@ -633,15 +642,6 @@ namespace RestaurantManager.Views.Order
             this.label3.TabIndex = 1;
             this.label3.Text = "Mã phiếu:";
             // 
-            // gcslnhanhang
-            // 
-            this.gcslnhanhang.Caption = "Số lượng nhận hàng";
-            this.gcslnhanhang.FieldName = "slnhanhang";
-            this.gcslnhanhang.Name = "gcslnhanhang";
-            this.gcslnhanhang.Visible = true;
-            this.gcslnhanhang.VisibleIndex = 3;
-            this.gcslnhanhang.Width = 191;
-            // 
             // frmGIAOHANG_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -651,7 +651,7 @@ namespace RestaurantManager.Views.Order
             this.Controls.Add(this.label9);
             this.Name = "frmGIAOHANG_Detail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thêm mới đơn mua hàng";
+            this.Text = "Thêm mới phiếu giao hàng";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();

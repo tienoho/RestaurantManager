@@ -40,6 +40,7 @@ namespace RestaurantManager
             TabPage tab = new TabPage();
             typePages.Add(typeControl);
             tab.Name = uct.Name;
+            
             tab.Size = tabDisplay.Size;
             tab.Text = tenTab + "   ";
             tabDisplay.TabPages.Add(tab);
@@ -265,50 +266,51 @@ namespace RestaurantManager
 
         private void btnMenu_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctMONAN2.uctMONAN, 10, "Menu");
+            addTabPages(uctMONAN2.uctMONAN, 1, "Menu");
         }
 
         private void btnNguyenLieu_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctNLIEU.uctDL, 10, "Nguyên liệu");
+            addTabPages(uctNLIEU.uctDL, 2, "Nguyên liệu");
         }
 
         private void btnDanhMuc_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctDANHMUC.uctDL, 10, "Danh mục món ăn");
+            addTabPages(uctDANHMUC.uctDL, 3, "Danh mục món ăn");
         }
 
         private void btnNhaCungCap_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctNCC.uctDL, 10, "Danh sách nhà cung cấp");
+            addTabPages(uctNCC.uctDL, 4, "Danh sách nhà cung cấp");
         }
 
         private void btnPYC_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctCreate_PYC.uctDL, 10, "Tạo phiếu yêu cầu");
+            addTabPages(uctCreate_PYC.uctDL, 5, "Tạo phiếu yêu cầu");
         }
 
         private void btnListPYC_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctPYC.uctDL, 10, "Phiếu yêu cầu");
+            addTabPages(uctPYC.uctDL, 6, "Phiếu yêu cầu");
         }
 
         private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctDONDATDA.uctDL, 10, "Đặt đơn hàng");
+            addTabPages(uctDONDATDA.uctDL, 7, "Đặt đơn hàng");
             uctDONDATDA.uctDL.fillCaption(btnOrderWait);
+            uctDONDATDA.uctDL.LoadData();
         }
 
         private void btnOrderWait_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctHOADONTT.uctDL, 10, "Chờ thanh toán");
+            addTabPages(uctHOADONTT.uctDL, 8, "Chờ thanh toán");
             uctHOADONTT.uctDL.fillCaption(btnOrderWait);
         }
 
         # region mua hàng
         private void btnDONMH_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctDONMH.uctDL, 10, "Đơn mua hàng");
+            addTabPages(uctDONMH.uctDL, 9, "Đơn mua hàng");
         }
         private void btnCreateDONMH_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -320,12 +322,23 @@ namespace RestaurantManager
 
         private void btnGiaoHang_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctGIAOHANG.uctDL, 10, "Giao hàng");
+            addTabPages(uctGIAOHANG.uctDL, 11, "Giao hàng");
+            
         }
 
         private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctPNHAP.uctDL, 10, "Nhập hàng");
+            addTabPages(uctPNHAP.uctDL, 12, "Nhập hàng");
+        }
+
+        private void menuToolStrip_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHOADONM_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

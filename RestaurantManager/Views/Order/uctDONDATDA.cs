@@ -14,6 +14,7 @@ using DevExpress.XtraGrid.Views.Tile;
 using RestaurantManager.Model;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraBars;
+using RestaurantManager.Views.Order;
 
 namespace RestaurantManager
 {
@@ -426,7 +427,12 @@ namespace RestaurantManager
         }
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            ClearHoaDon();
+            var frmAdd = new frmAddCustomer();
+            var result = frmAdd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadData();
+            }
         }
         private void CalculateAmount()
         {

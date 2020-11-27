@@ -1,72 +1,60 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using RestaurantManager.Bussiness;
+using RestaurantManager.Database;
+using RestaurantManager.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using RestaurantManager.Database;
-using RestaurantManager.Bussiness;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Views.Grid;
-using RestaurantManager.Model;
 
-namespace RestaurantManager
+namespace RestaurantManager.Views.Order
 {
-    public partial class uctKHACHHANG : UserControl
+    public partial class frmAddCustomer : Form
     {
         List<KHACHHANG> lstKHACHHANG;
-        public uctKHACHHANG()
+        public frmAddCustomer()
         {
             InitializeComponent();
+            loadControls();
         }
-        public static uctKHACHHANG uctDL = new uctKHACHHANG();
 
-
-        private void uctKHACHHANG_Load(object sender, EventArgs e)
+        public void loadControls()
         {
-            LoadDataGrid();
+            //Danh sách khách hàng
+            lstKHACHHANG = new KHACHHANGBll().GetListKHACHHANG();
+            gridControl1.DataSource = lstKHACHHANG;
+            //txtid
+            txtidkh.Text = Utils.getNewId("KHACHHANG").ToString();
+            txtsdt.Text = "";
+            txttenkh.Text = "";
         }
 
-        #region Khách hàng
-        private void LoadDataGrid()
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            LoadGrid();
-
+            txttenkh.Enabled = true;
+            txtsdt.Enabled = true;
+            btnAdd.Enabled = false;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            btnSave.Enabled = true;
         }
 
-        #endregion
-
-        #region Event
-        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DataRow row = gridView1.GetDataRow(gridView1.GetSelectedRows()[0]);
+            txttenkh.Enabled = true;
+            txtsdt.Enabled = true;
+            btnAdd.Enabled = false;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            btnSave.Enabled = true;
         }
 
-        private void gridView1_DoubleClick(object sender, EventArgs e)
-        {
-            //Determine row in event handler  
-            int RowHandle = (sender as GridView).FocusedRowHandle;
-            object idkh = (sender as GridView).GetRowCellValue(RowHandle, "idkh");
-            object tenkh = (sender as GridView).GetRowCellValue(RowHandle, "tenkh");
-            object sdt = (sender as GridView).GetRowCellValue(RowHandle, "sdt");
-            txtidkh.Text = idkh.ToString();
-            txttenkh.Text = tenkh.ToString();
-            txtsdt.Text = sdt.ToString();
-        }
-
-        private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
-        {
-            if (e.View.IsDetailView == false)
-                return;
-
-            (e.View as GridView).DoubleClick += gridView1_DoubleClick;
-        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -111,29 +99,9 @@ namespace RestaurantManager
             }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            txttenkh.Enabled = true;
-            txtsdt.Enabled = true;
-            btnAdd.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-            btnSave.Enabled = true;
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            txttenkh.Enabled = true;
-            txtsdt.Enabled = true;
-            btnAdd.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-            btnSave.Enabled = true;
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var  result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 if (txtidkh.Text == "")
@@ -148,19 +116,14 @@ namespace RestaurantManager
                 XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearDisplay();
                 return;
-            }            
+            }
         }
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearDisplay();
-        }
-        #endregion
-
         #region Function
         async public void LoadGrid()
         {
             lstKHACHHANG = await Task.Run(() => new KHACHHANGBll().GetListKHACHHANG());
             gridControl1.DataSource = lstKHACHHANG;
+            //txtiddmuc.Text = lstDANHMUC.LastOrDefault().iddmuc+1.ToString();
         }
         private void ClearDisplay()
         {
@@ -171,15 +134,37 @@ namespace RestaurantManager
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
             btnSave.Enabled = false;
+            LoadGrid();
         }
         #endregion
 
-        private void txtsdt_KeyPress(object sender, KeyPressEventArgs e)
+        private void gridControl1_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
+            if (e.View.IsDetailView == false)
+                return;
+            (e.View as GridView).DoubleClick += gridView1_DoubleClick;
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+            //Determine row in event handler  
+            int RowHandle = (sender as GridView).FocusedRowHandle;
+            object idkh = (sender as GridView).GetRowCellValue(RowHandle, "idkh");
+            object tenkh = (sender as GridView).GetRowCellValue(RowHandle, "tenkh");
+            object sdt = (sender as GridView).GetRowCellValue(RowHandle, "sdt");
+            txtidkh.Text = idkh.ToString();
+            txttenkh.Text = tenkh.ToString();
+            txtsdt.Text = sdt.ToString();
+        }
+
+        private void frmAddCustomer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void btnClearDetails_Click_1(object sender, EventArgs e)
+        {
+            ClearDisplay();
         }
     }
 }
