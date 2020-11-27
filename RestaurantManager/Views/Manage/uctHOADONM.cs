@@ -15,32 +15,51 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
-using RestaurantManager.Views.Order;
+using DevExpress.XtraBars;
 
 namespace RestaurantManager
 {
     public partial class uctHOADONM : UserControl
     {
-        List<GIAOHANG_ViewModel> lstGIAOHANG;
-        List<D_GIAOHANG_ViewModel> lstD_GIAOHANG;
+        BarButtonItem btnWaitOrder;
+        List<PNHAP_ViewModel> lstPNHAP;
+        List<D_PNHAP_ViewModel> lstD_PNHAP;
+
         public uctHOADONM()
         {
             InitializeComponent();
         }
         public static uctHOADONM uctDL = new uctHOADONM();
+
+
         private void uctHOADONM_Load(object sender, EventArgs e)
         {
             LoadGrid();
-
+            //LoadData();
         }
+
         #region Event
+
+        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            DataRow row = gvPNHAP.GetDataRow(gvPNHAP.GetSelectedRows()[0]);
+        }
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
             //Determine row in event handler  
             int RowHandle = (sender as GridView).FocusedRowHandle;
-            object idpgiao = (sender as GridView).GetRowCellValue(RowHandle, "idpgiao");
-            LoadGridDetails((int)idpgiao);
+            object idpnhap = (sender as GridView).GetRowCellValue(RowHandle, "idpnhap");
+            //object idkh = (sender as GridView).GetRowCellValue(RowHandle, "idkh");
+            //object ban = (sender as GridView).GetRowCellValue(RowHandle, "ban");
+            //object ngaydat = (sender as GridView).GetRowCellValue(RowHandle, "ngaydat");
+
+            txtidpnhap.EditValue = idpnhap;
+            
+            if (txtidpnhap.Text != null)
+            {
+                GetD_PNHAP((int)idpnhap);
+            }
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -50,67 +69,156 @@ namespace RestaurantManager
 
             (e.View as GridView).DoubleClick += gridView1_DoubleClick;
         }
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            frmGIAOHANG_Detail frm = new frmGIAOHANG_Detail();
-            var result = frm.ShowDialog();
-            if (result == DialogResult.OK)
+            ClearDisplay();
+        }
+
+        private void btnAddHoaDon_Click(object sender, EventArgs e)
+        {
+            try
             {
-                LoadGrid();
+                if (txtidpnhap.Text == "" || txtidpnhap.EditValue == null)
+                {
+                    XtraMessageBox.Show("Bạn phải chọn phiếu nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                int.TryParse(txtidpnhap.EditValue.ToString(), out int idpnhap);
+                if (idpnhap <= 0)
+                {
+                    XtraMessageBox.Show("Bạn phải chọn phiếu nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                double.TryParse(txtTotalAmount.EditValue.ToString(), out double TotalAmount);
+                var ngaymua = dtpngaydat.Value;
+              
+                var model = new HOADONM
+                {
+                    idpnhap= idpnhap,
+                    ngaymua= ngaymua
+                };
+                List<D_HOADONM> lstD_HOADONM = new List<D_HOADONM>();
+
+                foreach (D_PNHAP_ViewModel item in lstD_PNHAP)
+                {
+                    var details = new D_HOADONM
+                    {
+                        idhang = item.idhang,
+                        slmua = item.idpnhap,
+                    };
+                    lstD_HOADONM.Add(details);
+                }
+                if (lstD_HOADONM.Count() <= 0)
+                {
+                    XtraMessageBox.Show("Không có dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var msg = new HOADONMBll().AddHOADONM(model, lstD_HOADONM, Properties.Settings.Default.NameLog);
+                if (msg != null && msg != "")
+                {
+                    LoadGrid();
+                    XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearDisplay();
+                    return;
+                }
+                XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ClearDisplay();
+                return;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            //txttenhang.Enabled = true;
-            //txtNguong.Enabled = true;
-            //nudDonGia2.Enabled = true;
-            //txtSLT.Enabled = true;
-
-            //btnAdd.Enabled = false;
-            //btnUpdate.Enabled = false;
-            //btnDelete.Enabled = false;
-            //btnSave.Enabled = true;
-        }
-
-
         #endregion
 
         #region Function
-        public void LoadGrid()
+        async public void LoadGrid()
         {
-            lstGIAOHANG = new GIAOHANGBll().GetListGIAOHANG();
-            gcGIAOHANG.DataSource = lstGIAOHANG;
-            gvGIAOHANG.RefreshData();
+            try
+            {
+                lstPNHAP = await Task.Run(() => new PNHAPBll().GetListPNHAPFull());
+                gcPNHAP.DataSource = lstPNHAP;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
+        //async public void LoadData()
+        //{
+        //   // lstPNHAP = await Task.Run(() => new PNHAPBll().GetListPNHAPFull());
+
+        //    lueKhachHang.Properties.DataSource = ListKHACHHANG
+        //        .Select(item => new { idkh = item.idkh, tenkh = item.tenkh, sdt = item.sdt }).ToList();
+        //    lueKhachHang.Properties.ValueMember = "idkh";
+        //    lueKhachHang.Properties.DisplayMember = "tenkh";
+        //}
         private void ClearDisplay()
         {
-            //txtid.Text = "";
-            //txttenhang.Text = "";
-            //txtNguong.EditValue = 0;
-            //nudDonGia2.EditValue = 0;
-            //txtSLT.EditValue = 0;
+            txtidpnhap.Text = "";
+            dtpngaydat.Value = DateTime.Now;
+            lstD_PNHAP = null;
+            gcSelectItems.DataSource = lstD_PNHAP;
+            gridView1.RefreshData();
 
-            //txttenhang.Enabled = false;
-            //txtNguong.Enabled = false;
-            //nudDonGia2.Enabled = false;
-            //txtSLT.Enabled = false;
-
-            //btnAdd.Enabled = true;
-            //btnUpdate.Enabled = true;
-            //btnDelete.Enabled = true;
-            //btnSave.Enabled = false;
         }
+
         #endregion
 
-        #region Chi tiết
-        async public void LoadGridDetails(int id)
+        private void gvWaitOrder_Click(object sender, EventArgs e)
         {
-            lstD_GIAOHANG = await Task.Run(() => new GIAOHANGBll().GetListD_GIAOHANG(id));
-            gcD_GIAOHANG.DataSource = lstD_GIAOHANG;
-        }
-        #endregion
 
+        }
+        private void GetD_PNHAP(int idpnhap)
+        {
+            try
+            {
+                lstD_PNHAP = new PNHAPBll().GetListD_PNHAP_Full(idpnhap);
+                gcSelectItems.DataSource = lstD_PNHAP;
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }           
+        }
+
+
+        public void fillCaption(BarButtonItem btn)
+        {
+            btnWaitOrder = btn;
+            changeCaption();
+        }
+        public void changeCaption()
+        {
+            try
+            {
+                var list = new DONDATDABll().GetOuterOrder();
+                btnWaitOrder.Caption = String.Format("Chờ thanh toán ({0})", list.Count());
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void txtCustomerPay_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+
+        }
+
+        private void panelControl2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnClearHoDon_Click(object sender, EventArgs e)
+        {
+            ClearDisplay();
+        }
     }
 }

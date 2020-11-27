@@ -106,6 +106,7 @@
             this.btnListPYC = new DevExpress.XtraBars.BarButtonItem();
             this.btnGiaoHang = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnHOADONM = new DevExpress.XtraBars.BarButtonItem();
             this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -141,7 +142,8 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnHOADONM = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnExportHOADONM = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuToolStrip)).BeginInit();
@@ -362,9 +364,10 @@
             this.btnListPYC,
             this.btnGiaoHang,
             this.barButtonItem18,
-            this.btnHOADONM});
+            this.btnHOADONM,
+            this.btnExportHOADONM});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 72;
+            this.menuToolStrip.MaxItemId = 74;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpManager,
@@ -830,13 +833,24 @@
             this.barButtonItem18.Name = "barButtonItem18";
             this.barButtonItem18.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // btnHOADONM
+            // 
+            this.btnHOADONM.Caption = "Hóa đơn mua hàng";
+            this.btnHOADONM.Id = 71;
+            this.btnHOADONM.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHOADONM.ImageOptions.Image")));
+            this.btnHOADONM.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHOADONM.ImageOptions.LargeImage")));
+            this.btnHOADONM.Name = "btnHOADONM";
+            this.btnHOADONM.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnHOADONM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHOADONM_ItemClick);
+            // 
             // rpProcedure
             // 
             this.rpProcedure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup14,
             this.ribbonPageGroup15,
             this.ribbonPageGroup8,
-            this.ribbonPageGroup16});
+            this.ribbonPageGroup16,
+            this.ribbonPageGroup17});
             this.rpProcedure.Name = "rpProcedure";
             this.rpProcedure.Text = "Nghiệp vụ";
             // 
@@ -1093,15 +1107,20 @@
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // btnHOADONM
+            // ribbonPageGroup17
             // 
-            this.btnHOADONM.Caption = "Hóa đơn mua hàng";
-            this.btnHOADONM.Id = 71;
-            this.btnHOADONM.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.btnHOADONM.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
-            this.btnHOADONM.Name = "btnHOADONM";
-            this.btnHOADONM.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnHOADONM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHOADONM_ItemClick);
+            this.ribbonPageGroup17.ItemLinks.Add(this.btnExportHOADONM);
+            this.ribbonPageGroup17.Name = "ribbonPageGroup17";
+            // 
+            // btnExportHOADONM
+            // 
+            this.btnExportHOADONM.Caption = "Xuất hóa đơn mua";
+            this.btnExportHOADONM.Id = 73;
+            this.btnExportHOADONM.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
+            this.btnExportHOADONM.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
+            this.btnExportHOADONM.Name = "btnExportHOADONM";
+            this.btnExportHOADONM.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnExportHOADONM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportHOADONM_ItemClick);
             // 
             // frmMain
             // 
@@ -1252,5 +1271,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem18;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem btnHOADONM;
+        private DevExpress.XtraBars.BarButtonItem btnExportHOADONM;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup17;
     }
 }

@@ -83,6 +83,57 @@ namespace RestaurantManager.Bussiness
         }
 
         /// <summary>
+        /// ds phiếu nhập full
+        /// </summary>
+        /// <returns></returns>
+        public List<PNHAP_ViewModel> GetListPNHAPFull()
+        {
+            using (var db = new RestaurantManagerDataEntities())
+            {
+                var result = (from p in db.PNHAPs.AsNoTracking()
+                              join u in db.USERS.AsNoTracking() on p.nguoilapphieu equals u.UserName
+                              join uu in db.USERS.AsNoTracking() on p.thukho equals uu.UserName
+                              //join g in db.GIAOHANGs.AsNoTracking() on p.idpgiao equals g.idpgiao
+                              //join m in db.DONMHs.AsNoTracking() on g.iddonmh equals m.iddonmh
+                              select new PNHAP_ViewModel
+                              {
+                                  idpnhap = p.idpnhap,
+                                  idpgiao = p.idpgiao,
+                                  ngaynhap = p.ngaynhap,
+                                  nguoigiao = p.nguoigiao,
+                                  nguoilapphieu = p.nguoilapphieu,
+                                  //tennguoilapphieu=u.ten,
+                                  thukho = p.thukho,
+                                  //tenthukho=uu.ten,
+                              }
+                            ).ToList();
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// ds chi tiết phiếu nhập
+        /// </summary>
+        /// <returns></returns>
+        public List<D_PNHAP_ViewModel> GetListD_PNHAP_Full(int idpnhap)
+        {
+            using (var db = new RestaurantManagerDataEntities())
+            {
+                var result = (from p in db.D_PNHAP.AsNoTracking()
+                              join n in db.NLIEUx.AsNoTracking() on p.idhang equals n.idhang
+                              select new D_PNHAP_ViewModel
+                              {
+                                  idpnhap = p.idpnhap,
+                                  idhang = p.idhang,
+                                  tenhang = n.tenhang,
+                                  slgiao = p.slgiao,
+                                  slnhan = p.slnhan,
+                              }
+                               ).ToList();
+                return result;
+            }
+        }
+        /// <summary>
         /// ds chi tiết phiếu nhập
         /// </summary>
         /// <returns></returns>

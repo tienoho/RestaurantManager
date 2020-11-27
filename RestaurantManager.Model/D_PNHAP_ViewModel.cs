@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Model
 {
-    class D_PNHAP_ViewModel
+   public class D_PNHAP_ViewModel
     {
+        public int idpnhap { get; set; }
+        public int idhang { get; set; }
+        public string tenhang { get; set; }
+        public Nullable<int> slgiao { get; set; }
+        public Nullable<int> slnhan { get; set; }
     }
 }

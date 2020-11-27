@@ -340,5 +340,10 @@ namespace RestaurantManager
         {
 
         }
+
+        private void btnExportHOADONM_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctHOADONM.uctDL, 13, "Xuất hóa đơn mua");
+        }
     }
 }
