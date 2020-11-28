@@ -70,7 +70,8 @@ namespace RestaurantManager
                 {
                     try
                     {
-                        var checkLogin = new USERSBll().Login(txtUser.Text, txtPassword.Text);
+                        var outmess = string.Empty;
+                        var checkLogin = new USERSBll().Login(txtUser.Text, txtPassword.Text,ref outmess);
                         UserName = txtUser.Text;
                         if (checkLogin != null)
                         {

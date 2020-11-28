@@ -10,7 +10,7 @@ namespace RestaurantManager.Bussiness
 {
     public class USERSBll
     {
-        public USER Login(string username, string password)
+        public USER Login(string username, string password, ref string outmess)
         {
             try
             {
@@ -24,14 +24,15 @@ namespace RestaurantManager.Bussiness
                     return result;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                outmess = ex.Message;
                 return null;
             }
         }
 
 
-        public List<USER> GetUsersByPosition(string position, string loginCode,ref string outmess)
+        public List<USER> GetUsersByPosition(string position, string loginCode, ref string outmess)
         {
             try
             {
