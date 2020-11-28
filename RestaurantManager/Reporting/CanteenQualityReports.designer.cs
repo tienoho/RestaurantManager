@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CanteenQualityReports));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -91,7 +90,6 @@
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.lblCaption = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.objectDataSource2 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
@@ -404,8 +402,7 @@
             this.xrLabel5,
             this.xrLabel4,
             this.xrLabel3,
-            this.lblCaption,
-            this.xrPictureBox1});
+            this.lblCaption});
             this.ReportHeader.HeightF = 446.9998F;
             this.ReportHeader.Name = "ReportHeader";
             // 
@@ -783,13 +780,6 @@
     "ịa chỉ CCN Ngọc Liệp, Xã Ngọc Liệp, Huyện Quốc Oai, TP Hà Nội. Chúng tôi gồm có:" +
     "";
             // 
-            // xrPictureBox1
-            // 
-            this.xrPictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("xrPictureBox1.ImageSource"));
-            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(797.9999F, 102F);
-            // 
             // objectDataSource2
             // 
             this.objectDataSource2.DataSourceType = null;
@@ -829,7 +819,6 @@
         private DevExpress.XtraReports.UI.ReportHeaderBand ReportHeader;
         private DevExpress.XtraReports.UI.XRLabel xrLabel3;
         private DevExpress.XtraReports.UI.XRLabel lblCaption;
-        private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
         private DevExpress.XtraReports.UI.XRLabel lblUser3;
         private DevExpress.XtraReports.UI.XRLabel lblUser2;
         private DevExpress.XtraReports.UI.XRLabel lblUser1;
