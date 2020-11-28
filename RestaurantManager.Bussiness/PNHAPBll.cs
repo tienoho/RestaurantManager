@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,9 +52,7 @@ namespace RestaurantManager.Bussiness
                     try
                     {
                         //validate với bảng khác
-
                         var master = db.PNHAPs.FirstOrDefault(e => e.idpnhap == idpnhap);
-
                         //find detail
                         var details = db.D_PNHAP.Where(e => e.idpnhap == master.idpnhap).ToList();
                         db.D_PNHAP.RemoveRange(details);
@@ -142,6 +141,65 @@ namespace RestaurantManager.Bussiness
             using (var db = new RestaurantManagerDataEntities())
             {
                 return db.D_PNHAP.AsNoTracking().Where(e => e.idpnhap == idpnhap).ToList();
+            }
+        }
+
+        public string savePNHAP(PNHAP_ViewModel model, List<D_PNHAP_ViewModel> lstDetail, string nameLog)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    //master
+                    var check = db.PNHAPs.FirstOrDefault(e => e.idpnhap == model.idpnhap);
+                    if (check == null)
+                    {
+                        check = new PNHAP();
+                        check.idpnhap = model.idpnhap;
+                        check.CreateBy = nameLog;
+                        check.CreateDate = DateTime.Now;
+                        db.PNHAPs.Add(check);
+                    }
+                    else
+                    {
+                        check.ModifyBy = nameLog;
+                        check.ModifyDate = DateTime.Now;
+                        db.Entry(check).State = EntityState.Modified;
+                    }
+                    check.idpnhap = model.idpnhap;
+                    check.thukho = model.thukho;
+                    check.ngaynhap = model.ngaynhap;
+                    check.idpgiao = model.idpgiao;
+                    check.nguoigiao = model.nguoigiao;
+                    check.nguoilapphieu = nameLog;
+                    db.SaveChanges();
+
+                    //detail
+                    var details = db.D_PNHAP.Where(p => p.idpnhap == check.idpnhap).ToList();
+                    if (details.Count() > 0)
+                    {
+                        db.D_PNHAP.RemoveRange(details);
+                    }
+                    foreach (var item in lstDetail)
+                    {
+                        var detail = new D_PNHAP
+                        {
+                            idpnhap = item.idpnhap,
+                            idhang = item.idhang,
+                            slgiao = item.slnhan,
+                            slnhan = item.slnhan,
+                            CreateBy = nameLog,
+                            CreateDate = DateTime.Now,
+                        };
+                        db.D_PNHAP.Add(detail);
+                    }
+                    db.SaveChanges();
+                    return "success";
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
     }

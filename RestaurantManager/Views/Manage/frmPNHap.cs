@@ -17,12 +17,12 @@ namespace RestaurantManager.Views.Order
 {
     public partial class frmPNhap : Form
     {
-        List<NCC_ViewModel> lstncc;
         List<NLIEU> lstnlieu;
         List<GIAOHANG_ViewModel> lstGIAOHANG_ViewModel;
         List<USER> lstUser_ViewModel;
-        List<D_DONMH_ViewModel> lstD_DONMH_ViewModel = new List<D_DONMH_ViewModel>();
         List<D_GIAOHANG_ViewModel> lstD_GIAOHANG_ViewModel = new List<D_GIAOHANG_ViewModel>();
+        List<PNHAP_ViewModel> lstPNHAP_ViewModel = new List<PNHAP_ViewModel>();
+        List<D_PNHAP_ViewModel> lstD_PNHAP_ViewModel = new List<D_PNHAP_ViewModel>();
 
         public frmPNhap()
         {
@@ -65,8 +65,8 @@ namespace RestaurantManager.Views.Order
             lueDONGIAO.Properties.DisplayMember = "idpgiao";
             string outmess = string.Empty;
             //thu kho
-            lstUser_ViewModel = new USERSBll().GetUsersByPosition("THUKHO", Properties.Settings.Default.NameLog,ref outmess);
-            if (outmess !="success")
+            lstUser_ViewModel = new USERSBll().GetUsersByPosition("THUKHO", Properties.Settings.Default.NameLog, ref outmess);
+            if (outmess != "success")
             {
                 XtraMessageBox.Show("Đã có lỗi xảy ra!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -84,7 +84,7 @@ namespace RestaurantManager.Views.Order
             lueStorekeeper.Properties.DisplayMember = "UserName";
 
             //txtid
-            txtid.Text = Utils.getNewId("GIAOHANG").ToString();
+            txtid.Text = Utils.getNewId("PNHAP").ToString();
         }
 
         private void getDetailsGIAOHANG(int id)
@@ -92,9 +92,20 @@ namespace RestaurantManager.Views.Order
             try
             {
                 string outmess = string.Empty;
-                lstD_GIAOHANG_ViewModel = new PNHAPBll().GetLstDonGiao(id,ref outmess);
-                gcD_DONMH.DataSource = lstD_GIAOHANG_ViewModel;
-                gvD_DONMH.RefreshData();
+                lstD_GIAOHANG_ViewModel = new PNHAPBll().GetLstDonGiao(id, ref outmess);
+                foreach (var item in lstD_GIAOHANG_ViewModel)
+                {
+                    var temp = new D_PNHAP_ViewModel();
+                    temp.idhang = item.idhang;
+                    temp.tenhang = item.tenhang;
+                    temp.slgiao = item.slgiaohang;
+                    temp.slnhan = item.slnhanhang;
+                    temp.CreateDate = item.CreateDate;
+                    temp.CreateBy = item.CreateBy;
+                    lstD_PNHAP_ViewModel.Add(temp);
+                }
+                gcD_DONMH.DataSource = null;
+                gcD_DONMH.DataSource = lstD_PNHAP_ViewModel;
             }
             catch (Exception ex)
             {
@@ -163,32 +174,30 @@ namespace RestaurantManager.Views.Order
                 int.TryParse(nslgiaohang.EditValue.ToString(), out int slgiao);
                 int.TryParse(nslnhanhang.EditValue.ToString(), out int slnhap);
                 var tenhang = txttenhang.Text;
-                var idpgiao = int.Parse(txtid.Text);
+                var idnhap = int.Parse(txtid.Text);
 
-                var d_giaohang = new D_GIAOHANG_ViewModel
+                var objDNHAP = new D_PNHAP_ViewModel
                 {
-                    idpgiao = idpgiao,
+                    idpnhap = idnhap,
                     idhang = idhanghoa,
-                    tenhang = tenhang,                    
-                    slnhanhang = slnhap,
-                    slgiaohang = slgiao,
+                    tenhang = tenhang,
+                    slgiao = slgiao,
+                    slnhan = slnhap,
                     CreateBy = Properties.Settings.Default.NameLog,
-                    ModifyBy = Properties.Settings.Default.NameLog,
-                    CreateDate = DateTime.Now,
-                    ModifyDate = DateTime.Now
+                    CreateDate = DateTime.Now
                 };
 
                 //check trùng
-                var check = lstD_GIAOHANG_ViewModel.FirstOrDefault(p => p.idhang == d_giaohang.idhang);
+                var check = lstD_PNHAP_ViewModel.FirstOrDefault(p => p.idhang == objDNHAP.idhang);
                 if (check != null)
                 {
                     XtraMessageBox.Show("Hàng hóa đã được chọn. Vui lòng sửa lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    lstD_GIAOHANG_ViewModel.Add(d_giaohang);
+                    lstD_PNHAP_ViewModel.Add(objDNHAP);
                     gcD_DONMH.DataSource = null;
-                    gcD_DONMH.DataSource = lstD_GIAOHANG_ViewModel;
+                    gcD_DONMH.DataSource = lstD_PNHAP_ViewModel;
                     clearFrm();
                 }
             }
@@ -208,12 +217,12 @@ namespace RestaurantManager.Views.Order
             }
             if (slgiao <= 0)
             {
-                XtraMessageBox.Show("Số lượng giao không được nhỏ hơn 1!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Số lượng giao phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (slnhap <= 0)
             {
-                XtraMessageBox.Show("Đơn giá phải lớn hơn 0", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Số lượng nhập lớn hơn 0", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -222,68 +231,71 @@ namespace RestaurantManager.Views.Order
 
         private void btnDeleteDetails_Click(object sender, EventArgs e)
         {
-            var selects = gvD_DONMH.GetSelectedRows();
-            var row = gvD_DONMH.GetRow(selects[0]);
+            var selects = gvD_NHAP.GetSelectedRows();
+            var row = gvD_NHAP.GetRow(selects[0]);
             if (selects == null)
             {
                 XtraMessageBox.Show("Bạn chưa chọn hàng hóa để xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var select = (D_PNHAP)row;
-
-            var res = new PNHAPBll().DeletePNHAP(select.idpnhap);
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                var select = (D_DONMH_ViewModel)row;
+                lstD_PNHAP_ViewModel = lstD_PNHAP_ViewModel.Where(p => p.idhang != select.idhang).ToList();
+                gcD_DONMH.DataSource = lstD_PNHAP_ViewModel;
+                return;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                int idpnhap = int.Parse(txtid.Text);
-                var ngaynhap = dtngaynhap.Value;
-                int.TryParse(lueDONGIAO.EditValue.ToString(), out int iddonmh);
-                if (ngaynhap == null)
+                using (var db = new RestaurantManagerDataEntities())
                 {
-                    XtraMessageBox.Show("Bạn chưa chọn ngày nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (lstD_DONMH_ViewModel.Count == 0)
-                {
-                    XtraMessageBox.Show("Bạn chưa nhập hàng hóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                var model = new GIAOHANG_ViewModel()
-                {
-                    idpgiao = idpnhap,
-                    iddonmh = iddonmh,
-                    ngaygiao = dtngaynhap.Value,
-                    nguoigiao = txtNguoiGiao.Text,
-                    nguoilapphieu = Properties.Settings.Default.NameLog,
-                    nguoinhan = txtNguoiNhan.Text,
-                };
-                var lstD_GIAOHANG = new List<D_GIAOHANG_ViewModel>();
-                foreach (var item in lstD_DONMH_ViewModel)
-                {
-                    var detail = new D_GIAOHANG_ViewModel
+                    int idpnhap = int.Parse(txtid.Text);
+                    var ngaynhap = dtngaynhap.Value;
+                    int.TryParse(lueDONGIAO.EditValue.ToString(), out int idgiaohang);
+                    string thukho= lueDONGIAO.EditValue.ToString();
+                    string nguoigiao = txtNguoiGiao.Text;
+                    string nguoinhap = txtNguoiNhan.Text;
+
+                    if (ngaynhap == null)
                     {
-                        idhang = item.idhang,
-                        idpgiao = model.idpgiao,
-                        slgiaohang = item.slmh,
-                        slnhanhang = item.slnhanhang
-                    };
+                        XtraMessageBox.Show("Bạn chưa chọn ngày nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (lstD_PNHAP_ViewModel.Count == 0)
+                    {
+                        XtraMessageBox.Show("Bạn chưa nhập hàng hóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    
+                    if (lstD_PNHAP_ViewModel.Count() == 0)
+                    {
+                        XtraMessageBox.Show("Bạn chưa nhập hàng hóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    var model = new PNHAP_ViewModel();
+                    model.idpnhap = idpnhap;
+                    model.idpgiao = idgiaohang;
+                    model.ngaynhap = ngaynhap;
+                    model.nguoilapphieu = Properties.Settings.Default.NameLog;
+                    model.tenthukho = thukho;
+                    model.nguoigiao = Properties.Settings.Default.NameLog;
+                    var res = new PNHAPBll().savePNHAP(model, lstD_PNHAP_ViewModel, Properties.Settings.Default.NameLog);
+                    if (res != "success")
+                    {
+                        XtraMessageBox.Show(res, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    XtraMessageBox.Show("Thêm phiếu giao hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
 
-                    lstD_GIAOHANG.Add(detail);
                 }
-                var res = new GIAOHANGBll().AddGIAOHANG(model, lstD_GIAOHANG, Properties.Settings.Default.NameLog);
-                if (res != "success")
-                {
-                    XtraMessageBox.Show(res, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                XtraMessageBox.Show("Thêm phiếu giao hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -291,7 +303,7 @@ namespace RestaurantManager.Views.Order
 
         private void lueDonMH_EditValueChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void gcD_DONMH_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
@@ -322,9 +334,9 @@ namespace RestaurantManager.Views.Order
                 return;
             }
             int.TryParse(luenlieu.EditValue.ToString(), out int idhang);
-            int.TryParse(nslgiaohang.EditValue.ToString(), out int slmh);//số lượng giao hàng
+            int.TryParse(nslgiaohang.EditValue.ToString(), out int slgiao);//số lượng giao hàng
             int.TryParse(nslnhanhang.EditValue.ToString(), out int slnhanhang);
-            if (slmh <= 0)
+            if (slgiao <= 0)
             {
                 XtraMessageBox.Show("Số lượng giao hàng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -335,19 +347,19 @@ namespace RestaurantManager.Views.Order
                 return;
             }
 
-            if (slnhanhang > slmh)
+            if (slnhanhang > slgiao)
             {
                 XtraMessageBox.Show("Số lượng nhận hàng phải lớn hơn hoặc bằng số lượng giao hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var item = lstD_DONMH_ViewModel.FirstOrDefault(x => x.idhang == idhang);
+            var item = lstD_PNHAP_ViewModel.FirstOrDefault(x => x.idhang == idhang);
             if (item != null)
             {
-                item.slmh = slmh;
-                item.slnhanhang = slnhanhang;
+                item.slgiao = slgiao;
+                item.slnhan = slnhanhang;
             }
-            gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
-            gvD_DONMH.RefreshData();
+            gcD_DONMH.DataSource = null;
+            gcD_DONMH.DataSource = lstD_PNHAP_ViewModel;
 
         }
 
