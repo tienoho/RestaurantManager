@@ -23,7 +23,7 @@ namespace RestaurantManager.Database
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public string ModifyBy { get; set; }
     
-        public virtual GIAOHANG GIAOHANG { get; set; }
         public virtual NLIEU NLIEU { get; set; }
+        public virtual GIAOHANG GIAOHANG { get; set; }
     }
 }

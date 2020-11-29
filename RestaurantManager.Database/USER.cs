@@ -20,5 +20,6 @@ namespace RestaurantManager.Database
         public string ChucVu { get; set; }
         public string DiaChi { get; set; }
         public string SoDT { get; set; }
+        public string ten { get; set; }
     }
 }
