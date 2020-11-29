@@ -86,6 +86,7 @@ namespace RestaurantManager.Views.Order
         {
             try
             {
+                lstD_DONMH_ViewModel = new List<D_DONMH_ViewModel>();
                 lstD_DONMH_ViewModel = new DONMHBll().GetListD_DONMH(id);
                 gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
                 gvD_DONMH.RefreshData();

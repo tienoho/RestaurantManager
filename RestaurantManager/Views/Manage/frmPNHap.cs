@@ -92,6 +92,7 @@ namespace RestaurantManager.Views.Order
             try
             {
                 string outmess = string.Empty;
+                lstD_PNHAP_ViewModel = new List<D_PNHAP_ViewModel>();
                 lstD_GIAOHANG_ViewModel = new PNHAPBll().GetLstDonGiao(id, ref outmess);
                 foreach (var item in lstD_GIAOHANG_ViewModel)
                 {
@@ -257,7 +258,8 @@ namespace RestaurantManager.Views.Order
                     int idpnhap = int.Parse(txtid.Text);
                     var ngaynhap = dtngaynhap.Value;
                     int.TryParse(lueDONGIAO.EditValue.ToString(), out int idgiaohang);
-                    string thukho= lueDONGIAO.EditValue.ToString();
+                    int.TryParse(lueStorekeeper.EditValue.ToString(), out int thukho);
+                    string thukhoName = lueStorekeeper.Text;
                     string nguoigiao = txtNguoiGiao.Text;
                     string nguoinhap = txtNguoiNhan.Text;
 
@@ -278,12 +280,13 @@ namespace RestaurantManager.Views.Order
                         return;
                     }
                     var model = new PNHAP_ViewModel();
+                    var nameLog = Properties.Settings.Default.NameLog; 
                     model.idpnhap = idpnhap;
                     model.idpgiao = idgiaohang;
                     model.ngaynhap = ngaynhap;
-                    model.nguoilapphieu = Properties.Settings.Default.NameLog;
-                    model.tenthukho = thukho;
-                    model.nguoigiao = Properties.Settings.Default.NameLog;
+                    model.thukho = thukhoName;
+                    model.nguoilapphieu = nameLog;
+                    model.nguoigiao = nameLog;
                     var res = new PNHAPBll().savePNHAP(model, lstD_PNHAP_ViewModel, Properties.Settings.Default.NameLog);
                     if (res != "success")
                     {

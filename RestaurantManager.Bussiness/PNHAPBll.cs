@@ -155,7 +155,6 @@ namespace RestaurantManager.Bussiness
                     if (check == null)
                     {
                         check = new PNHAP();
-                        check.idpnhap = model.idpnhap;
                         check.CreateBy = nameLog;
                         check.CreateDate = DateTime.Now;
                         db.PNHAPs.Add(check);
@@ -166,7 +165,6 @@ namespace RestaurantManager.Bussiness
                         check.ModifyDate = DateTime.Now;
                         db.Entry(check).State = EntityState.Modified;
                     }
-                    check.idpnhap = model.idpnhap;
                     check.thukho = model.thukho;
                     check.ngaynhap = model.ngaynhap;
                     check.idpgiao = model.idpgiao;
