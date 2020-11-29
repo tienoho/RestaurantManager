@@ -11,9 +11,9 @@ using System.Collections.Generic;
 
 namespace RestaurantManager.Reporting
 {
-    public partial class ReportDONMH : DevExpress.XtraReports.UI.XtraReport
+    public partial class ReportHOADONTT : DevExpress.XtraReports.UI.XtraReport
     {
-        public ReportDONMH()
+        public ReportHOADONTT()
         {
             InitializeComponent();
             

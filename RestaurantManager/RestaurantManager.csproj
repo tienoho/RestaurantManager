@@ -151,6 +151,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\ReportHOADONTT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportHOADONTT.designer.cs">
+      <DependentUpon>ReportHOADONTT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reporting\ReportHOADONM.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -198,12 +204,6 @@
     </Compile>
     <Compile Include="Reporting\CanteenQualityReports.designer.cs">
       <DependentUpon>CanteenQualityReports.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reporting\ReportHOADONTT.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reporting\ReportHOADONTT.Designer.cs">
-      <DependentUpon>ReportHOADONTT.cs</DependentUpon>
     </Compile>
     <Compile Include="TestConect.cs" />
     <Compile Include="ViewsModels\EmployeeReportType.cs" />
@@ -356,6 +356,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reporting\ReportHOADONTT.resx">
+      <DependentUpon>ReportHOADONTT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporting\ReportHOADONM.resx">
       <DependentUpon>ReportHOADONM.cs</DependentUpon>
     </EmbeddedResource>
@@ -379,9 +382,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reporting\CanteenQualityReports.resx">
       <DependentUpon>CanteenQualityReports.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reporting\ReportHOADONTT.resx">
-      <DependentUpon>ReportHOADONTT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\frmPNHap.resx">
       <DependentUpon>frmPNHap.cs</DependentUpon>
