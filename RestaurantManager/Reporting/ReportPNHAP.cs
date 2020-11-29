@@ -11,9 +11,9 @@ using System.Collections.Generic;
 
 namespace RestaurantManager.Reporting
 {
-    public partial class ReportPYC : DevExpress.XtraReports.UI.XtraReport
+    public partial class ReportPNHAP : DevExpress.XtraReports.UI.XtraReport
     {
-        public ReportPYC()
+        public ReportPNHAP()
         {
             InitializeComponent();
             

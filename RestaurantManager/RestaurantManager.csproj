@@ -151,6 +151,42 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\ReportHOADONM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportHOADONM.designer.cs">
+      <DependentUpon>ReportHOADONM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportDONMH.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportDONMH.designer.cs">
+      <DependentUpon>ReportDONMH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportGIAOHANG.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportGIAOHANG.designer.cs">
+      <DependentUpon>ReportGIAOHANG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportPNHAP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportPNHAP.designer.cs">
+      <DependentUpon>ReportPNHAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportDONDATDA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportDONDATDA.designer.cs">
+      <DependentUpon>ReportDONDATDA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportDOANHTHU.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportDOANHTHU.designer.cs">
+      <DependentUpon>ReportDOANHTHU.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reporting\ReportPYC.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -285,6 +321,12 @@
     <Compile Include="Views\Order\uctHOADONTT.Designer.cs">
       <DependentUpon>uctHOADONTT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Print\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Print\frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Procedure\uctCreate_PYC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -314,6 +356,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reporting\ReportHOADONM.resx">
+      <DependentUpon>ReportHOADONM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ReportDONMH.resx">
+      <DependentUpon>ReportDONMH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ReportGIAOHANG.resx">
+      <DependentUpon>ReportGIAOHANG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ReportPNHAP.resx">
+      <DependentUpon>ReportPNHAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ReportDONDATDA.resx">
+      <DependentUpon>ReportDONDATDA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ReportDOANHTHU.resx">
+      <DependentUpon>ReportDOANHTHU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporting\ReportPYC.resx">
       <DependentUpon>ReportPYC.cs</DependentUpon>
     </EmbeddedResource>
@@ -379,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Order\uctHOADONTT.resx">
       <DependentUpon>uctHOADONTT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Print\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Procedure\uctCreate_PYC.resx">
       <DependentUpon>uctCreate_PYC.cs</DependentUpon>
@@ -601,6 +664,9 @@
     <Content Include="images\environment-icon-in-circle-vector-18879072.jpg" />
     <Content Include="images\mail-icon-white-on-clear-hi.png" />
     <Content Include="images\menchua.jpg" />
+    <None Include="Resources\icons8-print-16.png" />
+    <None Include="Resources\icons8-print-26.png" />
+    <None Include="Resources\icons8-print-34.png" />
     <None Include="Resources\giao-hang.png" />
     <None Include="Resources\order-24.png" />
     <None Include="Resources\order-34.png" />

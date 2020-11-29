@@ -142,6 +142,9 @@
   <data name="update" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-print-26" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-print-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="order-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\order-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -199,6 +202,9 @@
   <data name="update2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="change_password" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\change_password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="customer_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\customer_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -244,6 +250,9 @@
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-print-34" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-print-34.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="search_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -274,8 +283,8 @@
   <data name="logo_uit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_uit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="change_password" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\change_password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="giao-hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\giao-hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="manager_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\manager_account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -286,7 +295,7 @@
   <data name="show_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\show_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="giao-hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\giao-hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-print-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-print-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

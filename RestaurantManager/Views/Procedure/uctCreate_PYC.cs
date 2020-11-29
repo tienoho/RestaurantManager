@@ -22,7 +22,7 @@ namespace RestaurantManager
     {
         List<NLIEU> lstNLIEU;
         List<PYC_ViewModel> lstPYC;
-        List<D_PYC_ViewModel> lstD_PYC;
+        List<D_PYC_ViewModel> lstD_PYC = new List<D_PYC_ViewModel>();
         public uctCreate_PYC()
         {
             InitializeComponent();
@@ -59,7 +59,7 @@ namespace RestaurantManager
             LoadGridDetails((int)idyc);
 
 
-            btnAdd.Enabled = false;
+            btnSavePYC.Enabled = false;
 
             btnAddDetails.Enabled = true;
             lueNLieu.Enabled = true;
@@ -79,6 +79,10 @@ namespace RestaurantManager
             txtslton.EditValue = slton;
             txtnguong.EditValue = nguong;
             txtsldukien.EditValue = sldukien;
+
+            btnUpdateDetails.Enabled = true;
+            btnAddDetails.Enabled = false;
+            btnDeleteDetails.Enabled = true;
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -171,7 +175,7 @@ namespace RestaurantManager
                 var resultObj = new PYCBll().AddPYC(pyc);
                 if (resultObj != null)
                 {
-                    XtraMessageBox.Show("Tạo phiếu yêu cầu thành công, vui lòng thêm hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Tạo phiếu yêu cầu không thành công, vui lòng thêm hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtid.Text = resultObj.idyc.ToString();
                     dtpnyc.Value = resultObj.ngayyc;
                     dtpnyc.Enabled = false;
@@ -187,16 +191,11 @@ namespace RestaurantManager
 
         private void btnDeletddde_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtid.Text = "";
-            dtpnyc.Value = DateTime.Now;
-            dtpnyc.Enabled = true;
-            btnAdd.Enabled = true;
-            gcPYCDetails.DataSource = null;
-            LoadGrid();
+
             ClearDisplay();
         }
         #endregion
@@ -223,14 +222,83 @@ namespace RestaurantManager
         private void ClearDisplay()
         {
             txtid.Text = "";
-
-            // lueNLieu.Text = "";
-            // lueNLieu.Enabled = false;
+            dtpnyc.Value = DateTime.Now;
+            dtpnyc.Enabled = true;
+            btnSavePYC.Enabled = true;
+            gcPYCDetails.DataSource = null;
+            LoadGrid();
         }
 
         #endregion
 
         private void btnAddDetails_Click(object sender, EventArgs e)
+        {
+            var s_idyc = txtid.Text;
+            int.TryParse(s_idyc, out int idyc);
+
+            if (lueNLieu.Text == "" || lueNLieu.EditValue == null)
+            {
+                XtraMessageBox.Show("Bạn chưa chọn mã hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (txtsldukien.Text == "" || txtsldukien.EditValue == null)
+            {
+                XtraMessageBox.Show("Bạn chưa nhập số lượng dự kiến!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (txtslton.Text == "" || txtslton.EditValue == null)
+            {
+                XtraMessageBox.Show("Bạn chưa nhập số lượng tồn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (txtnguong.Text == "" || txtnguong.EditValue == null)
+            {
+                XtraMessageBox.Show("Bạn chưa nhập ngưỡng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int.TryParse(lueNLieu.EditValue.ToString(), out int idhang);
+
+            int.TryParse(txtsldukien.EditValue.ToString(), out int sldukien);
+            int.TryParse(txtslton.EditValue.ToString(), out int slton);
+            int.TryParse(txtnguong.EditValue.ToString(), out int nguong);
+
+            if (sldukien <= 0)
+            {
+                XtraMessageBox.Show("Số lương dự kiến phải lớn hơn 0!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (lstD_PYC.Find(x => x.idhang == idhang) != null)
+            {
+                XtraMessageBox.Show("Hàng hóa này đã tồn tại trong danh sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn thêm ?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                var ngayyc = dtpnyc.Value;
+                var d_pyc = new D_PYC_ViewModel
+                {
+                    idyc = idyc,
+                    idhang = idhang,
+                    tenhang = lueNLieu.Text,
+                    sldukien = sldukien,
+                    slton = slton,
+                    nguong = nguong,
+                    CreateBy = Properties.Settings.Default.NameLog,
+                    ModifyBy = Properties.Settings.Default.NameLog,
+                    CreateDate = DateTime.Now,
+                    ModifyDate = DateTime.Now
+                };
+                //
+                lstD_PYC.Add(d_pyc);
+            }
+            gcPYCDetails.DataSource = lstD_PYC;
+            gvPYCDetails.RefreshData();
+            ClearDetails();
+        }
+
+        private void btnUpdateDetails_Click(object sender, EventArgs e)
         {
             var s_idyc = txtid.Text;
             int.TryParse(s_idyc, out int idyc);
@@ -248,41 +316,20 @@ namespace RestaurantManager
                 XtraMessageBox.Show("Số lương dự kiến phải lớn hơn 0!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn thêm ?", "Xác nhận", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            var item = lstD_PYC.FirstOrDefault(x => x.idhang == idhang);
+            if (item != null)
             {
-                var ngayyc = dtpnyc.Value;
-                var d_pyc = new D_PYC
+                var result = XtraMessageBox.Show("Bạn có chắc chắn muốn thêm ?", "Xác nhận", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    idyc = idyc,
-                    idhang = idhang,
-                    sldukien = sldukien,
-                    slton = slton,
-                    nguong = nguong,
-                    CreateBy = Properties.Settings.Default.NameLog,
-                    ModifyBy = Properties.Settings.Default.NameLog,
-                    CreateDate = DateTime.Now,
-                    ModifyDate = DateTime.Now
-                };
-                var resultObj = new PYCBll().AddD_PYC(d_pyc);
-                if (resultObj == "success")
-                {
-                    XtraMessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadGridDetails(d_pyc.idyc);
-                    ClearDetails();
-                    return;
-                }
-                else
-                {
-                    XtraMessageBox.Show("Thêm không thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    item.sldukien = sldukien;
+                    item.slton = slton;
+                    item.nguong = nguong;
                 }
             }
-        }
-
-        private void btnUpdateDetails_Click(object sender, EventArgs e)
-        {
-
+            gcPYCDetails.DataSource = lstD_PYC;
+            gvPYCDetails.RefreshData();
+            ClearDetails();
         }
 
         private void btnDeleteDetails_Click(object sender, EventArgs e)
@@ -303,7 +350,7 @@ namespace RestaurantManager
             var result = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                int.TryParse(txtid.Text , out int id);
+                int.TryParse(txtid.Text, out int id);
                 var idhang = lueNLieu.EditValue;
                 var msg = new PYCBll().DeleteD_PYC(id, (int)idhang);
                 LoadGrid();
@@ -341,10 +388,48 @@ namespace RestaurantManager
         }
         public void ClearDetails()
         {
+            btnUpdateDetails.Enabled = true;
+            btnAddDetails.Enabled = true;
+            btnDeleteDetails.Enabled = true;
             lueNLieu.EditValue = null;
-            txtsldukien.EditValue = null;
-            txtnguong.EditValue = null;
-            txtsldukien.EditValue = null;
+            txtsldukien.EditValue = 0;
+            txtnguong.EditValue = 0;
+            txtsldukien.EditValue = 0;
+        }
+
+        private void btnSavePYC_Click(object sender, EventArgs e)
+        {
+            if (lstD_PYC.Count <= 0)
+            {
+                XtraMessageBox.Show("Bạn phải thêm nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var result = XtraMessageBox.Show("Bạn có chắc chắn muốn thêm phiếu yêu cầu?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                var ngayyc = dtpnyc.Value;
+                var pyc = new PYC
+                {
+                    ngayyc = ngayyc,
+                    CreateBy = Properties.Settings.Default.NameLog,
+                    ModifyBy = Properties.Settings.Default.NameLog,
+                    CreateDate = DateTime.Now,
+                    ModifyDate = DateTime.Now
+                };
+
+                var resultObj = new PYCBll().SavePYC(pyc, lstD_PYC, Properties.Settings.Default.NameLog);
+                if (resultObj == "success")
+                {
+                    XtraMessageBox.Show("Tạo phiếu yêu cầu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearDisplay();
+                    return;
+                }
+                else
+                {
+                    XtraMessageBox.Show("Tạo phiếu yêu cầu không thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
         }
     }
 }

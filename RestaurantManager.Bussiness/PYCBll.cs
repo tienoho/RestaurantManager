@@ -76,15 +76,83 @@ namespace RestaurantManager.Bussiness
                         db.SaveChanges();
                         return check;
                     }
-
-
                 }
             }
             catch (Exception ex)
             {
                 return null;
             }
+        }
+        public string SavePYC(PYC obj, List<D_PYC_ViewModel> details, string loginUser)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var check = db.PYCs.FirstOrDefault(x => x.idyc == obj.idyc);
+                    if (check == null)
+                    {
+                        var PYC = new PYC
+                        {
+                            ngayyc = obj.ngayyc,
+                            CreateDate = DateTime.Now,
+                            CreateBy = loginUser
 
+                        };
+                        check = db.PYCs.Add(PYC);
+                        db.SaveChanges();
+
+                        foreach (D_PYC_ViewModel item in details)
+                        {
+                            var d_pyc = new D_PYC
+                            {
+                                idyc = check.idyc,
+                                idhang = item.idhang,
+                                sldukien = item.sldukien,
+                                slton = item.slton,
+                                nguong = item.nguong,
+                                CreateBy = loginUser,
+                                CreateDate = DateTime.Now,
+                            };
+
+                            db.D_PYC.Add(d_pyc);
+                        }
+                        db.SaveChanges();
+                        return "success";
+                    }
+                    else
+                    {
+                        check.ngayyc = obj.ngayyc;
+                        check.ModifyDate = DateTime.Now;
+                        check.ModifyBy = loginUser;
+                        db.SaveChanges();
+
+                        db.D_PYC.RemoveRange(db.D_PYC.Where(x => x.idyc == obj.idyc));
+                        db.SaveChanges();
+                        foreach (D_PYC_ViewModel item in details)
+                        {
+                            var d_pyc = new D_PYC
+                            {
+                                idyc = check.idyc,
+                                idhang = item.idhang,
+                                sldukien = item.sldukien,
+                                slton = item.slton,
+                                nguong = item.nguong,
+                                CreateBy = loginUser,
+                                CreateDate = DateTime.Now,
+                            };
+
+                            db.D_PYC.Add(d_pyc);
+                        }
+                        db.SaveChanges();
+                        return "success";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         #region D_PYC
@@ -128,7 +196,7 @@ namespace RestaurantManager.Bussiness
                 return ex.Message;
             }
         }
-        public string DeleteD_PYC(int idyc,int idhang)
+        public string DeleteD_PYC(int idyc, int idhang)
         {
             try
             {

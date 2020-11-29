@@ -1,6 +1,6 @@
 ﻿namespace RestaurantManager.Reporting
 {
-    partial class ReportPYC
+    partial class ReportDOANHTHU
     {
         /// <summary>
         /// Required designer variable.
@@ -437,7 +437,7 @@
             this.objectDataSource1.DataSource = typeof(RestaurantManager.Model.D_PYC_ViewModel);
             this.objectDataSource1.Name = "objectDataSource1";
             // 
-            // ReportPYC
+            // ReportDOANHTHU
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,

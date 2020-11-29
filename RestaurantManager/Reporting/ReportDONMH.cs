@@ -11,9 +11,9 @@ using System.Collections.Generic;
 
 namespace RestaurantManager.Reporting
 {
-    public partial class ReportPYC : DevExpress.XtraReports.UI.XtraReport
+    public partial class ReportDONMH : DevExpress.XtraReports.UI.XtraReport
     {
-        public ReportPYC()
+        public ReportDONMH()
         {
             InitializeComponent();
             
@@ -23,7 +23,7 @@ namespace RestaurantManager.Reporting
             using(var db=new RestaurantManagerDataEntities())
             {
                 var toDay = DateTime.Now;
-                lblidpyc.Text = pyc.idyc.ToString();
+                lblid.Text = pyc.idyc.ToString();
                 lblFooterDate.Text = string.Format("Ngày {0} tháng {1} năm {2}", toDay.Day, toDay.Month, toDay.Year);
                 ///var details = new PYCBll().GetListD_PYC(pyc.idyc);
                 objectDataSource1.DataSource = data;

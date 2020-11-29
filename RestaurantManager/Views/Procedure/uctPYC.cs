@@ -15,6 +15,7 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
+using RestaurantManager.Views.Print;
 
 namespace RestaurantManager
 {
@@ -22,6 +23,7 @@ namespace RestaurantManager
     {
         List<PYC_ViewModel> lstPYC;
         List<D_PYC_ViewModel> lstD_PYC;
+        int idyc = 0;
         public uctPYC()
         {
             InitializeComponent();
@@ -62,7 +64,10 @@ namespace RestaurantManager
             //Determine row in event handler  
             int RowHandle = (sender as GridView).FocusedRowHandle;
             object idyc = (sender as GridView).GetRowCellValue(RowHandle, "idyc");
-            LoadGridDetails((int)idyc);
+
+            this.idyc = (int)idyc;
+            LoadGridDetails(this.idyc);
+            btnPrint.Enabled = true;
             //object tenhang = (sender as GridView).GetRowCellValue(RowHandle, "tenhang");
             //object slton = (sender as GridView).GetRowCellValue(RowHandle, "slton");
             //object nguong = (sender as GridView).GetRowCellValue(RowHandle, "nguong");
@@ -103,7 +108,7 @@ namespace RestaurantManager
             //btnSave.Enabled = true;
         }
 
-       
+
         #endregion
 
         #region Function
@@ -139,5 +144,23 @@ namespace RestaurantManager
             gcD_PYC.DataSource = lstD_PYC;
         }
         #endregion
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            //  var obj = lstD_PYC.Current as PYC;
+            if (this.idyc > 0)
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var obj = db.PYCs.AsNoTracking().FirstOrDefault(x => x.idyc == this.idyc);
+                    var details = new PYCBll().GetListD_PYC(this.idyc);
+                    using (frmPrint frm = new frmPrint())
+                    {
+                        frm.PrintPYC(obj, details);
+                        frm.ShowDialog();
+                    }
+                }
+            }
+        }
     }
 }

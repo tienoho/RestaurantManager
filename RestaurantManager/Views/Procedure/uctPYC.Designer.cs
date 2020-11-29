@@ -48,6 +48,7 @@ namespace RestaurantManager
             this.gcsldukien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslton = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcnguong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -249,11 +250,30 @@ namespace RestaurantManager
             this.gcnguong.Visible = true;
             this.gcnguong.VisibleIndex = 4;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.Black;
+            this.btnPrint.Image = global::RestaurantManager.Properties.Resources.icons8_print_16;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(206, 3);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(89, 28);
+            this.btnPrint.TabIndex = 23;
+            this.btnPrint.Text = "In phiếu";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // uctPYC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.btnUpdate);
@@ -295,5 +315,6 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gcsldukien;
         private DevExpress.XtraGrid.Columns.GridColumn gcslton;
         private DevExpress.XtraGrid.Columns.GridColumn gcnguong;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
