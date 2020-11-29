@@ -40,7 +40,7 @@ namespace RestaurantManager
             TabPage tab = new TabPage();
             typePages.Add(typeControl);
             tab.Name = uct.Name;
-            
+
             tab.Size = tabDisplay.Size;
             tab.Text = tenTab + "   ";
             tabDisplay.TabPages.Add(tab);
@@ -323,7 +323,7 @@ namespace RestaurantManager
         private void btnGiaoHang_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctGIAOHANG.uctDL, 11, "Giao hàng");
-            
+
         }
 
         private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
@@ -336,14 +336,20 @@ namespace RestaurantManager
 
         }
 
-        private void btnHOADONM_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
 
         private void btnExportHOADONM_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctHOADONM.uctDL, 13, "Xuất hóa đơn mua");
         }
+
+        private void btnDONDATDA_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctListDONDATDA.uctDL, 14, "Đơn đặt đồ ăn");
+        }
+        private void btnHOADONM_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctListHOADONM.uctDL, 15, "Hóa đơn mua");
+        }
+
     }
 }

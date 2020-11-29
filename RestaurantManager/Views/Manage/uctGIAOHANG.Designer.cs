@@ -60,12 +60,12 @@ namespace RestaurantManager
             this.gcslnhanhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.btnDeleteRow = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcGIAOHANG)).BeginInit();
@@ -374,6 +374,15 @@ namespace RestaurantManager
             this.btnDeleteRow.Name = "btnDeleteRow";
             this.btnDeleteRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteRow_ItemClick);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Caption = "In phiếu";
+            this.btnPrint.Id = 2;
+            this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
+            this.btnPrint.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.LargeImage")));
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
+            // 
             // barManager1
             // 
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -417,15 +426,6 @@ namespace RestaurantManager
             this.barDockControlRight.Location = new System.Drawing.Point(1284, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 525);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Caption = "In";
-            this.btnPrint.Id = 2;
-            this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
-            this.btnPrint.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.LargeImage")));
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
             // 
             // uctGIAOHANG
             // 

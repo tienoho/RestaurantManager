@@ -15,6 +15,7 @@ namespace RestaurantManager.Model
         public string nguoigiao { get; set; }
         public string cuahang { get; set; }
         public string diachi { get; set; }
+        public string sdt { get; set; }
         public Nullable<int> idncc { get; set; }
         public string tenncc { get; set; }
         public Nullable<int> iddonmh { get; set; }
