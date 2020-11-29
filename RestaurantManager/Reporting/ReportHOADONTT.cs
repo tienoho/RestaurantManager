@@ -11,22 +11,28 @@ using System.Collections.Generic;
 
 namespace RestaurantManager.Reporting
 {
-    public partial class ReportDONMH : DevExpress.XtraReports.UI.XtraReport
+    public partial class ReportHOADONTT : DevExpress.XtraReports.UI.XtraReport
     {
-        public ReportDONMH()
+        public ReportHOADONTT()
         {
             InitializeComponent();
             
         }
-        public void InitData(PYC pyc, List<D_PYC_ViewModel> data)
+        public void InitData(HOADONTT_ViewModel obj, List<D_HOADONTT_ViewModel> data)
         {
             using(var db=new RestaurantManagerDataEntities())
             {
                 var toDay = DateTime.Now;
-                lblid.Text = pyc.idyc.ToString();
-                lblFooterDate.Text = string.Format("Ngày {0} tháng {1} năm {2}", toDay.Day, toDay.Month, toDay.Year);
+                lblid.Text = obj.idhoadontt.ToString();
+                lblNgayHD.Text = obj.ngayhd.ToString("dd/MM/yyyy");
+                lblBan.Text = obj.ban;
+                lblsdt.Text = obj.sdt;
+                lblKhachHang.Text = obj.tenkh.ToString();
+                lblThoiGian.Text = obj.thoigian.Value.ToString("hh:mm:ss");
+                lblThuNgan.Text = obj.thungan.ToString();
+                //lblFooterDate.Text = string.Format("Ngày {0} tháng {1} năm {2}", toDay.Day, toDay.Month, toDay.Year);
                 ///var details = new PYCBll().GetListD_PYC(pyc.idyc);
-                objectDataSource1.DataSource = data;
+                objectDataSource4.DataSource = data;
                 
             }
         }

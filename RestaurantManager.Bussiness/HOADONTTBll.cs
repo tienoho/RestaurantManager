@@ -27,6 +27,66 @@ namespace RestaurantManager.Bussiness
                 return null;
             }
         }
+        public HOADONTT_ViewModel GetHOADONTT(int id)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var result = (from h in db.HOADONTTs.AsNoTracking()
+                                  join k in db.KHACHHANGs.AsNoTracking() on h.idkh equals k.idkh
+                                  join d in db.DONDATDAs.AsNoTracking() on h.iddondat equals d.iddondat
+                                  where h.idhoadontt == id
+                                  select new HOADONTT_ViewModel
+                                  {
+                                      idhoadontt = h.idhoadontt,
+                                      iddondat = d.iddondat,
+                                      ban = d.ban,
+                                      idkh = k.idkh,
+                                      tenkh = k.tenkh,
+                                      sdt = k.sdt,
+                                      ngayhd = h.ngayhd,
+                                      thoigian = h.thoigian,
+                                      thungan = h.thungan
+                                  }
+                                  ).FirstOrDefault();
+                    return result;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public List<D_HOADONTT_ViewModel> GetListD_HOADONTT(int idhoadontt)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var result = (from d in db.D_HOADONTT.AsNoTracking()
+                                  join m in db.MONANs.AsNoTracking() on d.idmon equals m.idmon
+                                  where d.idhoadontt == idhoadontt
+                                  select new D_HOADONTT_ViewModel
+                                  {
+                                      idhoadontt = d.idhoadontt,
+                                      idmon = d.idmon,
+                                      slban = d.slban,
+                                      dvt = m.dvt,
+                                      dongiaban = d.dongiaban,
+                                      tenmon = m.temon,
+                                      TotalAmount = d.dongiaban * d.slban,
+                                  }
+                                  )
+                        .ToList();
+                    return result;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public string AddHOADONTT(HOADONTT_ViewModel model)
         {
             try
@@ -109,7 +169,7 @@ namespace RestaurantManager.Bussiness
         }
 
         //lấy danh sách đơn chưa thanh toán
-      
+
 
         /// <summary>
         /// lấy danh sách món ăn
@@ -130,6 +190,7 @@ namespace RestaurantManager.Bussiness
                                       iddondat = d.iddondat,
                                       idmon = d.idmon,
                                       sldat = d.sldat,
+                                      dvt = m.dvt,
                                       dongiamon = m.dongiamon.Value,
                                       tenmon = m.temon,
                                       TotalAmount = m.dongiamon.Value * d.sldat,
@@ -144,7 +205,7 @@ namespace RestaurantManager.Bussiness
                 return null;
             }
         }
-        public List<HOADONTT_ViewModel> GetListHOADONTT(int idkh,DateTime FromDate, DateTime ToDate)
+        public List<HOADONTT_ViewModel> GetListHOADONTT(int idkh, DateTime FromDate, DateTime ToDate)
         {
             try
             {
@@ -154,11 +215,11 @@ namespace RestaurantManager.Bussiness
                     var _FromDate = new SqlParameter("@FromDate", FromDate);
                     var _ToDate = new SqlParameter("@ToDate", ToDate);
 
-                    var result = db.Database.SqlQuery<HOADONTT_ViewModel>("EXEC dbo.Proc_GetListHOADONTT @idkh,@FromDate,@ToDate", _idkh,_FromDate,_ToDate).ToList();
+                    var result = db.Database.SqlQuery<HOADONTT_ViewModel>("EXEC dbo.Proc_GetListHOADONTT @idkh,@FromDate,@ToDate", _idkh, _FromDate, _ToDate).ToList();
                     return result;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }

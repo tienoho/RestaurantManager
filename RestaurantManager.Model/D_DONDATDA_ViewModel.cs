@@ -15,6 +15,7 @@ namespace RestaurantManager.Model
         public double dongiamon { get; set; }
         public double TotalAmount { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public string dvt { get; set; }
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public string ModifyBy { get; set; }

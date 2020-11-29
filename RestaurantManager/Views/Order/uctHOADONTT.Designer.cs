@@ -30,6 +30,7 @@ namespace RestaurantManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label9 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gcWaitOrder = new DevExpress.XtraGrid.GridControl();
@@ -65,6 +66,7 @@ namespace RestaurantManager
             this.lueKhachHang = new DevExpress.XtraEditors.LookUpEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.svgImageCollection1 = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcWaitOrder)).BeginInit();
@@ -84,6 +86,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.txtReturnPay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueKhachHang.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -491,6 +494,11 @@ namespace RestaurantManager
             this.label6.TabIndex = 4;
             this.label6.Text = "THÔNG TIN HÓA ĐƠN";
             // 
+            // svgImageCollection1
+            // 
+            this.svgImageCollection1.Add("print", "image://svgimages/print/print.svg");
+            this.svgImageCollection1.Add("actions_forbid", "image://svgimages/icon builder/actions_forbid.svg");
+            // 
             // uctHOADONTT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,6 +531,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.txtReturnPay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueKhachHang.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -564,5 +573,6 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gcdongia;
         private DevExpress.XtraGrid.Columns.GridColumn gcsldat;
         private DevExpress.XtraGrid.Columns.GridColumn gcTotalAmount;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection1;
     }
 }

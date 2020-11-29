@@ -30,6 +30,8 @@ namespace RestaurantManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctGIAOHANG));
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -56,6 +58,14 @@ namespace RestaurantManager
             this.gctenhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslgiaohang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslnhanhang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.btnDeleteRow = new DevExpress.XtraBars.BarButtonItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcGIAOHANG)).BeginInit();
@@ -64,6 +74,8 @@ namespace RestaurantManager
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcD_GIAOHANG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvD_GIAOHANG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -162,6 +174,7 @@ namespace RestaurantManager
             this.gvGIAOHANG.OptionsBehavior.ReadOnly = true;
             this.gvGIAOHANG.OptionsFind.AlwaysVisible = true;
             this.gvGIAOHANG.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.FindClick;
+            this.gvGIAOHANG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gvGIAOHANG_MouseUp);
             this.gvGIAOHANG.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // gcidpgiao
@@ -344,6 +357,76 @@ namespace RestaurantManager
             this.gcslnhanhang.VisibleIndex = 3;
             this.gcslnhanhang.Width = 76;
             // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDeleteRow),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnPrint)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // btnDeleteRow
+            // 
+            this.btnDeleteRow.Caption = "Xóa";
+            this.btnDeleteRow.Id = 0;
+            this.btnDeleteRow.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteRow.ImageOptions.Image")));
+            this.btnDeleteRow.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDeleteRow.ImageOptions.LargeImage")));
+            this.btnDeleteRow.Name = "btnDeleteRow";
+            this.btnDeleteRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteRow_ItemClick);
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.btnDeleteRow,
+            this.btnPrint});
+            this.barManager1.MaxItemId = 3;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1284, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 525);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1284, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 525);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1284, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 525);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Caption = "In";
+            this.btnPrint.Id = 2;
+            this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
+            this.btnPrint.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.LargeImage")));
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
+            // 
             // uctGIAOHANG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,6 +438,10 @@ namespace RestaurantManager
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Name = "uctGIAOHANG";
             this.Size = new System.Drawing.Size(1284, 525);
             this.Load += new System.EventHandler(this.uctGIAOHANG_Load);
@@ -366,6 +453,8 @@ namespace RestaurantManager
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcD_GIAOHANG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvD_GIAOHANG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,5 +487,13 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gccuahang;
         private DevExpress.XtraGrid.Columns.GridColumn gcdiachi;
         private DevExpress.XtraGrid.Columns.GridColumn gcslnhanhang;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarButtonItem btnDeleteRow;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem btnPrint;
     }
 }

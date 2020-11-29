@@ -1,6 +1,6 @@
 ﻿namespace RestaurantManager.Reporting
 {
-    partial class ReportHOADONTT
+    partial class ReportDONMH
     {
         /// <summary>
         /// Required designer variable.
@@ -618,7 +618,7 @@
             this.xrLabel11.StylePriority.UseTextAlignment = false;
             this.xrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // ReportHOADONTT
+            // ReportDONMH
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,

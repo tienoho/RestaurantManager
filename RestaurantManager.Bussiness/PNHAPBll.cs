@@ -136,68 +136,89 @@ namespace RestaurantManager.Bussiness
         /// ds chi tiết phiếu nhập
         /// </summary>
         /// <returns></returns>
-        public List<D_PNHAP> GetListDNHAP(int idpnhap)
+        public List<D_PNHAP_ViewModel> GetListDNHAP(int idpnhap)
         {
             using (var db = new RestaurantManagerDataEntities())
             {
-                return db.D_PNHAP.AsNoTracking().Where(e => e.idpnhap == idpnhap).ToList();
+                var result = (from d in db.D_PNHAP.AsNoTracking()
+                              join n in db.NLIEUx.AsNoTracking() on d.idhang equals n.idhang
+                              where d.idpnhap == idpnhap
+                              select new D_PNHAP_ViewModel
+                              {
+                                  idpnhap=d.idpnhap,
+                                  idhang=n.idhang,
+                                  slgiao=d.slgiao,
+                                  slnhan=d.slnhan,
+                                  tenhang=n.tenhang,
+                                  CreateDate=d.CreateDate,
+                                  CreateBy=d.CreateBy
+                              }
+                            ).ToList();
+                return result;
             }
         }
 
         public string savePNHAP(PNHAP_ViewModel model, List<D_PNHAP_ViewModel> lstDetail, string nameLog)
         {
-            try
+            using (var db = new RestaurantManagerDataEntities())
             {
-                using (var db = new RestaurantManagerDataEntities())
+                using (var transaction = db.Database.BeginTransaction())
                 {
-                    //master
-                    var check = db.PNHAPs.FirstOrDefault(e => e.idpnhap == model.idpnhap);
-                    if (check == null)
+                    try
                     {
-                        check = new PNHAP();
-                        check.CreateBy = nameLog;
-                        check.CreateDate = DateTime.Now;
-                        db.PNHAPs.Add(check);
-                    }
-                    else
-                    {
-                        check.ModifyBy = nameLog;
-                        check.ModifyDate = DateTime.Now;
-                        db.Entry(check).State = EntityState.Modified;
-                    }
-                    check.thukho = model.thukho;
-                    check.ngaynhap = model.ngaynhap;
-                    check.idpgiao = model.idpgiao;
-                    check.nguoigiao = model.nguoigiao;
-                    check.nguoilapphieu = nameLog;
-                    db.SaveChanges();
 
-                    //detail
-                    var details = db.D_PNHAP.Where(p => p.idpnhap == check.idpnhap).ToList();
-                    if (details.Count() > 0)
-                    {
-                        db.D_PNHAP.RemoveRange(details);
-                    }
-                    foreach (var item in lstDetail)
-                    {
-                        var detail = new D_PNHAP
+                        //master
+                        var check = db.PNHAPs.FirstOrDefault(e => e.idpnhap == model.idpnhap);
+                        if (check == null)
                         {
-                            idpnhap = item.idpnhap,
-                            idhang = item.idhang,
-                            slgiao = item.slnhan,
-                            slnhan = item.slnhan,
-                            CreateBy = nameLog,
-                            CreateDate = DateTime.Now,
-                        };
-                        db.D_PNHAP.Add(detail);
+                            check = new PNHAP();
+                            check.CreateBy = nameLog;
+                            check.CreateDate = DateTime.Now;
+                            db.PNHAPs.Add(check);
+                        }
+                        else
+                        {
+                            check.ModifyBy = nameLog;
+                            check.ModifyDate = DateTime.Now;
+                            db.Entry(check).State = EntityState.Modified;
+                        }
+                        check.thukho = model.thukho;
+                        check.ngaynhap = model.ngaynhap;
+                        check.idpgiao = model.idpgiao;
+                        check.nguoigiao = model.nguoigiao;
+                        check.nguoilapphieu = nameLog;
+                        db.SaveChanges();
+
+                        //detail
+                        var details = db.D_PNHAP.Where(p => p.idpnhap == check.idpnhap).ToList();
+                        if (details.Count() > 0)
+                        {
+                            db.D_PNHAP.RemoveRange(details);
+                        }
+                        db.SaveChanges();
+                        foreach (var item in lstDetail)
+                        {
+                            var detail = new D_PNHAP
+                            {
+                                idpnhap = check.idpnhap,
+                                idhang = item.idhang,
+                                slgiao = item.slgiao,
+                                slnhan = item.slnhan,
+                                CreateBy = nameLog,
+                                CreateDate = DateTime.Now,
+                            };
+                            db.D_PNHAP.Add(detail);
+                        }
+                        db.SaveChanges();
+                        transaction.Commit();
+                        return "success";
                     }
-                    db.SaveChanges();
-                    return "success";
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return ex.Message;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
             }
         }
     }

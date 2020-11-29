@@ -341,10 +341,12 @@ namespace RestaurantManager.Views.Order
             // 
             // groupControl1
             // 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.Controls.Add(this.panel1);
             this.groupControl1.Location = new System.Drawing.Point(10, 163);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(922, 142);
+            this.groupControl1.Size = new System.Drawing.Size(951, 142);
             this.groupControl1.TabIndex = 26;
             this.groupControl1.Text = "Danh sách hàng hóa";
             // 
@@ -367,7 +369,7 @@ namespace RestaurantManager.Views.Order
             this.panel1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(2, 20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(918, 120);
+            this.panel1.Size = new System.Drawing.Size(947, 120);
             this.panel1.TabIndex = 3;
             // 
             // nslgiaohang

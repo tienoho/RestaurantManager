@@ -15,6 +15,7 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
+using RestaurantManager.Views.Print;
 
 namespace RestaurantManager
 {
@@ -115,6 +116,52 @@ namespace RestaurantManager
         private void btnClear_Click(object sender, EventArgs e)
         {
             LoadGrid();
+        }
+
+        private void btnPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var row = gvHOADONTT.FocusedRowHandle;
+
+                var obj = gvHOADONTT.GetFocusedRow();
+                if (obj == null) return;
+                var objData = (HOADONTT_ViewModel)obj;
+                var HOADONTT = new HOADONTTBll().GetHOADONTT(objData.idhoadontt);
+                var D_HOADONTT = new HOADONTTBll().GetListD_HOADONTT(objData.idhoadontt);
+                using (frmPrint frm = new frmPrint())
+                {
+                    frm.PrintHOADONTT(HOADONTT, D_HOADONTT);
+                    frm.ShowDialog();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void gvHOADONTT_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button != MouseButtons.Right) return;
+                var rowH = gvHOADONTT.FocusedRowHandle;
+                //var focusedRowView = (DataRowView)gvGIAOHANG.GetFocusedRow();
+                //if (focusedRowView == null || focusedRowView.IsNew) return;
+                if (rowH >= 0)
+                {
+                    popupMenu1.ShowPopup(barManager1, new Point(MousePosition.X, MousePosition.Y));
+                }
+                else
+                {
+                    popupMenu1.HidePopup();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
 using DevExpress.XtraBars;
+using RestaurantManager.Views.Print;
 
 namespace RestaurantManager
 {
@@ -104,7 +105,7 @@ namespace RestaurantManager
                     XtraMessageBox.Show("Bạn phải chọn đơn đặt đồ ăn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (txtCustomerPay.Text == "" || txtCustomerPay.EditValue==null)
+                if (txtCustomerPay.Text == "" || txtCustomerPay.EditValue == null)
                 {
                     XtraMessageBox.Show("Bạn chưa nhập tiền khách đưa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -142,13 +143,14 @@ namespace RestaurantManager
                     {
                         idmon = item.idmon,
                         slban = item.sldat,
+                        tenmon = item.tenmon,
                         dongiaban = item.dongiamon,
                         CreateBy = Properties.Settings.Default.NameLog,
                         ModifyBy = Properties.Settings.Default.NameLog,
                     };
                     lstD_HOADONTT.Add(D_HOADONTT);
                 }
-                if (lstD_HOADONTT.Count()<=0)
+                if (lstD_HOADONTT.Count() <= 0)
                 {
                     XtraMessageBox.Show("Không có món ăn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -160,7 +162,24 @@ namespace RestaurantManager
                 if (msg != null && msg != "")
                 {
                     LoadGrid();
-                    XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBoxArgs args = new XtraMessageBoxArgs();
+                    args.Caption = "Thông báo";
+                    args.Text = msg + "\n Bạn có muốn in hóa đơn";
+                    args.Buttons = new DialogResult[] { DialogResult.OK, DialogResult.Cancel };
+                    args.Showing += Args_Showing;
+
+                    var result = XtraMessageBox.Show(args);
+                    if (result == DialogResult.OK)
+                    {
+                        using (frmPrint frm = new frmPrint())
+                        {
+                            frm.PrintHOADONTT(model, lstD_HOADONTT);
+                            frm.ShowDialog();
+                        }
+                        return;
+                    }
+                    //XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     ClearDisplay();
                     return;
                 }
@@ -254,6 +273,26 @@ namespace RestaurantManager
         private void btnClearHoDon_Click(object sender, EventArgs e)
         {
             ClearDisplay();
+        }
+        private void Args_Showing(object sender, XtraMessageShowingArgs e)
+        {
+            foreach (var control in e.Form.Controls)
+            {
+                SimpleButton button = control as SimpleButton;
+                if (button != null)
+                {
+                    button.ImageOptions.SvgImageSize = new Size(16, 16);
+                    switch (button.DialogResult.ToString())
+                    {
+                        case ("OK"):
+                            button.ImageOptions.SvgImage = svgImageCollection1[0];
+                            break;
+                        case ("Cancel"):
+                            button.ImageOptions.SvgImage = svgImageCollection1[1];
+                            break;
+                    }
+                }
+            }
         }
     }
 }

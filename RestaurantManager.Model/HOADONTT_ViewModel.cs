@@ -12,6 +12,8 @@ namespace RestaurantManager.Model
         public System.DateTime ngayhd { get; set; }
         public Nullable<System.DateTime> thoigian { get; set; }
         public string thungan { get; set; }
+        public string ban { get; set; }
+        public string sdt { get; set; }
         public Nullable<int> idkh { get; set; }
         public string tenkh { get; set; }
         public Nullable<int> iddondat { get; set; }

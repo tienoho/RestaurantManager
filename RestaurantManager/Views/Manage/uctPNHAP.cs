@@ -22,7 +22,7 @@ namespace RestaurantManager
     public partial class uctPNHAP : UserControl
     {
         List<PNHAP> lstPNHAP;
-        List<D_PNHAP> lstDPNHAP;
+        List<D_PNHAP_ViewModel> lstDPNHAP;
         public uctPNHAP()
         {
             InitializeComponent();
@@ -76,7 +76,11 @@ namespace RestaurantManager
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmPNhap frm = new frmPNhap();
-            frm.Show();
+            var result = frm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadGrid();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -122,7 +126,7 @@ namespace RestaurantManager
         #endregion
 
         #region Chi tiết
-         public void LoadGridDetails(int idpnhap)
+        public void LoadGridDetails(int idpnhap)
         {
             lstDPNHAP = new PNHAPBll().GetListDNHAP(idpnhap);
             gcD_DONMH.DataSource = lstDPNHAP;
