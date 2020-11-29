@@ -166,7 +166,6 @@ namespace RestaurantManager.Bussiness
                         check.ModifyDate = DateTime.Now;
                         db.Entry(check).State = EntityState.Modified;
                     }
-                    check.idpnhap = model.idpnhap;
                     check.thukho = model.thukho;
                     check.ngaynhap = model.ngaynhap;
                     check.idpgiao = model.idpgiao;

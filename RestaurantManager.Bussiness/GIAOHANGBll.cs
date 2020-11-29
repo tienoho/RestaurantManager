@@ -29,6 +29,7 @@ namespace RestaurantManager.Bussiness
                                       nguoinhan = g.nguoinhan,
                                       cuahang = g.cuahang,
                                       diachi = g.diachi,
+                                      idpgiao = g.idpgiao
                                   }).ToList();
                     return result;
                 }
