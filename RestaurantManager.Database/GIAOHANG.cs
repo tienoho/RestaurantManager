@@ -18,6 +18,7 @@ namespace RestaurantManager.Database
         public GIAOHANG()
         {
             this.D_GIAOHANG = new HashSet<D_GIAOHANG>();
+            this.PNHAPs = new HashSet<PNHAP>();
         }
     
         public int idpgiao { get; set; }
@@ -39,5 +40,7 @@ namespace RestaurantManager.Database
         public virtual DONMH DONMH { get; set; }
         public virtual NCC NCC { get; set; }
         public virtual PNHAP PNHAP { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PNHAP> PNHAPs { get; set; }
     }
 }

@@ -37,5 +37,6 @@ namespace RestaurantManager.Database
         public virtual GIAOHANG GIAOHANG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADONM> HOADONMs { get; set; }
+        public virtual GIAOHANG GIAOHANG1 { get; set; }
     }
 }
