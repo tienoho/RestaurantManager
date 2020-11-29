@@ -107,11 +107,13 @@
             this.btnGiaoHang = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.btnHOADONM = new DevExpress.XtraBars.BarButtonItem();
+            this.btnExportHOADONM = new DevExpress.XtraBars.BarButtonItem();
             this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -129,11 +131,6 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ctxtMenuTapDispaly = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.colseAllTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
             this.tabDisplay = new System.Windows.Forms.TabControl();
@@ -142,8 +139,6 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnExportHOADONM = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuToolStrip)).BeginInit();
@@ -155,7 +150,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
-            this.ctxtMenuTapDispaly.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemRichTextEdit1
@@ -367,7 +361,7 @@
             this.btnHOADONM,
             this.btnExportHOADONM});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 74;
+            this.menuToolStrip.MaxItemId = 75;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpManager,
@@ -843,6 +837,16 @@
             this.btnHOADONM.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnHOADONM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHOADONM_ItemClick);
             // 
+            // btnExportHOADONM
+            // 
+            this.btnExportHOADONM.Caption = "Xuất hóa đơn mua";
+            this.btnExportHOADONM.Id = 73;
+            this.btnExportHOADONM.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportHOADONM.ImageOptions.Image")));
+            this.btnExportHOADONM.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnExportHOADONM.ImageOptions.LargeImage")));
+            this.btnExportHOADONM.Name = "btnExportHOADONM";
+            this.btnExportHOADONM.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnExportHOADONM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportHOADONM_ItemClick);
+            // 
             // rpProcedure
             // 
             this.rpProcedure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -875,6 +879,11 @@
             // 
             this.ribbonPageGroup16.ItemLinks.Add(this.barButtonItem20);
             this.ribbonPageGroup16.Name = "ribbonPageGroup16";
+            // 
+            // ribbonPageGroup17
+            // 
+            this.ribbonPageGroup17.ItemLinks.Add(this.btnExportHOADONM);
+            this.ribbonPageGroup17.Name = "ribbonPageGroup17";
             // 
             // ribbonPage1
             // 
@@ -992,40 +1001,6 @@
             // 
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             // 
-            // ctxtMenuTapDispaly
-            // 
-            this.ctxtMenuTapDispaly.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
-            this.closeToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.colseAllTabToolStripMenuItem});
-            this.ctxtMenuTapDispaly.Name = "ctxtMenuTapDispaly";
-            this.ctxtMenuTapDispaly.Size = new System.Drawing.Size(142, 60);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click_1);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
-            // 
-            // colseAllTabToolStripMenuItem
-            // 
-            this.colseAllTabToolStripMenuItem.Name = "colseAllTabToolStripMenuItem";
-            this.colseAllTabToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.colseAllTabToolStripMenuItem.Text = "Colse All Tab";
-            this.colseAllTabToolStripMenuItem.Click += new System.EventHandler(this.colseAllTapToolStripMenuItem_Click);
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "barButtonItem1";
@@ -1040,7 +1015,6 @@
             // 
             // tabDisplay
             // 
-            this.tabDisplay.ContextMenuStrip = this.ctxtMenuTapDispaly;
             this.tabDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabDisplay.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabDisplay.Location = new System.Drawing.Point(0, 143);
@@ -1107,21 +1081,6 @@
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // ribbonPageGroup17
-            // 
-            this.ribbonPageGroup17.ItemLinks.Add(this.btnExportHOADONM);
-            this.ribbonPageGroup17.Name = "ribbonPageGroup17";
-            // 
-            // btnExportHOADONM
-            // 
-            this.btnExportHOADONM.Caption = "Xuất hóa đơn mua";
-            this.btnExportHOADONM.Id = 73;
-            this.btnExportHOADONM.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.btnExportHOADONM.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
-            this.btnExportHOADONM.Name = "btnExportHOADONM";
-            this.btnExportHOADONM.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnExportHOADONM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportHOADONM_ItemClick);
-            // 
             // frmMain
             // 
             this.Appearance.BackColor = System.Drawing.Color.Yellow;
@@ -1151,7 +1110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
-            this.ctxtMenuTapDispaly.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1196,11 +1154,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage7;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
-        private System.Windows.Forms.ContextMenuStrip ctxtMenuTapDispaly;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem colseAllTabToolStripMenuItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem btnProductOfStore;
         private DevExpress.XtraBars.BarButtonItem btnAuthorInfo;
