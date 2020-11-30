@@ -13,6 +13,8 @@ namespace RestaurantManager.Model
         public string tenhang { get; set; }
         public Nullable<int> slgiao { get; set; }
         public Nullable<int> slnhan { get; set; }
+        public double? dongia { get; set; }
+        public double? thanhtien { get; set; }
         public DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
         public DateTime? ModifyDate { get; set; }
