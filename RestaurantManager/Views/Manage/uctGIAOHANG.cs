@@ -56,7 +56,7 @@ namespace RestaurantManager
         {
             frmGIAOHANG_Detail frm = new frmGIAOHANG_Detail();
             var result = frm.ShowDialog();
-            if (result == DialogResult.OK)
+            if (result == DialogResult.Cancel)
             {
                 LoadGrid();
             }

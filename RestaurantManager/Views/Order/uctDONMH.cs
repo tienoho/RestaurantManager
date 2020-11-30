@@ -76,7 +76,11 @@ namespace RestaurantManager
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmDONMH_Detail frm = new frmDONMH_Detail();
-            frm.Show();
+            var result = frm.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                LoadGrid();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -100,6 +104,7 @@ namespace RestaurantManager
         {
             lstDONMH = new DONMHBll().GetListDONMH();
             gridControl1.DataSource = lstDONMH;
+            gridView1.RefreshData();
         }
         private void ClearDisplay()
         {

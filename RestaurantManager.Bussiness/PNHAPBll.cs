@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,21 +117,35 @@ namespace RestaurantManager.Bussiness
         /// <returns></returns>
         public List<D_PNHAP_ViewModel> GetListD_PNHAP_Full(int idpnhap)
         {
-            using (var db = new RestaurantManagerDataEntities())
+            //using (var db = new RestaurantManagerDataEntities())
+            //{
+            //var result = (from p in db.D_PNHAP.AsNoTracking()
+            //              join n in db.NLIEUx.AsNoTracking() on p.idhang equals n.idhang
+            //              select new D_PNHAP_ViewModel
+            //              {
+            //                  idpnhap = p.idpnhap,
+            //                  idhang = p.idhang,
+            //                  tenhang = n.tenhang,
+            //                  slgiao = p.slgiao,
+            //                  slnhan = p.slnhan,
+            //              }).ToList();
+
+            try
             {
-                var result = (from p in db.D_PNHAP.AsNoTracking()
-                              join n in db.NLIEUx.AsNoTracking() on p.idhang equals n.idhang
-                              select new D_PNHAP_ViewModel
-                              {
-                                  idpnhap = p.idpnhap,
-                                  idhang = p.idhang,
-                                  tenhang = n.tenhang,
-                                  slgiao = p.slgiao,
-                                  slnhan = p.slnhan,
-                              }
-                               ).ToList();
-                return result;
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var _idpnhap = new SqlParameter("@idpnhap", idpnhap);
+
+                    var result = db.Database.SqlQuery<D_PNHAP_ViewModel>("EXEC dbo.Proc_GetListD_PNHAP @idpnhap", _idpnhap).ToList();
+                    return result;
+                }
             }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            //    return result;
+            //}
         }
         /// <summary>
         /// ds chi tiết phiếu nhập
@@ -145,13 +160,13 @@ namespace RestaurantManager.Bussiness
                               where d.idpnhap == idpnhap
                               select new D_PNHAP_ViewModel
                               {
-                                  idpnhap=d.idpnhap,
-                                  idhang=n.idhang,
-                                  slgiao=d.slgiao,
-                                  slnhan=d.slnhan,
-                                  tenhang=n.tenhang,
-                                  CreateDate=d.CreateDate,
-                                  CreateBy=d.CreateBy
+                                  idpnhap = d.idpnhap,
+                                  idhang = n.idhang,
+                                  slgiao = d.slgiao,
+                                  slnhan = d.slnhan,
+                                  tenhang = n.tenhang,
+                                  CreateDate = d.CreateDate,
+                                  CreateBy = d.CreateBy
                               }
                             ).ToList();
                 return result;

@@ -163,7 +163,7 @@ namespace RestaurantManager
             dtpngaydat.Value = DateTime.Now;
             lstD_PNHAP = null;
             gcSelectItems.DataSource = lstD_PNHAP;
-            gridView1.RefreshData();
+            gvSelectItems.RefreshData();
 
         }
 
@@ -179,6 +179,7 @@ namespace RestaurantManager
             {
                 lstD_PNHAP = new PNHAPBll().GetListD_PNHAP_Full(idpnhap);
                 gcSelectItems.DataSource = lstD_PNHAP;
+                gvSelectItems.RefreshData();
             }
             catch(Exception ex)
             {

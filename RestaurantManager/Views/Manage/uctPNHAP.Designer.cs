@@ -48,8 +48,8 @@ namespace RestaurantManager
             this.gcidhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gctenhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslgiao = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.button1 = new System.Windows.Forms.Button();
             this.gcslnhan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -258,6 +258,14 @@ namespace RestaurantManager
             this.gcslgiao.VisibleIndex = 2;
             this.gcslgiao.Width = 86;
             // 
+            // gcslnhan
+            // 
+            this.gcslnhan.Caption = "Số lượng nhận";
+            this.gcslnhan.FieldName = "slnhan";
+            this.gcslnhan.Name = "gcslnhan";
+            this.gcslnhan.Visible = true;
+            this.gcslnhan.VisibleIndex = 3;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.InactiveBorder;
@@ -268,20 +276,12 @@ namespace RestaurantManager
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(214, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 26);
+            this.button1.Size = new System.Drawing.Size(61, 27);
             this.button1.TabIndex = 23;
             this.button1.Text = "Xóa";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // gcslnhan
-            // 
-            this.gcslnhan.Caption = "Số lượng nhận";
-            this.gcslnhan.FieldName = "slnhan";
-            this.gcslnhan.Name = "gcslnhan";
-            this.gcslnhan.Visible = true;
-            this.gcslnhan.VisibleIndex = 3;
             // 
             // uctPNHAP
             // 

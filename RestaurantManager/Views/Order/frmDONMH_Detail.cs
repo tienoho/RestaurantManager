@@ -232,10 +232,11 @@ namespace RestaurantManager.Views.Order
                 XtraMessageBox.Show(res, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            this.Close();
-            uctDONMH uctDONMH = new uctDONMH();
-            uctDONMH.LoadGrid();
             XtraMessageBox.Show("Thêm mới đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+            //uctDONMH uctDONMH = new uctDONMH();
+            //uctDONMH.LoadGrid();
+            
         }
 
         private void gvD_DONMH_RowClick_1(object sender, RowClickEventArgs e)
