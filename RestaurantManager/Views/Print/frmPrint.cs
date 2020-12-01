@@ -58,6 +58,17 @@ namespace RestaurantManager.Views.Print
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="data"></param>
+        public void PrintPNHAP(PNHAP_ViewModel obj, List<D_PNHAP_ViewModel> data)
+        {
+            ReportPNHAP report = new ReportPNHAP();
+
         public void PrintGIAOHANG(GIAOHANG_ViewModel obj, List<D_GIAOHANG_ViewModel> data)
         {
             ReportGIAOHANG report = new ReportGIAOHANG();
