@@ -46,6 +46,7 @@ namespace RestaurantManager.Bussiness
                                   idhang = d.idhang,
                                   tenhang = h.tenhang,
                                   slmh = d.slmh.Value,
+                                  slnhanhang = d.slmh.Value,
                                   dongiamh = d.dongiamh.Value,
                                   totalamount = d.slmh.Value * d.dongiamh.Value,
                                   CreateBy = d.CreateBy,

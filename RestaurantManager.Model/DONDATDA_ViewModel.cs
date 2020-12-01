@@ -13,6 +13,7 @@ namespace RestaurantManager.Model
         public string ban { get; set; }
         public Nullable<int> idkh { get; set; }
         public string tenkh { get; set; }
+        public string sdt { get; set; }
         public System.DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }

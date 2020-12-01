@@ -49,9 +49,12 @@ namespace RestaurantManager
             this.label3 = new System.Windows.Forms.Label();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.gcSelectItems = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gctenmon = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gvSelectItems = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcidhang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gctenhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslgiao = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcslnhan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcdongiamh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClearHoDon = new System.Windows.Forms.Button();
@@ -60,7 +63,6 @@ namespace RestaurantManager
             this.txtTotalAmount = new DevExpress.XtraEditors.TextEdit();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.gcslnhan = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPNHAP)).BeginInit();
@@ -73,7 +75,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcSelectItems)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSelectItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount.Properties)).BeginInit();
@@ -83,7 +85,7 @@ namespace RestaurantManager
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(136, 13);
+            this.label9.Location = new System.Drawing.Point(212, 14);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(203, 19);
             this.label9.TabIndex = 13;
@@ -263,32 +265,40 @@ namespace RestaurantManager
             // 
             this.gcSelectItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcSelectItems.Location = new System.Drawing.Point(2, 2);
-            this.gcSelectItems.MainView = this.gridView1;
+            this.gcSelectItems.MainView = this.gvSelectItems;
             this.gcSelectItems.Name = "gcSelectItems";
             this.gcSelectItems.Size = new System.Drawing.Size(406, 374);
             this.gcSelectItems.TabIndex = 5;
             this.gcSelectItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvSelectItems});
             // 
-            // gridView1
+            // gvSelectItems
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gctenmon,
+            this.gvSelectItems.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gcidhang,
+            this.gctenhang,
             this.gcslgiao,
-            this.gcslnhan});
-            this.gridView1.GridControl = this.gcSelectItems;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gcslnhan,
+            this.gcdongiamh});
+            this.gvSelectItems.GridControl = this.gcSelectItems;
+            this.gvSelectItems.Name = "gvSelectItems";
+            this.gvSelectItems.OptionsBehavior.Editable = false;
+            this.gvSelectItems.OptionsBehavior.ReadOnly = true;
             // 
-            // gctenmon
+            // gcidhang
             // 
-            this.gctenmon.Caption = "Món ăn";
-            this.gctenmon.FieldName = "tenmon";
-            this.gctenmon.Name = "gctenmon";
-            this.gctenmon.Visible = true;
-            this.gctenmon.VisibleIndex = 0;
-            this.gctenmon.Width = 120;
+            this.gcidhang.Caption = "Mã hàng";
+            this.gcidhang.FieldName = "idhang";
+            this.gcidhang.Name = "gcidhang";
+            // 
+            // gctenhang
+            // 
+            this.gctenhang.Caption = "Tên hàng";
+            this.gctenhang.FieldName = "tenhang";
+            this.gctenhang.Name = "gctenhang";
+            this.gctenhang.Visible = true;
+            this.gctenhang.VisibleIndex = 0;
+            this.gctenhang.Width = 120;
             // 
             // gcslgiao
             // 
@@ -299,6 +309,22 @@ namespace RestaurantManager
             this.gcslgiao.Name = "gcslgiao";
             this.gcslgiao.Visible = true;
             this.gcslgiao.VisibleIndex = 1;
+            // 
+            // gcslnhan
+            // 
+            this.gcslnhan.Caption = "Số lượng nhận";
+            this.gcslnhan.FieldName = "slnhan";
+            this.gcslnhan.Name = "gcslnhan";
+            this.gcslnhan.Visible = true;
+            this.gcslnhan.VisibleIndex = 2;
+            // 
+            // gcdongiamh
+            // 
+            this.gcdongiamh.Caption = "Đơn giá";
+            this.gcdongiamh.FieldName = "dongiamh";
+            this.gcdongiamh.Name = "gcdongiamh";
+            this.gcdongiamh.Visible = true;
+            this.gcdongiamh.VisibleIndex = 3;
             // 
             // panelControl6
             // 
@@ -365,7 +391,7 @@ namespace RestaurantManager
             this.btnAddHoaDon.Name = "btnAddHoaDon";
             this.btnAddHoaDon.Size = new System.Drawing.Size(158, 28);
             this.btnAddHoaDon.TabIndex = 48;
-            this.btnAddHoaDon.Text = "Lưu hóa đơn";
+            this.btnAddHoaDon.Text = "Xuất hóa đơn";
             this.btnAddHoaDon.UseVisualStyleBackColor = false;
             this.btnAddHoaDon.Click += new System.EventHandler(this.btnAddHoaDon_Click);
             // 
@@ -406,14 +432,6 @@ namespace RestaurantManager
             this.label6.TabIndex = 4;
             this.label6.Text = "THÔNG TIN HÓA ĐƠN";
             // 
-            // gcslnhan
-            // 
-            this.gcslnhan.Caption = "Số lượng nhận";
-            this.gcslnhan.FieldName = "slnhan";
-            this.gcslnhan.Name = "gcslnhan";
-            this.gcslnhan.Visible = true;
-            this.gcslnhan.VisibleIndex = 2;
-            // 
             // uctHOADONM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,7 +456,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcSelectItems)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSelectItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
@@ -471,8 +489,8 @@ namespace RestaurantManager
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private DevExpress.XtraGrid.GridControl gcSelectItems;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gctenmon;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvSelectItems;
+        private DevExpress.XtraGrid.Columns.GridColumn gctenhang;
         private DevExpress.XtraGrid.Columns.GridColumn gcslgiao;
         private DevExpress.XtraGrid.Columns.GridColumn gcngaynhap;
         private DevExpress.XtraGrid.Columns.GridColumn gcthukho;
@@ -480,5 +498,7 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gctennguoilapphieu;
         private DevExpress.XtraGrid.Columns.GridColumn gctenthukho;
         private DevExpress.XtraGrid.Columns.GridColumn gcslnhan;
+        private DevExpress.XtraGrid.Columns.GridColumn gcidhang;
+        private DevExpress.XtraGrid.Columns.GridColumn gcdongiamh;
     }
 }

@@ -31,6 +31,17 @@ namespace RestaurantManager.Views.Print
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }
+        public void PrintDONDATDA(DONDATDA_ViewModel obj, List<D_DONDATDA_ViewModel> data)
+        {
+            ReportDONDATDA report = new ReportDONDATDA();
+            //Hide paramater
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
+                p.Visible = false;
+            //Init data report
+            report.InitData(obj, data);
+            documentViewer1.DocumentSource = report;
+            report.CreateDocument();
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -48,6 +59,7 @@ namespace RestaurantManager.Views.Print
             report.CreateDocument();
         }
 
+
         /// <summary>
         /// 
         /// </summary>
@@ -56,6 +68,10 @@ namespace RestaurantManager.Views.Print
         public void PrintPNHAP(PNHAP_ViewModel obj, List<D_PNHAP_ViewModel> data)
         {
             ReportPNHAP report = new ReportPNHAP();
+
+        public void PrintGIAOHANG(GIAOHANG_ViewModel obj, List<D_GIAOHANG_ViewModel> data)
+        {
+            ReportGIAOHANG report = new ReportGIAOHANG();
             //Hide paramater
             foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
                 p.Visible = false;

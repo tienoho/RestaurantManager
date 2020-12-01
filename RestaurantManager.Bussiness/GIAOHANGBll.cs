@@ -19,8 +19,9 @@ namespace RestaurantManager.Bussiness
                     var result = (from g in db.GIAOHANGs.AsNoTracking()
                                   join n in db.NCCs.AsNoTracking() on g.idncc equals n.idncc
                                   join m in db.DONMHs.AsNoTracking() on g.iddonmh equals m.iddonmh
-                                  select new GIAOHANG_ViewModel {
-                                      iddonmh=g.iddonmh,
+                                  select new GIAOHANG_ViewModel
+                                  {
+                                      iddonmh = g.iddonmh,
                                       idncc = g.idncc,
                                       tenncc = n.tenncc,
                                       ngaygiao = g.ngaygiao,
@@ -110,6 +111,39 @@ namespace RestaurantManager.Bussiness
             catch (Exception ex)
             {
                 return ex.Message;
+            }
+        }
+
+
+        public GIAOHANG_ViewModel GetGIAOHANG(int idpgiao)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var result = (from d in db.GIAOHANGs.AsNoTracking()
+                                  join n in db.NCCs.AsNoTracking() on d.idncc equals n.idncc
+                                  where d.idpgiao == idpgiao
+                                  select new GIAOHANG_ViewModel
+                                  {
+                                      idpgiao = d.idpgiao,
+                                      idncc = d.idncc,
+                                      cuahang = d.cuahang,
+                                      diachi = d.diachi,
+                                      tenncc = n.tenncc,
+                                      sdt = n.sdt,
+                                      iddonmh = d.iddonmh,
+                                      ngaygiao = d.ngaygiao,
+                                      nguoigiao = d.nguoigiao,
+                                      nguoilapphieu = d.nguoilapphieu,
+                                      nguoinhan = d.nguoinhan
+                                  }).FirstOrDefault();
+                    return result;
+                }
+            }
+            catch
+            {
+                return null;
             }
         }
 

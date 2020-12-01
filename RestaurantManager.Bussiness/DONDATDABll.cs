@@ -2,6 +2,7 @@
 using RestaurantManager.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,22 +111,6 @@ namespace RestaurantManager.Bussiness
             {
                 using (var db = new RestaurantManagerDataEntities())
                 {
-                    //var result = (from d in db.DONDATDAs.AsNoTracking()
-                    //              join k in db.KHACHHANGs.AsNoTracking() on d.idkh equals k.idkh
-                    //              join h in db.HOADONTTs.AsNoTracking() on d.iddondat equals h.iddondat into gj
-                    //              from subpet in gj.DefaultIfEmpty()
-                    //              select new DONDATDA_ViewModel
-                    //              {
-                    //                  iddondat = d.iddondat,
-                    //                  ban = d.ban,
-                    //                  ngaydat = d.ngaydat,
-                    //                  idkh = d.idkh,
-                    //                  tenkh = k.tenkh,
-                    //                  CreateBy = d.CreateBy,
-                    //                  CreateDate = d.CreateDate
-                    //              }
-                    //             ).ToList();
-
                     var result = db.Database.SqlQuery<DONDATDA_ViewModel>("EXEC dbo.Proc_GetDonDatDA_OutLeft").ToList();
                     return result;
                 }
@@ -135,7 +120,34 @@ namespace RestaurantManager.Bussiness
                 return null;
             }
         }
-
+        public DONDATDA_ViewModel GetDONDATDA(int iddondat)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var result = (from d in db.DONDATDAs.AsNoTracking()
+                                  join m in db.KHACHHANGs.AsNoTracking() on d.idkh equals m.idkh
+                                  where d.iddondat == iddondat
+                                  select new DONDATDA_ViewModel
+                                  {
+                                      iddondat = d.iddondat,
+                                      idkh = d.idkh,
+                                      tenkh = m.tenkh,
+                                      ban = d.ban,
+                                      ngaydat = d.ngaydat,
+                                      sdt = m.sdt
+                                  }
+                                  )
+                        .FirstOrDefault();
+                    return result;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
         /// <summary>
         /// lấy danh sách món ăn
         /// </summary>
@@ -155,6 +167,7 @@ namespace RestaurantManager.Bussiness
                                       iddondat = d.iddondat,
                                       idmon = d.idmon,
                                       sldat = d.sldat,
+                                      dvt = m.dvt,
                                       dongiamon = m.dongiamon.Value,
                                       tenmon = m.temon,
                                       TotalAmount = m.dongiamon.Value * d.sldat,
@@ -165,6 +178,25 @@ namespace RestaurantManager.Bussiness
                 }
             }
             catch
+            {
+                return null;
+            }
+        }
+        public List<DONDATDA_ViewModel> GetListDONDATDA(int iddondat, DateTime FromDate, DateTime ToDate)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var _iddondat = new SqlParameter("@iddondat", iddondat);
+                    var _FromDate = new SqlParameter("@FromDate", FromDate);
+                    var _ToDate = new SqlParameter("@ToDate", ToDate);
+
+                    var result = db.Database.SqlQuery<DONDATDA_ViewModel>("EXEC dbo.Proc_GetListDONDATDA @iddondat,@FromDate,@ToDate", _iddondat, _FromDate, _ToDate).ToList();
+                    return result;
+                }
+            }
+            catch (Exception ex)
             {
                 return null;
             }
