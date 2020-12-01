@@ -168,12 +168,7 @@ namespace RestaurantManager
         }
 
 
-        private void btnRevenue_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //frmBaoCaoDoanhThu baocao = new frmBaoCaoDoanhThu();
-            //baocao.ShowDialog();
-            //this.Show();
-        }
+        
 
         private void btnProductOfStore1_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -350,6 +345,9 @@ namespace RestaurantManager
         {
             addTabPages(uctListHOADONM.uctDL, 15, "Hóa đơn mua");
         }
-
+        private void btnRevenue_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            addTabPages(uctReportDoanhThu.uctDL, 16, "Báo cáo doanh thu");
+        }
     }
 }

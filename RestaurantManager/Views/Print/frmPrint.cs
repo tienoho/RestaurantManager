@@ -69,5 +69,16 @@ namespace RestaurantManager.Views.Print
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }
+        public void PrintBaoCaoDoanhThu(DateTime fromday, DateTime today, List<HOADONTT_ViewModel> data)
+        {
+            ReportBCDoanhThu report = new ReportBCDoanhThu();
+            //Hide paramater
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
+                p.Visible = false;
+            //Init data report
+            report.InitData(fromday, today, data);
+            documentViewer1.DocumentSource = report;
+            report.CreateDocument();
+        }
     }
 }

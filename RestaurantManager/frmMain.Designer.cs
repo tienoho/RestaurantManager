@@ -107,17 +107,18 @@
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.btnHOADONM = new DevExpress.XtraBars.BarButtonItem();
             this.btnExportHOADONM = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDONDATDA = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpProcedure = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpHelp = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -138,8 +139,6 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnDONDATDA = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -363,7 +362,7 @@
             this.btnExportHOADONM,
             this.btnDONDATDA});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 77;
+            this.menuToolStrip.MaxItemId = 78;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -840,6 +839,35 @@
             this.btnExportHOADONM.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnExportHOADONM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportHOADONM_ItemClick);
             // 
+            // btnDONDATDA
+            // 
+            this.btnDONDATDA.Caption = "Đơn đặt đồ ăn";
+            this.btnDONDATDA.Id = 76;
+            this.btnDONDATDA.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDONDATDA.ImageOptions.Image")));
+            this.btnDONDATDA.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDONDATDA.ImageOptions.LargeImage")));
+            this.btnDONDATDA.Name = "btnDONDATDA";
+            this.btnDONDATDA.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnDONDATDA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDONDATDA_ItemClick);
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup13,
+            this.ribbonPageGroup18});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Order";
+            // 
+            // ribbonPageGroup13
+            // 
+            this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem16);
+            this.ribbonPageGroup13.ItemLinks.Add(this.btnOrderWait);
+            this.ribbonPageGroup13.Name = "ribbonPageGroup13";
+            // 
+            // ribbonPageGroup18
+            // 
+            this.ribbonPageGroup18.ItemLinks.Add(this.btnDONDATDA);
+            this.ribbonPageGroup18.Name = "ribbonPageGroup18";
+            // 
             // rpProcedure
             // 
             this.rpProcedure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -878,25 +906,10 @@
             this.ribbonPageGroup17.ItemLinks.Add(this.btnExportHOADONM);
             this.ribbonPageGroup17.Name = "ribbonPageGroup17";
             // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup13,
-            this.ribbonPageGroup18});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Order";
-            // 
-            // ribbonPageGroup13
-            // 
-            this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem16);
-            this.ribbonPageGroup13.ItemLinks.Add(this.btnOrderWait);
-            this.ribbonPageGroup13.Name = "ribbonPageGroup13";
-            // 
             // rpReport
             // 
             this.rpReport.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup10,
-            this.ribbonPageGroup5,
             this.ribbonPageGroup7,
             this.ribbonPageGroup12});
             this.rpReport.Name = "rpReport";
@@ -907,13 +920,6 @@
             this.ribbonPageGroup10.AllowTextClipping = false;
             this.ribbonPageGroup10.ItemLinks.Add(this.btnRevenue);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            // 
-            // ribbonPageGroup5
-            // 
-            this.ribbonPageGroup5.AllowTextClipping = false;
-            this.ribbonPageGroup5.ItemLinks.Add(this.btnDebtAgency);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.State = DevExpress.XtraBars.Ribbon.RibbonPageGroupState.Expanded;
             // 
             // ribbonPageGroup7
             // 
@@ -1074,21 +1080,6 @@
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // ribbonPageGroup18
-            // 
-            this.ribbonPageGroup18.ItemLinks.Add(this.btnDONDATDA);
-            this.ribbonPageGroup18.Name = "ribbonPageGroup18";
-            // 
-            // btnDONDATDA
-            // 
-            this.btnDONDATDA.Caption = "Đơn đặt đồ ăn";
-            this.btnDONDATDA.Id = 76;
-            this.btnDONDATDA.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.btnDONDATDA.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
-            this.btnDONDATDA.Name = "btnDONDATDA";
-            this.btnDONDATDA.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnDONDATDA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDONDATDA_ItemClick);
-            // 
             // barButtonItem19
             // 
             this.barButtonItem19.Caption = "btnDONDATDA";
@@ -1200,7 +1191,6 @@
         private DevExpress.XtraBars.BarDockingMenuItem btnStatistical1;
         private DevExpress.XtraBars.BarButtonItem btnRevenue;
         private DevExpress.XtraBars.BarButtonItem btnDebtAgency;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem btnProductRender;
