@@ -16,6 +16,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
 using RestaurantManager.Views.Order;
+using RestaurantManager.Views.Print;
 
 namespace RestaurantManager
 {
@@ -147,6 +148,70 @@ namespace RestaurantManager
             if (result == DialogResult.Yes)
             {
                 var res = new PNHAPBll().DeletePNHAP(select.idpnhap);
+            }
+        }
+
+        private void gridView2_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button != MouseButtons.Right) return;
+                var rowH = gridView2.FocusedRowHandle;
+                if (rowH >= 0)
+                {
+                    popupMenu1.ShowPopup(barManager1, new Point(MousePosition.X, MousePosition.Y));
+                }
+                else
+                {
+                    popupMenu1.HidePopup();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btnPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var row = gridView1.FocusedRowHandle;
+
+                var obj = gridView1.GetFocusedRow();
+                if (obj == null) return;
+                var objData = (PNHAP)obj;
+                var master = new PNHAPBll().GetPNHAPById(objData.idpnhap);
+                using (frmPrint frm = new frmPrint())
+                {
+                    frm.PrintPNHAP(master, master.lstDetail);
+                    frm.ShowDialog();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void gridView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button != MouseButtons.Right) return;
+                var rowH = gridView1.FocusedRowHandle;
+                if (rowH >= 0)
+                {
+                    popupMenu1.ShowPopup(barManager1, new Point(MousePosition.X, MousePosition.Y));
+                }
+                else
+                {
+                    popupMenu1.HidePopup();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

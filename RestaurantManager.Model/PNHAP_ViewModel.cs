@@ -16,5 +16,6 @@ namespace RestaurantManager.Model
         public string thukho { get; set; }
         public string tenthukho { get; set; }
         public Nullable<int> idpgiao { get; set; }
+        public List<D_PNHAP_ViewModel> lstDetail;
     }
 }
