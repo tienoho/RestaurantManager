@@ -231,6 +231,12 @@
     <Compile Include="Views\Manage\uctHOADONM.Designer.cs">
       <DependentUpon>uctHOADONM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Manage\uctListHOADONM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Manage\uctListHOADONM.Designer.cs">
+      <DependentUpon>uctListHOADONM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Manage\uctPNHAP.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -315,6 +321,12 @@
     <Compile Include="Views\Order\uctDONMH.Designer.cs">
       <DependentUpon>uctDONMH.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Manage\uctListDONDATDA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Manage\uctListDONDATDA.Designer.cs">
+      <DependentUpon>uctListDONDATDA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Order\uctHOADONTT.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -395,6 +407,9 @@
     <EmbeddedResource Include="Views\Manage\uctHOADONM.resx">
       <DependentUpon>uctHOADONM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\uctListHOADONM.resx">
+      <DependentUpon>uctListHOADONM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\uctPNHAP.resx">
       <DependentUpon>uctPNHAP.cs</DependentUpon>
     </EmbeddedResource>
@@ -436,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Order\uctDONMH.resx">
       <DependentUpon>uctDONMH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\uctListDONDATDA.resx">
+      <DependentUpon>uctListDONDATDA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Order\uctHOADONTT.resx">
       <DependentUpon>uctHOADONTT.cs</DependentUpon>

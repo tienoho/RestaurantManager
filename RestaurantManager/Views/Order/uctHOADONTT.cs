@@ -158,13 +158,17 @@ namespace RestaurantManager
 
                 model.D_HOADONTT = lstD_HOADONTT;
 
-                var msg = new HOADONTTBll().AddHOADONTT(model);
-                if (msg != null && msg != "")
+                var resultData = new HOADONTTBll().AddHOADONTT(model);
+                if (resultData != null)
                 {
                     LoadGrid();
+
+                    var HOADONTT = new HOADONTTBll().GetHOADONTT(resultData.idhoadontt);
+                    var D_HOADONTT = new HOADONTTBll().GetListD_HOADONTT(resultData.idhoadontt);
+
                     XtraMessageBoxArgs args = new XtraMessageBoxArgs();
                     args.Caption = "Thông báo";
-                    args.Text = msg + "\n Bạn có muốn in hóa đơn";
+                    args.Text ="Thanh toán thành công!\n Bạn có muốn in hóa đơn ?";
                     args.Buttons = new DialogResult[] { DialogResult.OK, DialogResult.Cancel };
                     args.Showing += Args_Showing;
 
@@ -178,12 +182,10 @@ namespace RestaurantManager
                         }
                         return;
                     }
-                    //XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     ClearDisplay();
                     return;
                 }
-                XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Thanh toán không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ClearDisplay();
                 return;
             }
@@ -292,6 +294,32 @@ namespace RestaurantManager
                             break;
                     }
                 }
+            }
+        }
+
+        private void btnUpdateDon_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void gvWaitOrder_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button != MouseButtons.Right) return;
+                var rowH = gvWaitOrder.FocusedRowHandle;
+                if (rowH >= 0)
+                {
+                    popupMenu1.ShowPopup(barManager1, new Point(MousePosition.X, MousePosition.Y));
+                }
+                else
+                {
+                    popupMenu1.HidePopup();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

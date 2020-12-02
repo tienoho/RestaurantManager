@@ -16,6 +16,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
 using RestaurantManager.Views.Order;
+using RestaurantManager.Views.Print;
 
 namespace RestaurantManager
 {
@@ -55,7 +56,7 @@ namespace RestaurantManager
         {
             frmGIAOHANG_Detail frm = new frmGIAOHANG_Detail();
             var result = frm.ShowDialog();
-            if (result == DialogResult.OK)
+            if (result == DialogResult.Cancel)
             {
                 LoadGrid();
             }
@@ -144,6 +145,25 @@ namespace RestaurantManager
         private void btnPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+            try
+            {
+                var row = gvGIAOHANG.FocusedRowHandle;
+
+                var obj = gvGIAOHANG.GetFocusedRow();
+                if (obj == null) return;
+                var objData = (GIAOHANG_ViewModel)obj;
+                var GIAOHANG = new GIAOHANGBll().GetGIAOHANG(objData.idpgiao);
+                var D_GIAOHANG = new GIAOHANGBll().GetListD_GIAOHANG(objData.idpgiao);
+                using (frmPrint frm = new frmPrint())
+                {
+                    frm.PrintGIAOHANG(GIAOHANG, D_GIAOHANG);
+                    frm.ShowDialog();
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

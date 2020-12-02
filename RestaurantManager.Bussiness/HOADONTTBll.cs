@@ -87,7 +87,7 @@ namespace RestaurantManager.Bussiness
                 return null;
             }
         }
-        public string AddHOADONTT(HOADONTT_ViewModel model)
+        public HOADONTT AddHOADONTT(HOADONTT_ViewModel model)
         {
             try
             {
@@ -123,24 +123,14 @@ namespace RestaurantManager.Bussiness
                             db.D_HOADONTT.Add(D_HOADONTT);
                         }
                         db.SaveChanges();
-                        return "Thanh toán thành công!";
+                        return result;
                     }
-                    //else
-                    //{
-                    //    check.ngaydat = model.ngaydat;
-                    //    check.ban = model.ban;
-                    //    check.idkh = model.idkh;
-                    //    check.ModifyBy = model.ModifyBy;
-                    //    check.ModifyDate = DateTime.Now;
-                    //    db.SaveChanges();
-                    //    return "Cập nhật món ăn thành công!";
-                    //}
-                    return "Thanh toán không thành công!";
+                    return null;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                return ex.Message;
+                return null;
             }
         }
         public string DeleteHOADONTT(int id)

@@ -86,7 +86,7 @@ namespace RestaurantManager.Views.Order
         {
             try
             {
-                lstD_DONMH_ViewModel = new List<D_DONMH_ViewModel>();
+               // lstD_DONMH_ViewModel = new List<D_DONMH_ViewModel>();
                 lstD_DONMH_ViewModel = new DONMHBll().GetListD_DONMH(id);
                 gcD_DONMH.DataSource = lstD_DONMH_ViewModel;
                 gvD_DONMH.RefreshData();
@@ -339,15 +339,15 @@ namespace RestaurantManager.Views.Order
                 XtraMessageBox.Show("Số lượng giao hàng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (slnhanhang <= 0)
-            {
-                XtraMessageBox.Show("Số lượng nhận hàng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (slnhanhang <= 0)
+            //{
+            //    XtraMessageBox.Show("Số lượng nhận hàng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
-            if (slnhanhang > slmh)
+            if (slnhanhang < slmh)
             {
-                XtraMessageBox.Show("Số lượng nhận hàng phải lớn hơn hoặc bằng số lượng giao hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Số lượng nhận hàng phải nhỏ hơn hoặc bằng số lượng giao hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             var item = lstD_DONMH_ViewModel.FirstOrDefault(x => x.idhang == idhang);
