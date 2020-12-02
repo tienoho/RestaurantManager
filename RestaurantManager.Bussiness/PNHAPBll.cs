@@ -236,5 +236,50 @@ namespace RestaurantManager.Bussiness
                 }
             }
         }
+
+        public PNHAP_ViewModel GetPNHAPById(int id)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var master = (from h in db.PNHAPs.AsNoTracking()
+                                  where h.idpnhap == id
+                                  select new PNHAP_ViewModel
+                                  {
+                                      idpnhap = h.idpnhap,
+                                      idpgiao = h.idpgiao,
+                                      ngaynhap = h.ngaynhap,
+                                      nguoigiao = h.nguoigiao,
+                                      nguoilapphieu = h.nguoilapphieu,
+                                      thukho = h.thukho,
+                                  }
+                                  ).FirstOrDefault();
+                    if (master != null)
+                    {
+                        master.lstDetail = (from p in db.D_PNHAP.AsNoTracking()
+                                            join d in db.NLIEUx.AsNoTracking() on p.idhang equals d.idhang
+                                           where p.idpnhap == master.idpnhap
+                                           select new D_PNHAP_ViewModel
+                                           {
+                                               idhang=p.idhang,
+                                               idpnhap = p.idpnhap,
+                                               slnhan = p.slnhan,
+                                               dongia = d.dongianl,
+                                               thanhtien = p.slnhan * d.dongianl,
+                                               slgiao = p.slgiao,
+                                               tenhang = d.tenhang,
+                                               CreateDate = p.CreateDate,
+                                               CreateBy = p.CreateBy
+                                           }).ToList();
+                    }
+                    return master;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
