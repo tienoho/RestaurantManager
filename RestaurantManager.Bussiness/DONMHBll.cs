@@ -212,5 +212,52 @@ namespace RestaurantManager.Bussiness
                 return ex.Message;
             }
         }
+
+        public DONMH_ViewModel GetDONMHById(int id)
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var master = (from h in db.DONMHs.AsNoTracking()
+                                  where h.iddonmh == id
+                                  join k in db.NCCs.AsNoTracking() on h.idncc equals k.idncc
+                                  select new DONMH_ViewModel
+                                  {
+                                      iddonmh = h.iddonmh,
+                                      ngaydonmh = h.ngaydonmh.Value,
+                                      idncc = h.idncc,
+                                      tenncc = k.tenncc,
+                                      diachi = k.diachi,
+                                      sdt = k.sdt,
+                                      CreateBy = h.CreateBy,
+                                      CreateDate = h.CreateDate
+                                  }
+                                  ).FirstOrDefault();
+                    if (master != null)
+                    {
+                        master.lstDetail = (from p in db.D_DONMH.AsNoTracking()
+                                            join d in db.NLIEUx.AsNoTracking() on p.idhang equals d.idhang
+                                            where p.iddonmh == master.iddonmh
+                                            select new D_DONMH_ViewModel
+                                            {
+                                                idhang = p.idhang,
+                                                iddonmh = p.iddonmh,
+                                                slmh = p.slmh.Value,
+                                                dongiamh = p.dongiamh.Value,
+                                                totalamount = p.slmh.Value * p.dongiamh.Value,
+                                                tenhang = d.tenhang,
+                                                CreateDate = p.CreateDate,
+                                                CreateBy = p.CreateBy
+                                            }).ToList();
+                    }
+                    return master;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
