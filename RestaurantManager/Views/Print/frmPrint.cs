@@ -47,11 +47,10 @@ namespace RestaurantManager.Views.Print
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }
-<<<<<<<<< Temporary merge branch 1
         public void PrintGIAOHANG(GIAOHANG_ViewModel obj, List<D_GIAOHANG_ViewModel> data)
         {
             ReportGIAOHANG report = new ReportGIAOHANG();
-=========
+        }
 
         /// <summary>
         /// 
@@ -61,12 +60,26 @@ namespace RestaurantManager.Views.Print
         public void PrintPNHAP(PNHAP_ViewModel obj, List<D_PNHAP_ViewModel> data)
         {
             ReportPNHAP report = new ReportPNHAP();
->>>>>>>>> Temporary merge branch 2
+        }
+        public void PrintGIAOHANG(GIAOHANG_ViewModel obj, List<D_GIAOHANG_ViewModel> data)
+        {
+            ReportGIAOHANG report = new ReportGIAOHANG();
             //Hide paramater
             foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
                 p.Visible = false;
             //Init data report
             report.InitData(obj, data);
+            documentViewer1.DocumentSource = report;
+            report.CreateDocument();
+        }
+        public void PrintBaoCaoDoanhThu(DateTime fromday, DateTime today, List<HOADONTT_ViewModel> data)
+        {
+            ReportBCDoanhThu report = new ReportBCDoanhThu();
+            //Hide paramater
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
+                p.Visible = false;
+            //Init data report
+            report.InitData(fromday, today, data);
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }

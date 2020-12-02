@@ -193,6 +193,12 @@
     <Compile Include="Reporting\ReportDOANHTHU.designer.cs">
       <DependentUpon>ReportDOANHTHU.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reporting\ReportBCDoanhThu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportBCDoanhThu.designer.cs">
+      <DependentUpon>ReportBCDoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reporting\ReportPYC.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -351,6 +357,12 @@
     <Compile Include="Views\Procedure\uctPYC.Designer.cs">
       <DependentUpon>uctPYC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Report\uctReportDoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Report\uctReportDoanhThu.Designer.cs">
+      <DependentUpon>uctReportDoanhThu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reporting\ReportDOANHTHU.resx">
       <DependentUpon>ReportDOANHTHU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ReportBCDoanhThu.resx">
+      <DependentUpon>ReportBCDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporting\ReportPYC.resx">
       <DependentUpon>ReportPYC.cs</DependentUpon>
@@ -466,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Procedure\uctPYC.resx">
       <DependentUpon>uctPYC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\uctReportDoanhThu.resx">
+      <DependentUpon>uctReportDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\RestaurantManagerData.bak" />
     <None Include="packages.config" />
