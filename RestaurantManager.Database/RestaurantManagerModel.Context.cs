@@ -27,9 +27,7 @@ namespace RestaurantManager.Database
     
         public virtual DbSet<CONGTHUC> CONGTHUCs { get; set; }
         public virtual DbSet<D_DONDATDA> D_DONDATDA { get; set; }
-        public virtual DbSet<D_DONMH> D_DONMH { get; set; }
         public virtual DbSet<D_GIAOHANG> D_GIAOHANG { get; set; }
-        public virtual DbSet<D_HOADONM> D_HOADONM { get; set; }
         public virtual DbSet<D_PNHAP> D_PNHAP { get; set; }
         public virtual DbSet<D_PYC> D_PYC { get; set; }
         public virtual DbSet<DANHMUC> DANHMUCs { get; set; }
@@ -48,5 +46,7 @@ namespace RestaurantManager.Database
         public virtual DbSet<USER> USERS { get; set; }
         public virtual DbSet<D_HOADONTT> D_HOADONTT { get; set; }
         public virtual DbSet<GIAOHANG> GIAOHANGs { get; set; }
+        public virtual DbSet<D_DONMH> D_DONMH { get; set; }
+        public virtual DbSet<D_HOADONM> D_HOADONM { get; set; }
     }
 }

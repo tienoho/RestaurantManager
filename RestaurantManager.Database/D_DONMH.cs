@@ -17,7 +17,7 @@ namespace RestaurantManager.Database
         public int iddonmh { get; set; }
         public int idhang { get; set; }
         public Nullable<int> slmh { get; set; }
-        public Nullable<int> dongiamh { get; set; }
+        public Nullable<double> dongiamh { get; set; }
         public System.DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }

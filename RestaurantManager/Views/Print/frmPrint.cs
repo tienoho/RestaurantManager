@@ -58,6 +58,17 @@ namespace RestaurantManager.Views.Print
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }
+        public void PrintHOADONM(HOADONM_ViewModel obj, List<D_HOADONM_ViewModel> data)
+        {
+            ReportHOADONM report = new ReportHOADONM();
+            //Hide paramater
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
+                p.Visible = false;
+            //Init data report
+            report.InitData(obj, data);
+            documentViewer1.DocumentSource = report;
+            report.CreateDocument();
+        }
 
 
         /// <summary>

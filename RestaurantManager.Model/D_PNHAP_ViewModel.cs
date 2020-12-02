@@ -19,6 +19,7 @@ namespace RestaurantManager.Model
         public double? thanhtien { get; set; }
 
         public double dongiamh { get; set; }
+        public double TotalAmount { get; set; }
 
         public DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
