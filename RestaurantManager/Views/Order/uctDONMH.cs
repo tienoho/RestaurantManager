@@ -16,6 +16,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
 using RestaurantManager.Views.Order;
+using RestaurantManager.Views.Print;
 
 namespace RestaurantManager
 {
@@ -140,6 +141,92 @@ namespace RestaurantManager
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPrint_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var row = gridView1.FocusedRowHandle;
+
+                var obj = gridView1.GetFocusedRow();
+                if (obj == null) return;
+                var objData = (DONMH_ViewModel)obj;
+                var master = new DONMHBll().GetDONMHById(objData.iddonmh);
+                using (frmPrint frm = new frmPrint())
+                {
+                    frm.PrintDONMH(master, master.lstDetail);
+                    frm.ShowDialog();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void gridView1_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button != MouseButtons.Right) return;
+                var rowH = gridView1.FocusedRowHandle;
+                if (rowH >= 0)
+                {
+                    popupMenu1.ShowPopup(barManager1, new Point(MousePosition.X, MousePosition.Y));
+                }
+                else
+                {
+                    popupMenu1.HidePopup();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void gridView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button != MouseButtons.Right) return;
+                var rowH = gridView1.FocusedRowHandle;
+                if (rowH >= 0)
+                {
+                    popupMenu1.ShowPopup(barManager1, new Point(MousePosition.X, MousePosition.Y));
+                }
+                else
+                {
+                    popupMenu1.HidePopup();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btnPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var row = gridView1.FocusedRowHandle;
+
+                var obj = gridView1.GetFocusedRow();
+                if (obj == null) return;
+                var objData = (DONMH_ViewModel)obj;
+                var master = new DONMHBll().GetDONMHById(objData.iddonmh);
+                using (frmPrint frm = new frmPrint())
+                {
+                    frm.PrintDONMH(master, master.lstDetail);
+                    frm.ShowDialog();
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

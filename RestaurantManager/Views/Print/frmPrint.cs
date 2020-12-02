@@ -47,9 +47,16 @@ namespace RestaurantManager.Views.Print
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }
-        public void PrintGIAOHANG(GIAOHANG_ViewModel obj, List<D_GIAOHANG_ViewModel> data)
+        public void PrintDONDATDA(DONDATDA_ViewModel obj, List<D_DONDATDA_ViewModel> data)
         {
-            ReportGIAOHANG report = new ReportGIAOHANG();
+            ReportDONDATDA report = new ReportDONDATDA();
+            //Hide paramater
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
+                p.Visible = false;
+            //Init data report
+            report.InitData(obj, data);
+            documentViewer1.DocumentSource = report;
+            report.CreateDocument();
         }
 
         /// <summary>
@@ -60,6 +67,13 @@ namespace RestaurantManager.Views.Print
         public void PrintPNHAP(PNHAP_ViewModel obj, List<D_PNHAP_ViewModel> data)
         {
             ReportPNHAP report = new ReportPNHAP();
+            //Hide paramater
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
+                p.Visible = false;
+            //Init data report
+            report.InitData(obj, data);
+            documentViewer1.DocumentSource = report;
+            report.CreateDocument();
         }
         public void PrintGIAOHANG(GIAOHANG_ViewModel obj, List<D_GIAOHANG_ViewModel> data)
         {
@@ -80,6 +94,22 @@ namespace RestaurantManager.Views.Print
                 p.Visible = false;
             //Init data report
             report.InitData(fromday, today, data);
+            documentViewer1.DocumentSource = report;
+            report.CreateDocument();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="data"></param>
+        public void PrintDONMH(DONMH_ViewModel obj, List<D_DONMH_ViewModel> data)
+        {
+            ReportDONMH report = new ReportDONMH();
+            //Hide paramater
+            foreach (DevExpress.XtraReports.Parameters.Parameter p in report.Parameters)
+                p.Visible = false;
+            //Init data report
+            report.InitData(obj, data);
             documentViewer1.DocumentSource = report;
             report.CreateDocument();
         }
