@@ -14,7 +14,6 @@ namespace RestaurantManager.Model
         public string tenhang { get; set; }
         public Nullable<int> slgiao { get; set; }
         public Nullable<int> slnhan { get; set; }
-
         public double? dongia { get; set; }
         public double? thanhtien { get; set; }
 
