@@ -117,19 +117,6 @@ namespace RestaurantManager.Bussiness
         /// <returns></returns>
         public List<D_PNHAP_ViewModel> GetListD_PNHAP_Full(int idpnhap)
         {
-            //using (var db = new RestaurantManagerDataEntities())
-            //{
-            //var result = (from p in db.D_PNHAP.AsNoTracking()
-            //              join n in db.NLIEUx.AsNoTracking() on p.idhang equals n.idhang
-            //              select new D_PNHAP_ViewModel
-            //              {
-            //                  idpnhap = p.idpnhap,
-            //                  idhang = p.idhang,
-            //                  tenhang = n.tenhang,
-            //                  slgiao = p.slgiao,
-            //                  slnhan = p.slnhan,
-            //              }).ToList();
-
             try
             {
                 using (var db = new RestaurantManagerDataEntities())

@@ -28,8 +28,8 @@ namespace RestaurantManager.Database
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public string ModifyBy { get; set; }
     
+        public virtual PNHAP PNHAP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<D_HOADONM> D_HOADONM { get; set; }
-        public virtual PNHAP PNHAP { get; set; }
     }
 }

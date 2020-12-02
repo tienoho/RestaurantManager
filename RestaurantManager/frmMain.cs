@@ -23,6 +23,7 @@ namespace RestaurantManager
             InitializeComponent();
             var list = new DONDATDABll().GetOuterOrder();
             btnOrderWait.Caption = String.Format("Chờ thanh toán ({0})", list.Count());
+            addTabPages(uctWelcome.uctDL, 17, "Welcome");
         }
 
         internal static List<byte> typePages = new List<byte>();

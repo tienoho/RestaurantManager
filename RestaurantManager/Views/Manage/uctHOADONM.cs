@@ -16,6 +16,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
 using DevExpress.XtraBars;
+using RestaurantManager.Views.Print;
 
 namespace RestaurantManager
 {
@@ -55,7 +56,7 @@ namespace RestaurantManager
             //object ngaydat = (sender as GridView).GetRowCellValue(RowHandle, "ngaydat");
 
             txtidpnhap.EditValue = idpnhap;
-            
+
             if (txtidpnhap.Text != null)
             {
                 GetD_PNHAP((int)idpnhap);
@@ -91,11 +92,11 @@ namespace RestaurantManager
                 }
                 double.TryParse(txtTotalAmount.EditValue.ToString(), out double TotalAmount);
                 var ngaymua = dtpngaydat.Value;
-              
+
                 var model = new HOADONM
                 {
-                    idpnhap= idpnhap,
-                    ngaymua= ngaymua
+                    idpnhap = idpnhap,
+                    ngaymua = ngaymua
                 };
                 List<D_HOADONM> lstD_HOADONM = new List<D_HOADONM>();
 
@@ -105,6 +106,7 @@ namespace RestaurantManager
                     {
                         idhang = item.idhang,
                         slmua = item.idpnhap,
+                        dongiamua = item.dongiamh,
                     };
                     lstD_HOADONM.Add(details);
                 }
@@ -114,15 +116,33 @@ namespace RestaurantManager
                     return;
                 }
 
-                var msg = new HOADONMBll().AddHOADONM(model, lstD_HOADONM, Properties.Settings.Default.NameLog);
-                if (msg != null && msg != "")
+                var resultData = new HOADONMBll().AddHOADONM(model, lstD_HOADONM, Properties.Settings.Default.NameLog);
+                if (resultData != null)
                 {
                     LoadGrid();
-                    XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    XtraMessageBoxArgs args = new XtraMessageBoxArgs();
+                    args.Caption = "Thông báo";
+                    args.Text = "Xuất hóa đơn thành công!\n Bạn có muốn in hóa đơn ?";
+                    args.Buttons = new DialogResult[] { DialogResult.OK, DialogResult.Cancel };
+                    args.Showing += Args_Showing;
+
+                    var result = XtraMessageBox.Show(args);
+                    if (result == DialogResult.OK)
+                    {
+                        using (frmPrint frm = new frmPrint())
+                        {
+                            //frm.PrintHOADONM(resultData, lstD_HOADONM);
+                            // frm.ShowDialog();
+                        }
+                        return;
+                    }
+
+                    //XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearDisplay();
                     return;
                 }
-                XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ClearDisplay();
                 return;
             }
@@ -146,7 +166,7 @@ namespace RestaurantManager
             {
                 XtraMessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
         //async public void LoadData()
         //{
@@ -161,12 +181,37 @@ namespace RestaurantManager
         {
             txtidpnhap.Text = "";
             dtpngaydat.Value = DateTime.Now;
+            txtTotalAmount.EditValue = 0;
             lstD_PNHAP = null;
             gcSelectItems.DataSource = lstD_PNHAP;
             gvSelectItems.RefreshData();
 
         }
-
+        private void CalculateAmount(List<D_PNHAP_ViewModel> lstD_PNHAP)
+        {
+            var sum = lstD_PNHAP.Sum(x => x.TotalAmount);
+            txtTotalAmount.EditValue = sum;
+        }
+        private void Args_Showing(object sender, XtraMessageShowingArgs e)
+        {
+            foreach (var control in e.Form.Controls)
+            {
+                SimpleButton button = control as SimpleButton;
+                if (button != null)
+                {
+                    button.ImageOptions.SvgImageSize = new Size(16, 16);
+                    switch (button.DialogResult.ToString())
+                    {
+                        case ("OK"):
+                            button.ImageOptions.SvgImage = svgImageCollection1[0];
+                            break;
+                        case ("Cancel"):
+                            button.ImageOptions.SvgImage = svgImageCollection1[1];
+                            break;
+                    }
+                }
+            }
+        }
         #endregion
 
         private void gvWaitOrder_Click(object sender, EventArgs e)
@@ -178,13 +223,14 @@ namespace RestaurantManager
             try
             {
                 lstD_PNHAP = new PNHAPBll().GetListD_PNHAP_Full(idpnhap);
+                CalculateAmount(lstD_PNHAP);
                 gcSelectItems.DataSource = lstD_PNHAP;
                 gvSelectItems.RefreshData();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }           
+            }
         }
 
 

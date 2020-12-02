@@ -54,12 +54,12 @@ namespace RestaurantManager
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcHOADONTT)).BeginInit();
@@ -73,11 +73,11 @@ namespace RestaurantManager
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(503, 19);
+            this.label2.Location = new System.Drawing.Point(476, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 19);
+            this.label2.Size = new System.Drawing.Size(291, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "DANH SÁCH HÓA ĐƠN";
+            this.label2.Text = "DANH SÁCH HÓA ĐƠN THANH TOÁN";
             // 
             // panelControl1
             // 
@@ -306,6 +306,15 @@ namespace RestaurantManager
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Caption = "In hóa đơn";
+            this.btnPrint.Id = 0;
+            this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
+            this.btnPrint.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.LargeImage")));
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
+            // 
             // barManager1
             // 
             this.barManager1.DockControls.Add(this.barDockControlTop);
@@ -348,15 +357,6 @@ namespace RestaurantManager
             this.barDockControlRight.Location = new System.Drawing.Point(1284, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 565);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Caption = "In hóa đơn";
-            this.btnPrint.Id = 0;
-            this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
-            this.btnPrint.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.LargeImage")));
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
             // 
             // uctHOADON
             // 

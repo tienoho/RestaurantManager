@@ -21,9 +21,9 @@ namespace RestaurantManager
 {
     public partial class uctListHOADONM : UserControl
     {
-        List<HOADONTT_ViewModel> lstHOADONTT;
-        List<KHACHHANG> ListKHACHHANG;
-        DateTime fromDate;
+        List<HOADONM_ViewModel> lstHOADONM;
+        List<KHACHHANG> ListKHACHHANG; 
+         DateTime fromDate;
         DateTime toDate;
         public uctListHOADONM()
         {
@@ -48,7 +48,7 @@ namespace RestaurantManager
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            DataRow row = gvHOADONTT.GetDataRow(gvHOADONTT.GetSelectedRows()[0]);
+            DataRow row = gvHOADONM.GetDataRow(gvHOADONM.GetSelectedRows()[0]);
         }
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
@@ -75,17 +75,17 @@ namespace RestaurantManager
         #region Function
         async public void LoadGrid()
         {
-            lstHOADONTT = await Task.Run(() => new HOADONTTBll().GetListHOADONTT(0, fromDate, toDate));
-            gcHOADONTT.DataSource = lstHOADONTT;
-            gvHOADONTT.RefreshData();
+            lstHOADONM = await Task.Run(() => new HOADONMBll().GetListFullHOADONM(fromDate, toDate));
+            gcHOADONM.DataSource = lstHOADONM;
+            gvHOADONM.RefreshData();
         }
         async public void LoadData()
         {
-            ListKHACHHANG = await Task.Run(() => new KHACHHANGBll().GetListKHACHHANG());
-            lueKhachHang.Properties.DataSource = ListKHACHHANG
-                .Select(item => new { idkh = item.idkh, tenkh = item.tenkh, sdt = item.sdt }).ToList();
-            lueKhachHang.Properties.ValueMember = "idkh";
-            lueKhachHang.Properties.DisplayMember = "tenkh";
+            //ListKHACHHANG = await Task.Run(() => new KHACHHANGBll().GetListKHACHHANG());
+            //lueKhachHang.Properties.DataSource = ListKHACHHANG
+            //    .Select(item => new { idkh = item.idkh, tenkh = item.tenkh, sdt = item.sdt }).ToList();
+            //lueKhachHang.Properties.ValueMember = "idkh";
+            //lueKhachHang.Properties.DisplayMember = "tenkh";
         }
         private void ClearDisplay()
         {
@@ -99,18 +99,18 @@ namespace RestaurantManager
             var fromDate = dtpFromDate.Value;
             var toDate = dtpToDate.Value;
             int idkh = 0;
-            if (lueKhachHang.Text == "" || lueKhachHang.EditValue == null)
-            {
-                idkh = 0;
-            }
-            else
-            {
-                int.TryParse(lueKhachHang.EditValue.ToString(), out idkh);
-            }
+            //if (lueKhachHang.Text == "" || lueKhachHang.EditValue == null)
+            //{
+            //    idkh = 0;
+            //}
+            //else
+            //{
+            //    int.TryParse(lueKhachHang.EditValue.ToString(), out idkh);
+            //}
 
-            lstHOADONTT = new HOADONTTBll().GetListHOADONTT(idkh, fromDate, toDate);
-            gcHOADONTT.DataSource = lstHOADONTT;
-            gvHOADONTT.RefreshData();
+            lstHOADONM = new HOADONMBll().GetListFullHOADONM(fromDate, toDate);
+            gcHOADONM.DataSource = lstHOADONM;
+            gvHOADONM.RefreshData();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -122,16 +122,16 @@ namespace RestaurantManager
         {
             try
             {
-                var row = gvHOADONTT.FocusedRowHandle;
+                var row = gvHOADONM.FocusedRowHandle;
 
-                var obj = gvHOADONTT.GetFocusedRow();
+                var obj = gvHOADONM.GetFocusedRow();
                 if (obj == null) return;
-                var objData = (HOADONTT_ViewModel)obj;
-                var HOADONTT = new HOADONTTBll().GetHOADONTT(objData.idhoadontt);
-                var D_HOADONTT = new HOADONTTBll().GetListD_HOADONTT(objData.idhoadontt);
+                var objData = (HOADONM_ViewModel)obj;
+                var HOADONM = new HOADONMBll().GetHOADONM(objData.idhoadonm);
+                var D_HOADONM = new HOADONMBll().GetLisD_HOADONM(objData.idhoadonm);
                 using (frmPrint frm = new frmPrint())
                 {
-                    frm.PrintHOADONTT(HOADONTT, D_HOADONTT);
+                    frm.PrintHOADONM(HOADONM, D_HOADONM);
                     frm.ShowDialog();
                 }
             }
@@ -146,7 +146,7 @@ namespace RestaurantManager
             try
             {
                 if (e.Button != MouseButtons.Right) return;
-                var rowH = gvHOADONTT.FocusedRowHandle;
+                var rowH = gvHOADONM.FocusedRowHandle;
                 //var focusedRowView = (DataRowView)gvGIAOHANG.GetFocusedRow();
                 //if (focusedRowView == null || focusedRowView.IsNew) return;
                 if (rowH >= 0)

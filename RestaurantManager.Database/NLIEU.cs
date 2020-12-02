@@ -18,11 +18,11 @@ namespace RestaurantManager.Database
         public NLIEU()
         {
             this.CONGTHUCs = new HashSet<CONGTHUC>();
-            this.D_DONMH = new HashSet<D_DONMH>();
             this.D_GIAOHANG = new HashSet<D_GIAOHANG>();
-            this.D_HOADONM = new HashSet<D_HOADONM>();
             this.D_PNHAP = new HashSet<D_PNHAP>();
             this.D_PYC = new HashSet<D_PYC>();
+            this.D_DONMH = new HashSet<D_DONMH>();
+            this.D_HOADONM = new HashSet<D_HOADONM>();
         }
     
         public int idhang { get; set; }
@@ -38,14 +38,14 @@ namespace RestaurantManager.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONGTHUC> CONGTHUCs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<D_DONMH> D_DONMH { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<D_GIAOHANG> D_GIAOHANG { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<D_HOADONM> D_HOADONM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<D_PNHAP> D_PNHAP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<D_PYC> D_PYC { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<D_DONMH> D_DONMH { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<D_HOADONM> D_HOADONM { get; set; }
     }
 }

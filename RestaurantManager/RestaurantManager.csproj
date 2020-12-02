@@ -72,6 +72,7 @@
     <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.SharePoint.2016.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Snap.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v19.1.UI, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.CodeView.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -363,6 +364,12 @@
     <Compile Include="Views\Report\uctReportDoanhThu.Designer.cs">
       <DependentUpon>uctReportDoanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\uctWelcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\uctWelcome.Designer.cs">
+      <DependentUpon>uctWelcome.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -484,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Report\uctReportDoanhThu.resx">
       <DependentUpon>uctReportDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\uctWelcome.resx">
+      <DependentUpon>uctWelcome.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\RestaurantManagerData.bak" />
     <None Include="packages.config" />
@@ -700,6 +710,7 @@
     <Content Include="images\environment-icon-in-circle-vector-18879072.jpg" />
     <Content Include="images\mail-icon-white-on-clear-hi.png" />
     <Content Include="images\menchua.jpg" />
+    <None Include="Resources\good-food-logo-template_79169-17.jpg" />
     <None Include="Resources\icons8-print-16.png" />
     <None Include="Resources\icons8-print-26.png" />
     <None Include="Resources\icons8-print-34.png" />

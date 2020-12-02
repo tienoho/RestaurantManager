@@ -30,18 +30,17 @@ namespace RestaurantManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label9 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gcPNHAP = new DevExpress.XtraGrid.GridControl();
             this.gvPNHAP = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcidpnhap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcnguoigiao = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcidpgiao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcnguoilapphieu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gctennguoilapphieu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcngaynhap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcthukho = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gctenthukho = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcidpgiao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.txtidpnhap = new DevExpress.XtraEditors.TextEdit();
@@ -55,6 +54,7 @@ namespace RestaurantManager
             this.gcslgiao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslnhan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcdongiamh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClearHoDon = new System.Windows.Forms.Button();
@@ -63,6 +63,7 @@ namespace RestaurantManager
             this.txtTotalAmount = new DevExpress.XtraEditors.TextEdit();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.svgImageCollection1 = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcPNHAP)).BeginInit();
@@ -79,6 +80,7 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -96,7 +98,7 @@ namespace RestaurantManager
             this.panelControl1.Controls.Add(this.gcPNHAP);
             this.panelControl1.Location = new System.Drawing.Point(3, 45);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(602, 445);
+            this.panelControl1.Size = new System.Drawing.Size(527, 445);
             this.panelControl1.TabIndex = 20;
             // 
             // gcPNHAP
@@ -105,7 +107,7 @@ namespace RestaurantManager
             this.gcPNHAP.Location = new System.Drawing.Point(2, 2);
             this.gcPNHAP.MainView = this.gvPNHAP;
             this.gcPNHAP.Name = "gcPNHAP";
-            this.gcPNHAP.Size = new System.Drawing.Size(598, 441);
+            this.gcPNHAP.Size = new System.Drawing.Size(523, 441);
             this.gcPNHAP.TabIndex = 0;
             this.gcPNHAP.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPNHAP});
@@ -116,12 +118,10 @@ namespace RestaurantManager
             this.gvPNHAP.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gcidpnhap,
             this.gcnguoigiao,
+            this.gcidpgiao,
             this.gcnguoilapphieu,
-            this.gctennguoilapphieu,
             this.gcngaynhap,
-            this.gcthukho,
-            this.gctenthukho,
-            this.gcidpgiao});
+            this.gcthukho});
             this.gvPNHAP.GridControl = this.gcPNHAP;
             this.gvPNHAP.Name = "gvPNHAP";
             this.gvPNHAP.OptionsBehavior.Editable = false;
@@ -149,20 +149,23 @@ namespace RestaurantManager
             this.gcnguoigiao.VisibleIndex = 1;
             this.gcnguoigiao.Width = 76;
             // 
+            // gcidpgiao
+            // 
+            this.gcidpgiao.Caption = "Mã phiếu giao";
+            this.gcidpgiao.FieldName = "idpgiao";
+            this.gcidpgiao.Name = "gcidpgiao";
+            this.gcidpgiao.Visible = true;
+            this.gcidpgiao.VisibleIndex = 3;
+            this.gcidpgiao.Width = 83;
+            // 
             // gcnguoilapphieu
             // 
             this.gcnguoilapphieu.Caption = "Người lập phiếu";
             this.gcnguoilapphieu.FieldName = "nguoilapphieu";
             this.gcnguoilapphieu.Name = "gcnguoilapphieu";
+            this.gcnguoilapphieu.Visible = true;
+            this.gcnguoilapphieu.VisibleIndex = 4;
             this.gcnguoilapphieu.Width = 98;
-            // 
-            // gctennguoilapphieu
-            // 
-            this.gctennguoilapphieu.Caption = "Người lập";
-            this.gctennguoilapphieu.FieldName = "tennguoilapphieu";
-            this.gctennguoilapphieu.Name = "gctennguoilapphieu";
-            this.gctennguoilapphieu.Visible = true;
-            this.gctennguoilapphieu.VisibleIndex = 4;
             // 
             // gcngaynhap
             // 
@@ -177,27 +180,12 @@ namespace RestaurantManager
             // 
             // gcthukho
             // 
-            this.gcthukho.Caption = "thukho";
+            this.gcthukho.Caption = "Thủ kho";
             this.gcthukho.FieldName = "thukho";
             this.gcthukho.Name = "gcthukho";
+            this.gcthukho.Visible = true;
+            this.gcthukho.VisibleIndex = 5;
             this.gcthukho.Width = 76;
-            // 
-            // gctenthukho
-            // 
-            this.gctenthukho.Caption = "Thủ kho";
-            this.gctenthukho.FieldName = "tenthukho";
-            this.gctenthukho.Name = "gctenthukho";
-            this.gctenthukho.Visible = true;
-            this.gctenthukho.VisibleIndex = 5;
-            // 
-            // gcidpgiao
-            // 
-            this.gcidpgiao.Caption = "Mã phiếu giao";
-            this.gcidpgiao.FieldName = "idpgiao";
-            this.gcidpgiao.Name = "gcidpgiao";
-            this.gcidpgiao.Visible = true;
-            this.gcidpgiao.VisibleIndex = 3;
-            this.gcidpgiao.Width = 83;
             // 
             // panelControl2
             // 
@@ -206,9 +194,9 @@ namespace RestaurantManager
             this.panelControl2.Controls.Add(this.panelControl4);
             this.panelControl2.Controls.Add(this.panelControl3);
             this.panelControl2.Controls.Add(this.panelControl6);
-            this.panelControl2.Location = new System.Drawing.Point(609, 45);
+            this.panelControl2.Location = new System.Drawing.Point(534, 45);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(675, 443);
+            this.panelControl2.Size = new System.Drawing.Size(750, 445);
             this.panelControl2.TabIndex = 22;
             this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
             // 
@@ -219,7 +207,7 @@ namespace RestaurantManager
             this.panelControl4.Controls.Add(this.label3);
             this.panelControl4.Location = new System.Drawing.Point(0, 2);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(410, 57);
+            this.panelControl4.Size = new System.Drawing.Size(483, 57);
             this.panelControl4.TabIndex = 22;
             // 
             // txtidpnhap
@@ -258,7 +246,7 @@ namespace RestaurantManager
             this.panelControl3.Controls.Add(this.gcSelectItems);
             this.panelControl3.Location = new System.Drawing.Point(0, 60);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(410, 378);
+            this.panelControl3.Size = new System.Drawing.Size(483, 378);
             this.panelControl3.TabIndex = 21;
             // 
             // gcSelectItems
@@ -267,7 +255,7 @@ namespace RestaurantManager
             this.gcSelectItems.Location = new System.Drawing.Point(2, 2);
             this.gcSelectItems.MainView = this.gvSelectItems;
             this.gcSelectItems.Name = "gcSelectItems";
-            this.gcSelectItems.Size = new System.Drawing.Size(406, 374);
+            this.gcSelectItems.Size = new System.Drawing.Size(479, 374);
             this.gcSelectItems.TabIndex = 5;
             this.gcSelectItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSelectItems});
@@ -279,7 +267,8 @@ namespace RestaurantManager
             this.gctenhang,
             this.gcslgiao,
             this.gcslnhan,
-            this.gcdongiamh});
+            this.gcdongiamh,
+            this.gcTotalAmount});
             this.gvSelectItems.GridControl = this.gcSelectItems;
             this.gvSelectItems.Name = "gvSelectItems";
             this.gvSelectItems.OptionsBehavior.Editable = false;
@@ -313,6 +302,8 @@ namespace RestaurantManager
             // gcslnhan
             // 
             this.gcslnhan.Caption = "Số lượng nhận";
+            this.gcslnhan.DisplayFormat.FormatString = "#,###";
+            this.gcslnhan.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcslnhan.FieldName = "slnhan";
             this.gcslnhan.Name = "gcslnhan";
             this.gcslnhan.Visible = true;
@@ -321,10 +312,22 @@ namespace RestaurantManager
             // gcdongiamh
             // 
             this.gcdongiamh.Caption = "Đơn giá";
+            this.gcdongiamh.DisplayFormat.FormatString = "#,###";
+            this.gcdongiamh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcdongiamh.FieldName = "dongiamh";
             this.gcdongiamh.Name = "gcdongiamh";
             this.gcdongiamh.Visible = true;
             this.gcdongiamh.VisibleIndex = 3;
+            // 
+            // gcTotalAmount
+            // 
+            this.gcTotalAmount.Caption = "Thành tiền";
+            this.gcTotalAmount.DisplayFormat.FormatString = "#,###";
+            this.gcTotalAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gcTotalAmount.FieldName = "TotalAmount";
+            this.gcTotalAmount.Name = "gcTotalAmount";
+            this.gcTotalAmount.Visible = true;
+            this.gcTotalAmount.VisibleIndex = 4;
             // 
             // panelControl6
             // 
@@ -337,7 +340,7 @@ namespace RestaurantManager
             this.panelControl6.Controls.Add(this.txtTotalAmount);
             this.panelControl6.Controls.Add(this.label10);
             this.panelControl6.Controls.Add(this.label6);
-            this.panelControl6.Location = new System.Drawing.Point(414, 2);
+            this.panelControl6.Location = new System.Drawing.Point(489, 2);
             this.panelControl6.Name = "panelControl6";
             this.panelControl6.Size = new System.Drawing.Size(258, 436);
             this.panelControl6.TabIndex = 2;
@@ -432,6 +435,11 @@ namespace RestaurantManager
             this.label6.TabIndex = 4;
             this.label6.Text = "THÔNG TIN HÓA ĐƠN";
             // 
+            // svgImageCollection1
+            // 
+            this.svgImageCollection1.Add("print", "image://svgimages/print/print.svg");
+            this.svgImageCollection1.Add("actions_forbid", "image://svgimages/icon builder/actions_forbid.svg");
+            // 
             // uctHOADONM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,6 +469,7 @@ namespace RestaurantManager
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,10 +504,10 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gcngaynhap;
         private DevExpress.XtraGrid.Columns.GridColumn gcthukho;
         private DevExpress.XtraGrid.Columns.GridColumn gcidpgiao;
-        private DevExpress.XtraGrid.Columns.GridColumn gctennguoilapphieu;
-        private DevExpress.XtraGrid.Columns.GridColumn gctenthukho;
         private DevExpress.XtraGrid.Columns.GridColumn gcslnhan;
         private DevExpress.XtraGrid.Columns.GridColumn gcidhang;
         private DevExpress.XtraGrid.Columns.GridColumn gcdongiamh;
+        private DevExpress.XtraGrid.Columns.GridColumn gcTotalAmount;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection1;
     }
 }

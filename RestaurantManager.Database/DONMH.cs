@@ -17,8 +17,8 @@ namespace RestaurantManager.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DONMH()
         {
-            this.D_DONMH = new HashSet<D_DONMH>();
             this.GIAOHANGs = new HashSet<GIAOHANG>();
+            this.D_DONMH = new HashSet<D_DONMH>();
         }
     
         public int iddonmh { get; set; }
@@ -29,10 +29,10 @@ namespace RestaurantManager.Database
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public string ModifyBy { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<D_DONMH> D_DONMH { get; set; }
         public virtual NCC NCC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GIAOHANG> GIAOHANGs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<D_DONMH> D_DONMH { get; set; }
     }
 }
