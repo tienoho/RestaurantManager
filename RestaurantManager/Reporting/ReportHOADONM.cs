@@ -18,16 +18,21 @@ namespace RestaurantManager.Reporting
             InitializeComponent();
             
         }
-        public void InitData(HOADONM_ViewModel obj, List<D_HOADONM_ViewModel> data)
+        public void InitData(HOADONM_ViewModel master, List<D_HOADONM_ViewModel> detail)
         {
             using(var db=new RestaurantManagerDataEntities())
             {
                 var toDay = DateTime.Now;
-                lblid.Text = obj.idhoadonm.ToString();
+                lblidhoadonm.Text = master.idhoadonm.ToString();
+                lbltenncc.Text = master.tenncc.ToString();
+                lblidgiao.Text = master.idpgiao.ToString();
+                lblidnhap.Text = master.idpnhap.ToString();
+                lblCreateBy.Text = master.CreateBy.ToString();
+                lblnguoilap.Text = master.CreateBy.ToString();
+                lblngaymua.Text = string.Format("{0}/{1}/{2}", master.CreateDate.Day, master.CreateDate.Month, master.CreateDate.Year);
+                objectDataSource4.DataSource = detail;
                 lblFooterDate.Text = string.Format("Ngày {0} tháng {1} năm {2}", toDay.Day, toDay.Month, toDay.Year);
-                ///var details = new PYCBll().GetListD_PYC(pyc.idyc);
-                objectDataSource1.DataSource = data;
-                
+
             }
         }
     }

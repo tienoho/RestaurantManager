@@ -65,7 +65,9 @@ namespace RestaurantManager.Bussiness
                                       idpgiao = g.idpgiao,
                                       iddonmh = d.iddonmh,
                                       idncc = n.idncc,
-                                      tenncc = n.tenncc
+                                      tenncc = n.tenncc,
+                                      CreateBy = h.CreateBy,
+                                      CreateDate = h.CreateDate
                                   }
                         ).FirstOrDefault();
                     return result;
@@ -92,6 +94,7 @@ namespace RestaurantManager.Bussiness
                                       dongiamua = d.dongiamua,
                                       slmua = d.slmua,
                                       tenhang = n.tenhang,
+                                      TotalAmount = d.dongiamua * d.slmua
                                   }).ToList();
                     return result;
                 }

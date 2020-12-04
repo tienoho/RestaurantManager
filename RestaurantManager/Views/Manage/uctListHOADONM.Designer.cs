@@ -36,9 +36,12 @@ namespace RestaurantManager
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gcHOADONM = new DevExpress.XtraGrid.GridControl();
             this.gvHOADONM = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gcidpnhap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcidhoadonm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcngaymua = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcidpnhap = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcidpgiao = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gciddonmh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,9 +55,6 @@ namespace RestaurantManager
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.gcidpgiao = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gciddonmh = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcHOADONM)).BeginInit();
@@ -114,15 +114,6 @@ namespace RestaurantManager
             this.gvHOADONM.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gvHOADONTT_MouseUp);
             this.gvHOADONM.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
-            // gcidpnhap
-            // 
-            this.gcidpnhap.Caption = "Mã phiếu nhập";
-            this.gcidpnhap.FieldName = "idpnhap";
-            this.gcidpnhap.Name = "gcidpnhap";
-            this.gcidpnhap.Visible = true;
-            this.gcidpnhap.VisibleIndex = 0;
-            this.gcidpnhap.Width = 153;
-            // 
             // gcidhoadonm
             // 
             this.gcidhoadonm.Caption = "Mã hóa đơn";
@@ -142,6 +133,44 @@ namespace RestaurantManager
             this.gcngaymua.Visible = true;
             this.gcngaymua.VisibleIndex = 1;
             this.gcngaymua.Width = 180;
+            // 
+            // gcidpnhap
+            // 
+            this.gcidpnhap.Caption = "Mã phiếu nhập";
+            this.gcidpnhap.FieldName = "idpnhap";
+            this.gcidpnhap.Name = "gcidpnhap";
+            this.gcidpnhap.Visible = true;
+            this.gcidpnhap.VisibleIndex = 0;
+            this.gcidpnhap.Width = 153;
+            // 
+            // gcidpgiao
+            // 
+            this.gcidpgiao.Caption = "Mã phiếu giao";
+            this.gcidpgiao.FieldName = "idpgiao";
+            this.gcidpgiao.Name = "gcidpgiao";
+            this.gcidpgiao.Visible = true;
+            this.gcidpgiao.VisibleIndex = 3;
+            this.gcidpgiao.Width = 202;
+            // 
+            // gciddonmh
+            // 
+            this.gciddonmh.Caption = "Mã đơn mua";
+            this.gciddonmh.FieldName = "iddonmh";
+            this.gciddonmh.Name = "gciddonmh";
+            this.gciddonmh.Visible = true;
+            this.gciddonmh.VisibleIndex = 4;
+            this.gciddonmh.Width = 215;
+            // 
+            // gcTotalAmount
+            // 
+            this.gcTotalAmount.Caption = "Tổng tiền";
+            this.gcTotalAmount.DisplayFormat.FormatString = "#,###";
+            this.gcTotalAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gcTotalAmount.FieldName = "TotalAmount";
+            this.gcTotalAmount.Name = "gcTotalAmount";
+            this.gcTotalAmount.Visible = true;
+            this.gcTotalAmount.VisibleIndex = 5;
+            this.gcTotalAmount.Width = 324;
             // 
             // dtpFromDate
             // 
@@ -231,6 +260,10 @@ namespace RestaurantManager
             this.btnPrint.Id = 0;
             this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
             this.btnPrint.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.LargeImage")));
+            this.btnPrint.ItemAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnPrint.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ItemInMenuAppearance.Normal.Options.UseFont = true;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
             // 
@@ -276,35 +309,6 @@ namespace RestaurantManager
             this.barDockControlRight.Location = new System.Drawing.Point(1284, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 565);
-            // 
-            // gcidpgiao
-            // 
-            this.gcidpgiao.Caption = "Mã phiếu giao";
-            this.gcidpgiao.FieldName = "idpgiao";
-            this.gcidpgiao.Name = "gcidpgiao";
-            this.gcidpgiao.Visible = true;
-            this.gcidpgiao.VisibleIndex = 3;
-            this.gcidpgiao.Width = 202;
-            // 
-            // gciddonmh
-            // 
-            this.gciddonmh.Caption = "Mã đơn mua";
-            this.gciddonmh.FieldName = "iddonmh";
-            this.gciddonmh.Name = "gciddonmh";
-            this.gciddonmh.Visible = true;
-            this.gciddonmh.VisibleIndex = 4;
-            this.gciddonmh.Width = 215;
-            // 
-            // gcTotalAmount
-            // 
-            this.gcTotalAmount.Caption = "Tổng tiền";
-            this.gcTotalAmount.DisplayFormat.FormatString = "#,###";
-            this.gcTotalAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gcTotalAmount.FieldName = "TotalAmount";
-            this.gcTotalAmount.Name = "gcTotalAmount";
-            this.gcTotalAmount.Visible = true;
-            this.gcTotalAmount.VisibleIndex = 5;
-            this.gcTotalAmount.Width = 324;
             // 
             // uctListHOADONM
             // 
