@@ -22,7 +22,6 @@ namespace RestaurantManager
     public partial class uctListHOADONM : UserControl
     {
         List<HOADONM_ViewModel> lstHOADONM;
-        List<KHACHHANG> ListKHACHHANG; 
          DateTime fromDate;
         DateTime toDate;
         public uctListHOADONM()
@@ -98,16 +97,6 @@ namespace RestaurantManager
         {
             var fromDate = dtpFromDate.Value;
             var toDate = dtpToDate.Value;
-            int idkh = 0;
-            //if (lueKhachHang.Text == "" || lueKhachHang.EditValue == null)
-            //{
-            //    idkh = 0;
-            //}
-            //else
-            //{
-            //    int.TryParse(lueKhachHang.EditValue.ToString(), out idkh);
-            //}
-
             lstHOADONM = new HOADONMBll().GetListFullHOADONM(fromDate, toDate);
             gcHOADONM.DataSource = lstHOADONM;
             gvHOADONM.RefreshData();

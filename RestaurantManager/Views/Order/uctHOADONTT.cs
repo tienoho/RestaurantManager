@@ -177,10 +177,10 @@ namespace RestaurantManager
                     {
                         using (frmPrint frm = new frmPrint())
                         {
-                            frm.PrintHOADONTT(model, lstD_HOADONTT);
+                            frm.PrintHOADONTT(HOADONTT, D_HOADONTT);
                             frm.ShowDialog();
                         }
-                        return;
+                        ClearDisplay();
                     }
                     ClearDisplay();
                     return;

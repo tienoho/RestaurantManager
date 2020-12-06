@@ -39,6 +39,25 @@ namespace RestaurantManager.Bussiness
                 return null;
             }            
         }
+        /// <summary>
+        /// Get danh sachs mon an co cong thuc
+        /// </summary>
+        /// <returns></returns>
+        public List<MONAN_ViewModel> GetListMONAN_OutLeft()
+        {
+            try
+            {
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var result = db.Database.SqlQuery<MONAN_ViewModel>("EXEC dbo.Proc_GetMONAN_OutLeft").ToList();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public string AddMONAN(MONAN_ViewModel model)
         {
             try

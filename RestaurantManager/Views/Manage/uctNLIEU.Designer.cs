@@ -74,7 +74,7 @@ namespace RestaurantManager
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(675, 9);
+            this.label2.Location = new System.Drawing.Point(675, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(215, 19);
             this.label2.TabIndex = 2;
@@ -84,7 +84,7 @@ namespace RestaurantManager
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(95, 9);
+            this.label9.Location = new System.Drawing.Point(95, 11);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(211, 19);
             this.label9.TabIndex = 13;
@@ -311,9 +311,9 @@ namespace RestaurantManager
             this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.gridControl1);
-            this.panelControl1.Location = new System.Drawing.Point(451, 40);
+            this.panelControl1.Location = new System.Drawing.Point(451, 44);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(775, 312);
+            this.panelControl1.Size = new System.Drawing.Size(833, 312);
             this.panelControl1.TabIndex = 20;
             // 
             // gridControl1
@@ -322,7 +322,7 @@ namespace RestaurantManager
             this.gridControl1.Location = new System.Drawing.Point(2, 2);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(771, 308);
+            this.gridControl1.Size = new System.Drawing.Size(829, 308);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -365,6 +365,8 @@ namespace RestaurantManager
             // gcslton
             // 
             this.gcslton.Caption = "Số lượng tồn";
+            this.gcslton.DisplayFormat.FormatString = "#,###";
+            this.gcslton.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcslton.FieldName = "slton";
             this.gcslton.Name = "gcslton";
             this.gcslton.Visible = true;
@@ -373,6 +375,8 @@ namespace RestaurantManager
             // gcnguong
             // 
             this.gcnguong.Caption = "Ngưỡng";
+            this.gcnguong.DisplayFormat.FormatString = "#,###";
+            this.gcnguong.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcnguong.FieldName = "nguong";
             this.gcnguong.Name = "gcnguong";
             this.gcnguong.Visible = true;
@@ -399,6 +403,8 @@ namespace RestaurantManager
             // gcCreateDate
             // 
             this.gcCreateDate.Caption = "Ngày tạo";
+            this.gcCreateDate.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gcCreateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gcCreateDate.FieldName = "CreateDate";
             this.gcCreateDate.Name = "gcCreateDate";
             this.gcCreateDate.Visible = true;

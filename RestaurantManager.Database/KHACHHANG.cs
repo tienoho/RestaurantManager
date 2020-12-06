@@ -18,7 +18,6 @@ namespace RestaurantManager.Database
         public KHACHHANG()
         {
             this.HOADONTTs = new HashSet<HOADONTT>();
-            this.HOADONTTs1 = new HashSet<HOADONTT>();
         }
     
         public int idkh { get; set; }
@@ -31,7 +30,5 @@ namespace RestaurantManager.Database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADONTT> HOADONTTs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADONTT> HOADONTTs1 { get; set; }
     }
 }

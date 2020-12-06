@@ -10,20 +10,18 @@
 namespace RestaurantManager.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class D_GIAOHANG
+    public partial class Proc_GetMONAN_OutLeft_Result
     {
-        public int idpgiao { get; set; }
-        public int idhang { get; set; }
-        public Nullable<int> slgiaohang { get; set; }
-        public Nullable<int> slnhanhang { get; set; }
+        public int idmon { get; set; }
+        public string temon { get; set; }
+        public Nullable<double> dongiamon { get; set; }
+        public string dvt { get; set; }
+        public string hinhanh { get; set; }
+        public Nullable<int> iddmuc { get; set; }
         public System.DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public string ModifyBy { get; set; }
-    
-        public virtual GIAOHANG GIAOHANG { get; set; }
-        public virtual NLIEU NLIEU { get; set; }
     }
 }

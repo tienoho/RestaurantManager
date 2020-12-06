@@ -5,54 +5,53 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a20a1b252ce549eb867278a361afd8af" Name="Diagram1" ZoomLevel="53">
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.CONGTHUC" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_DONDATDA" Width="1.5" PointX="10" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_GIAOHANG" Width="1.5" PointX="1.5" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_PNHAP" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_PYC" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.DANHMUC" Width="1.5" PointX="16.125" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.DONDATDA" Width="1.5" PointX="11.625" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.DONMH" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.HOADONM" Width="1.5" PointX="7.25" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.HOADONTT" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.KHACHHANG" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.MONAN" Width="1.5" PointX="13.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.NCC" Width="1.5" PointX="0.5" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.NLIEU" Width="1.5" PointX="1.375" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.NLIEU_NCC" Width="1.5" PointX="8.875" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.PNHAP" Width="1.5" PointX="3.375" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.PYC" Width="1.5" PointX="7.25" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.sysdiagram" Width="1.5" PointX="9.375" PointY="8" IsExpanded="true" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_CONGTHUC_MONAN" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_CONGTHUC_NLIEU" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_DONDATDA_DONDATDA" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_DONDATDA_MONAN" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_GIAOHANG_NLIEU" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_PNHAP_NLIEU" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_PNHAP_PNHAP" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_PYC_NLIEU" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_PYC_PYC" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_MONAN_DANHMUC" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_DONMH_NCC" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_HOADONM_PNHAP" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_HOADONTT_KHACHHANG" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.USER" Width="1.5" PointX="10.625" PointY="0.75" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA1" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_HOADONTT" Width="1.5" PointX="13.875" PointY="6.875" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.CONGTHUC" Width="1.5" PointX="6" PointY="16.625" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_DONDATDA" Width="1.5" PointX="11" PointY="15.25" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_DONMH" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_GIAOHANG" Width="1.5" PointX="6" PointY="8.5" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_HOADONM" Width="1.5" PointX="6" PointY="12.5" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_HOADONTT" Width="1.5" PointX="13.25" PointY="15" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_PNHAP" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_PYC" Width="1.5" PointX="3" PointY="12.375" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.DANHMUC" Width="1.5" PointX="1.5" PointY="25.75" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.DONDATDA" Width="1.5" PointX="8.75" PointY="4.5" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.DONMH" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.GIAOHANG" Width="1.5" PointX="3.75" PointY="2.75" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.HOADONM" Width="1.5" PointX="3.75" PointY="20.625" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.HOADONTT" Width="1.5" PointX="11" PointY="4.25" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.KHACHHANG" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.MONAN" Width="1.5" PointX="3.75" PointY="25.125" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.NCC" Width="1.5" PointX="1.5" PointY="3.375" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.NLIEU" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.NLIEU_NCC" Width="1.5" PointX="5.75" PointY="2.125" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.PNHAP" Width="1.5" PointX="1.5" PointY="20.125" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.PYC" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.sysdiagram" Width="1.5" PointX="8.75" PointY="9.125" />
+        <EntityTypeShape EntityType="RestaurantManagerDataModel.USER" Width="1.5" PointX="10.75" PointY="9.125" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_CONGTHUC_MONAN" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_CONGTHUC_NLIEU" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_DONDATDA_DONDATDA" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_DONDATDA_MONAN" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_DONMH_DONMH" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_DONMH_NLIEU" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_GIAOHANG_GIAOHANG" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_GIAOHANG_NLIEU" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_HOADONM_NLIEU" />
         <AssociationConnector Association="RestaurantManagerDataModel.FK_D_HOADONTT_HOADONTT" />
         <AssociationConnector Association="RestaurantManagerDataModel.FK_D_HOADONTT_MONAN" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.GIAOHANG" Width="1.5" PointX="13" PointY="1.125" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_GIAOHANG_GIAOHANG" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_PNHAP_NLIEU" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_PNHAP_PNHAP" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_PYC_NLIEU" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_PYC_PYC" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_MONAN_DANHMUC" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_DONMH_NCC" />
         <AssociationConnector Association="RestaurantManagerDataModel.FK_GIAOHANG_DONMH" />
         <AssociationConnector Association="RestaurantManagerDataModel.FK_GIAOHANG_NCC" />
         <AssociationConnector Association="RestaurantManagerDataModel.FK_PNHAP_GIAOHANG" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_DONMH" Width="1.5" PointX="5.625" PointY="9.125" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_DONMH_DONMH" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_DONMH_NLIEU" />
-        <EntityTypeShape EntityType="RestaurantManagerDataModel.D_HOADONM" Width="1.5" PointX="9.625" PointY="10.75" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" />
-        <AssociationConnector Association="RestaurantManagerDataModel.FK_D_HOADONM_NLIEU" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_HOADONM_PNHAP" />
+        <AssociationConnector Association="RestaurantManagerDataModel.FK_HOADONTT_KHACHHANG" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

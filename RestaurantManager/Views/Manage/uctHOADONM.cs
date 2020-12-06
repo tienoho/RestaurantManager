@@ -130,10 +130,12 @@ namespace RestaurantManager
                     var result = XtraMessageBox.Show(args);
                     if (result == DialogResult.OK)
                     {
+                        var HOADONM = new HOADONMBll().GetHOADONM(resultData.idhoadonm);
+                        var D_HOADONM = new HOADONMBll().GetLisD_HOADONM(resultData.idhoadonm);
                         using (frmPrint frm = new frmPrint())
                         {
-                            //frm.PrintHOADONM(resultData, lstD_HOADONM);
-                            // frm.ShowDialog();
+                            frm.PrintHOADONM(HOADONM, D_HOADONM);
+                            frm.ShowDialog();
                         }
                         return;
                     }

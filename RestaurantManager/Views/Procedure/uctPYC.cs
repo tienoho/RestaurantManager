@@ -16,6 +16,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using RestaurantManager.Model;
 using RestaurantManager.Views.Print;
+using RestaurantManager.Views.Order;
 
 namespace RestaurantManager
 {
@@ -35,7 +36,7 @@ namespace RestaurantManager
         }
 
         #region PYC
-        private void LoadDataGrid()
+        public void LoadDataGrid()
         {
             LoadGrid();
 
@@ -67,11 +68,6 @@ namespace RestaurantManager
 
             this.idyc = (int)idyc;
             LoadGridDetails(this.idyc);
-            btnPrint.Enabled = true;
-            //object tenhang = (sender as GridView).GetRowCellValue(RowHandle, "tenhang");
-            //object slton = (sender as GridView).GetRowCellValue(RowHandle, "slton");
-            //object nguong = (sender as GridView).GetRowCellValue(RowHandle, "nguong");
-            //object dongianl = (sender as GridView).GetRowCellValue(RowHandle, "dongianl");
         }
 
         private void gridControl1_ViewRegistered(object sender, ViewOperationEventArgs e)
@@ -160,6 +156,77 @@ namespace RestaurantManager
                         frm.ShowDialog();
                     }
                 }
+            }
+        }
+
+        private void bbtPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var row = gridView1.FocusedRowHandle;
+
+                var objView = gridView1.GetFocusedRow();
+                if (objView == null) return;
+                var objData = (PYC_ViewModel)objView;
+                using (var db = new RestaurantManagerDataEntities())
+                {
+                    var obj = db.PYCs.AsNoTracking().FirstOrDefault(x => x.idyc == objData.idyc);
+                    var details = new PYCBll().GetListD_PYC(objData.idyc);
+                    using (frmPrint frm = new frmPrint())
+                    {
+                        frm.PrintPYC(obj, details);
+                        frm.ShowDialog();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void gridView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button != MouseButtons.Right) return;
+                var rowH = gridView1.FocusedRowHandle;
+                if (rowH >= 0)
+                {
+                    popupMenu1.ShowPopup(barManager1, new Point(MousePosition.X, MousePosition.Y));
+                }
+                else
+                {
+                    popupMenu1.HidePopup();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void bbtnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var row = gridView1.FocusedRowHandle;
+
+                var objView = gridView1.GetFocusedRow();
+                if (objView == null) return;
+                var objData = (PYC_ViewModel)objView;
+                using (frmPYC_Detail frm = new frmPYC_Detail(objData.idyc))
+                {
+                    var result = frm.ShowDialog();
+                    if (result == DialogResult.Cancel)
+                    {
+                        LoadGrid();
+                    }
+                }
+            }
+            catch
+            {
+
             }
         }
     }

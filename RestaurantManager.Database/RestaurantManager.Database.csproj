@@ -114,6 +114,27 @@
     <Compile Include="PNHAP.cs">
       <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Proc_GetDonDatDA_OutLeft_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proc_GetListDONDATDA_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proc_GetListD_PNHAP_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proc_GetListHOADONM_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proc_GetListHOADONTT_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proc_GetMONAN_OutLeft_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Proc_GetPNHAP_OutLeft_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PYC.cs">
       <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
@@ -132,6 +153,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RestaurantManagerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>RestaurantManagerModel.tt</DependentUpon>

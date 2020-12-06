@@ -206,14 +206,33 @@
     <Compile Include="Reporting\ReportPYC.designer.cs">
       <DependentUpon>ReportPYC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reporting\CanteenQualityReports.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reporting\CanteenQualityReports.designer.cs">
-      <DependentUpon>CanteenQualityReports.cs</DependentUpon>
-    </Compile>
     <Compile Include="TestConect.cs" />
     <Compile Include="ViewsModels\EmployeeReportType.cs" />
+    <Compile Include="Views\AccountManager\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AccountManager\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountManager\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AccountManager\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountManager\frmManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AccountManager\frmManager.Designer.cs">
+      <DependentUpon>frmManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\JobTitle.cs" />
+    <Compile Include="Views\Manage\frmPYC_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Manage\frmPYC_Detail.Designer.cs">
+      <DependentUpon>frmPYC_Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Manage\frmPNHap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -414,8 +433,14 @@
     <EmbeddedResource Include="Reporting\ReportPYC.resx">
       <DependentUpon>ReportPYC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reporting\CanteenQualityReports.resx">
-      <DependentUpon>CanteenQualityReports.cs</DependentUpon>
+    <EmbeddedResource Include="Views\AccountManager\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AccountManager\frmManager.resx">
+      <DependentUpon>frmManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Manage\frmPYC_Detail.resx">
+      <DependentUpon>frmPYC_Detail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Manage\frmPNHap.resx">
       <DependentUpon>frmPNHap.cs</DependentUpon>
@@ -540,7 +565,6 @@
     <Folder Include="Controls\" />
     <Folder Include="Database\StoredProcedure\" />
     <Folder Include="Services\" />
-    <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add.png" />

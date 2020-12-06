@@ -22,7 +22,6 @@ namespace RestaurantManager
 {
     public partial class uctMONAN2 : UserControl
     {
-        private int imageIndex = 0;
         private string imageLocation = "";
         private string imageName = "";
         private List<MONAN_ViewModel> lstMONAN;
@@ -365,6 +364,7 @@ namespace RestaurantManager
                     LoadGridCONGTHUC(idmon);
                     XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearDisplay();
+                    ClearDisplay_CongThuc();
                     return;
                 }
                 XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

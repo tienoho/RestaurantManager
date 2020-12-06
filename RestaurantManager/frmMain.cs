@@ -13,6 +13,9 @@ using DevExpress.Utils;
 using System.Threading;
 using DevExpress.XtraSplashScreen;
 using RestaurantManager.Bussiness;
+using RestaurantManager.Views.Order;
+using RestaurantManager.Views.Common;
+using RestaurantManager.Views.AccountManager;
 
 namespace RestaurantManager
 {
@@ -70,20 +73,11 @@ namespace RestaurantManager
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             themes.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
         }
-        private void btnInfoAgency_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void btnProductOfAgency_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //SplashScreenManager.ShowForm(typeof(WaitForm1));
-            //addTabPages(uctSanPhamDL.uctSPDL,30, "Sản Phẩm Đại Lí");
-        }
 
         private void btnInfoOfCustomer_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctKHACHHANG.uctDL, 30, "Thông tin Khách hàng");
+            uctKHACHHANG.uctDL.LoadGrid();
         }
 
         private void btnBill_ItemClick(object sender, ItemClickEventArgs e)
@@ -156,8 +150,8 @@ namespace RestaurantManager
 
         private void btnChangePassWord_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //frmDoiMatKhau Change = new frmDoiMatKhau();
-            //Change.ShowDialog();
+            frmChangePassword Change = new frmChangePassword();
+            Change.ShowDialog();
         }
 
         private void btnLogout_ItemClick(object sender, ItemClickEventArgs e)
@@ -255,9 +249,8 @@ namespace RestaurantManager
 
         private void btnManagerAccount_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //frmAdmin account = new frmAdmin();
-            //account.ShowDialog();
-            //this.Show();
+            frmManager account = new frmManager();
+            account.ShowDialog();
         }
 
         private void btnMenu_ItemClick(object sender, ItemClickEventArgs e)
@@ -282,12 +275,20 @@ namespace RestaurantManager
 
         private void btnPYC_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctCreate_PYC.uctDL, 5, "Tạo phiếu yêu cầu");
+            //addTabPages(uctCreate_PYC.uctDL, 5, "Tạo phiếu yêu cầu");
+            frmPYC_Detail frm = new frmPYC_Detail();
+            var result = frm.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                uctPYC.uctDL.LoadDataGrid();
+
+            }
         }
 
         private void btnListPYC_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctPYC.uctDL, 6, "Phiếu yêu cầu");
+            uctPNHAP.uctDL.LoadGrid();
         }
 
         private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
@@ -301,16 +302,19 @@ namespace RestaurantManager
         {
             addTabPages(uctHOADONTT.uctDL, 8, "Chờ thanh toán");
             uctHOADONTT.uctDL.fillCaption(btnOrderWait);
+            uctHOADONTT.uctDL.LoadGrid();
         }
 
         # region mua hàng
         private void btnDONMH_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctDONMH.uctDL, 9, "Đơn mua hàng");
+            uctDONMH.uctDL.LoadGrid();
         }
         private void btnCreateDONMH_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctDONMH_Detail.uctDL, 10, "Tạo đơn mua hàng");
+            uctDONMH_Detail.uctDL.LoadGrid();
         }
 
 
@@ -319,12 +323,13 @@ namespace RestaurantManager
         private void btnGiaoHang_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctGIAOHANG.uctDL, 11, "Giao hàng");
-
+            uctGIAOHANG.uctDL.LoadGrid();
         }
 
         private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctPNHAP.uctDL, 12, "Nhập hàng");
+            uctPNHAP.uctDL.LoadGrid();
         }
 
         private void menuToolStrip_Click(object sender, EventArgs e)
@@ -336,19 +341,93 @@ namespace RestaurantManager
         private void btnExportHOADONM_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctHOADONM.uctDL, 13, "Xuất hóa đơn mua");
+            uctHOADONM.uctDL.LoadGrid();
         }
 
         private void btnDONDATDA_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctListDONDATDA.uctDL, 14, "Đơn đặt đồ ăn");
+            uctListDONDATDA.uctDL.LoadGrid();
         }
         private void btnHOADONM_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctListHOADONM.uctDL, 15, "Hóa đơn mua");
+            uctListHOADONM.uctDL.LoadGrid();
         }
         private void btnRevenue_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctReportDoanhThu.uctDL, 16, "Báo cáo doanh thu");
+            uctReportDoanhThu.uctDL.LoadGrid();
+        }
+        public void Decentralization(string jobTitle)
+        {
+            switch (jobTitle)
+            {
+                case nameof(JobTitle.Level.Admin):
+                    btnRevenue.Enabled = true;
+                    btnManagerAccount.Enabled = true;
+                    btnDONMH.Enabled = true;
+                    btnMenu.Enabled = true;
+                    btnDanhMuc.Enabled = true;
+                    btnDONDATDA.Enabled = true;
+                    btnAddDon.Enabled = true;
+                    btnOrderWait.Enabled = true;
+                    btnPYC.Enabled = true;
+                    btnPNhap.Enabled = true;
+                    btnGiaoHang.Enabled = true;
+                    btnNguyenLieu.Enabled = true;
+                    btnBill.Enabled = true;
+                    btnHOADONM.Enabled = true;
+                    btnOrderWait.Enabled = true;
+                    btnInfoOfCustomer.Enabled = true;
+                    btnNhaCungCap.Enabled = true;
+                    btnExportHOADONM.Enabled = true;
+                    btnListPYC.Enabled = true;
+                    btnNhaCC.Enabled = true;
+                    break;
+                case nameof(JobTitle.Level.QLCHUNG):
+                    btnRevenue.Enabled = true;
+                    btnManagerAccount.Enabled = true;
+                    btnDONMH.Enabled = true;
+                    btnMenu.Enabled = true;
+                    btnDanhMuc.Enabled = true;
+                    btnDONDATDA.Enabled = true;
+                    btnAddDon.Enabled = true;
+                    btnOrderWait.Enabled = true;
+                    btnPYC.Enabled = true;
+                    btnPNhap.Enabled = true;
+                    btnGiaoHang.Enabled = true;
+                    btnNguyenLieu.Enabled = true;
+                    btnBill.Enabled = true;
+                    btnHOADONM.Enabled = true;
+                    btnOrderWait.Enabled = true;
+                    btnInfoOfCustomer.Enabled = true;
+                    btnNhaCungCap.Enabled = true;
+                    btnExportHOADONM.Enabled = true;
+                    btnListPYC.Enabled = true;
+                    btnNhaCC.Enabled = true;
+                    break;
+                case nameof(JobTitle.Level.PVKHACH):
+                    btnDONDATDA.Enabled = true;
+                    btnAddDon.Enabled = true;
+                    btnOrderWait.Enabled = true;
+                    btnInfoOfCustomer.Enabled = true;
+                    break;                
+                case nameof(JobTitle.Level.THUKHO):
+                    btnPYC.Enabled = true;
+                    btnListPYC.Enabled = true;
+                    btnPNhap.Enabled = true;
+                    btnNguyenLieu.Enabled = true;
+                    btnNhaCC.Enabled = true;
+                    btnNhaCungCap.Enabled = true;
+                    break;
+                case nameof(JobTitle.Level.TTHOADON):
+                    btnBill.Enabled = true;
+                    btnHOADONM.Enabled = true;
+                    btnOrderWait.Enabled = true;
+                    btnInfoOfCustomer.Enabled = true;
+                    break;
+            }
         }
     }
 }

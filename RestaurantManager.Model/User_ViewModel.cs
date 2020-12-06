@@ -12,6 +12,7 @@ namespace RestaurantManager.Model
         public string UserName { get; set; }
         public string Password { get; set; }
         public string ChucVu { get; set; }
+        public string MoTaChucVu { get; set; }
         public string DiaChi { get; set; }
         public string SoDT { get; set; }
         public System.DateTime CreateDate { get; set; }

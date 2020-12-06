@@ -92,6 +92,7 @@ namespace RestaurantManager.Bussiness
                                       dongiamua = d.dongiamua,
                                       slmua = d.slmua,
                                       tenhang = n.tenhang,
+                                      TotalAmount=d.dongiamua*d.slmua,
                                   }).ToList();
                     return result;
                 }
@@ -112,7 +113,7 @@ namespace RestaurantManager.Bussiness
                     {
                         var pnhap = db.PNHAPs.AsNoTracking().FirstOrDefault(x => x.idpnhap == model.idpnhap);
                         var pgiao = db.GIAOHANGs.AsNoTracking().FirstOrDefault(x => x.idpgiao == pnhap.idpgiao);
-                        model.idhoadonm = pgiao.iddonmh.Value;
+                        //model.idhoadonm = pgiao.iddonmh.Value;
                         model.CreateBy = loginUser;
                         model.CreateDate = DateTime.Now;
                         var result = db.HOADONMs.Add(model);

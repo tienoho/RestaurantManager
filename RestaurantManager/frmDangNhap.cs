@@ -92,6 +92,7 @@ namespace RestaurantManager
                             Properties.Settings.Default.PasswordLog = txtPassword.Text;
                             this.Hide();
                             frmMain main = new frmMain();
+                            main.Decentralization(checkLogin.ChucVu);
                             main.ShowDialog();
 
                             txtUser.Text = "";

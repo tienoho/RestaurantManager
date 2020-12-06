@@ -34,7 +34,6 @@ namespace RestaurantManager
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctGIAOHANG));
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gcGIAOHANG = new DevExpress.XtraGrid.GridControl();
@@ -59,13 +58,14 @@ namespace RestaurantManager
             this.gcslgiaohang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcslnhanhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.btnDeleteRow = new DevExpress.XtraBars.BarButtonItem();
             this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnDeleteRow = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnEdit = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcGIAOHANG)).BeginInit();
@@ -97,23 +97,6 @@ namespace RestaurantManager
             this.label9.Size = new System.Drawing.Size(172, 19);
             this.label9.TabIndex = 13;
             this.label9.Text = "THÔNG TIN CHI TIẾT";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Image = global::RestaurantManager.Properties.Resources.update_5;
-            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(140, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(70, 28);
-            this.btnUpdate.TabIndex = 17;
-            this.btnUpdate.Text = "Sửa";
-            this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -360,20 +343,10 @@ namespace RestaurantManager
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnPrint)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnPrint),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnEdit)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
-            // 
-            // btnDeleteRow
-            // 
-            this.btnDeleteRow.Caption = "Xóa";
-            this.btnDeleteRow.Id = 0;
-            this.btnDeleteRow.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteRow.ImageOptions.Image")));
-            this.btnDeleteRow.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDeleteRow.ImageOptions.LargeImage")));
-            this.btnDeleteRow.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnDeleteRow.ItemInMenuAppearance.Normal.Options.UseFont = true;
-            this.btnDeleteRow.Name = "btnDeleteRow";
-            this.btnDeleteRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteRow_ItemClick);
             // 
             // btnPrint
             // 
@@ -397,8 +370,9 @@ namespace RestaurantManager
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnDeleteRow,
-            this.btnPrint});
-            this.barManager1.MaxItemId = 3;
+            this.btnPrint,
+            this.bbtnEdit});
+            this.barManager1.MaxItemId = 4;
             // 
             // barDockControlTop
             // 
@@ -432,6 +406,33 @@ namespace RestaurantManager
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 525);
             // 
+            // btnDeleteRow
+            // 
+            this.btnDeleteRow.Caption = "Xóa";
+            this.btnDeleteRow.Id = 0;
+            this.btnDeleteRow.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteRow.ImageOptions.Image")));
+            this.btnDeleteRow.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDeleteRow.ImageOptions.LargeImage")));
+            this.btnDeleteRow.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnDeleteRow.ItemInMenuAppearance.Normal.Options.UseFont = true;
+            this.btnDeleteRow.Name = "btnDeleteRow";
+            this.btnDeleteRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteRow_ItemClick);
+            // 
+            // bbtnEdit
+            // 
+            this.bbtnEdit.Caption = "Sửa";
+            this.bbtnEdit.Id = 3;
+            this.bbtnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnEdit.ImageOptions.Image")));
+            this.bbtnEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnEdit.ImageOptions.LargeImage")));
+            this.bbtnEdit.ItemAppearance.Hovered.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.bbtnEdit.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbtnEdit.ItemAppearance.Normal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbtnEdit.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbtnEdit.ItemInMenuAppearance.Hovered.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.bbtnEdit.ItemInMenuAppearance.Hovered.Options.UseFont = true;
+            this.bbtnEdit.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.bbtnEdit.ItemInMenuAppearance.Normal.Options.UseFont = true;
+            this.bbtnEdit.Name = "bbtnEdit";
+            // 
             // uctGIAOHANG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,7 +440,6 @@ namespace RestaurantManager
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
@@ -468,7 +468,6 @@ namespace RestaurantManager
         #endregion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
         private PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gcGIAOHANG;
@@ -500,5 +499,6 @@ namespace RestaurantManager
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem btnPrint;
+        private DevExpress.XtraBars.BarButtonItem bbtnEdit;
     }
 }

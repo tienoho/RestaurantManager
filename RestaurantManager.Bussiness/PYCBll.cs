@@ -26,6 +26,14 @@ namespace RestaurantManager.Bussiness
                 return result;
             }
         }
+        public PYC GetPYC(int idpyc)
+        {
+            using (var db = new RestaurantManagerDataEntities())
+            {
+                var result = db.PYCs.AsNoTracking().FirstOrDefault(x => x.idyc == idpyc);
+                return result;
+            }
+        }
         public List<D_PYC_ViewModel> GetListD_PYC(int idyc)
         {
             using (var db = new RestaurantManagerDataEntities())

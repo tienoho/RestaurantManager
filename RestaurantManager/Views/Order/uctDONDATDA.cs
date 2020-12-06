@@ -36,7 +36,7 @@ namespace RestaurantManager
         public uctDONDATDA()
         {
             InitializeComponent();
-            ListMONAN = new MONANBll().GetListMONAN();
+            ListMONAN = new MONANBll().GetListMONAN_OutLeft();
             InitData(ListMONAN);
             SetupView2();
             rgViewType.SelectedIndexChanged += RgViewType_SelectedIndexChanged;

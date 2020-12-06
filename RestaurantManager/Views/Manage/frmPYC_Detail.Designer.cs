@@ -1,15 +1,15 @@
 ﻿using DevExpress.XtraEditors;
 
-namespace RestaurantManager
+namespace RestaurantManager.Views.Order
 {
-    partial class uctCreate_PYC
+    partial class frmPYC_Detail
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -22,25 +22,16 @@ namespace RestaurantManager
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.grbAgency = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSavePYC = new System.Windows.Forms.Button();
-            this.dtpnyc = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtid = new System.Windows.Forms.TextBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gcPYCDetails = new DevExpress.XtraGrid.GridControl();
             this.gvPYCDetails = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -63,13 +54,16 @@ namespace RestaurantManager
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.gcPYC = new DevExpress.XtraGrid.GridControl();
-            this.gvPYC = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gcidyc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcngayyc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grbAgency.SuspendLayout();
+            this.grbAgency = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dtpnyc = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -81,158 +75,45 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.lueNLieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtslton.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnguong.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcPYC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvPYC)).BeginInit();
+            this.grbAgency.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(103, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "DANH SÁCH NGUYÊN LIỆU";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(763, 0);
+            this.label9.Location = new System.Drawing.Point(329, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(165, 19);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "TẠO PHIẾU YÊU CẦU";
-            // 
-            // grbAgency
-            // 
-            this.grbAgency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grbAgency.Controls.Add(this.panel2);
-            this.grbAgency.Location = new System.Drawing.Point(448, 21);
-            this.grbAgency.Name = "grbAgency";
-            this.grbAgency.Size = new System.Drawing.Size(833, 138);
-            this.grbAgency.TabIndex = 14;
-            this.grbAgency.TabStop = false;
+            this.label9.Size = new System.Drawing.Size(210, 19);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "CHI TIẾT ĐƠN MUA HÀNG";
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.btnSavePYC);
-            this.panel2.Controls.Add(this.dtpnyc);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.btnSave);
-            this.panel2.Controls.Add(this.txtid);
-            this.panel2.Controls.Add(this.btnClear);
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.panelControl1);
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Controls.Add(this.grbAgency);
+            this.panel2.Controls.Add(this.pictureEdit1);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(3, 16);
+            this.panel2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(827, 119);
-            this.panel2.TabIndex = 2;
-            // 
-            // btnSavePYC
-            // 
-            this.btnSavePYC.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btnSavePYC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSavePYC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSavePYC.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePYC.ForeColor = System.Drawing.Color.Black;
-            this.btnSavePYC.Image = global::RestaurantManager.Properties.Resources.add_2;
-            this.btnSavePYC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSavePYC.Location = new System.Drawing.Point(222, 51);
-            this.btnSavePYC.Name = "btnSavePYC";
-            this.btnSavePYC.Size = new System.Drawing.Size(161, 28);
-            this.btnSavePYC.TabIndex = 24;
-            this.btnSavePYC.Text = "Thêm phiếu yêu cầu";
-            this.btnSavePYC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSavePYC.UseVisualStyleBackColor = false;
-            this.btnSavePYC.Click += new System.EventHandler(this.btnSavePYC_Click);
-            // 
-            // dtpnyc
-            // 
-            this.dtpnyc.CustomFormat = "hh:mm dd/MM/yyyy";
-            this.dtpnyc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpnyc.Location = new System.Drawing.Point(517, 24);
-            this.dtpnyc.Name = "dtpnyc";
-            this.dtpnyc.Size = new System.Drawing.Size(252, 21);
-            this.dtpnyc.TabIndex = 23;
-            this.dtpnyc.Value = new System.DateTime(2020, 11, 21, 19, 10, 58, 0);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(416, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 16);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Ngày yêu cầu";
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Enabled = false;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::RestaurantManager.Properties.Resources.icons8_save_32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(131, 84);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(122, 28);
-            this.btnSave.TabIndex = 21;
-            this.btnSave.Text = "Lưu lại";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
-            // 
-            // txtid
-            // 
-            this.txtid.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.txtid.Enabled = false;
-            this.txtid.Location = new System.Drawing.Point(131, 24);
-            this.txtid.Name = "txtid";
-            this.txtid.ReadOnly = true;
-            this.txtid.Size = new System.Drawing.Size(252, 21);
-            this.txtid.TabIndex = 2;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Image = global::RestaurantManager.Properties.Resources.clear;
-            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(131, 51);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(87, 29);
-            this.btnClear.TabIndex = 19;
-            this.btnClear.Text = "Làm mới";
-            this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Mã yêu cầu";
+            this.panel2.Size = new System.Drawing.Size(939, 577);
+            this.panel2.TabIndex = 15;
             // 
             // panelControl1
             // 
             this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.gcPYCDetails);
-            this.panelControl1.Location = new System.Drawing.Point(447, 260);
+            this.panelControl1.Location = new System.Drawing.Point(3, 259);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(837, 243);
-            this.panelControl1.TabIndex = 20;
+            this.panelControl1.Size = new System.Drawing.Size(927, 311);
+            this.panelControl1.TabIndex = 47;
             // 
             // gcPYCDetails
             // 
@@ -240,11 +121,11 @@ namespace RestaurantManager
             this.gcPYCDetails.Location = new System.Drawing.Point(2, 2);
             this.gcPYCDetails.MainView = this.gvPYCDetails;
             this.gcPYCDetails.Name = "gcPYCDetails";
-            this.gcPYCDetails.Size = new System.Drawing.Size(833, 239);
+            this.gcPYCDetails.Size = new System.Drawing.Size(923, 307);
             this.gcPYCDetails.TabIndex = 0;
             this.gcPYCDetails.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPYCDetails});
-            this.gcPYCDetails.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.gridControl1_ViewRegistered);
+            this.gcPYCDetails.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.gcPYCDetails_ViewRegistered);
             // 
             // gvPYCDetails
             // 
@@ -259,7 +140,7 @@ namespace RestaurantManager
             this.gvPYCDetails.OptionsBehavior.Editable = false;
             this.gvPYCDetails.OptionsBehavior.ReadOnly = true;
             this.gvPYCDetails.OptionsFind.AlwaysVisible = true;
-            this.gvPYCDetails.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
+            this.gvPYCDetails.DoubleClick += new System.EventHandler(this.gvPYCDetails_DoubleClick);
             // 
             // gcidhang
             // 
@@ -313,10 +194,10 @@ namespace RestaurantManager
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Location = new System.Drawing.Point(447, 162);
+            this.groupBox1.Location = new System.Drawing.Point(5, 163);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(834, 95);
-            this.groupBox1.TabIndex = 21;
+            this.groupBox1.Size = new System.Drawing.Size(925, 90);
+            this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             // 
             // panel1
@@ -336,10 +217,11 @@ namespace RestaurantManager
             this.panel1.Controls.Add(this.label8);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(3, 16);
+            this.panel1.Location = new System.Drawing.Point(3, 18);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(828, 76);
+            this.panel1.Size = new System.Drawing.Size(919, 69);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtsldukien
             // 
@@ -516,82 +398,134 @@ namespace RestaurantManager
             this.label8.TabIndex = 0;
             this.label8.Text = "Mã hàng";
             // 
-            // panelControl2
+            // grbAgency
             // 
-            this.panelControl2.Controls.Add(this.gcPYC);
-            this.panelControl2.Location = new System.Drawing.Point(3, 27);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(439, 477);
-            this.panelControl2.TabIndex = 22;
+            this.grbAgency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbAgency.Controls.Add(this.panel3);
+            this.grbAgency.Location = new System.Drawing.Point(8, 29);
+            this.grbAgency.Name = "grbAgency";
+            this.grbAgency.Size = new System.Drawing.Size(684, 128);
+            this.grbAgency.TabIndex = 46;
+            this.grbAgency.TabStop = false;
             // 
-            // gcPYC
+            // panel3
             // 
-            this.gcPYC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcPYC.Location = new System.Drawing.Point(2, 2);
-            this.gcPYC.MainView = this.gvPYC;
-            this.gcPYC.Name = "gcPYC";
-            this.gcPYC.Size = new System.Drawing.Size(435, 473);
-            this.gcPYC.TabIndex = 0;
-            this.gcPYC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvPYC});
-            this.gcPYC.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.gcPYC_ViewRegistered);
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.dtpnyc);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.btnSave);
+            this.panel3.Controls.Add(this.txtid);
+            this.panel3.Controls.Add(this.btnClear);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(3, 18);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(678, 107);
+            this.panel3.TabIndex = 2;
             // 
-            // gvPYC
+            // dtpnyc
             // 
-            this.gvPYC.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gcidyc,
-            this.gcngayyc,
-            this.gridColumn1});
-            this.gvPYC.GridControl = this.gcPYC;
-            this.gvPYC.Name = "gvPYC";
-            this.gvPYC.OptionsBehavior.Editable = false;
-            this.gvPYC.OptionsBehavior.ReadOnly = true;
-            this.gvPYC.DoubleClick += new System.EventHandler(this.gvPYC_DoubleClick);
+            this.dtpnyc.CustomFormat = "hh:mm dd/MM/yyyy";
+            this.dtpnyc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpnyc.Location = new System.Drawing.Point(462, 6);
+            this.dtpnyc.Name = "dtpnyc";
+            this.dtpnyc.Size = new System.Drawing.Size(205, 21);
+            this.dtpnyc.TabIndex = 23;
+            this.dtpnyc.Value = new System.DateTime(2020, 11, 21, 19, 10, 58, 0);
             // 
-            // gcidyc
+            // label4
             // 
-            this.gcidyc.Caption = "Mã yêu cầu";
-            this.gcidyc.FieldName = "idyc";
-            this.gcidyc.Name = "gcidyc";
-            this.gcidyc.Visible = true;
-            this.gcidyc.VisibleIndex = 0;
-            this.gcidyc.Width = 65;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(364, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(95, 16);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Ngày yêu cầu";
             // 
-            // gcngayyc
+            // btnSave
             // 
-            this.gcngayyc.Caption = "Ngày yêu cầu";
-            this.gcngayyc.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.gcngayyc.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gcngayyc.FieldName = "ngayyc";
-            this.gcngayyc.Name = "gcngayyc";
-            this.gcngayyc.Visible = true;
-            this.gcngayyc.VisibleIndex = 1;
-            this.gcngayyc.Width = 174;
+            this.btnSave.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::RestaurantManager.Properties.Resources.icons8_save_32;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(96, 33);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(94, 28);
+            this.btnSave.TabIndex = 21;
+            this.btnSave.Text = "Lưu lại";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // gridColumn1
+            // txtid
             // 
-            this.gridColumn1.Caption = "Người tạo yêu cầu";
-            this.gridColumn1.FieldName = "CreateBy";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 178;
+            this.txtid.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.txtid.Enabled = false;
+            this.txtid.Location = new System.Drawing.Point(96, 6);
+            this.txtid.Name = "txtid";
+            this.txtid.ReadOnly = true;
+            this.txtid.Size = new System.Drawing.Size(262, 21);
+            this.txtid.TabIndex = 2;
             // 
-            // uctCreate_PYC
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Image = global::RestaurantManager.Properties.Resources.clear;
+            this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClear.Location = new System.Drawing.Point(196, 33);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(87, 29);
+            this.btnClear.TabIndex = 19;
+            this.btnClear.Text = "Làm mới";
+            this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Mã yêu cầu";
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.EditValue = global::RestaurantManager.Properties.Resources.giao_hang;
+            this.pictureEdit1.Location = new System.Drawing.Point(705, 35);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit1.Size = new System.Drawing.Size(225, 122);
+            this.pictureEdit1.TabIndex = 45;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(370, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(157, 22);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "PHIẾU YÊU CẦU";
+            // 
+            // frmPYC_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.Controls.Add(this.panelControl2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panelControl1);
-            this.Controls.Add(this.grbAgency);
+            this.ClientSize = new System.Drawing.Size(939, 577);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label2);
-            this.Name = "uctCreate_PYC";
-            this.Size = new System.Drawing.Size(1284, 525);
-            this.Load += new System.EventHandler(this.uctCreate_PYC_Load);
-            this.grbAgency.ResumeLayout(false);
+            this.Name = "frmPYC_Detail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Phiếu yêu cầu";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -605,34 +539,33 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.lueNLieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtslton.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtnguong.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcPYC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvPYC)).EndInit();
+            this.grbAgency.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
+
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox grbAgency;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtid;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnClear;
-        private PanelControl panelControl1;
-        private DevExpress.XtraGrid.GridControl gcPYCDetails;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvPYCDetails;
-        private DevExpress.XtraGrid.Columns.GridColumn gcidhang;
-        private DevExpress.XtraGrid.Columns.GridColumn gctenhang;
-        private DevExpress.XtraGrid.Columns.GridColumn gcslton;
-        private DevExpress.XtraGrid.Columns.GridColumn gcnguong;
+        private System.Windows.Forms.Label label2;
+        private PictureEdit pictureEdit1;
+        private System.Windows.Forms.GroupBox grbAgency;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DateTimePicker dtpnyc;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtid;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSave;
+        private TextEdit txtsldukien;
+        private System.Windows.Forms.Label label6;
         private LookUpEdit lueNLieu;
         private TextEdit txtslton;
         private System.Windows.Forms.Button btnClearDetails;
@@ -643,16 +576,13 @@ namespace RestaurantManager
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
-        private TextEdit txtsldukien;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dtpnyc;
-        private PanelControl panelControl2;
-        private DevExpress.XtraGrid.GridControl gcPYC;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvPYC;
-        private DevExpress.XtraGrid.Columns.GridColumn gcidyc;
-        private DevExpress.XtraGrid.Columns.GridColumn gcngayyc;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private PanelControl panelControl1;
+        private DevExpress.XtraGrid.GridControl gcPYCDetails;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvPYCDetails;
+        private DevExpress.XtraGrid.Columns.GridColumn gcidhang;
+        private DevExpress.XtraGrid.Columns.GridColumn gctenhang;
         private DevExpress.XtraGrid.Columns.GridColumn gcsldukien;
-        private System.Windows.Forms.Button btnSavePYC;
+        private DevExpress.XtraGrid.Columns.GridColumn gcslton;
+        private DevExpress.XtraGrid.Columns.GridColumn gcnguong;
     }
 }

@@ -90,18 +90,17 @@
             this.btnStatistical1 = new DevExpress.XtraBars.BarDockingMenuItem();
             this.btnRevenue = new DevExpress.XtraBars.BarButtonItem();
             this.btnDebtAgency = new DevExpress.XtraBars.BarButtonItem();
-            this.btnProductRender = new DevExpress.XtraBars.BarButtonItem();
             this.btnProductOfStore1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnStatistical = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.btnDeptCustomer = new DevExpress.XtraBars.BarButtonItem();
             this.btnStatistics = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAddDon = new DevExpress.XtraBars.BarButtonItem();
             this.btnOrderWait = new DevExpress.XtraBars.BarButtonItem();
             this.btnNhaCC = new DevExpress.XtraBars.BarButtonItem();
             this.btnPYC = new DevExpress.XtraBars.BarButtonItem();
             this.btnDONMH = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPNhap = new DevExpress.XtraBars.BarButtonItem();
             this.btnListPYC = new DevExpress.XtraBars.BarButtonItem();
             this.btnGiaoHang = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
@@ -119,16 +118,10 @@
             this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rpHelp = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbsStatus = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -199,8 +192,7 @@
             this.rpManager.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.pageGroupInfoOfAgency,
             this.pageGroupOfCustomer,
-            this.pageGroupOfBills,
-            this.ribbonPageGroup6});
+            this.pageGroupOfBills});
             this.rpManager.Name = "rpManager";
             this.rpManager.Text = "Quản lí";
             // 
@@ -215,6 +207,7 @@
             // btnMenu
             // 
             this.btnMenu.Caption = "Menu";
+            this.btnMenu.Enabled = false;
             this.btnMenu.Id = 57;
             this.btnMenu.ImageOptions.Image = global::RestaurantManager.Properties.Resources.catogory_1;
             this.btnMenu.Name = "btnMenu";
@@ -224,6 +217,7 @@
             // btnNguyenLieu
             // 
             this.btnNguyenLieu.Caption = "Nguyên liệu";
+            this.btnNguyenLieu.Enabled = false;
             this.btnNguyenLieu.Id = 58;
             this.btnNguyenLieu.ImageOptions.Image = global::RestaurantManager.Properties.Resources.product_1;
             this.btnNguyenLieu.Name = "btnNguyenLieu";
@@ -233,6 +227,7 @@
             // btnDanhMuc
             // 
             this.btnDanhMuc.Caption = "Danh mục món ăn";
+            this.btnDanhMuc.Enabled = false;
             this.btnDanhMuc.Id = 59;
             this.btnDanhMuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhMuc.ImageOptions.Image")));
             this.btnDanhMuc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDanhMuc.ImageOptions.LargeImage")));
@@ -250,6 +245,7 @@
             // btnInfoOfCustomer
             // 
             this.btnInfoOfCustomer.Caption = "Khách hàng";
+            this.btnInfoOfCustomer.Enabled = false;
             this.btnInfoOfCustomer.Id = 13;
             this.btnInfoOfCustomer.ImageOptions.Image = global::RestaurantManager.Properties.Resources.customer;
             this.btnInfoOfCustomer.ImageOptions.ImageIndex = 24;
@@ -260,6 +256,7 @@
             // btnNhaCungCap
             // 
             this.btnNhaCungCap.Caption = "Nhà cung cấp";
+            this.btnNhaCungCap.Enabled = false;
             this.btnNhaCungCap.Id = 11;
             this.btnNhaCungCap.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNhaCungCap.ImageOptions.Image")));
             this.btnNhaCungCap.ImageOptions.ImageIndex = 23;
@@ -281,6 +278,7 @@
             this.btnBill.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.btnBill.Caption = "Hóa đơn thanh toán";
             this.btnBill.DropDownControl = this.popupMenu1;
+            this.btnBill.Enabled = false;
             this.btnBill.Id = 15;
             this.btnBill.ImageOptions.DisabledImage = ((System.Drawing.Image)(resources.GetObject("btnBill.ImageOptions.DisabledImage")));
             this.btnBill.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBill.ImageOptions.Image")));
@@ -340,13 +338,12 @@
             this.btnStatistical1,
             this.btnRevenue,
             this.btnDebtAgency,
-            this.btnProductRender,
             this.btnProductOfStore1,
             this.btnStatistical,
             this.barButtonItem2,
             this.btnDeptCustomer,
             this.btnStatistics,
-            this.barButtonItem16,
+            this.btnAddDon,
             this.btnOrderWait,
             this.btnMenu,
             this.btnNguyenLieu,
@@ -354,7 +351,7 @@
             this.btnNhaCC,
             this.btnPYC,
             this.btnDONMH,
-            this.barButtonItem20,
+            this.btnPNhap,
             this.btnListPYC,
             this.btnGiaoHang,
             this.barButtonItem18,
@@ -362,14 +359,13 @@
             this.btnExportHOADONM,
             this.btnDONDATDA});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 78;
+            this.menuToolStrip.MaxItemId = 81;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
-            this.rpManager,
             this.rpProcedure,
+            this.rpManager,
             this.rpReport,
-            this.rpHelp,
             this.rpSystem});
             this.menuToolStrip.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1,
@@ -652,6 +648,7 @@
             // btnManagerAccount
             // 
             this.btnManagerAccount.Caption = "Quản lí tài khoản";
+            this.btnManagerAccount.Enabled = false;
             this.btnManagerAccount.Id = 42;
             this.btnManagerAccount.ImageOptions.Image = global::RestaurantManager.Properties.Resources.manager_account;
             this.btnManagerAccount.Name = "btnManagerAccount";
@@ -677,6 +674,7 @@
             // btnRevenue
             // 
             this.btnRevenue.Caption = "Doanh thu";
+            this.btnRevenue.Enabled = false;
             this.btnRevenue.Id = 45;
             this.btnRevenue.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRevenue.ImageOptions.Image")));
             this.btnRevenue.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRevenue.ImageOptions.LargeImage")));
@@ -693,18 +691,10 @@
             this.btnDebtAgency.Name = "btnDebtAgency";
             this.btnDebtAgency.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDebtAgency_ItemClick);
             // 
-            // btnProductRender
-            // 
-            this.btnProductRender.Caption = "Sản phẩm tồn kho";
-            this.btnProductRender.Id = 47;
-            this.btnProductRender.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProductRender.ImageOptions.Image")));
-            this.btnProductRender.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnProductRender.ImageOptions.LargeImage")));
-            this.btnProductRender.Name = "btnProductRender";
-            this.btnProductRender.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductRender_ItemClick);
-            // 
             // btnProductOfStore1
             // 
             this.btnProductOfStore1.Caption = "Công thức";
+            this.btnProductOfStore1.Enabled = false;
             this.btnProductOfStore1.Id = 48;
             this.btnProductOfStore1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnProductOfStore1.ImageOptions.Image")));
             this.btnProductOfStore1.Name = "btnProductOfStore1";
@@ -740,18 +730,20 @@
             this.btnStatistics.Name = "btnStatistics";
             this.btnStatistics.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStatistics_ItemClick);
             // 
-            // barButtonItem16
+            // btnAddDon
             // 
-            this.barButtonItem16.Caption = "Thêm đơn";
-            this.barButtonItem16.Id = 54;
-            this.barButtonItem16.ImageOptions.Image = global::RestaurantManager.Properties.Resources.add1;
-            this.barButtonItem16.Name = "barButtonItem16";
-            this.barButtonItem16.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
+            this.btnAddDon.Caption = "Thêm đơn";
+            this.btnAddDon.Enabled = false;
+            this.btnAddDon.Id = 54;
+            this.btnAddDon.ImageOptions.Image = global::RestaurantManager.Properties.Resources.add1;
+            this.btnAddDon.Name = "btnAddDon";
+            this.btnAddDon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnAddDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
             // 
             // btnOrderWait
             // 
             this.btnOrderWait.Caption = "Chờ thanh toán (0)";
+            this.btnOrderWait.Enabled = false;
             this.btnOrderWait.Id = 55;
             this.btnOrderWait.ImageOptions.Image = global::RestaurantManager.Properties.Resources.update_1;
             this.btnOrderWait.Name = "btnOrderWait";
@@ -769,6 +761,7 @@
             // btnPYC
             // 
             this.btnPYC.Caption = "Tạo phiếu yêu cầu";
+            this.btnPYC.Enabled = false;
             this.btnPYC.Id = 61;
             this.btnPYC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPYC.ImageOptions.Image")));
             this.btnPYC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPYC.ImageOptions.LargeImage")));
@@ -778,25 +771,28 @@
             // 
             // btnDONMH
             // 
-            this.btnDONMH.Caption = "Mua hàng";
+            this.btnDONMH.Caption = "Phiếu mua hàng";
+            this.btnDONMH.Enabled = false;
             this.btnDONMH.Id = 62;
             this.btnDONMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDONMH.ImageOptions.Image")));
             this.btnDONMH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDONMH.ImageOptions.LargeImage")));
             this.btnDONMH.Name = "btnDONMH";
             this.btnDONMH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDONMH_ItemClick);
             // 
-            // barButtonItem20
+            // btnPNhap
             // 
-            this.barButtonItem20.Caption = "Nhập hàng";
-            this.barButtonItem20.Id = 63;
-            this.barButtonItem20.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.Image")));
-            this.barButtonItem20.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.LargeImage")));
-            this.barButtonItem20.Name = "barButtonItem20";
-            this.barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem20_ItemClick);
+            this.btnPNhap.Caption = "Phiếu nhập hàng";
+            this.btnPNhap.Enabled = false;
+            this.btnPNhap.Id = 63;
+            this.btnPNhap.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPNhap.ImageOptions.Image")));
+            this.btnPNhap.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPNhap.ImageOptions.LargeImage")));
+            this.btnPNhap.Name = "btnPNhap";
+            this.btnPNhap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem20_ItemClick);
             // 
             // btnListPYC
             // 
             this.btnListPYC.Caption = "Phiêu yêu cầu";
+            this.btnListPYC.Enabled = false;
             this.btnListPYC.Id = 64;
             this.btnListPYC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnListPYC.ImageOptions.Image")));
             this.btnListPYC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnListPYC.ImageOptions.LargeImage")));
@@ -806,6 +802,7 @@
             // btnGiaoHang
             // 
             this.btnGiaoHang.Caption = "Phiêu giao hàng";
+            this.btnGiaoHang.Enabled = false;
             this.btnGiaoHang.Id = 67;
             this.btnGiaoHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGiaoHang.ImageOptions.Image")));
             this.btnGiaoHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnGiaoHang.ImageOptions.LargeImage")));
@@ -822,6 +819,7 @@
             // btnHOADONM
             // 
             this.btnHOADONM.Caption = "Hóa đơn mua hàng";
+            this.btnHOADONM.Enabled = false;
             this.btnHOADONM.Id = 71;
             this.btnHOADONM.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHOADONM.ImageOptions.Image")));
             this.btnHOADONM.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHOADONM.ImageOptions.LargeImage")));
@@ -832,6 +830,7 @@
             // btnExportHOADONM
             // 
             this.btnExportHOADONM.Caption = "Xuất hóa đơn mua";
+            this.btnExportHOADONM.Enabled = false;
             this.btnExportHOADONM.Id = 73;
             this.btnExportHOADONM.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportHOADONM.ImageOptions.Image")));
             this.btnExportHOADONM.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnExportHOADONM.ImageOptions.LargeImage")));
@@ -842,6 +841,7 @@
             // btnDONDATDA
             // 
             this.btnDONDATDA.Caption = "Đơn đặt đồ ăn";
+            this.btnDONDATDA.Enabled = false;
             this.btnDONDATDA.Id = 76;
             this.btnDONDATDA.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDONDATDA.ImageOptions.Image")));
             this.btnDONDATDA.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDONDATDA.ImageOptions.LargeImage")));
@@ -859,7 +859,7 @@
             // 
             // ribbonPageGroup13
             // 
-            this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem16);
+            this.ribbonPageGroup13.ItemLinks.Add(this.btnAddDon);
             this.ribbonPageGroup13.ItemLinks.Add(this.btnOrderWait);
             this.ribbonPageGroup13.Name = "ribbonPageGroup13";
             // 
@@ -898,7 +898,7 @@
             // 
             // ribbonPageGroup16
             // 
-            this.ribbonPageGroup16.ItemLinks.Add(this.barButtonItem20);
+            this.ribbonPageGroup16.ItemLinks.Add(this.btnPNhap);
             this.ribbonPageGroup16.Name = "ribbonPageGroup16";
             // 
             // ribbonPageGroup17
@@ -909,9 +909,7 @@
             // rpReport
             // 
             this.rpReport.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup10,
-            this.ribbonPageGroup7,
-            this.ribbonPageGroup12});
+            this.ribbonPageGroup10});
             this.rpReport.Name = "rpReport";
             this.rpReport.Text = "Báo cáo";
             // 
@@ -920,36 +918,6 @@
             this.ribbonPageGroup10.AllowTextClipping = false;
             this.ribbonPageGroup10.ItemLinks.Add(this.btnRevenue);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            // 
-            // ribbonPageGroup7
-            // 
-            this.ribbonPageGroup7.AllowTextClipping = false;
-            this.ribbonPageGroup7.ItemLinks.Add(this.btnProductRender);
-            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            // 
-            // ribbonPageGroup12
-            // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.btnStatistics);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
-            // 
-            // rpHelp
-            // 
-            this.rpHelp.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup11,
-            this.ribbonPageGroup2});
-            this.rpHelp.Name = "rpHelp";
-            this.rpHelp.Text = "Trợ giúp";
-            // 
-            // ribbonPageGroup11
-            // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.btnSorftwareInfo);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.AllowTextClipping = false;
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnAuthorInfo);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // rpSystem
             // 
@@ -962,7 +930,6 @@
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.AllowTextClipping = false;
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnInfoAccount);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnChangePassWord);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnLogout);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnManagerAccount);
@@ -985,12 +952,6 @@
             this.rbsStatus.Name = "rbsStatus";
             this.rbsStatus.Ribbon = this.menuToolStrip;
             this.rbsStatus.Size = new System.Drawing.Size(1247, 31);
-            // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.AllowTextClipping = false;
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnProductOfStore1);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             // 
             // ribbonPage7
             // 
@@ -1154,15 +1115,12 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpReport;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rpHelp;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage7;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem btnProductOfStore;
         private DevExpress.XtraBars.BarButtonItem btnAuthorInfo;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraBars.BarHeaderItem barHeaderItem1;
         private DevExpress.XtraBars.BarEditItem barEditItem2;
@@ -1191,17 +1149,13 @@
         private DevExpress.XtraBars.BarDockingMenuItem btnStatistical1;
         private DevExpress.XtraBars.BarButtonItem btnRevenue;
         private DevExpress.XtraBars.BarButtonItem btnDebtAgency;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.BarButtonItem btnProductRender;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem btnProductOfStore1;
         private DevExpress.XtraBars.BarButtonItem btnStatistical;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btnDeptCustomer;
         private DevExpress.XtraBars.BarButtonItem btnStatistics;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
+        private DevExpress.XtraBars.BarButtonItem btnAddDon;
         private DevExpress.XtraBars.BarButtonItem btnOrderWait;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
@@ -1218,7 +1172,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
         private DevExpress.XtraBars.BarButtonItem btnPYC;
         private DevExpress.XtraBars.BarButtonItem btnDONMH;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem20;
+        private DevExpress.XtraBars.BarButtonItem btnPNhap;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
         private DevExpress.XtraBars.BarButtonItem btnListPYC;

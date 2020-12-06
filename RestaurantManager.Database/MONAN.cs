@@ -37,8 +37,8 @@ namespace RestaurantManager.Database
         public virtual ICollection<CONGTHUC> CONGTHUCs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<D_DONDATDA> D_DONDATDA { get; set; }
-        public virtual DANHMUC DANHMUC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<D_HOADONTT> D_HOADONTT { get; set; }
+        public virtual DANHMUC DANHMUC { get; set; }
     }
 }

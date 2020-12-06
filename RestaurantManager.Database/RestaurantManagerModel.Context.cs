@@ -12,6 +12,8 @@ namespace RestaurantManager.Database
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class RestaurantManagerDataEntities : DbContext
     {
@@ -27,12 +29,16 @@ namespace RestaurantManager.Database
     
         public virtual DbSet<CONGTHUC> CONGTHUCs { get; set; }
         public virtual DbSet<D_DONDATDA> D_DONDATDA { get; set; }
+        public virtual DbSet<D_DONMH> D_DONMH { get; set; }
         public virtual DbSet<D_GIAOHANG> D_GIAOHANG { get; set; }
+        public virtual DbSet<D_HOADONM> D_HOADONM { get; set; }
+        public virtual DbSet<D_HOADONTT> D_HOADONTT { get; set; }
         public virtual DbSet<D_PNHAP> D_PNHAP { get; set; }
         public virtual DbSet<D_PYC> D_PYC { get; set; }
         public virtual DbSet<DANHMUC> DANHMUCs { get; set; }
         public virtual DbSet<DONDATDA> DONDATDAs { get; set; }
         public virtual DbSet<DONMH> DONMHs { get; set; }
+        public virtual DbSet<GIAOHANG> GIAOHANGs { get; set; }
         public virtual DbSet<HOADONM> HOADONMs { get; set; }
         public virtual DbSet<HOADONTT> HOADONTTs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
@@ -44,9 +50,193 @@ namespace RestaurantManager.Database
         public virtual DbSet<PYC> PYCs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
-        public virtual DbSet<D_HOADONTT> D_HOADONTT { get; set; }
-        public virtual DbSet<GIAOHANG> GIAOHANGs { get; set; }
-        public virtual DbSet<D_DONMH> D_DONMH { get; set; }
-        public virtual DbSet<D_HOADONM> D_HOADONM { get; set; }
+    
+        public virtual ObjectResult<Proc_GetDonDatDA_OutLeft_Result> Proc_GetDonDatDA_OutLeft()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetDonDatDA_OutLeft_Result>("Proc_GetDonDatDA_OutLeft");
+        }
+    
+        public virtual ObjectResult<Proc_GetListD_PNHAP_Result> Proc_GetListD_PNHAP(Nullable<int> idpnhap)
+        {
+            var idpnhapParameter = idpnhap.HasValue ?
+                new ObjectParameter("idpnhap", idpnhap) :
+                new ObjectParameter("idpnhap", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetListD_PNHAP_Result>("Proc_GetListD_PNHAP", idpnhapParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetListDONDATDA_Result> Proc_GetListDONDATDA(Nullable<int> idkh, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var idkhParameter = idkh.HasValue ?
+                new ObjectParameter("idkh", idkh) :
+                new ObjectParameter("idkh", typeof(int));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetListDONDATDA_Result>("Proc_GetListDONDATDA", idkhParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetListHOADONM_Result> Proc_GetListHOADONM(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetListHOADONM_Result>("Proc_GetListHOADONM", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetListHOADONTT_Result> Proc_GetListHOADONTT(Nullable<int> idkh, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var idkhParameter = idkh.HasValue ?
+                new ObjectParameter("idkh", idkh) :
+                new ObjectParameter("idkh", typeof(int));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetListHOADONTT_Result>("Proc_GetListHOADONTT", idkhParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetMONAN_OutLeft_Result> Proc_GetMONAN_OutLeft()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetMONAN_OutLeft_Result>("Proc_GetMONAN_OutLeft");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Proc_GetNewId(string table)
+        {
+            var tableParameter = table != null ?
+                new ObjectParameter("table", table) :
+                new ObjectParameter("table", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Proc_GetNewId", tableParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Proc_GetNewIdDONMH()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Proc_GetNewIdDONMH");
+        }
+    
+        public virtual ObjectResult<Proc_GetPNHAP_OutLeft_Result> Proc_GetPNHAP_OutLeft()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetPNHAP_OutLeft_Result>("Proc_GetPNHAP_OutLeft");
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
     }
 }

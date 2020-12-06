@@ -115,8 +115,8 @@ namespace RestaurantManager
 
         private void btnDeleteRow_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = gvGIAOHANG.FocusedRowHandle;
-            gvGIAOHANG.DeleteRow(row);
+           // var row = gvGIAOHANG.FocusedRowHandle;
+           // gvGIAOHANG.DeleteRow(row);
         }
 
         private void gvGIAOHANG_MouseUp(object sender, MouseEventArgs e)
@@ -124,8 +124,6 @@ namespace RestaurantManager
             try {
                 if (e.Button != MouseButtons.Right) return;
                 var rowH = gvGIAOHANG.FocusedRowHandle;
-                //var focusedRowView = (DataRowView)gvGIAOHANG.GetFocusedRow();
-                //if (focusedRowView == null || focusedRowView.IsNew) return;
                 if (rowH >= 0)
                 {
                     popupMenu1.ShowPopup(barManager1, new Point(MousePosition.X, MousePosition.Y));
@@ -138,8 +136,7 @@ namespace RestaurantManager
             catch(Exception ex)
             {
 
-            }
-            
+            }            
         }
 
         private void btnPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

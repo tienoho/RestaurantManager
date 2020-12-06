@@ -10,17 +10,14 @@
 namespace RestaurantManager.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class USER
+    public partial class Proc_GetListDONDATDA_Result
     {
-        public int id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string ten { get; set; }
-        public string ChucVu { get; set; }
-        public string MoTaChucVu { get; set; }
-        public string DiaChi { get; set; }
-        public string SoDT { get; set; }
+        public int iddondat { get; set; }
+        public Nullable<System.DateTime> ngaydat { get; set; }
+        public Nullable<int> idkh { get; set; }
+        public string tenkh { get; set; }
+        public int iddondat1 { get; set; }
+        public Nullable<double> TotalAmount { get; set; }
     }
 }
