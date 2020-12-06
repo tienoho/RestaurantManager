@@ -78,7 +78,7 @@ namespace RestaurantManager
         {
             frmPNhap frm = new frmPNhap();
             var result = frm.ShowDialog();
-            if (result == DialogResult.OK)
+            if (result == DialogResult.Cancel)
             {
                 LoadGrid();
             }

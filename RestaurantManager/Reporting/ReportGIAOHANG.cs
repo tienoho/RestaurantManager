@@ -29,6 +29,8 @@ namespace RestaurantManager.Reporting
                 ///
                 var ncc = getInfoNCC(obj.idncc.Value);
                 lbltenncc.Text = ncc.tenncc;
+                lblCuaHang.Text = obj.cuahang;
+                lblDiaChi.Text = obj.diachi;
                 lblAddress.Text = ncc.diachi;
                 lblPhone.Text = ncc.sdt;
                 lblidgiaohang.Text = obj.idpgiao.ToString();

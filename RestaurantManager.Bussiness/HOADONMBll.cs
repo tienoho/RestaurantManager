@@ -65,7 +65,9 @@ namespace RestaurantManager.Bussiness
                                       idpgiao = g.idpgiao,
                                       iddonmh = d.iddonmh,
                                       idncc = n.idncc,
-                                      tenncc = n.tenncc
+                                      tenncc = n.tenncc,
+                                      diachi=n.diachi,
+                                      sdt=n.sdt
                                   }
                         ).FirstOrDefault();
                     return result;
@@ -113,7 +115,6 @@ namespace RestaurantManager.Bussiness
                     {
                         var pnhap = db.PNHAPs.AsNoTracking().FirstOrDefault(x => x.idpnhap == model.idpnhap);
                         var pgiao = db.GIAOHANGs.AsNoTracking().FirstOrDefault(x => x.idpgiao == pnhap.idpgiao);
-                        //model.idhoadonm = pgiao.iddonmh.Value;
                         model.CreateBy = loginUser;
                         model.CreateDate = DateTime.Now;
                         var result = db.HOADONMs.Add(model);

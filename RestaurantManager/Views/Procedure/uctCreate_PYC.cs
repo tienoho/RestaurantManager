@@ -92,72 +92,7 @@ namespace RestaurantManager
 
             (e.View as GridView).DoubleClick += gridView1_DoubleClick;
         }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //if (txtid.Text == "" && txttenhang.Text == "")
-                //{
-                //    XtraMessageBox.Show("Bạn phải nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return;
-                //}
-                //if (txttenhang.Text == "")
-                //{
-                //    XtraMessageBox.Show("Bạn chưa nhập tên nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    txttenhang.Focus();
-                //    return;
-                //}
-                //if (txtSLT.Text == "")
-                //{
-                //    XtraMessageBox.Show("Bạn chưa nhập số lượng nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    txtSLT.Focus();
-                //    return;
-                //}
-                //if (txtNguong.Text == "")
-                //{
-                //    XtraMessageBox.Show("Bạn chưa nhập ngưỡng nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    txtNguong.Focus();
-                //    return;
-                //}
-                //if (nudDonGia2.Text == "")
-                //{
-                //    XtraMessageBox.Show("Bạn chưa nhập đơn giá nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    nudDonGia2.Focus();
-                //    return;
-                //}
-                //int.TryParse(txtid.Text, out int id);
-                //int.TryParse(txtSLT.EditValue.ToString(), out int SLT);
-                //int.TryParse(txtNguong.EditValue.ToString(), out int Nguong);
-                //double.TryParse(nudDonGia2.EditValue.ToString(), out double DonGia);
-                //var model = new NLIEU_ViewModel
-                //{
-                //    idhang = id,
-                //    tenhang = txttenhang.Text,
-                //    slton = SLT,
-                //    nguong = Nguong,
-                //    dongianl = DonGia,
-                //    CreateBy = Properties.Settings.Default.NameLog,
-                //    ModifyBy = Properties.Settings.Default.NameLog
-                //};
-                //var msg = new NLIEUBll().AddNLIEU(model);
-                //if (msg != null && msg != "")
-                //{
-                //    LoadGrid();
-                //    XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    ClearDisplay();
-                //    return;
-                //}
-                //XtraMessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //ClearDisplay();
-                //return;
-            }
-            catch
-            {
-                XtraMessageBox.Show("", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
-
+       
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var result = XtraMessageBox.Show("Bạn có chắc chắn muốn thêm phiếu yêu cầu?", "Xác nhận", MessageBoxButtons.YesNo);

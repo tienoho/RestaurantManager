@@ -86,7 +86,7 @@ namespace RestaurantManager
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(766, 45);
+            this.label9.Location = new System.Drawing.Point(803, 45);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(172, 19);
             this.label9.TabIndex = 13;
@@ -187,6 +187,8 @@ namespace RestaurantManager
             // 
             // panelControl2
             // 
+            this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl2.Controls.Add(this.gcD_DONMH);
             this.panelControl2.Location = new System.Drawing.Point(555, 67);
             this.panelControl2.Name = "panelControl2";
@@ -239,6 +241,8 @@ namespace RestaurantManager
             // gcsldukien
             // 
             this.gcsldukien.Caption = "Số lượng";
+            this.gcsldukien.DisplayFormat.FormatString = "#,###";
+            this.gcsldukien.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcsldukien.FieldName = "slmh";
             this.gcsldukien.Name = "gcsldukien";
             this.gcsldukien.Visible = true;
@@ -248,6 +252,8 @@ namespace RestaurantManager
             // gcdongia
             // 
             this.gcdongia.Caption = "Đơn giá";
+            this.gcdongia.DisplayFormat.FormatString = "#,###";
+            this.gcdongia.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcdongia.FieldName = "dongiamh";
             this.gcdongia.Name = "gcdongia";
             this.gcdongia.Visible = true;
@@ -257,6 +263,8 @@ namespace RestaurantManager
             // gctotalamount
             // 
             this.gctotalamount.Caption = "Thành tiền";
+            this.gctotalamount.DisplayFormat.FormatString = "#,###";
+            this.gctotalamount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gctotalamount.FieldName = "totalamount";
             this.gctotalamount.Name = "gctotalamount";
             this.gctotalamount.Visible = true;

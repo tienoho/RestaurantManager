@@ -26,6 +26,13 @@ namespace RestaurantManager.Reporting
                 lblid.Text = obj.idhoadonm.ToString();
                 lblFooterDate.Text = string.Format("Ngày {0} tháng {1} năm {2}", toDay.Day, toDay.Month, toDay.Year);
                 ///var details = new PYCBll().GetListD_PYC(pyc.idyc);
+
+                lblid.Text = obj.idhoadonm.ToString();
+                lblNCC.Text = obj.tenncc.ToString();
+                lblNgayMua.Text = obj.ngaymua.Value.ToString("dd/MM/yyyy");
+                lblDiaChi.Text = obj.diachi;
+                lblsdt.Text = obj.sdt;
+
                 objectDataSource4.DataSource = data;
                 
             }

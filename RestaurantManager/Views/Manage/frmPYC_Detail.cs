@@ -289,7 +289,17 @@ namespace RestaurantManager.Views.Order
 
         private void lueNLieu_EditValueChanged(object sender, EventArgs e)
         {
+            try
+            {
+              var item =  lstNLIEU.FirstOrDefault(x => x.idhang == (int)lueNLieu.EditValue);
+                txtslton.Text = item.slton.ToString();
+                txtslton.Enabled = false;
+            }
+            catch
+            {
 
+            }
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

@@ -15,6 +15,8 @@ namespace RestaurantManager.Model
         public int iddonmh { get; set; }
         public int idncc { get; set; }
         public string tenncc { get; set; }
+        public string diachi { get; set; }
+        public string sdt { get; set; }
         public double TotalAmount { get; set; }
         //public int idgiao { get; set; }
         public System.DateTime CreateDate { get; set; }

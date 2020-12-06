@@ -174,7 +174,7 @@
           <Key>
             <PropertyRef Name="idhoadonm" />
           </Key>
-          <Property Name="idhoadonm" Type="int" Nullable="false" />
+          <Property Name="idhoadonm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ngaymua" Type="datetime" />
           <Property Name="idpnhap" Type="int" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
@@ -795,7 +795,6 @@
           <EntitySet Name="DONDATDAs" EntityType="RestaurantManagerDataModel.DONDATDA" />
           <EntitySet Name="DONMHs" EntityType="RestaurantManagerDataModel.DONMH" />
           <EntitySet Name="GIAOHANGs" EntityType="RestaurantManagerDataModel.GIAOHANG" />
-          <EntitySet Name="HOADONMs" EntityType="RestaurantManagerDataModel.HOADONM" />
           <EntitySet Name="HOADONTTs" EntityType="RestaurantManagerDataModel.HOADONTT" />
           <EntitySet Name="KHACHHANGs" EntityType="RestaurantManagerDataModel.KHACHHANG" />
           <EntitySet Name="MONANs" EntityType="RestaurantManagerDataModel.MONAN" />
@@ -837,10 +836,6 @@
           <AssociationSet Name="FK_D_GIAOHANG_NLIEU" Association="RestaurantManagerDataModel.FK_D_GIAOHANG_NLIEU">
             <End Role="NLIEU" EntitySet="NLIEUx" />
             <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_HOADONM_HOADONM" Association="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM">
-            <End Role="HOADONM" EntitySet="HOADONMs" />
-            <End Role="D_HOADONM" EntitySet="D_HOADONM" />
           </AssociationSet>
           <AssociationSet Name="FK_D_HOADONM_NLIEU" Association="RestaurantManagerDataModel.FK_D_HOADONM_NLIEU">
             <End Role="NLIEU" EntitySet="NLIEUx" />
@@ -894,17 +889,13 @@
             <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
             <End Role="PNHAP" EntitySet="PNHAPs" />
           </AssociationSet>
-          <AssociationSet Name="FK_HOADONM_PNHAP" Association="RestaurantManagerDataModel.FK_HOADONM_PNHAP">
-            <End Role="PNHAP" EntitySet="PNHAPs" />
-            <End Role="HOADONM" EntitySet="HOADONMs" />
-          </AssociationSet>
           <AssociationSet Name="FK_HOADONTT_KHACHHANG" Association="RestaurantManagerDataModel.FK_HOADONTT_KHACHHANG">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="HOADONTT" EntitySet="HOADONTTs" />
           </AssociationSet>
           <FunctionImport Name="Proc_GetDonDatDA_OutLeft" ReturnType="Collection(RestaurantManagerDataModel.Proc_GetDonDatDA_OutLeft_Result)" />
           <FunctionImport Name="Proc_GetListD_PNHAP" ReturnType="Collection(RestaurantManagerDataModel.Proc_GetListD_PNHAP_Result)">
-            <Parameter Name="idpnhap" Mode="In" Type="Int32" />
+          <Parameter Name="idpnhap" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Proc_GetListDONDATDA" ReturnType="Collection(RestaurantManagerDataModel.Proc_GetListDONDATDA_Result)">
             <Parameter Name="idkh" Mode="In" Type="Int32" />
@@ -922,7 +913,7 @@
           </FunctionImport>
           <FunctionImport Name="Proc_GetMONAN_OutLeft" ReturnType="Collection(RestaurantManagerDataModel.Proc_GetMONAN_OutLeft_Result)" />
           <FunctionImport Name="Proc_GetNewId" ReturnType="Collection(Int32)">
-            <Parameter Name="table" Mode="In" Type="String" />
+          <Parameter Name="table" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_GetNewIdDONMH" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Proc_GetPNHAP_OutLeft" ReturnType="Collection(RestaurantManagerDataModel.Proc_GetPNHAP_OutLeft_Result)" />
@@ -956,6 +947,15 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="HOADONMs" EntityType="RestaurantManagerDataModel.HOADONM" />
+          <AssociationSet Name="FK_D_HOADONM_HOADONM" Association="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM">
+            <End Role="HOADONM" EntitySet="HOADONMs" />
+            <End Role="D_HOADONM" EntitySet="D_HOADONM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADONM_PNHAP" Association="RestaurantManagerDataModel.FK_HOADONM_PNHAP">
+            <End Role="PNHAP" EntitySet="PNHAPs" />
+            <End Role="HOADONM" EntitySet="HOADONMs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CONGTHUC">
           <Key>
@@ -1032,8 +1032,8 @@
           <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />
           <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HOADONM" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" FromRole="D_HOADONM" ToRole="HOADONM" />
           <NavigationProperty Name="NLIEU" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_NLIEU" FromRole="D_HOADONM" ToRole="NLIEU" />
+          <NavigationProperty Name="HOADONM" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" FromRole="D_HOADONM" ToRole="HOADONM" />
         </EntityType>
         <EntityType Name="D_HOADONTT">
           <Key>
@@ -1147,20 +1147,6 @@
           <NavigationProperty Name="DONMH" Relationship="RestaurantManagerDataModel.FK_GIAOHANG_DONMH" FromRole="GIAOHANG" ToRole="DONMH" />
           <NavigationProperty Name="NCC" Relationship="RestaurantManagerDataModel.FK_GIAOHANG_NCC" FromRole="GIAOHANG" ToRole="NCC" />
           <NavigationProperty Name="PNHAPs" Relationship="RestaurantManagerDataModel.FK_PNHAP_GIAOHANG" FromRole="GIAOHANG" ToRole="PNHAP" />
-        </EntityType>
-        <EntityType Name="HOADONM">
-          <Key>
-            <PropertyRef Name="idhoadonm" />
-          </Key>
-          <Property Name="idhoadonm" Type="Int32" Nullable="false" />
-          <Property Name="ngaymua" Type="DateTime" Precision="3" />
-          <Property Name="idpnhap" Type="Int32" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="D_HOADONM" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" FromRole="HOADONM" ToRole="D_HOADONM" />
-          <NavigationProperty Name="PNHAP" Relationship="RestaurantManagerDataModel.FK_HOADONM_PNHAP" FromRole="HOADONM" ToRole="PNHAP" />
         </EntityType>
         <EntityType Name="HOADONTT">
           <Key>
@@ -1410,18 +1396,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_D_HOADONM_HOADONM">
-          <End Type="RestaurantManagerDataModel.HOADONM" Role="HOADONM" Multiplicity="1" />
-          <End Type="RestaurantManagerDataModel.D_HOADONM" Role="D_HOADONM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADONM">
-              <PropertyRef Name="idhoadonm" />
-            </Principal>
-            <Dependent Role="D_HOADONM">
-              <PropertyRef Name="idhoadonm" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_D_HOADONM_NLIEU">
           <End Type="RestaurantManagerDataModel.NLIEU" Role="NLIEU" Multiplicity="1" />
           <End Type="RestaurantManagerDataModel.D_HOADONM" Role="D_HOADONM" Multiplicity="*" />
@@ -1578,18 +1552,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HOADONM_PNHAP">
-          <End Type="RestaurantManagerDataModel.PNHAP" Role="PNHAP" Multiplicity="0..1" />
-          <End Type="RestaurantManagerDataModel.HOADONM" Role="HOADONM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PNHAP">
-              <PropertyRef Name="idpnhap" />
-            </Principal>
-            <Dependent Role="HOADONM">
-              <PropertyRef Name="idpnhap" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HOADONTT_KHACHHANG">
           <End Type="RestaurantManagerDataModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
           <End Type="RestaurantManagerDataModel.HOADONTT" Role="HOADONTT" Multiplicity="*" />
@@ -1685,6 +1647,44 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="HOADONM">
+          <Key>
+            <PropertyRef Name="idhoadonm" />
+          </Key>
+          <Property Name="idhoadonm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaymua" Type="DateTime" Precision="3" />
+          <Property Name="idpnhap" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_HOADONM" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" FromRole="HOADONM" ToRole="D_HOADONM" />
+          <NavigationProperty Name="PNHAP" Relationship="RestaurantManagerDataModel.FK_HOADONM_PNHAP" FromRole="HOADONM" ToRole="PNHAP" />
+        </EntityType>
+        <Association Name="FK_D_HOADONM_HOADONM">
+          <End Type="RestaurantManagerDataModel.HOADONM" Role="HOADONM" Multiplicity="1" />
+          <End Type="RestaurantManagerDataModel.D_HOADONM" Role="D_HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONM">
+              <PropertyRef Name="idhoadonm" />
+            </Principal>
+            <Dependent Role="D_HOADONM">
+              <PropertyRef Name="idhoadonm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADONM_PNHAP">
+          <End Type="RestaurantManagerDataModel.PNHAP" Role="PNHAP" Multiplicity="0..1" />
+          <End Type="RestaurantManagerDataModel.HOADONM" Role="HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PNHAP">
+              <PropertyRef Name="idpnhap" />
+            </Principal>
+            <Dependent Role="HOADONM">
+              <PropertyRef Name="idpnhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1857,19 +1857,6 @@
                 <ScalarProperty Name="nguoinhan" ColumnName="nguoinhan" />
                 <ScalarProperty Name="ngaygiao" ColumnName="ngaygiao" />
                 <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HOADONMs">
-            <EntityTypeMapping TypeName="RestaurantManagerDataModel.HOADONM">
-              <MappingFragment StoreEntitySet="HOADONM">
-                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
-                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
-                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
-                <ScalarProperty Name="idhoadonm" ColumnName="idhoadonm" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2140,6 +2127,19 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RestaurantManagerDataModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RestaurantManagerDataModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="HOADONMs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.HOADONM">
+              <MappingFragment StoreEntitySet="HOADONM">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
+                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
+                <ScalarProperty Name="idhoadonm" ColumnName="idhoadonm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
