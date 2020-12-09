@@ -59,13 +59,13 @@ namespace RestaurantManager
             this.gcslnhanhang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btnDeleteRow = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnEdit = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcGIAOHANG)).BeginInit();
@@ -343,8 +343,7 @@ namespace RestaurantManager
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnPrint),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnEdit)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnPrint)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
@@ -360,6 +359,22 @@ namespace RestaurantManager
             this.btnPrint.ItemInMenuAppearance.Normal.Options.UseFont = true;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
+            // 
+            // bbtnEdit
+            // 
+            this.bbtnEdit.Caption = "Sửa";
+            this.bbtnEdit.Id = 3;
+            this.bbtnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnEdit.ImageOptions.Image")));
+            this.bbtnEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnEdit.ImageOptions.LargeImage")));
+            this.bbtnEdit.ItemAppearance.Hovered.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.bbtnEdit.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbtnEdit.ItemAppearance.Normal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbtnEdit.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbtnEdit.ItemInMenuAppearance.Hovered.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.bbtnEdit.ItemInMenuAppearance.Hovered.Options.UseFont = true;
+            this.bbtnEdit.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.bbtnEdit.ItemInMenuAppearance.Normal.Options.UseFont = true;
+            this.bbtnEdit.Name = "bbtnEdit";
             // 
             // barManager1
             // 
@@ -416,22 +431,6 @@ namespace RestaurantManager
             this.btnDeleteRow.ItemInMenuAppearance.Normal.Options.UseFont = true;
             this.btnDeleteRow.Name = "btnDeleteRow";
             this.btnDeleteRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteRow_ItemClick);
-            // 
-            // bbtnEdit
-            // 
-            this.bbtnEdit.Caption = "Sửa";
-            this.bbtnEdit.Id = 3;
-            this.bbtnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnEdit.ImageOptions.Image")));
-            this.bbtnEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnEdit.ImageOptions.LargeImage")));
-            this.bbtnEdit.ItemAppearance.Hovered.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.bbtnEdit.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbtnEdit.ItemAppearance.Normal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbtnEdit.ItemAppearance.Normal.Options.UseFont = true;
-            this.bbtnEdit.ItemInMenuAppearance.Hovered.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.bbtnEdit.ItemInMenuAppearance.Hovered.Options.UseFont = true;
-            this.bbtnEdit.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Arial", 9.25F);
-            this.bbtnEdit.ItemInMenuAppearance.Normal.Options.UseFont = true;
-            this.bbtnEdit.Name = "bbtnEdit";
             // 
             // uctGIAOHANG
             // 

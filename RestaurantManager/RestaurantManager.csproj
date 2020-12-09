@@ -377,6 +377,12 @@
     <Compile Include="Views\Procedure\uctPYC.Designer.cs">
       <DependentUpon>uctPYC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Report\uctReportTonKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Report\uctReportTonKho.Designer.cs">
+      <DependentUpon>uctReportTonKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Report\uctReportDoanhThu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -513,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Procedure\uctPYC.resx">
       <DependentUpon>uctPYC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\uctReportTonKho.resx">
+      <DependentUpon>uctReportTonKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Report\uctReportDoanhThu.resx">
       <DependentUpon>uctReportDoanhThu.cs</DependentUpon>

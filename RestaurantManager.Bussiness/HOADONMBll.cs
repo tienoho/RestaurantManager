@@ -66,8 +66,8 @@ namespace RestaurantManager.Bussiness
                                       iddonmh = d.iddonmh,
                                       idncc = n.idncc,
                                       tenncc = n.tenncc,
-                                      diachi=n.diachi,
-                                      sdt=n.sdt
+                                      diachi = n.diachi,
+                                      sdt = n.sdt
                                   }
                         ).FirstOrDefault();
                     return result;
@@ -94,7 +94,7 @@ namespace RestaurantManager.Bussiness
                                       dongiamua = d.dongiamua,
                                       slmua = d.slmua,
                                       tenhang = n.tenhang,
-                                      TotalAmount=d.dongiamua*d.slmua,
+                                      TotalAmount = d.dongiamua * d.slmua,
                                   }).ToList();
                     return result;
                 }
@@ -106,36 +106,58 @@ namespace RestaurantManager.Bussiness
         }
         public HOADONM AddHOADONM(HOADONM model, List<D_HOADONM> details, string loginUser)
         {
-            try
-            {
-                using (var db = new RestaurantManagerDataEntities())
-                {
-                    var check = db.HOADONMs.FirstOrDefault(x => x.idhoadonm == model.idhoadonm);
-                    if (check == null)
-                    {
-                        var pnhap = db.PNHAPs.AsNoTracking().FirstOrDefault(x => x.idpnhap == model.idpnhap);
-                        var pgiao = db.GIAOHANGs.AsNoTracking().FirstOrDefault(x => x.idpgiao == pnhap.idpgiao);
-                        model.CreateBy = loginUser;
-                        model.CreateDate = DateTime.Now;
-                        var result = db.HOADONMs.Add(model);
-                        db.SaveChanges();
 
-                        foreach (D_HOADONM item in details)
-                        {
-                            item.idhoadonm = result.idhoadonm;
-                            item.CreateBy = loginUser;
-                            item.CreateDate = DateTime.Now;
-                            db.D_HOADONM.Add(item);
-                        }
-                        db.SaveChanges();
-                        return result;
-                    }
-                    return null;
-                }
-            }
-            catch (Exception ex)
+            using (var db = new RestaurantManagerDataEntities())
             {
-                return null;
+                using (var trans = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var check = db.HOADONMs.FirstOrDefault(x => x.idhoadonm == model.idhoadonm);
+                        if (check == null)
+                        {
+                            var pnhap = db.PNHAPs.AsNoTracking().FirstOrDefault(x => x.idpnhap == model.idpnhap);
+                            var pgiao = db.GIAOHANGs.AsNoTracking().FirstOrDefault(x => x.idpgiao == pnhap.idpgiao);
+                            model.CreateBy = loginUser;
+                            model.CreateDate = DateTime.Now;
+                            var result = db.HOADONMs.Add(model);
+                            db.SaveChanges();
+
+                            foreach (D_HOADONM item in details)
+                            {
+                                item.idhoadonm = result.idhoadonm;
+                                item.CreateBy = loginUser;
+                                item.CreateDate = DateTime.Now;
+                                db.D_HOADONM.Add(item);
+                            }
+                            db.SaveChanges();
+
+
+                            //cập nhật lại số lượng và giá nguyên liệu
+                            foreach (D_HOADONM item in details)
+                            {
+                                var Nlieu = db.NLIEUx.FirstOrDefault(x => x.idhang == item.idhang);
+                                if (Nlieu != null)
+                                {
+                                    Nlieu.slton += item.slmua;
+                                    Nlieu.dongianl = item.dongiamua;
+                                    Nlieu.ModifyBy = loginUser;
+                                    Nlieu.ModifyDate = DateTime.Now;
+                                }
+                            }
+                            db.SaveChanges();
+                            trans.Commit();
+
+                            return result;
+                        }
+                        return null;
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        return null;
+                    }
+                }
             }
         }
     }

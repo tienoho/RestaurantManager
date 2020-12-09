@@ -60,7 +60,7 @@ namespace RestaurantManager
             {
 
             }
-            
+
         }
         private void uctDONDATDA_Load(object sender, EventArgs e)
         {
@@ -413,11 +413,21 @@ namespace RestaurantManager
                     CreateBy = Properties.Settings.Default.NameLog,
                     ModifyBy = Properties.Settings.Default.NameLog
                 };
-                var result = new DONDATDABll().AddDONDATDA(hoadon);
-                changeCaption();
-                XtraMessageBox.Show(result, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearHoaDon();
-                return;
+                var mess = String.Empty;
+                var result = new DONDATDABll().AddDONDATDA(hoadon, ref mess);
+                if (mess == "success")
+                {
+                    ListMONAN = new MONANBll().GetListMONAN_OutLeft();
+                    InitData(ListMONAN);
+                    changeCaption();
+                    XtraMessageBox.Show(result, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearHoaDon();
+                    return;
+                }
+                if (mess == "warning")
+                {
+                    XtraMessageBox.Show(result, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -429,7 +439,7 @@ namespace RestaurantManager
         {
             var frmAdd = new frmAddCustomer();
             var result = frmAdd.ShowDialog();
-            if (result == DialogResult.OK)
+            if (result == DialogResult.Cancel)
             {
                 LoadData();
             }
@@ -453,16 +463,25 @@ namespace RestaurantManager
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var key = txtKey.Text;
-            if (key != "")
+            try
             {
-                var lst = ListMONAN.Where(x => x.temon.Contains(key) || x.tendmuc.Contains(key)).ToList();
-                InitData(lst);
+                var key = txtKey.Text;
+                if (key != "")
+                {
+                    var lst = ListMONAN.Where(x => x.temon.Contains(key)).ToList();
+
+                    InitData(lst);
+                }
+                else
+                {
+                    InitData(ListMONAN);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                InitData(ListMONAN);
+                XtraMessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
     }
 }

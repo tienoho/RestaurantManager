@@ -41,7 +41,7 @@ namespace RestaurantManager.Reporting
                 lblnguoilap.Text = obj.nguoilapphieu;
 
 
-                objectDataSource1.DataSource = data;
+                objectDataSource2.DataSource = data;
 
             }
         }

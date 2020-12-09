@@ -322,13 +322,13 @@ namespace RestaurantManager
 
         private void btnGiaoHang_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctGIAOHANG.uctDL, 11, "Giao hàng");
+            addTabPages(uctGIAOHANG.uctDL, 11, "Phiếu giao hàng");
             uctGIAOHANG.uctDL.LoadGrid();
         }
 
         private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
         {
-            addTabPages(uctPNHAP.uctDL, 12, "Nhập hàng");
+            addTabPages(uctPNHAP.uctDL, 12, "Phiếu nhập hàng");
             uctPNHAP.uctDL.LoadGrid();
         }
 

@@ -27,57 +27,97 @@ namespace RestaurantManager.Bussiness
                 return null;
             }
         }
-        public string AddDONDATDA(DONDATDA_ViewModel model)
+        public string AddDONDATDA(DONDATDA_ViewModel model,ref string mess)
         {
-            try
-            {
-                using (var db = new RestaurantManagerDataEntities())
-                {
-                    var check = db.DONDATDAs.FirstOrDefault(x => x.iddondat == model.iddondat);
-                    if (check == null)
-                    {
-                        var DONDATDA = new DONDATDA
-                        {
-                            ngaydat = model.ngaydat,
-                            ban = model.ban,
-                            idkh = model.idkh,
-                            CreateBy = model.CreateBy,
-                            CreateDate = DateTime.Now,
-                        };
-                        var result = db.DONDATDAs.Add(DONDATDA);
-                        db.SaveChanges();
 
-                        foreach (D_DONDATDA_ViewModel item in model.D_DONDATDA)
+            using (var db = new RestaurantManagerDataEntities())
+            {
+                using (var trans = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var check = db.DONDATDAs.FirstOrDefault(x => x.iddondat == model.iddondat);
+                        if (check == null)
                         {
-                            var D_DONDATDA = new D_DONDATDA
+                            var DONDATDA = new DONDATDA
                             {
-                                iddondat = DONDATDA.iddondat,
-                                idmon = item.idmon,
-                                sldat = item.sldat,
+                                ngaydat = model.ngaydat,
+                                ban = model.ban,
+                                idkh = model.idkh,
                                 CreateBy = model.CreateBy,
                                 CreateDate = DateTime.Now,
                             };
-                            db.D_DONDATDA.Add(D_DONDATDA);
+                            var result = db.DONDATDAs.Add(DONDATDA);
+                            db.SaveChanges();
+
+                            foreach (D_DONDATDA_ViewModel item in model.D_DONDATDA)
+                            {
+                                var D_DONDATDA = new D_DONDATDA
+                                {
+                                    iddondat = DONDATDA.iddondat,
+                                    idmon = item.idmon,
+                                    sldat = item.sldat,
+                                    CreateBy = model.CreateBy,
+                                    CreateDate = DateTime.Now,
+                                };
+                                db.D_DONDATDA.Add(D_DONDATDA);
+                            }
+                            db.SaveChanges();
+
+
+                            //trừ nguyên liệu món ăn đi
+
+                            foreach (D_DONDATDA_ViewModel item in model.D_DONDATDA)
+                            {
+                                var conthuc = db.CONGTHUCs.AsNoTracking().Where(x => x.idmon == item.idmon).ToList();
+                                foreach (var iNlieu in conthuc)
+                                {
+                                    var nlieu = db.NLIEUx.FirstOrDefault(x => x.idhang == iNlieu.idhang);
+                                    if (nlieu != null)
+                                    {
+                                        var slton = nlieu.slton.Value;
+                                        int.TryParse(iNlieu.hamluong, out int hamluong);
+                                        if(slton < hamluong * item.sldat)
+                                        {
+                                            var monan = db.MONANs.AsNoTracking().FirstOrDefault(x => x.idmon == item.idmon);
+                                            mess = "warning";
+                                            return String.Format("Món {0} đã hết nguyên liệu {1}!",monan.temon,nlieu.tenhang);
+                                        }
+
+                                        slton -= hamluong * item.sldat;
+                                        nlieu.slton = slton;
+                                    }
+                                }
+                            }
+                            db.SaveChanges();
+
+
+                            trans.Commit();
+                            mess = "success";
+                            return "Lưu đơn đặt đồ ăn thành công!";
                         }
-                        db.SaveChanges();
-                        return "Lưu đơn đặt đồ ăn thành công!";
+                        else
+                        {
+                            check.ngaydat = model.ngaydat;
+                            check.ban = model.ban;
+                            check.idkh = model.idkh;
+                            check.ModifyBy = model.ModifyBy;
+                            check.ModifyDate = DateTime.Now;
+                            db.SaveChanges();
+                            mess = "success";
+                            return "Cập nhật món ăn thành công!";
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        check.ngaydat = model.ngaydat;
-                        check.ban = model.ban;
-                        check.idkh = model.idkh;
-                        check.ModifyBy = model.ModifyBy;
-                        check.ModifyDate = DateTime.Now;
-                        db.SaveChanges();
-                        return "Cập nhật món ăn thành công!";
+                        trans.Rollback();
+                        mess = "error";
+                        return ex.Message;
                     }
+
                 }
             }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+
         }
         public string DeleteDONDATDA(int id)
         {

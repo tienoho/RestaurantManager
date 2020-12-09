@@ -89,49 +89,56 @@ namespace RestaurantManager.Bussiness
         }
         public HOADONTT AddHOADONTT(HOADONTT_ViewModel model)
         {
-            try
-            {
-                using (var db = new RestaurantManagerDataEntities())
-                {
-                    var check = db.HOADONTTs.FirstOrDefault(x => x.idhoadontt == model.idhoadontt);
-                    if (check == null)
-                    {
-                        var HOADONTT = new HOADONTT
-                        {
-                            iddondat = model.iddondat,
-                            ngayhd = model.ngayhd,
-                            thoigian = DateTime.Now,
-                            thungan = model.CreateBy,
-                            idkh = model.idkh,
-                            CreateBy = model.CreateBy,
-                            CreateDate = DateTime.Now,
-                        };
-                        var result = db.HOADONTTs.Add(HOADONTT);
-                        db.SaveChanges();
 
-                        foreach (D_HOADONTT_ViewModel item in model.D_HOADONTT)
+            using (var db = new RestaurantManagerDataEntities())
+            {
+                using (var trans = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var check = db.HOADONTTs.FirstOrDefault(x => x.idhoadontt == model.idhoadontt);
+                        if (check == null)
                         {
-                            var D_HOADONTT = new D_HOADONTT
+                            var HOADONTT = new HOADONTT
                             {
-                                idhoadontt = HOADONTT.idhoadontt,
-                                idmon = item.idmon,
-                                slban = item.slban,
-                                dongiaban = item.dongiaban,
+                                iddondat = model.iddondat,
+                                ngayhd = model.ngayhd,
+                                thoigian = DateTime.Now,
+                                thungan = model.CreateBy,
+                                idkh = model.idkh,
                                 CreateBy = model.CreateBy,
                                 CreateDate = DateTime.Now,
                             };
-                            db.D_HOADONTT.Add(D_HOADONTT);
+                            var result = db.HOADONTTs.Add(HOADONTT);
+                            db.SaveChanges();
+
+                            foreach (D_HOADONTT_ViewModel item in model.D_HOADONTT)
+                            {
+                                var D_HOADONTT = new D_HOADONTT
+                                {
+                                    idhoadontt = HOADONTT.idhoadontt,
+                                    idmon = item.idmon,
+                                    slban = item.slban,
+                                    dongiaban = item.dongiaban,
+                                    CreateBy = model.CreateBy,
+                                    CreateDate = DateTime.Now,
+                                };
+                                db.D_HOADONTT.Add(D_HOADONTT);
+                            }
+                            db.SaveChanges();
+                            trans.Commit();
+                            return result;
                         }
-                        db.SaveChanges();
-                        return result;
+                    }
+                    catch
+                    {
+                        trans.Rollback();
+                        return null;
                     }
                     return null;
                 }
             }
-            catch 
-            {
-                return null;
-            }
+
         }
         public string DeleteHOADONTT(int id)
         {
