@@ -366,7 +366,7 @@
             this.btnDONDATDA,
             this.btnTonKho});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 84;
+            this.menuToolStrip.MaxItemId = 85;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -940,6 +940,7 @@
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btnTonKho);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Visible = false;
             // 
             // rpSystem
             // 
