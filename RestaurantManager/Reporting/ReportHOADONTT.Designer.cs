@@ -32,8 +32,6 @@
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary3 = new DevExpress.XtraReports.UI.XRSummary();
-            DevExpress.XtraReports.UI.XRSummary xrSummary4 = new DevExpress.XtraReports.UI.XRSummary();
-            DevExpress.XtraReports.UI.XRSummary xrSummary5 = new DevExpress.XtraReports.UI.XRSummary();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -218,7 +216,7 @@
             this.xrTableCell5.StylePriority.UseTextAlignment = false;
             xrSummary2.IgnoreNullValues = true;
             this.xrTableCell5.Summary = xrSummary2;
-            this.xrTableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell5.TextFormatString = "{0:#,###}";
             this.xrTableCell5.Weight = 0.78472272852567637D;
             // 
@@ -319,13 +317,11 @@
             // 
             this.xrTableCell30.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrTableCell30.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([totalamount])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "")});
             this.xrTableCell30.Multiline = true;
             this.xrTableCell30.Name = "xrTableCell30";
             this.xrTableCell30.StylePriority.UseBorders = false;
             this.xrTableCell30.StylePriority.UseTextAlignment = false;
-            xrSummary3.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
-            this.xrTableCell30.Summary = xrSummary3;
             this.xrTableCell30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell30.Weight = 1.6374346087190472D;
             // 
@@ -402,13 +398,11 @@
             // 
             this.lblReturn.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.lblReturn.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([totalamount])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "")});
             this.lblReturn.Multiline = true;
             this.lblReturn.Name = "lblReturn";
             this.lblReturn.StylePriority.UseBorders = false;
             this.lblReturn.StylePriority.UseTextAlignment = false;
-            xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
-            this.lblReturn.Summary = xrSummary4;
             this.lblReturn.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.lblReturn.Weight = 1.6374346087190472D;
             // 
@@ -490,9 +484,10 @@
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.StylePriority.UseBorders = false;
             this.lblTotalAmount.StylePriority.UseTextAlignment = false;
-            xrSummary5.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
-            this.lblTotalAmount.Summary = xrSummary5;
-            this.lblTotalAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            xrSummary3.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.lblTotalAmount.Summary = xrSummary3;
+            this.lblTotalAmount.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.lblTotalAmount.TextFormatString = "{0:#,###}";
             this.lblTotalAmount.Weight = 1.6374346087190472D;
             // 
             // lblFooterDate

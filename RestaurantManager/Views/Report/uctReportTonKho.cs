@@ -41,7 +41,6 @@ namespace RestaurantManager
         private void uctReportTonKho_Load(object sender, EventArgs e)
         {
             LoadGrid();
-            LoadData();
         }
 
         #region Event
@@ -79,14 +78,6 @@ namespace RestaurantManager
             gcDOANHTHU.DataSource = lstHOADONTT;
             gvDOANHTHU.RefreshData();
         }
-        async public void LoadData()
-        {
-            ListKHACHHANG = await Task.Run(() => new KHACHHANGBll().GetListKHACHHANG());
-            lueKhachHang.Properties.DataSource = ListKHACHHANG
-                .Select(item => new { idkh = item.idkh, tenkh = item.tenkh, sdt = item.sdt }).ToList();
-            lueKhachHang.Properties.ValueMember = "idkh";
-            lueKhachHang.Properties.DisplayMember = "tenkh";
-        }
         private void ClearDisplay()
         {
 
@@ -99,15 +90,6 @@ namespace RestaurantManager
             var fromDate = dtpFromDate.Value;
             var toDate = dtpToDate.Value;
             int idkh = 0;
-            if (lueKhachHang.Text == "" || lueKhachHang.EditValue == null)
-            {
-                idkh = 0;
-            }
-            else
-            {
-                int.TryParse(lueKhachHang.EditValue.ToString(), out idkh);
-            }
-
             lstHOADONTT = new HOADONTTBll().GetListHOADONTT(idkh, fromDate, toDate);
             gcDOANHTHU.DataSource = lstHOADONTT;
             gvDOANHTHU.RefreshData();

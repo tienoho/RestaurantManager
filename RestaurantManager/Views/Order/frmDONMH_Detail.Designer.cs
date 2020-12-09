@@ -203,6 +203,8 @@
             // gcslmh
             // 
             this.gcslmh.Caption = "Số lượng ";
+            this.gcslmh.DisplayFormat.FormatString = "#,###";
+            this.gcslmh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcslmh.FieldName = "slmh";
             this.gcslmh.Name = "gcslmh";
             this.gcslmh.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -214,6 +216,7 @@
             // gcdongia
             // 
             this.gcdongia.Caption = "Đơn giá";
+            this.gcdongia.DisplayFormat.FormatString = "#,###";
             this.gcdongia.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gcdongia.FieldName = "dongiamh";
             this.gcdongia.Name = "gcdongia";
@@ -226,6 +229,8 @@
             // gctotalamount
             // 
             this.gctotalamount.Caption = "Thành tiền";
+            this.gctotalamount.DisplayFormat.FormatString = "#,###";
+            this.gctotalamount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gctotalamount.FieldName = "totalamount";
             this.gctotalamount.Name = "gctotalamount";
             this.gctotalamount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {

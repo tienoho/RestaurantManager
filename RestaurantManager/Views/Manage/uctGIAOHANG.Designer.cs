@@ -107,7 +107,7 @@ namespace RestaurantManager
             this.btnAdd.ForeColor = System.Drawing.Color.Black;
             this.btnAdd.Image = global::RestaurantManager.Properties.Resources.add_2;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(5, 3);
+            this.btnAdd.Location = new System.Drawing.Point(5, 9);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(129, 28);
             this.btnAdd.TabIndex = 18;

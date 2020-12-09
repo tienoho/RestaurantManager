@@ -105,7 +105,7 @@ namespace RestaurantManager
                     var details = new D_HOADONM
                     {
                         idhang = item.idhang,
-                        slmua = item.idpnhap,
+                        slmua = item.slnhan.Value,
                         dongiamua = item.dongiamh,
                     };
                     lstD_HOADONM.Add(details);

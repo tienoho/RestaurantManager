@@ -36,8 +36,7 @@ namespace RestaurantManager
         public uctDONDATDA()
         {
             InitializeComponent();
-            ListMONAN = new MONANBll().GetListMONAN_OutLeft();
-            InitData(ListMONAN);
+            LoadDataGrid();
             SetupView2();
             rgViewType.SelectedIndexChanged += RgViewType_SelectedIndexChanged;
             tileView2.OptionsBehavior.AllowSmoothScrolling = true;
@@ -237,10 +236,10 @@ namespace RestaurantManager
             lueKhachHang.Properties.ValueMember = "idkh";
             lueKhachHang.Properties.DisplayMember = "tenkh";
         }
-        private void LoadDataGrid()
+        public void LoadDataGrid()
         {
-
-            //gridControl1.DataSource = ListMONAN;
+            ListMONAN = new MONANBll().GetListMONAN_OutLeft();
+            InitData(ListMONAN);
         }
         private void ClearDisplay()
         {

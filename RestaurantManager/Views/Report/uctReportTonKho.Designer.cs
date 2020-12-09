@@ -36,15 +36,8 @@ namespace RestaurantManager
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gcDOANHTHU = new DevExpress.XtraGrid.GridControl();
             this.gvDOANHTHU = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gcngayhd = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcidhoadontt = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gciddondat = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcban = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
-            this.lueKhachHang = new DevExpress.XtraEditors.LookUpEdit();
-            this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -57,11 +50,11 @@ namespace RestaurantManager
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btnPrintReport = new System.Windows.Forms.Button();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDOANHTHU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDOANHTHU)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueKhachHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
@@ -101,11 +94,7 @@ namespace RestaurantManager
             // gvDOANHTHU
             // 
             this.gvDOANHTHU.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gcngayhd,
-            this.gcidhoadontt,
-            this.gciddondat,
-            this.gcban,
-            this.gcTotalAmount});
+            this.gridColumn1});
             this.gvDOANHTHU.DetailHeight = 377;
             this.gvDOANHTHU.GridControl = this.gcDOANHTHU;
             this.gvDOANHTHU.Name = "gvDOANHTHU";
@@ -116,56 +105,10 @@ namespace RestaurantManager
             this.gvDOANHTHU.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gvHOADONTT_MouseUp);
             this.gvDOANHTHU.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
-            // gcngayhd
-            // 
-            this.gcngayhd.Caption = "Ngày hóa đơn";
-            this.gcngayhd.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.gcngayhd.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gcngayhd.FieldName = "ngayhd";
-            this.gcngayhd.Name = "gcngayhd";
-            this.gcngayhd.Visible = true;
-            this.gcngayhd.VisibleIndex = 3;
-            this.gcngayhd.Width = 278;
-            // 
-            // gcidhoadontt
-            // 
-            this.gcidhoadontt.Caption = "Mã hóa đơn";
-            this.gcidhoadontt.FieldName = "idhoadontt";
-            this.gcidhoadontt.Name = "gcidhoadontt";
-            this.gcidhoadontt.Visible = true;
-            this.gcidhoadontt.VisibleIndex = 1;
-            // 
-            // gciddondat
-            // 
-            this.gciddondat.Caption = "Mã đơn đặt";
-            this.gciddondat.FieldName = "iddondat";
-            this.gciddondat.Name = "gciddondat";
-            this.gciddondat.Visible = true;
-            this.gciddondat.VisibleIndex = 2;
-            // 
-            // gcban
-            // 
-            this.gcban.Caption = "Bàn";
-            this.gcban.FieldName = "ban";
-            this.gcban.Name = "gcban";
-            this.gcban.Visible = true;
-            this.gcban.VisibleIndex = 0;
-            // 
-            // gcTotalAmount
-            // 
-            this.gcTotalAmount.Caption = "Tiền thanh toán";
-            this.gcTotalAmount.DisplayFormat.FormatString = "#,###";
-            this.gcTotalAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gcTotalAmount.FieldName = "TotalAmount";
-            this.gcTotalAmount.Name = "gcTotalAmount";
-            this.gcTotalAmount.Visible = true;
-            this.gcTotalAmount.VisibleIndex = 4;
-            this.gcTotalAmount.Width = 305;
-            // 
             // dtpFromDate
             // 
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFromDate.Location = new System.Drawing.Point(311, 57);
+            this.dtpFromDate.Location = new System.Drawing.Point(68, 58);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(102, 20);
             this.dtpFromDate.TabIndex = 21;
@@ -173,44 +116,17 @@ namespace RestaurantManager
             // dtpToDate
             // 
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpToDate.Location = new System.Drawing.Point(491, 57);
+            this.dtpToDate.Location = new System.Drawing.Point(248, 57);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(102, 20);
             this.dtpToDate.TabIndex = 22;
             this.dtpToDate.Value = new System.DateTime(2020, 11, 22, 23, 28, 56, 0);
             // 
-            // lueKhachHang
-            // 
-            this.lueKhachHang.Location = new System.Drawing.Point(87, 57);
-            this.lueKhachHang.Name = "lueKhachHang";
-            this.lueKhachHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueKhachHang.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("idkh", "Mã danh mục"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("tenkh", "Tên danh mục"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("sdt", "Số điện thoại")});
-            this.lueKhachHang.Properties.NullText = "";
-            this.lueKhachHang.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
-            this.lueKhachHang.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
-            this.lueKhachHang.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lueKhachHang.Size = new System.Drawing.Size(158, 20);
-            this.lueKhachHang.TabIndex = 33;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 56);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 19);
-            this.label7.TabIndex = 34;
-            this.label7.Text = "Khách hàng";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(249, 57);
+            this.label1.Location = new System.Drawing.Point(3, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 19);
             this.label1.TabIndex = 35;
@@ -220,7 +136,7 @@ namespace RestaurantManager
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(422, 57);
+            this.label3.Location = new System.Drawing.Point(176, 57);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 19);
             this.label3.TabIndex = 36;
@@ -235,7 +151,7 @@ namespace RestaurantManager
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
             this.btnSearch.Image = global::RestaurantManager.Properties.Resources.Search_icon;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(599, 57);
+            this.btnSearch.Location = new System.Drawing.Point(354, 56);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(97, 22);
@@ -254,7 +170,7 @@ namespace RestaurantManager
             this.btnClear.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Image = global::RestaurantManager.Properties.Resources.clear;
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(696, 57);
+            this.btnClear.Location = new System.Drawing.Point(451, 56);
             this.btnClear.Margin = new System.Windows.Forms.Padding(0);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(71, 22);
@@ -332,7 +248,7 @@ namespace RestaurantManager
             this.btnPrintReport.ForeColor = System.Drawing.Color.Black;
             this.btnPrintReport.Image = global::RestaurantManager.Properties.Resources.icons8_print_16;
             this.btnPrintReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintReport.Location = new System.Drawing.Point(767, 57);
+            this.btnPrintReport.Location = new System.Drawing.Point(522, 56);
             this.btnPrintReport.Margin = new System.Windows.Forms.Padding(0);
             this.btnPrintReport.Name = "btnPrintReport";
             this.btnPrintReport.Size = new System.Drawing.Size(89, 22);
@@ -341,6 +257,13 @@ namespace RestaurantManager
             this.btnPrintReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrintReport.UseVisualStyleBackColor = false;
             this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // uctReportTonKho
             // 
@@ -352,8 +275,6 @@ namespace RestaurantManager
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.lueKhachHang);
             this.Controls.Add(this.dtpToDate);
             this.Controls.Add(this.dtpFromDate);
             this.Controls.Add(this.panelControl1);
@@ -370,7 +291,6 @@ namespace RestaurantManager
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDOANHTHU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDOANHTHU)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueKhachHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
@@ -383,14 +303,8 @@ namespace RestaurantManager
         private PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gcDOANHTHU;
         private DevExpress.XtraGrid.Views.Grid.GridView gvDOANHTHU;
-        private DevExpress.XtraGrid.Columns.GridColumn gcidhoadontt;
-        private DevExpress.XtraGrid.Columns.GridColumn gciddondat;
-        private DevExpress.XtraGrid.Columns.GridColumn gcngayhd;
-        private DevExpress.XtraGrid.Columns.GridColumn gcTotalAmount;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.DateTimePicker dtpToDate;
-        private LookUpEdit lueKhachHang;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearch;
@@ -403,6 +317,6 @@ namespace RestaurantManager
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.Button btnPrintReport;
-        private DevExpress.XtraGrid.Columns.GridColumn gcban;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

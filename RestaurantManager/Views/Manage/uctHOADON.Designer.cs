@@ -312,6 +312,22 @@ namespace RestaurantManager
             this.btnPrint.Id = 0;
             this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
             this.btnPrint.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.LargeImage")));
+            this.btnPrint.ItemAppearance.Disabled.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnPrint.ItemAppearance.Disabled.Options.UseFont = true;
+            this.btnPrint.ItemAppearance.Hovered.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnPrint.ItemAppearance.Hovered.Options.UseFont = true;
+            this.btnPrint.ItemAppearance.Normal.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnPrint.ItemAppearance.Pressed.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnPrint.ItemAppearance.Pressed.Options.UseFont = true;
+            this.btnPrint.ItemInMenuAppearance.Disabled.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnPrint.ItemInMenuAppearance.Disabled.Options.UseFont = true;
+            this.btnPrint.ItemInMenuAppearance.Hovered.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnPrint.ItemInMenuAppearance.Hovered.Options.UseFont = true;
+            this.btnPrint.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnPrint.ItemInMenuAppearance.Normal.Options.UseFont = true;
+            this.btnPrint.ItemInMenuAppearance.Pressed.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnPrint.ItemInMenuAppearance.Pressed.Options.UseFont = true;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
             // 

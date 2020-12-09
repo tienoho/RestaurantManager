@@ -107,6 +107,7 @@
             this.btnHOADONM = new DevExpress.XtraBars.BarButtonItem();
             this.btnExportHOADONM = new DevExpress.XtraBars.BarButtonItem();
             this.btnDONDATDA = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTonKho = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -118,6 +119,7 @@
             this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpSystem = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -133,12 +135,10 @@
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnTonKho = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuToolStrip)).BeginInit();
@@ -366,7 +366,7 @@
             this.btnDONDATDA,
             this.btnTonKho});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuToolStrip.MaxItemId = 83;
+            this.menuToolStrip.MaxItemId = 84;
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -778,7 +778,7 @@
             // 
             // btnDONMH
             // 
-            this.btnDONMH.Caption = "Phiếu mua hàng";
+            this.btnDONMH.Caption = "Đơn mua hàng";
             this.btnDONMH.Enabled = false;
             this.btnDONMH.Id = 62;
             this.btnDONMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDONMH.ImageOptions.Image")));
@@ -856,6 +856,15 @@
             this.btnDONDATDA.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnDONDATDA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDONDATDA_ItemClick);
             // 
+            // btnTonKho
+            // 
+            this.btnTonKho.Caption = "Báo cáo tồn kho";
+            this.btnTonKho.Id = 82;
+            this.btnTonKho.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTonKho.ImageOptions.Image")));
+            this.btnTonKho.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTonKho.ImageOptions.LargeImage")));
+            this.btnTonKho.Name = "btnTonKho";
+            this.btnTonKho.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -926,6 +935,11 @@
             this.ribbonPageGroup10.AllowTextClipping = false;
             this.ribbonPageGroup10.ItemLinks.Add(this.btnRevenue);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnTonKho);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // rpSystem
             // 
@@ -1055,11 +1069,6 @@
             this.barButtonItem19.Id = 76;
             this.barButtonItem19.Name = "barButtonItem19";
             // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnTonKho);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            // 
             // barButtonItem7
             // 
             this.barButtonItem7.Caption = "Doanh thu";
@@ -1099,15 +1108,6 @@
             this.barButtonItem21.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem21.ImageOptions.LargeImage")));
             this.barButtonItem21.Name = "barButtonItem21";
             this.barButtonItem21.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // btnTonKho
-            // 
-            this.btnTonKho.Caption = "Báo cáo tồn kho";
-            this.btnTonKho.Id = 82;
-            this.btnTonKho.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem22.ImageOptions.Image")));
-            this.btnTonKho.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem22.ImageOptions.LargeImage")));
-            this.btnTonKho.Name = "btnTonKho";
-            this.btnTonKho.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // frmMain
             // 

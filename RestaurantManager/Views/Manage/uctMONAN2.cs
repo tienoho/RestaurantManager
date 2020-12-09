@@ -41,8 +41,7 @@ namespace RestaurantManager
         private void uctMONAN2_Load(object sender, EventArgs e)
         {
             LoadGrid();
-            loadDanhMuc();
-            loadNLIEU();
+            
         }
 
         #region Event
@@ -248,6 +247,8 @@ namespace RestaurantManager
 
             gridControl1.DataSource = lstMONAN;
 
+            loadDanhMuc();
+            loadNLIEU();
         }
         private void loadDanhMuc()
         {

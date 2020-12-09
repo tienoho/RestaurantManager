@@ -256,11 +256,13 @@ namespace RestaurantManager
         private void btnMenu_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctMONAN2.uctMONAN, 1, "Menu");
+            uctMONAN2.uctMONAN.LoadGrid();
         }
 
         private void btnNguyenLieu_ItemClick(object sender, ItemClickEventArgs e)
         {
             addTabPages(uctNLIEU.uctDL, 2, "Nguyên liệu");
+            uctNLIEU.uctDL.LoadGrid();
         }
 
         private void btnDanhMuc_ItemClick(object sender, ItemClickEventArgs e)
@@ -296,6 +298,7 @@ namespace RestaurantManager
             addTabPages(uctDONDATDA.uctDL, 7, "Đặt đơn hàng");
             uctDONDATDA.uctDL.fillCaption(btnOrderWait);
             uctDONDATDA.uctDL.LoadData();
+            uctDONDATDA.uctDL.LoadDataGrid();
         }
 
         private void btnOrderWait_ItemClick(object sender, ItemClickEventArgs e)
