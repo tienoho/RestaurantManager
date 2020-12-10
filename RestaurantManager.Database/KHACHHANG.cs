@@ -14,12 +14,6 @@ namespace RestaurantManager.Database
     
     public partial class KHACHHANG
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KHACHHANG()
-        {
-            this.HOADONTTs = new HashSet<HOADONTT>();
-        }
-    
         public int idkh { get; set; }
         public string tenkh { get; set; }
         public string sdt { get; set; }
@@ -27,8 +21,5 @@ namespace RestaurantManager.Database
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public string ModifyBy { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADONTT> HOADONTTs { get; set; }
     }
 }

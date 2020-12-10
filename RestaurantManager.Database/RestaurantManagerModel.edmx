@@ -314,6 +314,45 @@
           <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
           <Property Name="SoDT" Type="varchar" MaxLength="15" />
         </EntityType>
+        <EntityType Name="WarrantyXNKRequestPartMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RequestNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RequestDate" Type="date" Nullable="false" />
+          <Property Name="RNeedToReceived" Type="date" Nullable="false" />
+          <Property Name="RCostCenter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RRequestBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RApproval" Type="bit" Nullable="false" />
+          <Property Name="RApprovalBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="RApprovalDate" Type="datetime" />
+          <Property Name="RNeedConfirmPrice" Type="bit" />
+          <Property Name="RConfirmPriceApproval" Type="bit" />
+          <Property Name="RConfirmPriceBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="RConfirmPriceDate" Type="datetime" />
+          <Property Name="XNKApproval" Type="bit" />
+          <Property Name="XNKApprovalBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="XNKApprovalDate" Type="datetime" />
+          <Property Name="XNKPerformBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="XNKPerformDate" Type="datetime" />
+          <Property Name="XNKDateFeedback" Type="date" />
+          <Property Name="XNKFeedbackNote" Type="nvarchar" MaxLength="500" />
+          <Property Name="WMStepKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="WMStepNote" Type="nvarchar" MaxLength="200" />
+          <Property Name="XNKStepKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="XNKStepNote" Type="nvarchar" MaxLength="200" />
+          <Property Name="RequestStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="300" />
+          <Property Name="Division" Type="int" Nullable="false" />
+          <Property Name="SnycBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Snycdate" Type="date" />
+          <Property Name="SysNote" Type="nvarchar(max)" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifyDate" Type="datetime" />
+        </EntityType>
         <Association Name="FK_CONGTHUC_MONAN">
           <End Role="MONAN" Type="Self.MONAN" Multiplicity="1" />
           <End Role="CONGTHUC" Type="Self.CONGTHUC" Multiplicity="*" />
@@ -566,18 +605,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HOADONTT_KHACHHANG">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
-          <End Role="HOADONTT" Type="Self.HOADONTT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="idkh" />
-            </Principal>
-            <Dependent Role="HOADONTT">
-              <PropertyRef Name="idkh" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MONAN_DANHMUC">
           <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
           <End Role="MONAN" Type="Self.MONAN" Multiplicity="*" />
@@ -681,6 +708,7 @@
           <EntitySet Name="PYC" EntityType="Self.PYC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WarrantyXNKRequestPartMaster" EntityType="Self.WarrantyXNKRequestPartMaster" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CONGTHUC_MONAN" Association="Self.FK_CONGTHUC_MONAN">
             <End Role="MONAN" EntitySet="MONAN" />
             <End Role="CONGTHUC" EntitySet="CONGTHUC" />
@@ -765,10 +793,6 @@
             <End Role="DONDATDA" EntitySet="DONDATDA" />
             <End Role="HOADONTT" EntitySet="HOADONTT" />
           </AssociationSet>
-          <AssociationSet Name="FK_HOADONTT_KHACHHANG" Association="Self.FK_HOADONTT_KHACHHANG">
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-            <End Role="HOADONTT" EntitySet="HOADONTT" />
-          </AssociationSet>
           <AssociationSet Name="FK_MONAN_DANHMUC" Association="Self.FK_MONAN_DANHMUC">
             <End Role="DANHMUC" EntitySet="DANHMUC" />
             <End Role="MONAN" EntitySet="MONAN" />
@@ -783,116 +807,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="RestaurantManagerDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="RestaurantManagerDataEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CONGTHUCs" EntityType="RestaurantManagerDataModel.CONGTHUC" />
-          <EntitySet Name="D_DONDATDA" EntityType="RestaurantManagerDataModel.D_DONDATDA" />
-          <EntitySet Name="D_DONMH" EntityType="RestaurantManagerDataModel.D_DONMH" />
-          <EntitySet Name="D_GIAOHANG" EntityType="RestaurantManagerDataModel.D_GIAOHANG" />
-          <EntitySet Name="D_HOADONM" EntityType="RestaurantManagerDataModel.D_HOADONM" />
-          <EntitySet Name="D_HOADONTT" EntityType="RestaurantManagerDataModel.D_HOADONTT" />
-          <EntitySet Name="D_PNHAP" EntityType="RestaurantManagerDataModel.D_PNHAP" />
-          <EntitySet Name="D_PYC" EntityType="RestaurantManagerDataModel.D_PYC" />
-          <EntitySet Name="DANHMUCs" EntityType="RestaurantManagerDataModel.DANHMUC" />
-          <EntitySet Name="DONDATDAs" EntityType="RestaurantManagerDataModel.DONDATDA" />
-          <EntitySet Name="DONMHs" EntityType="RestaurantManagerDataModel.DONMH" />
-          <EntitySet Name="GIAOHANGs" EntityType="RestaurantManagerDataModel.GIAOHANG" />
-          <EntitySet Name="HOADONTTs" EntityType="RestaurantManagerDataModel.HOADONTT" />
-          <EntitySet Name="KHACHHANGs" EntityType="RestaurantManagerDataModel.KHACHHANG" />
-          <EntitySet Name="MONANs" EntityType="RestaurantManagerDataModel.MONAN" />
-          <EntitySet Name="NCCs" EntityType="RestaurantManagerDataModel.NCC" />
-          <EntitySet Name="NLIEUx" EntityType="RestaurantManagerDataModel.NLIEU" />
-          <EntitySet Name="NLIEU_NCC" EntityType="RestaurantManagerDataModel.NLIEU_NCC" />
-          <EntitySet Name="PNHAPs" EntityType="RestaurantManagerDataModel.PNHAP" />
-          <EntitySet Name="PYCs" EntityType="RestaurantManagerDataModel.PYC" />
-          <EntitySet Name="sysdiagrams" EntityType="RestaurantManagerDataModel.sysdiagram" />
-          <EntitySet Name="USERS" EntityType="RestaurantManagerDataModel.USER" />
-          <AssociationSet Name="FK_CONGTHUC_MONAN" Association="RestaurantManagerDataModel.FK_CONGTHUC_MONAN">
-            <End Role="MONAN" EntitySet="MONANs" />
-            <End Role="CONGTHUC" EntitySet="CONGTHUCs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONGTHUC_NLIEU" Association="RestaurantManagerDataModel.FK_CONGTHUC_NLIEU">
-            <End Role="NLIEU" EntitySet="NLIEUx" />
-            <End Role="CONGTHUC" EntitySet="CONGTHUCs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_DONDATDA_DONDATDA" Association="RestaurantManagerDataModel.FK_D_DONDATDA_DONDATDA">
-            <End Role="DONDATDA" EntitySet="DONDATDAs" />
-            <End Role="D_DONDATDA" EntitySet="D_DONDATDA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_DONDATDA_MONAN" Association="RestaurantManagerDataModel.FK_D_DONDATDA_MONAN">
-            <End Role="MONAN" EntitySet="MONANs" />
-            <End Role="D_DONDATDA" EntitySet="D_DONDATDA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_DONMH_DONMH" Association="RestaurantManagerDataModel.FK_D_DONMH_DONMH">
-            <End Role="DONMH" EntitySet="DONMHs" />
-            <End Role="D_DONMH" EntitySet="D_DONMH" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_DONMH_NLIEU" Association="RestaurantManagerDataModel.FK_D_DONMH_NLIEU">
-            <End Role="NLIEU" EntitySet="NLIEUx" />
-            <End Role="D_DONMH" EntitySet="D_DONMH" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_GIAOHANG_GIAOHANG" Association="RestaurantManagerDataModel.FK_D_GIAOHANG_GIAOHANG">
-            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
-            <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_GIAOHANG_NLIEU" Association="RestaurantManagerDataModel.FK_D_GIAOHANG_NLIEU">
-            <End Role="NLIEU" EntitySet="NLIEUx" />
-            <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_HOADONM_NLIEU" Association="RestaurantManagerDataModel.FK_D_HOADONM_NLIEU">
-            <End Role="NLIEU" EntitySet="NLIEUx" />
-            <End Role="D_HOADONM" EntitySet="D_HOADONM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_HOADONTT_HOADONTT" Association="RestaurantManagerDataModel.FK_D_HOADONTT_HOADONTT">
-            <End Role="HOADONTT" EntitySet="HOADONTTs" />
-            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_HOADONTT_MONAN" Association="RestaurantManagerDataModel.FK_D_HOADONTT_MONAN">
-            <End Role="MONAN" EntitySet="MONANs" />
-            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_PNHAP_NLIEU" Association="RestaurantManagerDataModel.FK_D_PNHAP_NLIEU">
-            <End Role="NLIEU" EntitySet="NLIEUx" />
-            <End Role="D_PNHAP" EntitySet="D_PNHAP" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_PNHAP_PNHAP" Association="RestaurantManagerDataModel.FK_D_PNHAP_PNHAP">
-            <End Role="PNHAP" EntitySet="PNHAPs" />
-            <End Role="D_PNHAP" EntitySet="D_PNHAP" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_PYC_NLIEU" Association="RestaurantManagerDataModel.FK_D_PYC_NLIEU">
-            <End Role="NLIEU" EntitySet="NLIEUx" />
-            <End Role="D_PYC" EntitySet="D_PYC" />
-          </AssociationSet>
-          <AssociationSet Name="FK_D_PYC_PYC" Association="RestaurantManagerDataModel.FK_D_PYC_PYC">
-            <End Role="PYC" EntitySet="PYCs" />
-            <End Role="D_PYC" EntitySet="D_PYC" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MONAN_DANHMUC" Association="RestaurantManagerDataModel.FK_MONAN_DANHMUC">
-            <End Role="DANHMUC" EntitySet="DANHMUCs" />
-            <End Role="MONAN" EntitySet="MONANs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HOADONTT_DONDATDA" Association="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA">
-            <End Role="DONDATDA" EntitySet="DONDATDAs" />
-            <End Role="HOADONTT" EntitySet="HOADONTTs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DONMH_NCC" Association="RestaurantManagerDataModel.FK_DONMH_NCC">
-            <End Role="NCC" EntitySet="NCCs" />
-            <End Role="DONMH" EntitySet="DONMHs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GIAOHANG_DONMH" Association="RestaurantManagerDataModel.FK_GIAOHANG_DONMH">
-            <End Role="DONMH" EntitySet="DONMHs" />
-            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GIAOHANG_NCC" Association="RestaurantManagerDataModel.FK_GIAOHANG_NCC">
-            <End Role="NCC" EntitySet="NCCs" />
-            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PNHAP_GIAOHANG" Association="RestaurantManagerDataModel.FK_PNHAP_GIAOHANG">
-            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
-            <End Role="PNHAP" EntitySet="PNHAPs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HOADONTT_KHACHHANG" Association="RestaurantManagerDataModel.FK_HOADONTT_KHACHHANG">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-            <End Role="HOADONTT" EntitySet="HOADONTTs" />
-          </AssociationSet>
           <FunctionImport Name="Proc_GetDonDatDA_OutLeft" ReturnType="Collection(RestaurantManagerDataModel.Proc_GetDonDatDA_OutLeft_Result)" />
           <FunctionImport Name="Proc_GetListD_PNHAP" ReturnType="Collection(RestaurantManagerDataModel.Proc_GetListD_PNHAP_Result)">
           <Parameter Name="idpnhap" Mode="In" Type="Int32" />
@@ -947,16 +861,206 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="CONGTHUCs" EntityType="RestaurantManagerDataModel.CONGTHUC" />
+          <EntitySet Name="D_DONDATDA" EntityType="RestaurantManagerDataModel.D_DONDATDA" />
+          <EntitySet Name="D_DONMH" EntityType="RestaurantManagerDataModel.D_DONMH" />
+          <EntitySet Name="D_GIAOHANG" EntityType="RestaurantManagerDataModel.D_GIAOHANG" />
+          <EntitySet Name="D_HOADONM" EntityType="RestaurantManagerDataModel.D_HOADONM" />
+          <EntitySet Name="D_HOADONTT" EntityType="RestaurantManagerDataModel.D_HOADONTT" />
+          <EntitySet Name="D_PNHAP" EntityType="RestaurantManagerDataModel.D_PNHAP" />
+          <EntitySet Name="D_PYC" EntityType="RestaurantManagerDataModel.D_PYC" />
+          <EntitySet Name="DANHMUCs" EntityType="RestaurantManagerDataModel.DANHMUC" />
+          <EntitySet Name="DONDATDAs" EntityType="RestaurantManagerDataModel.DONDATDA" />
+          <EntitySet Name="DONMHs" EntityType="RestaurantManagerDataModel.DONMH" />
+          <EntitySet Name="GIAOHANGs" EntityType="RestaurantManagerDataModel.GIAOHANG" />
           <EntitySet Name="HOADONMs" EntityType="RestaurantManagerDataModel.HOADONM" />
+          <EntitySet Name="HOADONTTs" EntityType="RestaurantManagerDataModel.HOADONTT" />
+          <EntitySet Name="KHACHHANGs" EntityType="RestaurantManagerDataModel.KHACHHANG" />
+          <EntitySet Name="MONANs" EntityType="RestaurantManagerDataModel.MONAN" />
+          <EntitySet Name="NCCs" EntityType="RestaurantManagerDataModel.NCC" />
+          <EntitySet Name="NLIEUx" EntityType="RestaurantManagerDataModel.NLIEU" />
+          <EntitySet Name="NLIEU_NCC" EntityType="RestaurantManagerDataModel.NLIEU_NCC" />
+          <EntitySet Name="PNHAPs" EntityType="RestaurantManagerDataModel.PNHAP" />
+          <EntitySet Name="PYCs" EntityType="RestaurantManagerDataModel.PYC" />
+          <EntitySet Name="sysdiagrams" EntityType="RestaurantManagerDataModel.sysdiagram" />
+          <EntitySet Name="USERS" EntityType="RestaurantManagerDataModel.USER" />
+          <EntitySet Name="WarrantyXNKRequestPartMasters" EntityType="RestaurantManagerDataModel.WarrantyXNKRequestPartMaster" />
+          <AssociationSet Name="FK_CONGTHUC_MONAN" Association="RestaurantManagerDataModel.FK_CONGTHUC_MONAN">
+            <End Role="MONAN" EntitySet="MONANs" />
+            <End Role="CONGTHUC" EntitySet="CONGTHUCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONGTHUC_NLIEU" Association="RestaurantManagerDataModel.FK_CONGTHUC_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="CONGTHUC" EntitySet="CONGTHUCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONDATDA_DONDATDA" Association="RestaurantManagerDataModel.FK_D_DONDATDA_DONDATDA">
+            <End Role="DONDATDA" EntitySet="DONDATDAs" />
+            <End Role="D_DONDATDA" EntitySet="D_DONDATDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONDATDA_MONAN" Association="RestaurantManagerDataModel.FK_D_DONDATDA_MONAN">
+            <End Role="MONAN" EntitySet="MONANs" />
+            <End Role="D_DONDATDA" EntitySet="D_DONDATDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONMH_DONMH" Association="RestaurantManagerDataModel.FK_D_DONMH_DONMH">
+            <End Role="DONMH" EntitySet="DONMHs" />
+            <End Role="D_DONMH" EntitySet="D_DONMH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_DONMH_NLIEU" Association="RestaurantManagerDataModel.FK_D_DONMH_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_DONMH" EntitySet="D_DONMH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_GIAOHANG_GIAOHANG" Association="RestaurantManagerDataModel.FK_D_GIAOHANG_GIAOHANG">
+            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
+            <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_GIAOHANG_NLIEU" Association="RestaurantManagerDataModel.FK_D_GIAOHANG_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_GIAOHANG" EntitySet="D_GIAOHANG" />
+          </AssociationSet>
           <AssociationSet Name="FK_D_HOADONM_HOADONM" Association="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM">
             <End Role="HOADONM" EntitySet="HOADONMs" />
             <End Role="D_HOADONM" EntitySet="D_HOADONM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONM_NLIEU" Association="RestaurantManagerDataModel.FK_D_HOADONM_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_HOADONM" EntitySet="D_HOADONM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONTT_HOADONTT" Association="RestaurantManagerDataModel.FK_D_HOADONTT_HOADONTT">
+            <End Role="HOADONTT" EntitySet="HOADONTTs" />
+            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_HOADONTT_MONAN" Association="RestaurantManagerDataModel.FK_D_HOADONTT_MONAN">
+            <End Role="MONAN" EntitySet="MONANs" />
+            <End Role="D_HOADONTT" EntitySet="D_HOADONTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PNHAP_NLIEU" Association="RestaurantManagerDataModel.FK_D_PNHAP_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_PNHAP" EntitySet="D_PNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PNHAP_PNHAP" Association="RestaurantManagerDataModel.FK_D_PNHAP_PNHAP">
+            <End Role="PNHAP" EntitySet="PNHAPs" />
+            <End Role="D_PNHAP" EntitySet="D_PNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PYC_NLIEU" Association="RestaurantManagerDataModel.FK_D_PYC_NLIEU">
+            <End Role="NLIEU" EntitySet="NLIEUx" />
+            <End Role="D_PYC" EntitySet="D_PYC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_D_PYC_PYC" Association="RestaurantManagerDataModel.FK_D_PYC_PYC">
+            <End Role="PYC" EntitySet="PYCs" />
+            <End Role="D_PYC" EntitySet="D_PYC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONAN_DANHMUC" Association="RestaurantManagerDataModel.FK_MONAN_DANHMUC">
+            <End Role="DANHMUC" EntitySet="DANHMUCs" />
+            <End Role="MONAN" EntitySet="MONANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADONTT_DONDATDA" Association="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA">
+            <End Role="DONDATDA" EntitySet="DONDATDAs" />
+            <End Role="HOADONTT" EntitySet="HOADONTTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DONMH_NCC" Association="RestaurantManagerDataModel.FK_DONMH_NCC">
+            <End Role="NCC" EntitySet="NCCs" />
+            <End Role="DONMH" EntitySet="DONMHs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAOHANG_DONMH" Association="RestaurantManagerDataModel.FK_GIAOHANG_DONMH">
+            <End Role="DONMH" EntitySet="DONMHs" />
+            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAOHANG_NCC" Association="RestaurantManagerDataModel.FK_GIAOHANG_NCC">
+            <End Role="NCC" EntitySet="NCCs" />
+            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PNHAP_GIAOHANG" Association="RestaurantManagerDataModel.FK_PNHAP_GIAOHANG">
+            <End Role="GIAOHANG" EntitySet="GIAOHANGs" />
+            <End Role="PNHAP" EntitySet="PNHAPs" />
           </AssociationSet>
           <AssociationSet Name="FK_HOADONM_PNHAP" Association="RestaurantManagerDataModel.FK_HOADONM_PNHAP">
             <End Role="PNHAP" EntitySet="PNHAPs" />
             <End Role="HOADONM" EntitySet="HOADONMs" />
           </AssociationSet>
         </EntityContainer>
+        <ComplexType Name="Proc_GetDonDatDA_OutLeft_Result">
+          <Property Type="Int32" Name="iddondat" Nullable="false" />
+          <Property Type="DateTime" Name="ngaydat" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ban" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="idkh" Nullable="true" />
+          <Property Type="String" Name="tenkh" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetListD_PNHAP_Result">
+          <Property Type="Int32" Name="idpnhap" Nullable="false" />
+          <Property Type="Int32" Name="idpgiao" Nullable="true" />
+          <Property Type="String" Name="nguoigiao" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idhang" Nullable="false" />
+          <Property Type="Int32" Name="slgiao" Nullable="true" />
+          <Property Type="Int32" Name="slnhan" Nullable="true" />
+          <Property Type="String" Name="tenhang" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="iddonmh" Nullable="true" />
+          <Property Type="Double" Name="dongiamh" Nullable="true" />
+          <Property Type="Double" Name="TotalAmount" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetListDONDATDA_Result">
+          <Property Type="Int32" Name="iddondat" Nullable="false" />
+          <Property Type="DateTime" Name="ngaydat" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="idkh" Nullable="true" />
+          <Property Type="String" Name="tenkh" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="iddondat1" Nullable="false" />
+          <Property Type="Double" Name="TotalAmount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetListHOADONM_Result">
+          <Property Type="Int32" Name="idhoadonm" Nullable="false" />
+          <Property Type="DateTime" Name="ngaymua" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="idpnhap" Nullable="true" />
+          <Property Type="Int32" Name="idpgiao" Nullable="false" />
+          <Property Type="Int32" Name="iddonmh" Nullable="false" />
+          <Property Type="Double" Name="TotalAmount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetListHOADONTT_Result">
+          <Property Type="Int32" Name="idhoadontt" Nullable="false" />
+          <Property Type="DateTime" Name="ngayhd" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="thoigian" Nullable="true" Precision="23" />
+          <Property Type="String" Name="thungan" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idkh" Nullable="true" />
+          <Property Type="String" Name="tenkh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ban" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="iddondat" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="255" />
+          <Property Type="Double" Name="TotalAmount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetMONAN_OutLeft_Result">
+          <Property Type="Int32" Name="idmon" Nullable="false" />
+          <Property Type="String" Name="temon" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="dongiamon" Nullable="true" />
+          <Property Type="String" Name="dvt" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="hinhanh" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="iddmuc" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="ModifyDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifyBy" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Proc_GetPNHAP_OutLeft_Result">
+          <Property Type="Int32" Name="idpnhap" Nullable="false" />
+          <Property Type="DateTime" Name="ngaynhap" Nullable="true" Precision="23" />
+          <Property Type="String" Name="nguoigiao" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nguoilapphieu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="thukho" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idpgiao" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="CONGTHUC">
           <Key>
             <PropertyRef Name="idmon" />
@@ -1032,8 +1136,8 @@
           <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />
           <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NLIEU" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_NLIEU" FromRole="D_HOADONM" ToRole="NLIEU" />
           <NavigationProperty Name="HOADONM" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" FromRole="D_HOADONM" ToRole="HOADONM" />
+          <NavigationProperty Name="NLIEU" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_NLIEU" FromRole="D_HOADONM" ToRole="NLIEU" />
         </EntityType>
         <EntityType Name="D_HOADONTT">
           <Key>
@@ -1148,6 +1252,20 @@
           <NavigationProperty Name="NCC" Relationship="RestaurantManagerDataModel.FK_GIAOHANG_NCC" FromRole="GIAOHANG" ToRole="NCC" />
           <NavigationProperty Name="PNHAPs" Relationship="RestaurantManagerDataModel.FK_PNHAP_GIAOHANG" FromRole="GIAOHANG" ToRole="PNHAP" />
         </EntityType>
+        <EntityType Name="HOADONM">
+          <Key>
+            <PropertyRef Name="idhoadonm" />
+          </Key>
+          <Property Name="idhoadonm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaymua" Type="DateTime" Precision="3" />
+          <Property Name="idpnhap" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="D_HOADONM" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" FromRole="HOADONM" ToRole="D_HOADONM" />
+          <NavigationProperty Name="PNHAP" Relationship="RestaurantManagerDataModel.FK_HOADONM_PNHAP" FromRole="HOADONM" ToRole="PNHAP" />
+        </EntityType>
         <EntityType Name="HOADONTT">
           <Key>
             <PropertyRef Name="idhoadontt" />
@@ -1164,7 +1282,6 @@
           <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="D_HOADONTT" Relationship="RestaurantManagerDataModel.FK_D_HOADONTT_HOADONTT" FromRole="HOADONTT" ToRole="D_HOADONTT" />
           <NavigationProperty Name="DONDATDA" Relationship="RestaurantManagerDataModel.FK_HOADONTT_DONDATDA" FromRole="HOADONTT" ToRole="DONDATDA" />
-          <NavigationProperty Name="KHACHHANG" Relationship="RestaurantManagerDataModel.FK_HOADONTT_KHACHHANG" FromRole="HOADONTT" ToRole="KHACHHANG" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -1177,7 +1294,6 @@
           <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />
           <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HOADONTTs" Relationship="RestaurantManagerDataModel.FK_HOADONTT_KHACHHANG" FromRole="KHACHHANG" ToRole="HOADONTT" />
         </EntityType>
         <EntityType Name="MONAN">
           <Key>
@@ -1300,6 +1416,45 @@
           <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="WarrantyXNKRequestPartMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RNeedToReceived" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RCostCenter" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RRequestBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RApproval" Type="Boolean" Nullable="false" />
+          <Property Name="RApprovalBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RApprovalDate" Type="DateTime" Precision="3" />
+          <Property Name="RNeedConfirmPrice" Type="Boolean" />
+          <Property Name="RConfirmPriceApproval" Type="Boolean" />
+          <Property Name="RConfirmPriceBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RConfirmPriceDate" Type="DateTime" Precision="3" />
+          <Property Name="XNKApproval" Type="Boolean" />
+          <Property Name="XNKApprovalBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="XNKApprovalDate" Type="DateTime" Precision="3" />
+          <Property Name="XNKPerformBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="XNKPerformDate" Type="DateTime" Precision="3" />
+          <Property Name="XNKDateFeedback" Type="DateTime" Precision="0" />
+          <Property Name="XNKFeedbackNote" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WMStepKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WMStepNote" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="XNKStepKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="XNKStepNote" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RequestStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="Int32" Nullable="false" />
+          <Property Name="SnycBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Snycdate" Type="DateTime" Precision="0" />
+          <Property Name="SysNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+        </EntityType>
         <Association Name="FK_CONGTHUC_MONAN">
           <End Type="RestaurantManagerDataModel.MONAN" Role="MONAN" Multiplicity="1" />
           <End Type="RestaurantManagerDataModel.CONGTHUC" Role="CONGTHUC" Multiplicity="*" />
@@ -1393,6 +1548,18 @@
             </Principal>
             <Dependent Role="D_GIAOHANG">
               <PropertyRef Name="idhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_D_HOADONM_HOADONM">
+          <End Type="RestaurantManagerDataModel.HOADONM" Role="HOADONM" Multiplicity="1" />
+          <End Type="RestaurantManagerDataModel.D_HOADONM" Role="D_HOADONM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONM">
+              <PropertyRef Name="idhoadonm" />
+            </Principal>
+            <Dependent Role="D_HOADONM">
+              <PropertyRef Name="idhoadonm" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1552,127 +1719,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HOADONTT_KHACHHANG">
-          <End Type="RestaurantManagerDataModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
-          <End Type="RestaurantManagerDataModel.HOADONTT" Role="HOADONTT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="idkh" />
-            </Principal>
-            <Dependent Role="HOADONTT">
-              <PropertyRef Name="idkh" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="Proc_GetDonDatDA_OutLeft_Result">
-          <Property Type="Int32" Name="iddondat" Nullable="false" />
-          <Property Type="DateTime" Name="ngaydat" Nullable="true" Precision="23" />
-          <Property Type="String" Name="ban" Nullable="true" MaxLength="10" />
-          <Property Type="Int32" Name="idkh" Nullable="true" />
-          <Property Type="String" Name="tenkh" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
-          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="255" />
-        </ComplexType>
-        <ComplexType Name="Proc_GetListD_PNHAP_Result">
-          <Property Type="Int32" Name="idpnhap" Nullable="false" />
-          <Property Type="Int32" Name="idpgiao" Nullable="true" />
-          <Property Type="String" Name="nguoigiao" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="idhang" Nullable="false" />
-          <Property Type="Int32" Name="slgiao" Nullable="true" />
-          <Property Type="Int32" Name="slnhan" Nullable="true" />
-          <Property Type="String" Name="tenhang" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="iddonmh" Nullable="true" />
-          <Property Type="Double" Name="dongiamh" Nullable="true" />
-          <Property Type="Double" Name="TotalAmount" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="Proc_GetListDONDATDA_Result">
-          <Property Type="Int32" Name="iddondat" Nullable="false" />
-          <Property Type="DateTime" Name="ngaydat" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="idkh" Nullable="true" />
-          <Property Type="String" Name="tenkh" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="iddondat1" Nullable="false" />
-          <Property Type="Double" Name="TotalAmount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Proc_GetListHOADONM_Result">
-          <Property Type="Int32" Name="idhoadonm" Nullable="false" />
-          <Property Type="DateTime" Name="ngaymua" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="idpnhap" Nullable="true" />
-          <Property Type="Int32" Name="idpgiao" Nullable="false" />
-          <Property Type="Int32" Name="iddonmh" Nullable="false" />
-          <Property Type="Double" Name="TotalAmount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Proc_GetListHOADONTT_Result">
-          <Property Type="Int32" Name="idhoadontt" Nullable="false" />
-          <Property Type="DateTime" Name="ngayhd" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="thoigian" Nullable="true" Precision="23" />
-          <Property Type="String" Name="thungan" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="idkh" Nullable="true" />
-          <Property Type="String" Name="tenkh" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ban" Nullable="true" MaxLength="10" />
-          <Property Type="Int32" Name="iddondat" Nullable="true" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
-          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="255" />
-          <Property Type="Double" Name="TotalAmount" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Proc_GetMONAN_OutLeft_Result">
-          <Property Type="Int32" Name="idmon" Nullable="false" />
-          <Property Type="String" Name="temon" Nullable="true" MaxLength="30" />
-          <Property Type="Double" Name="dongiamon" Nullable="true" />
-          <Property Type="String" Name="dvt" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="hinhanh" Nullable="true" MaxLength="300" />
-          <Property Type="Int32" Name="iddmuc" Nullable="true" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
-          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="255" />
-          <Property Type="DateTime" Name="ModifyDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="ModifyBy" Nullable="true" MaxLength="255" />
-        </ComplexType>
-        <ComplexType Name="Proc_GetPNHAP_OutLeft_Result">
-          <Property Type="Int32" Name="idpnhap" Nullable="false" />
-          <Property Type="DateTime" Name="ngaynhap" Nullable="true" Precision="23" />
-          <Property Type="String" Name="nguoigiao" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="nguoilapphieu" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="thukho" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="idpgiao" Nullable="true" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
-          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="255" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="HOADONM">
-          <Key>
-            <PropertyRef Name="idhoadonm" />
-          </Key>
-          <Property Name="idhoadonm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ngaymua" Type="DateTime" Precision="3" />
-          <Property Name="idpnhap" Type="Int32" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifyBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="D_HOADONM" Relationship="RestaurantManagerDataModel.FK_D_HOADONM_HOADONM" FromRole="HOADONM" ToRole="D_HOADONM" />
-          <NavigationProperty Name="PNHAP" Relationship="RestaurantManagerDataModel.FK_HOADONM_PNHAP" FromRole="HOADONM" ToRole="PNHAP" />
-        </EntityType>
-        <Association Name="FK_D_HOADONM_HOADONM">
-          <End Type="RestaurantManagerDataModel.HOADONM" Role="HOADONM" Multiplicity="1" />
-          <End Type="RestaurantManagerDataModel.D_HOADONM" Role="D_HOADONM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HOADONM">
-              <PropertyRef Name="idhoadonm" />
-            </Principal>
-            <Dependent Role="D_HOADONM">
-              <PropertyRef Name="idhoadonm" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HOADONM_PNHAP">
           <End Type="RestaurantManagerDataModel.PNHAP" Role="PNHAP" Multiplicity="0..1" />
           <End Type="RestaurantManagerDataModel.HOADONM" Role="HOADONM" Multiplicity="*" />
@@ -1691,6 +1737,132 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RestaurantManagerDataModelStoreContainer" CdmEntityContainer="RestaurantManagerDataEntities">
+          <FunctionImportMapping FunctionImportName="Proc_GetDonDatDA_OutLeft" FunctionName="RestaurantManagerDataModel.Store.Proc_GetDonDatDA_OutLeft">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetDonDatDA_OutLeft_Result">
+                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
+                <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+                <ScalarProperty Name="ban" ColumnName="ban" />
+                <ScalarProperty Name="idkh" ColumnName="idkh" />
+                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetListD_PNHAP" FunctionName="RestaurantManagerDataModel.Store.Proc_GetListD_PNHAP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetListD_PNHAP_Result">
+                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
+                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
+                <ScalarProperty Name="nguoigiao" ColumnName="nguoigiao" />
+                <ScalarProperty Name="idhang" ColumnName="idhang" />
+                <ScalarProperty Name="slgiao" ColumnName="slgiao" />
+                <ScalarProperty Name="slnhan" ColumnName="slnhan" />
+                <ScalarProperty Name="tenhang" ColumnName="tenhang" />
+                <ScalarProperty Name="iddonmh" ColumnName="iddonmh" />
+                <ScalarProperty Name="dongiamh" ColumnName="dongiamh" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetListDONDATDA" FunctionName="RestaurantManagerDataModel.Store.Proc_GetListDONDATDA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetListDONDATDA_Result">
+                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
+                <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+                <ScalarProperty Name="idkh" ColumnName="idkh" />
+                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
+                <ScalarProperty Name="iddondat1" ColumnName="iddondat1" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetListHOADONM" FunctionName="RestaurantManagerDataModel.Store.Proc_GetListHOADONM">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetListHOADONM_Result">
+                <ScalarProperty Name="idhoadonm" ColumnName="idhoadonm" />
+                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
+                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
+                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
+                <ScalarProperty Name="iddonmh" ColumnName="iddonmh" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetListHOADONTT" FunctionName="RestaurantManagerDataModel.Store.Proc_GetListHOADONTT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetListHOADONTT_Result">
+                <ScalarProperty Name="idhoadontt" ColumnName="idhoadontt" />
+                <ScalarProperty Name="ngayhd" ColumnName="ngayhd" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="thungan" ColumnName="thungan" />
+                <ScalarProperty Name="idkh" ColumnName="idkh" />
+                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
+                <ScalarProperty Name="ban" ColumnName="ban" />
+                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetMONAN_OutLeft" FunctionName="RestaurantManagerDataModel.Store.Proc_GetMONAN_OutLeft">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetMONAN_OutLeft_Result">
+                <ScalarProperty Name="idmon" ColumnName="idmon" />
+                <ScalarProperty Name="temon" ColumnName="temon" />
+                <ScalarProperty Name="dongiamon" ColumnName="dongiamon" />
+                <ScalarProperty Name="dvt" ColumnName="dvt" />
+                <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
+                <ScalarProperty Name="iddmuc" ColumnName="iddmuc" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_GetNewId" FunctionName="RestaurantManagerDataModel.Store.Proc_GetNewId" />
+          <FunctionImportMapping FunctionImportName="Proc_GetNewIdDONMH" FunctionName="RestaurantManagerDataModel.Store.Proc_GetNewIdDONMH" />
+          <FunctionImportMapping FunctionImportName="Proc_GetPNHAP_OutLeft" FunctionName="RestaurantManagerDataModel.Store.Proc_GetPNHAP_OutLeft">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetPNHAP_OutLeft_Result">
+                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
+                <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
+                <ScalarProperty Name="nguoigiao" ColumnName="nguoigiao" />
+                <ScalarProperty Name="nguoilapphieu" ColumnName="nguoilapphieu" />
+                <ScalarProperty Name="thukho" ColumnName="thukho" />
+                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="RestaurantManagerDataModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="RestaurantManagerDataModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="RestaurantManagerDataModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="RestaurantManagerDataModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="RestaurantManagerDataModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RestaurantManagerDataModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RestaurantManagerDataModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="CONGTHUCs">
             <EntityTypeMapping TypeName="RestaurantManagerDataModel.CONGTHUC">
               <MappingFragment StoreEntitySet="CONGTHUC">
@@ -1860,6 +2032,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="HOADONMs">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.HOADONM">
+              <MappingFragment StoreEntitySet="HOADONM">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
+                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
+                <ScalarProperty Name="idhoadonm" ColumnName="idhoadonm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="HOADONTTs">
             <EntityTypeMapping TypeName="RestaurantManagerDataModel.HOADONTT">
               <MappingFragment StoreEntitySet="HOADONTT">
@@ -2001,142 +2186,43 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetDonDatDA_OutLeft" FunctionName="RestaurantManagerDataModel.Store.Proc_GetDonDatDA_OutLeft">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetDonDatDA_OutLeft_Result">
-                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
-                <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
-                <ScalarProperty Name="ban" ColumnName="ban" />
-                <ScalarProperty Name="idkh" ColumnName="idkh" />
-                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetListD_PNHAP" FunctionName="RestaurantManagerDataModel.Store.Proc_GetListD_PNHAP">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetListD_PNHAP_Result">
-                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
-                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
-                <ScalarProperty Name="nguoigiao" ColumnName="nguoigiao" />
-                <ScalarProperty Name="idhang" ColumnName="idhang" />
-                <ScalarProperty Name="slgiao" ColumnName="slgiao" />
-                <ScalarProperty Name="slnhan" ColumnName="slnhan" />
-                <ScalarProperty Name="tenhang" ColumnName="tenhang" />
-                <ScalarProperty Name="iddonmh" ColumnName="iddonmh" />
-                <ScalarProperty Name="dongiamh" ColumnName="dongiamh" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetListDONDATDA" FunctionName="RestaurantManagerDataModel.Store.Proc_GetListDONDATDA">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetListDONDATDA_Result">
-                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
-                <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
-                <ScalarProperty Name="idkh" ColumnName="idkh" />
-                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
-                <ScalarProperty Name="iddondat1" ColumnName="iddondat1" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetListHOADONM" FunctionName="RestaurantManagerDataModel.Store.Proc_GetListHOADONM">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetListHOADONM_Result">
-                <ScalarProperty Name="idhoadonm" ColumnName="idhoadonm" />
-                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
-                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
-                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
-                <ScalarProperty Name="iddonmh" ColumnName="iddonmh" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetListHOADONTT" FunctionName="RestaurantManagerDataModel.Store.Proc_GetListHOADONTT">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetListHOADONTT_Result">
-                <ScalarProperty Name="idhoadontt" ColumnName="idhoadontt" />
-                <ScalarProperty Name="ngayhd" ColumnName="ngayhd" />
-                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
-                <ScalarProperty Name="thungan" ColumnName="thungan" />
-                <ScalarProperty Name="idkh" ColumnName="idkh" />
-                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
-                <ScalarProperty Name="ban" ColumnName="ban" />
-                <ScalarProperty Name="iddondat" ColumnName="iddondat" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetMONAN_OutLeft" FunctionName="RestaurantManagerDataModel.Store.Proc_GetMONAN_OutLeft">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetMONAN_OutLeft_Result">
-                <ScalarProperty Name="idmon" ColumnName="idmon" />
-                <ScalarProperty Name="temon" ColumnName="temon" />
-                <ScalarProperty Name="dongiamon" ColumnName="dongiamon" />
-                <ScalarProperty Name="dvt" ColumnName="dvt" />
-                <ScalarProperty Name="hinhanh" ColumnName="hinhanh" />
-                <ScalarProperty Name="iddmuc" ColumnName="iddmuc" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <EntitySetMapping Name="WarrantyXNKRequestPartMasters">
+            <EntityTypeMapping TypeName="RestaurantManagerDataModel.WarrantyXNKRequestPartMaster">
+              <MappingFragment StoreEntitySet="WarrantyXNKRequestPartMaster">
                 <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
                 <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Proc_GetNewId" FunctionName="RestaurantManagerDataModel.Store.Proc_GetNewId" />
-          <FunctionImportMapping FunctionImportName="Proc_GetNewIdDONMH" FunctionName="RestaurantManagerDataModel.Store.Proc_GetNewIdDONMH" />
-          <FunctionImportMapping FunctionImportName="Proc_GetPNHAP_OutLeft" FunctionName="RestaurantManagerDataModel.Store.Proc_GetPNHAP_OutLeft">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.Proc_GetPNHAP_OutLeft_Result">
-                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
-                <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
-                <ScalarProperty Name="nguoigiao" ColumnName="nguoigiao" />
-                <ScalarProperty Name="nguoilapphieu" ColumnName="nguoilapphieu" />
-                <ScalarProperty Name="thukho" ColumnName="thukho" />
-                <ScalarProperty Name="idpgiao" ColumnName="idpgiao" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="RestaurantManagerDataModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="RestaurantManagerDataModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="RestaurantManagerDataModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="RestaurantManagerDataModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="RestaurantManagerDataModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="RestaurantManagerDataModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RestaurantManagerDataModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RestaurantManagerDataModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="HOADONMs">
-            <EntityTypeMapping TypeName="RestaurantManagerDataModel.HOADONM">
-              <MappingFragment StoreEntitySet="HOADONM">
-                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
-                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="idpnhap" ColumnName="idpnhap" />
-                <ScalarProperty Name="ngaymua" ColumnName="ngaymua" />
-                <ScalarProperty Name="idhoadonm" ColumnName="idhoadonm" />
+                <ScalarProperty Name="SysNote" ColumnName="SysNote" />
+                <ScalarProperty Name="Snycdate" ColumnName="Snycdate" />
+                <ScalarProperty Name="SnycBy" ColumnName="SnycBy" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+                <ScalarProperty Name="XNKStepNote" ColumnName="XNKStepNote" />
+                <ScalarProperty Name="XNKStepKey" ColumnName="XNKStepKey" />
+                <ScalarProperty Name="WMStepNote" ColumnName="WMStepNote" />
+                <ScalarProperty Name="WMStepKey" ColumnName="WMStepKey" />
+                <ScalarProperty Name="XNKFeedbackNote" ColumnName="XNKFeedbackNote" />
+                <ScalarProperty Name="XNKDateFeedback" ColumnName="XNKDateFeedback" />
+                <ScalarProperty Name="XNKPerformDate" ColumnName="XNKPerformDate" />
+                <ScalarProperty Name="XNKPerformBy" ColumnName="XNKPerformBy" />
+                <ScalarProperty Name="XNKApprovalDate" ColumnName="XNKApprovalDate" />
+                <ScalarProperty Name="XNKApprovalBy" ColumnName="XNKApprovalBy" />
+                <ScalarProperty Name="XNKApproval" ColumnName="XNKApproval" />
+                <ScalarProperty Name="RConfirmPriceDate" ColumnName="RConfirmPriceDate" />
+                <ScalarProperty Name="RConfirmPriceBy" ColumnName="RConfirmPriceBy" />
+                <ScalarProperty Name="RConfirmPriceApproval" ColumnName="RConfirmPriceApproval" />
+                <ScalarProperty Name="RNeedConfirmPrice" ColumnName="RNeedConfirmPrice" />
+                <ScalarProperty Name="RApprovalDate" ColumnName="RApprovalDate" />
+                <ScalarProperty Name="RApprovalBy" ColumnName="RApprovalBy" />
+                <ScalarProperty Name="RApproval" ColumnName="RApproval" />
+                <ScalarProperty Name="RRequestBy" ColumnName="RRequestBy" />
+                <ScalarProperty Name="RCostCenter" ColumnName="RCostCenter" />
+                <ScalarProperty Name="RNeedToReceived" ColumnName="RNeedToReceived" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

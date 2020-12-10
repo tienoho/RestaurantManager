@@ -39,6 +39,7 @@ namespace RestaurantManager.Database
         public virtual DbSet<DONDATDA> DONDATDAs { get; set; }
         public virtual DbSet<DONMH> DONMHs { get; set; }
         public virtual DbSet<GIAOHANG> GIAOHANGs { get; set; }
+        public virtual DbSet<HOADONM> HOADONMs { get; set; }
         public virtual DbSet<HOADONTT> HOADONTTs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<MONAN> MONANs { get; set; }
@@ -49,7 +50,7 @@ namespace RestaurantManager.Database
         public virtual DbSet<PYC> PYCs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
-        public virtual DbSet<HOADONM> HOADONMs { get; set; }
+        public virtual DbSet<WarrantyXNKRequestPartMaster> WarrantyXNKRequestPartMasters { get; set; }
     
         public virtual ObjectResult<Proc_GetDonDatDA_OutLeft_Result> Proc_GetDonDatDA_OutLeft()
         {

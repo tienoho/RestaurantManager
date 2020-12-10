@@ -166,6 +166,9 @@
     <Compile Include="USER.cs">
       <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="WarrantyXNKRequestPartMaster.cs">
+      <DependentUpon>RestaurantManagerModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

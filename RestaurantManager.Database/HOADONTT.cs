@@ -34,6 +34,5 @@ namespace RestaurantManager.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<D_HOADONTT> D_HOADONTT { get; set; }
         public virtual DONDATDA DONDATDA { get; set; }
-        public virtual KHACHHANG KHACHHANG { get; set; }
     }
 }

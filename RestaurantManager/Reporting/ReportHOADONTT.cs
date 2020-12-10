@@ -27,7 +27,7 @@ namespace RestaurantManager.Reporting
                 lblNgayHD.Text = obj.ngayhd.ToString("dd/MM/yyyy");
                 lblBan.Text = obj.ban;
                 lblsdt.Text = obj.sdt;
-                lblKhachHang.Text = obj.tenkh.ToString();
+                lblKhachHang.Text = obj.tenkh==null?"": obj.tenkh;
                 lblThoiGian.Text = obj.thoigian.Value.ToString("hh:mm:ss");
                 lblThuNgan.Text = obj.thungan.ToString();
                 //lblFooterDate.Text = string.Format("Ngày {0} tháng {1} năm {2}", toDay.Day, toDay.Month, toDay.Year);

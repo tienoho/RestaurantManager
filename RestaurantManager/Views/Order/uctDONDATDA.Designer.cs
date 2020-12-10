@@ -30,6 +30,7 @@ namespace RestaurantManager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -71,6 +72,11 @@ namespace RestaurantManager
             this.gcsldat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtCustomerPay = new DevExpress.XtraEditors.TextEdit();
+            this.txtReturnPay = new DevExpress.XtraEditors.TextEdit();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.svgImageCollection1 = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgViewType.Properties)).BeginInit();
@@ -95,6 +101,9 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.txtdongia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcSelectItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerPay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReturnPay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -230,6 +239,10 @@ namespace RestaurantManager
             // 
             this.panelControl6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl6.Controls.Add(this.txtCustomerPay);
+            this.panelControl6.Controls.Add(this.txtReturnPay);
+            this.panelControl6.Controls.Add(this.label12);
+            this.panelControl6.Controls.Add(this.label13);
             this.panelControl6.Controls.Add(this.btnClearHoDon);
             this.panelControl6.Controls.Add(this.txtban);
             this.panelControl6.Controls.Add(this.label8);
@@ -257,7 +270,7 @@ namespace RestaurantManager
             this.btnClearHoDon.ForeColor = System.Drawing.Color.Black;
             this.btnClearHoDon.Image = global::RestaurantManager.Properties.Resources.clear;
             this.btnClearHoDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearHoDon.Location = new System.Drawing.Point(91, 172);
+            this.btnClearHoDon.Location = new System.Drawing.Point(91, 217);
             this.btnClearHoDon.Name = "btnClearHoDon";
             this.btnClearHoDon.Size = new System.Drawing.Size(158, 28);
             this.btnClearHoDon.TabIndex = 52;
@@ -301,13 +314,13 @@ namespace RestaurantManager
             this.btnAddHoaDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddHoaDon.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddHoaDon.ForeColor = System.Drawing.Color.Black;
-            this.btnAddHoaDon.Image = global::RestaurantManager.Properties.Resources.add_2;
+            this.btnAddHoaDon.Image = global::RestaurantManager.Properties.Resources.order_24;
             this.btnAddHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddHoaDon.Location = new System.Drawing.Point(91, 141);
+            this.btnAddHoaDon.Location = new System.Drawing.Point(91, 188);
             this.btnAddHoaDon.Name = "btnAddHoaDon";
             this.btnAddHoaDon.Size = new System.Drawing.Size(158, 28);
             this.btnAddHoaDon.TabIndex = 48;
-            this.btnAddHoaDon.Text = "Lưu hóa đơn";
+            this.btnAddHoaDon.Text = "Thanh toán";
             this.btnAddHoaDon.UseVisualStyleBackColor = false;
             this.btnAddHoaDon.Click += new System.EventHandler(this.btnAddHoaDon_Click);
             // 
@@ -325,7 +338,7 @@ namespace RestaurantManager
             this.txtTotalAmount.Properties.MaxLength = 12;
             this.txtTotalAmount.Properties.NullText = "0";
             this.txtTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTotalAmount.Size = new System.Drawing.Size(159, 20);
+            this.txtTotalAmount.Size = new System.Drawing.Size(158, 20);
             this.txtTotalAmount.TabIndex = 44;
             // 
             // label10
@@ -616,6 +629,67 @@ namespace RestaurantManager
             this.label1.TabIndex = 3;
             this.label1.Text = "MÓN ĂN ĐÃ CHỌN";
             // 
+            // txtCustomerPay
+            // 
+            this.txtCustomerPay.Location = new System.Drawing.Point(92, 141);
+            this.txtCustomerPay.Name = "txtCustomerPay";
+            this.txtCustomerPay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtCustomerPay.Properties.Appearance.Options.UseFont = true;
+            this.txtCustomerPay.Properties.DisplayFormat.FormatString = "#,###";
+            this.txtCustomerPay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtCustomerPay.Properties.EditFormat.FormatString = "#,###";
+            this.txtCustomerPay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtCustomerPay.Properties.Mask.EditMask = "n0";
+            this.txtCustomerPay.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtCustomerPay.Properties.MaxLength = 12;
+            this.txtCustomerPay.Properties.NullText = "0";
+            this.txtCustomerPay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtCustomerPay.Size = new System.Drawing.Size(157, 20);
+            this.txtCustomerPay.TabIndex = 58;
+            this.txtCustomerPay.EditValueChanged += new System.EventHandler(this.txtCustomerPay_EditValueChanged);
+            // 
+            // txtReturnPay
+            // 
+            this.txtReturnPay.Location = new System.Drawing.Point(92, 165);
+            this.txtReturnPay.Name = "txtReturnPay";
+            this.txtReturnPay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtReturnPay.Properties.Appearance.Options.UseFont = true;
+            this.txtReturnPay.Properties.DisplayFormat.FormatString = "#,###";
+            this.txtReturnPay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtReturnPay.Properties.Mask.EditMask = "n0";
+            this.txtReturnPay.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtReturnPay.Properties.MaxLength = 12;
+            this.txtReturnPay.Properties.NullText = "0";
+            this.txtReturnPay.Properties.ReadOnly = true;
+            this.txtReturnPay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtReturnPay.Size = new System.Drawing.Size(157, 20);
+            this.txtReturnPay.TabIndex = 57;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(8, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(77, 19);
+            this.label12.TabIndex = 56;
+            this.label12.Text = "Khách đưa";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(8, 165);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 19);
+            this.label13.TabIndex = 55;
+            this.label13.Text = "Trả khách";
+            // 
+            // svgImageCollection1
+            // 
+            this.svgImageCollection1.Add("print", "image://svgimages/print/print.svg");
+            this.svgImageCollection1.Add("actions_forbid", "image://svgimages/icon builder/actions_forbid.svg");
+            // 
             // uctDONDATDA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -655,6 +729,9 @@ namespace RestaurantManager
             ((System.ComponentModel.ISupportInitialize)(this.txtdongia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcSelectItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCustomerPay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReturnPay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,5 +779,10 @@ namespace RestaurantManager
         private DevExpress.XtraGrid.Columns.GridColumn gcTotalAmount;
         private System.Windows.Forms.Button btnClearHoDon;
         private TextEdit txtidmon;
+        private TextEdit txtCustomerPay;
+        private TextEdit txtReturnPay;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection1;
     }
 }

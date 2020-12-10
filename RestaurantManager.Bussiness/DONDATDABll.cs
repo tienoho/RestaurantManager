@@ -27,7 +27,7 @@ namespace RestaurantManager.Bussiness
                 return null;
             }
         }
-        public string AddDONDATDA(DONDATDA_ViewModel model,ref string mess)
+        public string AddDONDATDA(DONDATDA_ViewModel model, ref string mess, ref int idhoadontt)
         {
 
             using (var db = new RestaurantManagerDataEntities())
@@ -77,11 +77,11 @@ namespace RestaurantManager.Bussiness
                                     {
                                         var slton = nlieu.slton.Value;
                                         int.TryParse(iNlieu.hamluong, out int hamluong);
-                                        if(slton < hamluong * item.sldat)
+                                        if (slton < hamluong * item.sldat)
                                         {
                                             var monan = db.MONANs.AsNoTracking().FirstOrDefault(x => x.idmon == item.idmon);
                                             mess = "warning";
-                                            return String.Format("Món {0} đã hết nguyên liệu {1}!",monan.temon,nlieu.tenhang);
+                                            return String.Format("Món {0} đã hết nguyên liệu {1}!", monan.temon, nlieu.tenhang);
                                         }
 
                                         slton -= hamluong * item.sldat;
@@ -91,10 +91,42 @@ namespace RestaurantManager.Bussiness
                             }
                             db.SaveChanges();
 
-
-                            trans.Commit();
-                            mess = "success";
-                            return "Lưu đơn đặt đồ ăn thành công!";
+                            //Lưu hóa đơn thanh toán
+                            var modelHOADONTT = new HOADONTT_ViewModel
+                            {
+                                iddondat = result.iddondat,
+                                ngayhd = model.ngaydat.Value,
+                                thoigian = DateTime.Now,
+                                idkh = model.idkh,
+                                thungan = model.CreateBy,
+                                CreateBy = model.CreateBy,
+                                ModifyBy = model.CreateBy
+                            };
+                            List<D_HOADONTT_ViewModel> lstD_HOADONTT = new List<D_HOADONTT_ViewModel>();
+                            foreach (D_DONDATDA_ViewModel item in model.D_DONDATDA)
+                            {
+                                var D_HOADONTT = new D_HOADONTT_ViewModel
+                                {
+                                    idmon = item.idmon,
+                                    slban = item.sldat,
+                                    tenmon = item.tenmon,
+                                    dongiaban = item.dongiamon,
+                                    CreateBy = model.CreateBy,
+                                    ModifyBy = model.CreateBy,
+                                };
+                                lstD_HOADONTT.Add(D_HOADONTT);
+                            }
+                            var hoadontt = new HOADONTTBll().AddHOADONTT(modelHOADONTT);
+                            if (hoadontt != null)
+                            {
+                                trans.Commit();
+                                mess = "success";
+                                idhoadontt = hoadontt.idhoadontt;
+                                return "Thanh toán thành công!";
+                            }
+                            mess = "error";
+                            idhoadontt = 0;
+                            return "Thanh toán không thành công!";
                         }
                         else
                         {
@@ -105,6 +137,7 @@ namespace RestaurantManager.Bussiness
                             check.ModifyDate = DateTime.Now;
                             db.SaveChanges();
                             mess = "success";
+                            idhoadontt = 0;
                             return "Cập nhật món ăn thành công!";
                         }
                     }
@@ -112,6 +145,7 @@ namespace RestaurantManager.Bussiness
                     {
                         trans.Rollback();
                         mess = "error";
+                        idhoadontt = 0;
                         return ex.Message;
                     }
 
@@ -119,6 +153,138 @@ namespace RestaurantManager.Bussiness
             }
 
         }
+        public string SaveDONDATDA(DONDATDA_ViewModel model, ref string mess, ref int idhoadontt)
+        {
+            using (var db = new RestaurantManagerDataEntities())
+            {
+                using (var trans = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var check = db.DONDATDAs.FirstOrDefault(x => x.iddondat == model.iddondat);
+                        if (check == null)
+                        {
+                            var DONDATDA = new DONDATDA
+                            {
+                                ngaydat = model.ngaydat,
+                                ban = model.ban,
+                                idkh = model.idkh,
+                                CreateBy = model.CreateBy,
+                                CreateDate = DateTime.Now,
+                            };
+                            var result = db.DONDATDAs.Add(DONDATDA);
+                            db.SaveChanges();
+
+                            foreach (D_DONDATDA_ViewModel item in model.D_DONDATDA)
+                            {
+                                var D_DONDATDA = new D_DONDATDA
+                                {
+                                    iddondat = DONDATDA.iddondat,
+                                    idmon = item.idmon,
+                                    sldat = item.sldat,
+                                    CreateBy = model.CreateBy,
+                                    CreateDate = DateTime.Now,
+                                };
+                                db.D_DONDATDA.Add(D_DONDATDA);
+                            }
+                            db.SaveChanges();
+
+                            //
+                            var modelHOADONTT = new HOADONTT
+                            {
+                                iddondat = result.iddondat,
+                                ngayhd = model.ngaydat.Value,
+                                thoigian = DateTime.Now,
+                                thungan = model.CreateBy,
+                                idkh = model.idkh,
+                                CreateBy = model.CreateBy,
+                                CreateDate = DateTime.Now,
+                            };
+                            var resultHOADONTT = db.HOADONTTs.Add(modelHOADONTT);
+                            db.SaveChanges();
+
+                            foreach (D_DONDATDA_ViewModel item in model.D_DONDATDA)
+                            {
+                                var D_HOADONTT = new D_HOADONTT
+                                {
+                                    idhoadontt = resultHOADONTT.idhoadontt,
+                                    idmon = item.idmon,
+                                    slban = item.sldat,
+                                    dongiaban = item.dongiamon,
+                                    CreateBy = model.CreateBy,
+                                    CreateDate = DateTime.Now,
+                                };
+                                db.D_HOADONTT.Add(D_HOADONTT);
+                            }
+                            db.SaveChanges();
+
+
+                            //trừ nguyên liệu món ăn đi
+
+                            foreach (D_DONDATDA_ViewModel item in model.D_DONDATDA)
+                            {
+                                var conthuc = db.CONGTHUCs.AsNoTracking().Where(x => x.idmon == item.idmon).ToList();
+                                foreach (var iNlieu in conthuc)
+                                {
+                                    var nlieu = db.NLIEUx.FirstOrDefault(x => x.idhang == iNlieu.idhang);
+                                    if (nlieu != null)
+                                    {
+                                        var slton = nlieu.slton.Value;
+                                        int.TryParse(iNlieu.hamluong, out int hamluong);
+                                        if (slton < hamluong * item.sldat)
+                                        {
+                                            var monan = db.MONANs.AsNoTracking().FirstOrDefault(x => x.idmon == item.idmon);
+                                            mess = "warning";
+                                            return String.Format("Món {0} đã hết nguyên liệu {1}!", monan.temon, nlieu.tenhang);
+                                        }
+
+                                        slton -= hamluong * item.sldat;
+                                        nlieu.slton = slton;
+                                    }
+                                }
+                            }
+                            db.SaveChanges();
+                           
+                            if (resultHOADONTT != null)
+                            {
+                                trans.Commit();
+                                mess = "success";
+                                idhoadontt = resultHOADONTT.idhoadontt;
+                                return "Thanh toán thành công!";
+                            }
+                            mess = "error";
+                            idhoadontt = 0;
+                            return "Thanh toán không thành công!";
+                        }
+                        else
+                        {
+                            check.ngaydat = model.ngaydat;
+                            check.ban = model.ban;
+                            check.idkh = model.idkh;
+                            check.ModifyBy = model.ModifyBy;
+                            check.ModifyDate = DateTime.Now;
+                            db.SaveChanges();
+                            mess = "success";
+                            idhoadontt = 0;
+                            return "Cập nhật món ăn thành công!";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        mess = "error";
+                        idhoadontt = 0;
+                        return ex.Message;
+                    }
+
+                }
+            }
+
+        }
+
+
+
+
         public string DeleteDONDATDA(int id)
         {
             try

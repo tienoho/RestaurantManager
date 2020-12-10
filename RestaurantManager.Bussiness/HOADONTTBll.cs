@@ -35,6 +35,8 @@ namespace RestaurantManager.Bussiness
                 {
                     var result = (from h in db.HOADONTTs.AsNoTracking()
                                   join k in db.KHACHHANGs.AsNoTracking() on h.idkh equals k.idkh
+                                  into ps
+                                  from k in ps.DefaultIfEmpty()
                                   join d in db.DONDATDAs.AsNoTracking() on h.iddondat equals d.iddondat
                                   where h.idhoadontt == id
                                   select new HOADONTT_ViewModel
@@ -138,8 +140,9 @@ namespace RestaurantManager.Bussiness
                     return null;
                 }
             }
-
         }
+
+
         public string DeleteHOADONTT(int id)
         {
             try

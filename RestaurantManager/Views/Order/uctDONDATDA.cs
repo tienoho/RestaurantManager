@@ -15,6 +15,7 @@ using RestaurantManager.Model;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraBars;
 using RestaurantManager.Views.Order;
+using RestaurantManager.Views.Print;
 
 namespace RestaurantManager
 {
@@ -241,14 +242,6 @@ namespace RestaurantManager
             ListMONAN = new MONANBll().GetListMONAN_OutLeft();
             InitData(ListMONAN);
         }
-        private void ClearDisplay()
-        {
-            //txtIDAgency.Text = DataProvider.ExcuteScalar(string.Format("SELECT MaDL=dbo.fcGetMaDL()"));
-            //txtNameAgency.Text = "";
-            //txtAddressOfAgency.Text = "";
-            //txtNumberPhone.Text = "";
-
-        }
         #endregion
 
         private void gridControl1_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
@@ -361,7 +354,7 @@ namespace RestaurantManager
                 if (txtidmon.Text == "")
                 {
                     XtraMessageBox.Show("Bạn phải món cần xóa !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ClearDisplay();
+                    ClearHoaDon();
                     return;
                 }
                 var idmon = (int)txtidmon.EditValue;
@@ -384,26 +377,37 @@ namespace RestaurantManager
         {
             CalculateAmount();
             var khachhang = lueKhachHang.EditValue;
-            var resultDialog = XtraMessageBox.Show("Bạn có chắc chắn muốn lưu ?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (khachhang == null)
+            {
+                khachhang = 0;
+            }
+            if (ListD_DONDATDA.Count <= 0)
+            {
+                XtraMessageBox.Show("Bạn phải chọn món ăn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            double CustomerPay = 0;
+            double TotalAmount = 0;
+            if (txtCustomerPay.EditValue != null)
+                double.TryParse(txtCustomerPay.EditValue.ToString(), out CustomerPay);
+            if (txtTotalAmount.EditValue != null)
+                double.TryParse(txtTotalAmount.EditValue.ToString(), out TotalAmount);
+            if (CustomerPay <= 0)
+            {
+                XtraMessageBox.Show("Tiền khách đưa phải lớn hơn 0!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (CustomerPay < TotalAmount)
+            {
+                XtraMessageBox.Show("Tiền khách đưa phải lớn hơn hoặc bằng tổng tiền!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var resultDialog = XtraMessageBox.Show("Bạn có chắc chắn muốn thanh toán ?", "Xác nhận", MessageBoxButtons.YesNo);
             if (resultDialog == DialogResult.Yes)
             {
-                if (ListD_DONDATDA.Count <= 0)
-                {
-                    XtraMessageBox.Show("Bạn phải chọn món ăn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (lueKhachHang.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn phải chọn khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (txtban.Text == "")
-                {
-                    XtraMessageBox.Show("Bạn phải nhập bàn ăn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
-                var hoadon = new DONDATDA_ViewModel
+                //Lưu đơn đặt đồ ăn
+                var dondatda = new DONDATDA_ViewModel
                 {
                     idkh = (int)khachhang,
                     ban = txtban.Text,
@@ -412,27 +416,53 @@ namespace RestaurantManager
                     CreateBy = Properties.Settings.Default.NameLog,
                     ModifyBy = Properties.Settings.Default.NameLog
                 };
+                
+
                 var mess = String.Empty;
-                var result = new DONDATDABll().AddDONDATDA(hoadon, ref mess);
+                var idhoadontt = 0;
+                var resultData = new DONDATDABll().SaveDONDATDA(dondatda, ref mess, ref idhoadontt);
                 if (mess == "success")
                 {
+                    if (resultData != null)
+                    {
+                        var HOADONTT = new HOADONTTBll().GetHOADONTT(idhoadontt);
+                        var D_HOADONTT = new HOADONTTBll().GetListD_HOADONTT(idhoadontt);
+
+                        XtraMessageBoxArgs args = new XtraMessageBoxArgs();
+                        args.Caption = "Thông báo";
+                        args.Text = "Thanh toán thành công!\n Bạn có muốn in hóa đơn ?";
+                        args.Buttons = new DialogResult[] { DialogResult.OK, DialogResult.Cancel };
+                        args.Showing += Args_Showing;
+
+                        var result = XtraMessageBox.Show(args);
+                        if (result == DialogResult.OK)
+                        {
+                            using (frmPrint frm = new frmPrint())
+                            {
+                                frm.PrintHOADONTT(HOADONTT, D_HOADONTT);
+                                frm.ShowDialog();
+                            }
+                            ClearHoaDon();
+                        }
+                        ClearHoaDon();
+                        return;
+                    }
                     ListMONAN = new MONANBll().GetListMONAN_OutLeft();
                     InitData(ListMONAN);
-                    changeCaption();
-                    XtraMessageBox.Show(result, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //changeCaption();
+                    XtraMessageBox.Show(resultData, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearHoaDon();
                     return;
-                }
-                if (mess == "warning")
+                }else
                 {
-                    XtraMessageBox.Show(result, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    XtraMessageBox.Show(resultData, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
 
         private void btnClearHoDon_Click(object sender, EventArgs e)
         {
-
+            ClearHoaDon();
         }
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
@@ -450,14 +480,18 @@ namespace RestaurantManager
         }
         private void ClearHoaDon()
         {
-            txtban.EditValue = null;
-            dtpngaydat.Value = DateTime.Now;
-            txtTotalAmount.EditValue = null;
+            txtban.EditValue = "";
+            txtTotalAmount.EditValue = 0;
             lueKhachHang.EditValue = null;
-            ClearMon();
+           
             gcSelectItems.DataSource = null;
             gridView1.RefreshData();
-            ListD_DONDATDA = null;
+            ListD_DONDATDA = new List<D_DONDATDA_ViewModel>();
+            LoadDataGrid();
+            txtReturnPay.EditValue = 0;
+            txtCustomerPay.EditValue = 0;
+
+            ClearMon();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -481,6 +515,39 @@ namespace RestaurantManager
                 XtraMessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+        private void Args_Showing(object sender, XtraMessageShowingArgs e)
+        {
+            foreach (var control in e.Form.Controls)
+            {
+                SimpleButton button = control as SimpleButton;
+                if (button != null)
+                {
+                    button.ImageOptions.SvgImageSize = new Size(16, 16);
+                    switch (button.DialogResult.ToString())
+                    {
+                        case ("OK"):
+                            button.ImageOptions.SvgImage = svgImageCollection1[0];
+                            break;
+                        case ("Cancel"):
+                            button.ImageOptions.SvgImage = svgImageCollection1[1];
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void txtCustomerPay_EditValueChanged(object sender, EventArgs e)
+        {
+            if (txtTotalAmount.Text != "" && txtCustomerPay.Text != "")
+            {
+                double.TryParse(txtTotalAmount.EditValue.ToString(), out double TotalAmount);
+                double.TryParse(txtCustomerPay.EditValue.ToString(), out double CustomerPay);
+
+                double total = CustomerPay - TotalAmount;
+
+                txtReturnPay.EditValue = total;
+            }
         }
     }
 }
