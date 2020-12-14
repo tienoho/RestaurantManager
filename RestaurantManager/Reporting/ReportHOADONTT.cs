@@ -30,6 +30,9 @@ namespace RestaurantManager.Reporting
                 lblKhachHang.Text = obj.tenkh==null?"": obj.tenkh;
                 lblThoiGian.Text = obj.thoigian.Value.ToString("hh:mm:ss");
                 lblThuNgan.Text = obj.thungan.ToString();
+                lblCustomerPay.Text = obj.CustomerPay.ToString("#,###");
+                var total = data.Sum(x => x.TotalAmount);
+                xrReturn.Text = (obj.CustomerPay - total).ToString("#,###");
                 //lblFooterDate.Text = string.Format("Ngày {0} tháng {1} năm {2}", toDay.Day, toDay.Month, toDay.Year);
                 ///var details = new PYCBll().GetListD_PYC(pyc.idyc);
                 objectDataSource4.DataSource = data;

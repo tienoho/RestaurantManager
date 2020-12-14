@@ -426,6 +426,7 @@ namespace RestaurantManager
                     if (resultData != null)
                     {
                         var HOADONTT = new HOADONTTBll().GetHOADONTT(idhoadontt);
+                        HOADONTT.CustomerPay = CustomerPay;
                         var D_HOADONTT = new HOADONTTBll().GetListD_HOADONTT(idhoadontt);
 
                         XtraMessageBoxArgs args = new XtraMessageBoxArgs();

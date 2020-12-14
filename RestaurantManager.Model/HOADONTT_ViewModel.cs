@@ -21,7 +21,8 @@ namespace RestaurantManager.Model
         public string CreateBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public string ModifyBy { get; set; }
-
+        //tiền khách đưa
+        public double CustomerPay { get; set; }
         public double TotalAmount { get; set; }
         /// <summary>
         /// 
